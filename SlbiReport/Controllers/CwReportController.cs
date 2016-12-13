@@ -77,12 +77,15 @@ namespace SlbiReport.Controllers
             ds = ConvertXMLFileToDataSet(doc);
 
             List<string> legend = new List<string>();
+            List<string> xaxisdata = new List<string>();
             List<string> series1 = new List<string>();
             List<string> series2 = new List<string>();
+            
+
 
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
-                
+                xaxisdata.Add(Convert.ToString(dr["A0CALMONTH"]));
                 legend.Add(Convert.ToString(dr["A0CALMONTH"]));
                 series1.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
                 series2.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443NSA"]));
@@ -96,6 +99,7 @@ namespace SlbiReport.Controllers
             {
                 Title = "testbar",
                 SubTitle = "subtestbar",
+                XAxisData = xaxisdata,
                 LegendData = legend,
                 SeriesData1 = series1,
                 SeriesData2 = series2

@@ -1,8 +1,4 @@
 ﻿
-var title;
-var subtitle;
-var legendData;
-var seriesData;
 var searchlist = new Array();
 var pagequeryParams = "";
 
@@ -78,23 +74,19 @@ function initselect()
 
 function drawpie(pagequeryParams) {
     $.post("PieMap1", { pagequeryParams }, function (text, status) {
-        legendData = text.result.LegendData;
-        seriesData = text.result.SeriesData;
-        title = text.result.Title;
-        subtitle = text.result.SubTitle;
         myChart.hideLoading();
         myChart.setOption({
             title: {
-                text: title,
-                subtext: subtitle,
+                text: text.result.Title,
+                subtext: text.result.SubTitle,
                 x: 'center'
             },
             legend: {
-                data: legendData
+                data: text.result.LegendData
             },
             series: [{
                 // 根据名字对应到相应的系列
-                data: seriesData
+                data: text.result.SeriesData
             }]
         });
 
@@ -110,6 +102,9 @@ function drawbar(pagequeryParams) {
                 text: response.result.Title,
                 subtext: response.result.SubTitle,
                 x: 'left'
+            },
+            legend: {
+                data: response.result.LegendData
             },
             xAxis: {
                 data: response.result.LegendData

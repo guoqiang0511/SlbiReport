@@ -26,5 +26,11 @@ namespace SlbiReport.Models
         public List<string> SeriesData2 { get; set; }
 
         public List<string> SeriesData3 { get; set; }
+
+        public string SeriesName1 { get; set; }
+
+        public string SeriesName2 { get; set; }
+
+        public string SeriesName3 { get; set; }
     }
 }
