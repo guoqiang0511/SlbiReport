@@ -23,9 +23,13 @@ namespace SlbiReport
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/echart").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/bundles/esl").Include(
+                      "~/Scripts/echarts/esl.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/myecharts").Include(
+                      "~/Scripts/MyEcharts.js",
+                      "~/Scripts/WapCharts.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
