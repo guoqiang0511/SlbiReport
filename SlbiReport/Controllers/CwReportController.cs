@@ -24,6 +24,7 @@ namespace SlbiReport.Controllers
         [HttpPost]
         public ActionResult PieMap1(string id)
         {
+
             string cmd = Request["pagequeryParams"];
             string urltt = QueryParamsurl(cmd);
             DataTable dt = new DataTable();

@@ -609,6 +609,7 @@
     </Content>
     <Content Include="ClassDiagram1.cd" />
     <Content Include="Css\themes\material\images\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\shbireport.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\easyui\jquery.easyui.min.js" />
     <Content Include="Scripts\easyui\jquery.easyui.mobile.js" />
