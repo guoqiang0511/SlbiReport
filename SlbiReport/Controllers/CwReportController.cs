@@ -80,19 +80,18 @@ namespace SlbiReport.Controllers
             List<string> xaxisdata = new List<string>();
             List<string> series1 = new List<string>();
             List<string> series2 = new List<string>();
-            
 
+ 
 
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
                 xaxisdata.Add(Convert.ToString(dr["A0CALMONTH"]));
-                legend.Add(Convert.ToString(dr["A0CALMONTH"]));
                 series1.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
                 series2.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443NSA"]));
             }
 
-
-
+            legend.Add("实际");
+            legend.Add("预测");
             //return result;
 
             var bar = new BarViewModel()
@@ -102,7 +101,9 @@ namespace SlbiReport.Controllers
                 XAxisData = xaxisdata,
                 LegendData = legend,
                 SeriesData1 = series1,
-                SeriesData2 = series2
+                SeriesData2 = series2,
+                SeriesName1 = "实际",
+                SeriesName2 = "预测"
             };
 
 

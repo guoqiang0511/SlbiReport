@@ -1,4 +1,8 @@
 ﻿
+var title;
+var subtitle;
+var legendData;
+var seriesData;
 var searchlist = new Array();
 var pagequeryParams = "";
 
@@ -107,13 +111,15 @@ function drawbar(pagequeryParams) {
                 data: response.result.LegendData
             },
             xAxis: {
-                data: response.result.LegendData
+                data: response.result.XAxisData
             },
 
             series: [{
+                name: response.result.SeriesName1,
                 data: response.result.SeriesData1
             },
             {
+                name: response.result.SeriesName2,
                 data: response.result.SeriesData2
             }]
         });
