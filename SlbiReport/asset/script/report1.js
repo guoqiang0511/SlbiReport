@@ -1,94 +1,160 @@
-﻿var title;
+﻿
+var title;
 var subtitle;
 var legendData;
 var seriesData;
-
+var searchlist = new Array();
+var pagequeryParams = "";
 
 // 基于准备好的dom，初始化echarts实例
-
 var myChart = echarts.init(document.getElementById('main'));
 var barChart = echarts.init(document.getElementById('bar'));
 
-var app = angular.module("myApp", []);
-
-app.controller("myCtrl", function ($scope, $http) {
 
 
-    $http
-            .post("PieMap1")
-            .success(function (response) {
-                legendData = response.result.LegendData;
-                seriesData = response.result.SeriesData;
-                title = response.result.Title;
-                subtitle = response.result.SubTitle;
-                myChart.hideLoading();
-                myChart.setOption({
-                    title: {
-                        text: title,
-                        subtext: subtitle,
-                        x: 'center'
+
+// 为echarts对象加载数据
+var pie_option = getPieOption();
+myChart.setOption(pie_option);
+myChart.showLoading();
+
+
+var bar_option = getBarOption();
+barChart.setOption(bar_option);
+barChart.showLoading();
+
+var selectarea = $("#selectArea");
+
+$(window).load(function () {
+    //要执行的方法体
+    initselect();
+    inittable();
+    drawpie();
+    drawbar();
+   
+});
+
+function initselect()
+{
+    $.post("Select", { id: '' }, function (response, status) {
+        if (response) {
+            //   DrawPie(data, "echart1");
+            $.each(response.result, function (i, result) {
+                searchlist.push(result.valueField);
+                selectarea.append("<input id=\"" + result.valueField + "\" name=\"" + result.valueField + "\">  ")
+                $('#' + result.valueField + '').combobox({
+                    label: result.label,
+                    url: 'Select_Dim',
+                    queryParams: {
+                        "id": result.valueField,
+                        "text": result.textField
                     },
-                    legend: {
-                        data: legendData
-                    },
-                    series: [{
-                        // 根据名字对应到相应的系列
-                        data: seriesData
-                    }]
+                    labelPosition: 'left',
+                    valueField: 'id',
+                    textField: 'text'
                 });
-                 })
-            .error(function () {
-                     alert("系统发生异常");
-                 });
+
+            });
+            selectarea.append("<a id=\"subbtn\" href=\"#\">查询</a>");
+            $('#subbtn').linkbutton({
+                iconCls: 'icon-search',
+            });
+            $('#subbtn').bind('click', function search() {
+                pagequeryParams = "";
+                for (var i = 0; i < searchlist.length; i++) {
+                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValue") + ","
+                }
+                pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
 
 
+                drawpie(pagequeryParams);
+                drawbar(pagequeryParams);
+                $('#tt').datagrid('load', { pagequeryParams });
+                });
 
-    var option = getOption();
+                }
+                });
+}
 
+function drawpie(pagequeryParams) {
+    $.post("PieMap1", { pagequeryParams }, function (text, status) {
+        myChart.hideLoading();
+        myChart.setOption({
+            title: {
+                text: text.result.Title,
+                subtext: text.result.SubTitle,
+                x: 'center'
+            },
+            legend: {
+                data: text.result.LegendData
+            },
+            series: [{
+                // 根据名字对应到相应的系列
+                data: text.result.SeriesData
+            }]
+        });
 
-    myChart.setOption(option);
-    myChart.showLoading();
+    });
 
-});
+}
 
+function drawbar(pagequeryParams) {
+    $.post("BarMap", { pagequeryParams }, function (response, status) {
+        barChart.hideLoading();
+        barChart.setOption({
+            title: {
+                text: response.result.Title,
+                subtext: response.result.SubTitle,
+                x: 'left'
+            },
+            legend: {
+                data: response.result.LegendData
+            },
+            xAxis: {
+                data: response.result.XAxisData
+            },
 
-app.controller("myBarCtrl", function ($scope, $http) {
+            series: [{
+                name: response.result.SeriesName1,
+                data: response.result.SeriesData1
+            },
+            {
+                name: response.result.SeriesName2,
+                data: response.result.SeriesData2
+            }]
+        });
 
-    $http({
-        url: 'BarMap',
-        method: 'post',
-        params: { id: '1002', aad: 'zzz' },//params作为url的参数
-     //   data: { keyName: 'qubernet' }//作为消息体参数  
-    }).success(function (response) {
-               seriesData = response.result.SeriesData;
-               barChart.hideLoading();
-               barChart.setOption({
-                   title: {
-                       text: response.result.Title,
-                       subtext: response.result.SubTitle,
-                       x: 'left'
-                   },
-                   xAxis: {
-                       data: response.result.LegendData
-                   },
-                   
-                   series: [{
-                       data: response.result.SeriesData1
-                   },
-                   {
-                       data: response.result.SeriesData2
-                   }]
-               });
-           })
-           .error(function () {
-               alert("系统发生异常");
-           });
-    var option = getbarOption();
-    barChart.setOption(option);
-    barChart.showLoading();
-});
+    });
+}
 
-function getOption() {
+function inittable(pagequeryParams)
+{
+    $.post("TableMetadata", { }, function (response, status) {
+
+        var option = getTableOption();
+        var s = "";
+        s = "[[";
+
+        if (response) {
+            //   DrawPie(data, "echart1");
+            $.each(response.result, function (i, result) {
+                s = s + "{field: '" + result.field + "',title: '" + result.title + "',width: '" + result.width + "'},";
+            });
+        }
+
+        s = s + "]]";
+
+        option.columns = eval(s);
+        option.url = 'TableMap';
+
+        $('#tt').datagrid(option);
+
+       
+    });
+
+}
+
+function getPieOption() {
 
     return {
 
@@ -131,19 +197,19 @@ function getOption() {
         calculable: true,
         series: [
             {
-                name: '访问来源',
+                name: '',
                 type: 'pie',
                 radius: '55%',
                 center: ['50%', '60%'],
                 data: seriesData
-          
+
             }
         ]
 
     }
 }
 
-function getbarOption() {
+function getBarOption() {
 
     return {
 
@@ -152,14 +218,14 @@ function getbarOption() {
         },
         toolbox: {
             feature: {
-                dataView: {show: true, readOnly: false},
-                magicType: {show: true, type: ['line', 'bar']},
-                restore: {show: true},
-                saveAsImage: {show: true}
+                dataView: { show: true, readOnly: false },
+                magicType: { show: true, type: ['line', 'bar'] },
+                restore: { show: true },
+                saveAsImage: { show: true }
             }
         },
         legend: {
-            data: ['实际', '预测' ]
+            data: []
         },
         xAxis: [
             {
@@ -170,16 +236,16 @@ function getbarOption() {
         yAxis: [
             {
                 type: 'value',
-                name: '实际11',
-  
+                name: '',
+
                 axisLabel: {
                     formatter: '{value} '
                 }
             },
             {
                 type: 'value',
-                name: '预测11',
-      
+                name: '',
+
                 axisLabel: {
                     formatter: '{value} '
                 }
@@ -187,17 +253,45 @@ function getbarOption() {
         ],
         series: [
             {
-                name:'实际',
+                name: '',
                 type: 'bar',
                 data: []
-              
+
             },
             {
-                name:'预测',
+                name: '',
                 type: 'bar',
                 data: []
-                
             }
         ]
+    }
+}
+
+function getTableOption() {
+    return {
+        height: 500,
+        method: 'POST',
+        queryParams: {},
+        striped: true,
+        fitColumns: true,
+        singleSelect: true,
+        rownumbers: true,
+        pagination: false,
+        nowrap: false,
+        pageSize: 10,
+        pageList: [10, 20, 50, 100, 150, 200],
+        showFooter: true,
+        columns: [[]],
+        onBeforeLoad: function (param) {
+        },
+        onLoadSuccess: function (data) {
+
+        },
+        onLoadError: function () {
+
+        },
+        onClickCell: function (rowIndex, field, value) {
+
+        }
     }
 }

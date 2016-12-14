@@ -33,7 +33,15 @@ namespace SlbiReport.Controllers
 
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002" + urltt + "Results?$select=ZDMPLANT_T,A00O2TFKZNC7K2N5JLDC4434TM&" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch {
+
+                return null;
+            }
+           
             ds = ConvertXMLFileToDataSet(doc);
 
             List<VisitSource> listss = new List<VisitSource>();
@@ -73,7 +81,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002" + urltt + "Results?$select=A0CALMONTH,A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA&"+token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             List<string> legend = new List<string>();
@@ -123,7 +139,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002"+ urltt + "Results?" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             dt = ds.Tables["properties"];
@@ -143,7 +167,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             dt = ds.Tables["Property"];
@@ -185,7 +217,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             dt = ds.Tables["Property"];
@@ -222,7 +262,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002?$select="+ id + "," + text + "&" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             dt = ds.Tables["Property"];
@@ -307,6 +355,11 @@ namespace SlbiReport.Controllers
         }
 
         public ActionResult Report1()
+        {
+            return View();
+        }
+
+        public ActionResult Report2()
         {
             return View();
         }
