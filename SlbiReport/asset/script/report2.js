@@ -7,31 +7,27 @@ var searchlist = new Array();
 var pagequeryParams = "";
 
 // 基于准备好的dom，初始化echarts实例
-var myChart = echarts.init(document.getElementById('main'));
-var barChart = echarts.init(document.getElementById('bar'));
+
+
 
 
 
 
 // 为echarts对象加载数据
-var pie_option = getPieOption();
-myChart.setOption(pie_option);
-myChart.showLoading();
 
 
-var bar_option = getBarOption();
-barChart.setOption(bar_option);
-barChart.showLoading();
+
+
 
 var selectarea = $("#selectArea");
 
 $(window).load(function () {
     //要执行的方法体
-    initselect();
+   // initselect();
     inittable();
-    drawpie();
-    drawbar();
-   
+    //drawpie();'main' "PieMap1"
+    drawbar( null ,"bar","BarMap");
+    drawpie(null, "main", "PieMap1");
 });
 
 function initselect()
@@ -49,7 +45,7 @@ function initselect()
                         "id": result.valueField,
                         "text": result.textField
                     },
-                    //   labelPosition: 'left',
+                    labelPosition: 'left',
                     valueField: 'id',
                     textField: 'text'
                 });
@@ -57,7 +53,7 @@ function initselect()
             });
             selectarea.append("<a id=\"subbtn\" href=\"#\">查询</a>");
             $('#subbtn').linkbutton({
-                iconCls: 'icon-search'
+                iconCls: 'icon-search',
             });
             $('#subbtn').bind('click', function search() {
                 pagequeryParams = "";
@@ -76,8 +72,12 @@ function initselect()
                 });
 }
 
-function drawpie(pagequeryParams) {
-    $.post("PieMap1", { pagequeryParams }, function (text, status) {
+function drawpie(pagequeryParams,id, url) {
+    var myChart = echarts.init(document.getElementById(id));
+    var pie_option = getPieOption();
+    myChart.setOption(pie_option);
+    myChart.showLoading();
+    $.post(url, { pagequeryParams }, function (text, status) {
         myChart.hideLoading();
         myChart.setOption({
             title: {
@@ -98,8 +98,13 @@ function drawpie(pagequeryParams) {
 
 }
 
-function drawbar(pagequeryParams) {
-    $.post("BarMap", { pagequeryParams }, function (response, status) {
+function drawbar(pagequeryParams,id,url) {
+    var barChart = echarts.init(document.getElementById(id));
+    var bar_option = getBarOption();
+    barChart.setOption(bar_option);
+    barChart.showLoading();
+
+    $.post(url, { pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -129,23 +134,30 @@ function drawbar(pagequeryParams) {
 
 function inittable(pagequeryParams)
 {
-    $.post("TableMetadata", { }, function (response, status) {
+    $.post("Rp2_Table1Metadata", {}, function (response, status) {
 
         var option = getTableOption();
         var s = "";
+        var fs = "";
+        fs = "[[";
         s = "[[";
-
         if (response) {
             //   DrawPie(data, "echart1");
             $.each(response.result, function (i, result) {
-                s = s + "{field: '" + result.field + "',title: '" + result.title + "',width: '" + result.width + "'},";
+                if (result.frozen == true) {
+                    fs = fs + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,fixed:true},";
+                } else {
+                    s = s + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,fixed:true,align:'right'},";
+                }
             });
         }
-
+        fs = fs + "]]";
         s = s + "]]";
 
+        option.frozenColumns = eval(fs);
         option.columns = eval(s);
-        option.url = 'TableMap';
+        option.title = "到期回款状况";
+        option.url = 'Rp2_Table1data';
 
         $('#tt').datagrid(option);
 
@@ -276,11 +288,11 @@ function getTableOption() {
         fitColumns: true,
         singleSelect: true,
         rownumbers: true,
-        pagination: false,
-        nowrap: false,
-        pageSize: 10,
+        pagination: true,
+        nowrap: true,
+        pageSize: 20,
         pageList: [10, 20, 50, 100, 150, 200],
-        showFooter: true,
+       // showFooter: true,
         columns: [[]],
         onBeforeLoad: function (param) {
         },

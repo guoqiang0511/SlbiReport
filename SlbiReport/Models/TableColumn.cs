@@ -12,5 +12,7 @@ namespace SlbiReport.Models
         public string title { get; set; }
 
         public string width { get; set; }
+
+        public Boolean frozen { get; set; }
     }
 }

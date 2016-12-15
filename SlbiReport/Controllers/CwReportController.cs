@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Xml;
 using SlbiReport.Models;
+using System.Reflection;
 
 namespace SlbiReport.Controllers
 {
@@ -33,7 +34,15 @@ namespace SlbiReport.Controllers
 
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002" + urltt + "Results?$select=ZDMPLANT_T,A00O2TFKZNC7K2N5JLDC4434TM&" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch {
+
+                return null;
+            }
+           
             ds = ConvertXMLFileToDataSet(doc);
 
             List<VisitSource> listss = new List<VisitSource>();
@@ -73,7 +82,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002" + urltt + "Results?$select=A0CALMONTH,A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA&"+token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             List<string> legend = new List<string>();
@@ -123,7 +140,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002"+ urltt + "Results?" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             dt = ds.Tables["properties"];
@@ -143,7 +168,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             dt = ds.Tables["Property"];
@@ -185,7 +218,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             dt = ds.Tables["Property"];
@@ -222,7 +263,15 @@ namespace SlbiReport.Controllers
             DataSet ds = new DataSet();
             string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002?$select="+ id + "," + text + "&" + token;
             XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
             ds = ConvertXMLFileToDataSet(doc);
 
             dt = ds.Tables["Property"];
@@ -306,7 +355,185 @@ namespace SlbiReport.Controllers
             return urltt;
         }
 
+
+        public ActionResult Rp2_Table1Metadata(string id)
+        {
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/$metadata?" + token;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["Property"];
+
+            DataRow[] drArr = dt.Select("EntityType_Id=0 and  text <> '' ");//查询
+
+            DataTable dtNew = dt.Clone();
+
+            //DataRow drd = dt.Select("EntityType_Id=0 and  Name = 'A0CALMONTH' ")[0];//查询
+            //drd["text"] = "A0CALMONTH";
+            //dtNew.ImportRow(drd);
+
+            for (int i = 0; i < drArr.Length; i++)
+            {
+                dtNew.ImportRow(drArr[i]);
+
+            }
+
+            //return result;
+            List<TableColumn> tablecol = new List<TableColumn>();
+
+            foreach (DataRow dr in dtNew.Rows)
+            {
+                Boolean frozen = false;
+                if (Convert.ToString(dr["aggregation-role"]) == "dimension") 
+                 frozen = true;
+
+                var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "120", frozen = frozen };
+                tablecol.Add(obj);
+            }
+
+
+            return Json(new { status = 1, result = tablecol });
+        }
+
+
+        public String Rp2_Table1data(int page, int rows)
+        {
+            int skip = (page - 1) * rows;
+
+            string cmd = Request["pagequeryParams"];
+            string urltt = QueryParamsurl(cmd);
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003" + urltt + "Results?$inlinecount=allpages&$skip=" + skip + "&$top="+ rows + "&" + token;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["properties"];
+
+            DataRow dr = ds.Tables["feed"].Select()[0];
+          
+            string totalnum = Convert.ToString(dr["count"]);
+          
+                
+
+
+            List<String> items = new List<String>();
+
+            string result = "{ \"total\":"+ totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
+
+
+            return result;
+
+            //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        public ActionResult Rp2_Bar1Map(string id)
+        {
+            string cmd = Request["pagequeryParams"];
+            string urltt = QueryParamsurl(cmd);
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003" + urltt + "Results?$select=A00O2TFHXIFF3PJJB7XWANDFNH,A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA&" + token;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            List<string> legend = new List<string>();
+            List<string> xaxisdata = new List<string>();
+            List<string> series1 = new List<string>();
+            List<string> series2 = new List<string>();
+
+
+
+            foreach (DataRow dr in ds.Tables["properties"].Rows)
+            {
+                xaxisdata.Add(Convert.ToString(dr["A0CALMONTH"]));
+                series1.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
+                series2.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443NSA"]));
+            }
+
+            legend.Add("实际");
+            legend.Add("预测");
+            //return result;
+
+            var bar = new BarViewModel()
+            {
+                Title = "testbar",
+                SubTitle = "subtestbar",
+                XAxisData = xaxisdata,
+                LegendData = legend,
+                SeriesData1 = series1,
+                SeriesData2 = series2,
+                SeriesName1 = "实际",
+                SeriesName2 = "预测"
+            };
+
+
+            return Json(new { status = 1, result = bar });
+        }
+
+
+
+        private static List<T> TableToEntity<T>(DataTable dt) where T : class, new()
+        {
+            Type type = typeof(T);
+            List<T> list = new List<T>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                PropertyInfo[] pArray = type.GetProperties();
+                T entity = new T();
+                foreach (PropertyInfo p in pArray)
+                {
+                    if (row[p.Name] is Int64)
+                    {
+                        p.SetValue(entity, Convert.ToInt32(row[p.Name]), null);
+                        continue;
+                    }
+                    p.SetValue(entity, row[p.Name], null);
+                }
+                list.Add(entity);
+            }
+            return list;
+        }
         public ActionResult Report1()
+        {
+            return View();
+        }
+
+        public ActionResult Report2()
         {
             return View();
         }
