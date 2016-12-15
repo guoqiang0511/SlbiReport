@@ -239,6 +239,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="asset\script\report2.js" />
     <Content Include="asset\script\report1_ag.js" />
     <Content Include="asset\script\report1.js" />
     <Content Include="Content\bootstrap.css" />
