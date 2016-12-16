@@ -14,11 +14,11 @@ namespace SlbiReport.Models
 
         public String SubTitle { get; set; }
 
-        public List<string> LegendData { get; set; }
+        public List<TableColumn> Column { get; set; }
 
         /// <summary>
         /// 图表数据
         /// </summary>
-        public List<VisitSource> SeriesData { get; set; }
+       // public List<VisitSource> SeriesData { get; set; }
     }
 }

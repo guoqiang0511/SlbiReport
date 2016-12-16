@@ -403,7 +403,13 @@ namespace SlbiReport.Controllers
             }
 
 
-            return Json(new { status = 1, result = tablecol });
+            var table = new TableViewModel()
+            {
+                Title = "到期回款状况：",
+                Column = tablecol
+            };
+
+            return Json(new { status = 1, result = table });
         }
 
 
