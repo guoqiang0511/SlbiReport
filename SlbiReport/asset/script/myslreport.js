@@ -24,6 +24,8 @@
 
 }
 
+
+//两条柱状图
 function drawbar1(pagequeryParams, id, url) {
     var barChart = echarts.init(document.getElementById(id));
     var bar_option = getBarOption();
@@ -53,6 +55,47 @@ function drawbar1(pagequeryParams, id, url) {
                 name: response.result.SeriesName2,
                 data: response.result.SeriesData2
             }]
+        });
+
+    });
+}
+
+
+//两柱一线（线使用）
+function drawbar2(pagequeryParams, id, url) {
+    var barChart = echarts.init(document.getElementById(id));
+    var bar_option = getBarOption2();
+    barChart.setOption(bar_option);
+    barChart.showLoading();
+
+    $.post(url, { pagequeryParams }, function (response, status) {
+        barChart.hideLoading();
+        barChart.setOption({
+            title: {
+                text: response.result.Title,
+                subtext: response.result.SubTitle,
+                x: 'left'
+            },
+            legend: {
+                data: response.result.LegendData
+            },
+            xAxis: {
+                data: response.result.XAxisData
+            },
+
+            series: [{
+                name: response.result.SeriesName1,
+                data: response.result.SeriesData1
+            },
+            {
+                name: response.result.SeriesName2,
+                data: response.result.SeriesData2
+            },
+            {
+                name: response.result.SeriesName3,
+                data: response.result.SeriesData3
+            }
+            ]
         });
 
     });
@@ -174,15 +217,6 @@ function getBarOption() {
             {
                 type: 'value',
                 name: '',
-
-                axisLabel: {
-                    formatter: '{value} '
-                }
-            },
-            {
-                type: 'value',
-                name: '',
-
                 axisLabel: {
                     formatter: '{value} '
                 }
@@ -204,9 +238,71 @@ function getBarOption() {
     }
 }
 
+function getBarOption2() {
+
+    return {
+
+        tooltip: {
+            trigger: 'axis'
+        },
+        toolbox: {
+            feature: {
+                dataView: { show: true, readOnly: false },
+                magicType: { show: true, type: ['line', 'bar'] },
+                restore: { show: true },
+                saveAsImage: { show: true }
+            }
+        },
+        legend: {
+            data: []
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: []
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '',
+                axisLabel: {
+                    formatter: '{value} '
+                }
+            },
+            {
+                type: 'value',
+                name: '',
+                axisLabel: {
+                    formatter: '{value} '
+                }
+            }
+        ],
+        series: [
+            {
+                name: '',
+                type: 'bar',
+                data: []
+
+            },
+            {
+                name: '',
+                type: 'bar',
+                data: []
+            },
+            {
+                name: '',
+                type: 'line',
+                yAxisIndex: 1,
+                data: []
+            }
+        ]
+    }
+}
+
 function getTableOption() {
     return {
-        height: 500,
+        height: 630,
         method: 'POST',
         queryParams: {},
         striped: true,

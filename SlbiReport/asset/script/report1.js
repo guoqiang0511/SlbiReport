@@ -7,7 +7,7 @@ var searchlist = new Array();
 var pagequeryParams = "";
 
 // 基于准备好的dom，初始化echarts实例
-var myChart = echarts.init(document.getElementById('main'));
+//var myChart = echarts.init(document.getElementById('main'));
 var barChart = echarts.init(document.getElementById('bar'));
 
 
@@ -15,8 +15,8 @@ var barChart = echarts.init(document.getElementById('bar'));
 
 // 为echarts对象加载数据
 var pie_option = getPieOption();
-myChart.setOption(pie_option);
-myChart.showLoading();
+//myChart.setOption(pie_option);
+//myChart.showLoading();
 
 
 var bar_option = getBarOption();
@@ -28,8 +28,8 @@ var selectarea = $("#selectArea");
 $(window).load(function () {
     //要执行的方法体
     initselect();
-    inittable();
-    drawpie();
+     inittable();
+   // drawpie();
     drawbar();
    
 });
@@ -67,7 +67,7 @@ function initselect()
                 pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
 
 
-                drawpie(pagequeryParams);
+             //   drawpie(pagequeryParams);
                 drawbar(pagequeryParams);
                 $('#tt').datagrid('load', { pagequeryParams });
                 });

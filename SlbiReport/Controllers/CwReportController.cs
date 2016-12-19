@@ -127,6 +127,63 @@ namespace SlbiReport.Controllers
             return Json(new { status = 1, result = bar });
         }
 
+        public ActionResult BarMap2(string id)
+        {
+            string cmd = Request["pagequeryParams"];
+            string urltt = QueryParamsurl(cmd);
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002" + urltt + "Results?$select=A0CALMONTH,A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443HGQ,A00O2TFKZNC7K2N5JLDC443NSA&" + token;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            List<string> legend = new List<string>();
+            List<string> xaxisdata = new List<string>();
+            List<string> series1 = new List<string>();
+            List<string> series2 = new List<string>();
+            List<string> series3 = new List<string>();
+
+
+            foreach (DataRow dr in ds.Tables["properties"].Rows)
+            {
+                xaxisdata.Add(Convert.ToString(dr["A0CALMONTH"]));
+                series1.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
+                series2.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443NSA"]));
+                series3.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443HGQ"]));
+            }
+
+            legend.Add("实际");
+            legend.Add("预测");
+            legend.Add("XX");
+            //return result;
+
+            var bar = new BarViewModel()
+            {
+                Title = "testbar",
+                SubTitle = "subtestbar",
+                XAxisData = xaxisdata,
+                LegendData = legend,
+                SeriesData1 = series1,
+                SeriesData2 = series2,
+                SeriesData3 = series3,
+                SeriesName1 = "实际",
+                SeriesName2 = "预测",
+                SeriesName3 = "XX"
+            };
+
+
+            return Json(new { status = 1, result = bar });
+        }
 
 
         public String TableMap(string id)
@@ -540,6 +597,11 @@ namespace SlbiReport.Controllers
         }
 
         public ActionResult Report2()
+        {
+            return View();
+        }
+
+        public ActionResult Report3()
         {
             return View();
         }

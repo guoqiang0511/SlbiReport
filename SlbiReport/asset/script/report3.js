@@ -11,11 +11,8 @@ var pagequeryParams = "";
 
 
 $(window).load(function () {
-    //要执行的方法体
-    initselect();
     drawtable1(null, "tt", "Rp2_Table1Metadata", "Rp2_Table1data");
-    drawbar1(null,"bar","BarMap");
-    drawpie1(null, "main", "PieMap1");
+    drawbar2(null,"bar","BarMap2");
 });
 
 function initselect(){
