@@ -54,7 +54,6 @@ function drawpie2(pagequeryParams, id, url) {
 
 }
 
-
 //两条柱状图
 function drawbar1(pagequeryParams, id, url) {
     var barChart = echarts.init(document.getElementById(id));
@@ -163,7 +162,6 @@ function drawbar3(pagequeryParams, id, url) {
 
     });
 }
-
 
 function drawtable1(pagequeryParams, id, metaurl, url) {
     $.post(metaurl, {}, function (response, status) {
@@ -439,7 +437,7 @@ function getBarOption3() {
     }
 }
 
-    function getTableOption() {
+function getTableOption() {
         return {
             height: 630,
             method: 'POST',

@@ -1,28 +1,22 @@
-﻿
-var title;
-var subtitle;
-var legendData;
-var seriesData;
-var searchlist = new Array();
-var pagequeryParams = "";
-
-
-// 为echarts对象加载数据
+﻿// 为echarts对象加载数据
 
 
 $(window).load(function () {
+    initselect();
     drawtable1(null, "tt", "Rp2_Table1Metadata", "Rp2_Table1data");
     drawbar3(null,"bar","BarMap2");
 });
 
-function initselect(){
+function initselect() {
+    var searchlist = new Array();
+    var pagequeryParams = "";
     var selectarea = $("#selectArea");
     $.post("Select", { id: '' }, function (response, status) {
         if (response) {
             //   DrawPie(data, "echart1");
             $.each(response.result, function (i, result) {
                 searchlist.push(result.valueField);
-                selectarea.append("<input id=\"" + result.valueField + "\" name=\"" + result.valueField + "\">  ")
+                selectarea.append("<input id=\"" + result.valueField + "\" name=\"" + result.valueField + "\" >  ")
                 $('#' + result.valueField + '').combobox({
                     label: result.label,
                     url: 'Select_Dim',
@@ -36,6 +30,7 @@ function initselect(){
                 });
 
             });
+
             selectarea.append("<a id=\"subbtn\" href=\"#\">查询</a>");
             $('#subbtn').linkbutton({
                 iconCls: 'icon-search',
