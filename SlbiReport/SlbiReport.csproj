@@ -240,6 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="asset\script\myslreport.js" />
+    <Content Include="asset\script\report4.js" />
     <Content Include="asset\script\report3.js" />
     <Content Include="asset\script\report2.js" />
     <Content Include="asset\script\report1_ag.js" />
@@ -674,6 +675,7 @@
     <Content Include="Views\Shared\_LayoutEchart.cshtml" />
     <Content Include="Views\CwReport\Report2.cshtml" />
     <Content Include="Views\CwReport\Report3.cshtml" />
+    <Content Include="Views\CwReport\Report4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

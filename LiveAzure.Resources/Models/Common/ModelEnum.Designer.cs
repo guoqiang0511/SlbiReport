@@ -68,10 +68,5 @@ namespace LiveAzure.Resources.Models.Common {
                 return ResourceManager.GetString("fileName1", resourceCulture);
             }
         }
-
-        public static string GetResoutces(string sName)
-        {
-           return ResourceManager.GetString(sName, resourceCulture);
-        }
     }
 }

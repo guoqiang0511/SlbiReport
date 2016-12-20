@@ -1,9 +1,10 @@
-﻿function drawpie1(pagequeryParams, id, url) {
+﻿//标准饼图
+function drawpie1(pagequeryParams, id, url) {
     var myChart = echarts.init(document.getElementById(id));
     var pie_option = getPieOption();
     myChart.setOption(pie_option);
     myChart.showLoading();
-    $.post(url, { pagequeryParams }, function (text, status) {
+    $.post(url, { pagequeryParams: pagequeryParams }, function (text, status) {
         myChart.hideLoading();
         myChart.setOption({
             title: {
@@ -16,6 +17,35 @@
             },
             series: [{
                 // 根据名字对应到相应的系列
+                name: text.result.SeriesName,
+                data: text.result.SeriesData
+            }]
+        });
+
+    });
+
+}
+
+//环形图
+function drawpie2(pagequeryParams, id, url) {
+    var myChart = echarts.init(document.getElementById(id));
+    var pie_option = getPieOption2();
+    myChart.setOption(pie_option);
+    myChart.showLoading();
+    $.post(url, { pagequeryParams:pagequeryParams }, function (text, status) {
+        myChart.hideLoading();
+        myChart.setOption({
+            title: {
+                text: text.result.Title,
+                subtext: text.result.SubTitle,
+                x: 'center'
+            },
+            legend: {
+                data: text.result.LegendData
+            },
+            series: [{
+                // 根据名字对应到相应的系列
+                name: text.result.SeriesName,
                 data: text.result.SeriesData
             }]
         });
@@ -32,7 +62,7 @@ function drawbar1(pagequeryParams, id, url) {
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post(url, { pagequeryParams }, function (response, status) {
+    $.post(url, { pagequeryParams:pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -44,7 +74,7 @@ function drawbar1(pagequeryParams, id, url) {
                 data: response.result.LegendData
             },
             xAxis: {
-                data: response.result.XAxisData
+                data: response.result.AxisData
             },
 
             series: [{
@@ -60,15 +90,14 @@ function drawbar1(pagequeryParams, id, url) {
     });
 }
 
-
-//两柱一线（线使用）
+//两柱一线（线对应y轴）
 function drawbar2(pagequeryParams, id, url) {
     var barChart = echarts.init(document.getElementById(id));
     var bar_option = getBarOption2();
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post(url, { pagequeryParams }, function (response, status) {
+    $.post(url, { pagequeryParams : pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -80,7 +109,7 @@ function drawbar2(pagequeryParams, id, url) {
                 data: response.result.LegendData
             },
             xAxis: {
-                data: response.result.XAxisData
+                data: response.result.AxisData
             },
 
             series: [{
@@ -101,6 +130,41 @@ function drawbar2(pagequeryParams, id, url) {
     });
 }
 
+//两条柱状图（y轴）
+function drawbar3(pagequeryParams, id, url) {
+    var barChart = echarts.init(document.getElementById(id));
+    var bar_option = getBarOption3();
+    barChart.setOption(bar_option);
+    barChart.showLoading();
+
+    $.post(url, { pagequeryParams: pagequeryParams }, function (response, status) {
+        barChart.hideLoading();
+        barChart.setOption({
+            title: {
+                text: response.result.Title,
+                subtext: response.result.SubTitle,
+            },
+            legend: {
+                data: response.result.LegendData
+            },
+            yAxis: {
+                data: response.result.AxisData
+            },
+
+            series: [{
+                name: response.result.SeriesName1,
+                data: response.result.SeriesData1
+            },
+            {
+                name: response.result.SeriesName2,
+                data: response.result.SeriesData2
+            }]
+        });
+
+    });
+}
+
+
 function drawtable1(pagequeryParams, id, metaurl, url) {
     $.post(metaurl, {}, function (response, status) {
 
@@ -113,9 +177,9 @@ function drawtable1(pagequeryParams, id, metaurl, url) {
             //   DrawPie(data, "echart1");
             $.each(response.result.Column, function (i, result) {
                 if (result.frozen == true) {
-                    fs = fs + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,fixed:true},";
+                    fs = fs + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,width: " + result.width + ",fixed:true},";
                 } else {
-                    s = s + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,fixed:true,align:'right'},";
+                    s = s + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,width: " + result.width + ",fixed:true,align:'right'},";
                 }
             });
         }
@@ -137,52 +201,79 @@ function drawtable1(pagequeryParams, id, metaurl, url) {
 function getPieOption() {
 
     return {
+       
+            title : {
+                text: '',
+                subtext: '',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: []
+            },
+            series : [
+                {
+                    name: '',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:[ ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        
+    }
+}
 
-        title: {
-            text: title,
-            subtext: subtitle,
-            x: 'center'
-        },
+function getPieOption2() {
+
+    return {
+
         tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
         legend: {
             orient: 'vertical',
             x: 'left',
-            //data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-            data: legendData
+            data: []
         },
-        toolbox: {
-            show: true,
-            feature: {
-                mark: { show: true },
-                dataView: { show: true, readOnly: false },
-                magicType: {
-                    show: true,
-                    type: ['pie', 'funnel'],
-                    option: {
-                        funnel: {
-                            x: '25%',
-                            width: '50%',
-                            funnelAlign: 'left',
-                            max: 1548
-                        }
-                    }
-                },
-                restore: { show: true },
-                saveAsImage: { show: true }
-            }
-        },
-        calculable: true,
         series: [
             {
                 name: '',
                 type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
-                data: seriesData
-
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: []
             }
         ]
 
@@ -300,31 +391,79 @@ function getBarOption2() {
     }
 }
 
-function getTableOption() {
+function getBarOption3() {
+
     return {
-        height: 630,
-        method: 'POST',
-        queryParams: {},
-        striped: true,
-        fitColumns: true,
-        singleSelect: true,
-        rownumbers: true,
-        pagination: true,
-        nowrap: true,
-        pageSize: 20,
-        pageList: [10, 20, 50, 100, 150, 200],
-        // showFooter: true,
-        columns: [[]],
-        onBeforeLoad: function (param) {
-        },
-        onLoadSuccess: function (data) {
 
+        title: {
+            text: '',
+            subtext: ''
         },
-        onLoadError: function () {
-
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
         },
-        onClickCell: function (rowIndex, field, value) {
+        legend: {
+            data: []
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'value',
+            data: [],
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: []
+        },
+        series: [
+            {
+                name: '',
+                type: 'bar',
+                data: []
+            },
+            {
+                name: '',
+                type: 'bar',
+                data: []
+            }
+        ]
 
-        }
     }
 }
+
+    function getTableOption() {
+        return {
+            height: 630,
+            method: 'POST',
+            queryParams: {},
+            striped: true,
+            fitColumns: true,
+            singleSelect: true,
+            rownumbers: true,
+            pagination: true,
+            nowrap: true,
+            pageSize: 20,
+            pageList: [10, 20, 50, 100, 150, 200],
+            // showFooter: true,
+            columns: [[]],
+            onBeforeLoad: function (param) {
+            },
+            onLoadSuccess: function (data) {
+
+            },
+            onLoadError: function () {
+
+            },
+            onClickCell: function (rowIndex, field, value) {
+
+            }
+        }
+    }

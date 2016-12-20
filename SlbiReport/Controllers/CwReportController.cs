@@ -115,7 +115,7 @@ namespace SlbiReport.Controllers
             {
                 Title = "testbar",
                 SubTitle = "subtestbar",
-                XAxisData = xaxisdata,
+                AxisData = xaxisdata,
                 LegendData = legend,
                 SeriesData1 = series1,
                 SeriesData2 = series2,
@@ -171,7 +171,7 @@ namespace SlbiReport.Controllers
             {
                 Title = "testbar",
                 SubTitle = "subtestbar",
-                XAxisData = xaxisdata,
+                AxisData = xaxisdata,
                 LegendData = legend,
                 SeriesData1 = series1,
                 SeriesData2 = series2,
@@ -455,7 +455,7 @@ namespace SlbiReport.Controllers
                 if (Convert.ToString(dr["aggregation-role"]) == "dimension") 
                  frozen = true;
 
-                var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "120", frozen = frozen };
+                var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "100", frozen = frozen };
                 tablecol.Add(obj);
             }
 
@@ -555,7 +555,7 @@ namespace SlbiReport.Controllers
             {
                 Title = "testbar",
                 SubTitle = "subtestbar",
-                XAxisData = xaxisdata,
+                AxisData = xaxisdata,
                 LegendData = legend,
                 SeriesData1 = series1,
                 SeriesData2 = series2,
@@ -605,5 +605,11 @@ namespace SlbiReport.Controllers
         {
             return View();
         }
+
+        public ActionResult Report4()
+        {
+            return View();
+        }
+
     }
 }

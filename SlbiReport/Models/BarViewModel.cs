@@ -16,7 +16,7 @@ namespace SlbiReport.Models
 
         public List<string> LegendData { get; set; }
 
-        public List<string> XAxisData { get; set; }
+        public List<string> AxisData { get; set; }
         
         /// <summary>
         /// 图表数据

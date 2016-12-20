@@ -14,7 +14,7 @@ var barChart = echarts.init(document.getElementById('bar'));
 
 
 // 为echarts对象加载数据
-var pie_option = getPieOption();
+//var pie_option = getPieOption();
 //myChart.setOption(pie_option);
 //myChart.showLoading();
 
@@ -28,8 +28,8 @@ var selectarea = $("#selectArea");
 $(window).load(function () {
     //要执行的方法体
     initselect();
-     inittable();
-   // drawpie();
+    inittable();
+    //drawpie();
     drawbar();
    
 });
@@ -69,7 +69,7 @@ function initselect()
 
              //   drawpie(pagequeryParams);
                 drawbar(pagequeryParams);
-                $('#tt').datagrid('load', { pagequeryParams });
+                $('#tt').datagrid('load', { pagequeryParams : pagequeryParams });
                 });
 
                 }
@@ -77,7 +77,7 @@ function initselect()
 }
 
 function drawpie(pagequeryParams) {
-    $.post("PieMap1", { pagequeryParams }, function (text, status) {
+    $.post("PieMap1", { pagequeryParams:pagequeryParams }, function (text, status) {
         myChart.hideLoading();
         myChart.setOption({
             title: {
@@ -99,7 +99,7 @@ function drawpie(pagequeryParams) {
 }
 
 function drawbar(pagequeryParams) {
-    $.post("BarMap", { pagequeryParams }, function (response, status) {
+    $.post("BarMap", { pagequeryParams :pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -111,7 +111,7 @@ function drawbar(pagequeryParams) {
                 data: response.result.LegendData
             },
             xAxis: {
-                data: response.result.XAxisData
+                data: response.result.AxisData
             },
 
             series: [{
