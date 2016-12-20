@@ -11,8 +11,9 @@ var pagequeryParams = "";
 
 
 $(window).load(function () {
+  //  initselect();
     drawtable1(null, "tt", "Rp2_Table1Metadata", "Rp2_Table1data");
-    drawbar2(null,"bar","BarMap2");
+    drawbar2(null, "bar", "BarMap2");
 });
 
 function initselect(){
@@ -50,10 +51,12 @@ function initselect(){
 
                 drawpie1(pagequeryParams, "main", "PieMap1");
                 drawbar1(pagequeryParams, "bar", "BarMap");
-               // $('#tt').datagrid('load', { pagequeryParams });
-                });
+                // $('#tt').datagrid('load', { pagequeryParams });
+            });
+        }
 
-                }
+       
                 });
 }
+
 

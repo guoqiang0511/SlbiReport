@@ -163,6 +163,7 @@ function drawbar3(pagequeryParams, id, url) {
     });
 }
 
+//画表格
 function drawtable1(pagequeryParams, id, metaurl, url) {
     $.post(metaurl, {}, function (response, status) {
 
@@ -175,7 +176,7 @@ function drawtable1(pagequeryParams, id, metaurl, url) {
             //   DrawPie(data, "echart1");
             $.each(response.result.Column, function (i, result) {
                 if (result.frozen == true) {
-                    fs = fs + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,width: " + result.width + ",fixed:true},";
+                    fs = fs + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,width: " + result.width + ",formatter:'',fixed:true},";
                 } else {
                     s = s + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,width: " + result.width + ",fixed:true,align:'right'},";
                 }
