@@ -61,7 +61,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?$select=ZDMPLANT_T,A00O2TFKZNC7K2N5JLDC4434TM&amp; 的本地化字符串。
+        ///   查找类似 Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?$select=ZDMPLANT_T,A00O2TFKZNC7K2N5JLDC4434TM&amp;|Title(0_0)test|SubTitle(0_0)subtest|Title(0_0)test|SubTitle(0_0)subtest|SelectName(0_0)ZDMPLANT_T|SelectValue(0_0)A00O2TFKZNC7K2N5JLDC4434TM 的本地化字符串。
         /// </summary>
         public static string fileName1 {
             get {

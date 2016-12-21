@@ -16,9 +16,11 @@ namespace SlbiReport.Models
 
         public List<string> LegendData { get; set; }
 
+        public string Url { get; set; }
 
-        public String SeriesName { get; set; }
+        public string SelectName { get; set; }
 
+        public string SelectValue { get; set; }
         /// <summary>
         /// 图表数据
         /// </summary>
