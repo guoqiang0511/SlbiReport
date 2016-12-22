@@ -21,7 +21,9 @@ namespace SlbiReport.Utilities
 
             StringToEntityValue(oPieMapViewModel, sResources);
 
+            if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null )
             oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
+
             if (!string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectName) && !string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectValue))
                 oPieMapViewModel.Url += "$select=" + oPieMapViewModel.PieMapSelectName + "," + oPieMapViewModel.PieMapSelectValue + "&";
             oPieMapViewModel.Url += sToken;
@@ -30,7 +32,18 @@ namespace SlbiReport.Utilities
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             XmlDocument doc = new XmlDocument();
-            doc.Load(oPieMapViewModel.Url);
+
+            try
+            {
+                doc.Load(oPieMapViewModel.Url);
+            }
+            catch
+            {
+
+                return null;
+            }
+
+           
             ds = ConvertXMLFileToDataSet(doc);
             List<VisitSource> listss = new List<VisitSource>();
 

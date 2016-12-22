@@ -34,7 +34,7 @@ namespace SlbiReport.Controllers
 
             var pie = new PieMapViewModel();
 
-            pie = CommonHelper.GetPieMapViewModel("fileName1", urltt, token);
+            pie = CommonHelper.GetPieMapViewModel("Pie2", urltt, token);
 
 
             //DataTable dt = new DataTable();

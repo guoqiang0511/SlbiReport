@@ -239,7 +239,7 @@ function getPieOption() {
                 {
                     name: '',
                     type: 'pie',
-                    radius : '55%',
+                    radius : '65%',
                     center: ['50%', '60%'],
                     data:[ ],
                     itemStyle: {
