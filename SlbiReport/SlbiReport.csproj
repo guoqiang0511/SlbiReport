@@ -214,6 +214,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BarSeriesModel.cs" />
+    <Compile Include="Models\TempObjectModel.cs" />
     <Compile Include="Utilities\CommonHelper.cs" />
     <Compile Include="Utilities\PostParams.cs" />
     <Content Include="App_Code\Class1.cs" />

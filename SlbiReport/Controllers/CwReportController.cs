@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 using System.Xml;
 using SlbiReport.Models;
 using System.Reflection;
-using SlbiReport.App_Code.Common;
+using SlbiReport.Utilities;
 
 namespace SlbiReport.Controllers
 {
@@ -407,15 +407,15 @@ namespace SlbiReport.Controllers
 
                 {
 
-                    name = Convert.ToString(dr[oPieMapViewModel.SelectName]),
+                    name = Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]),
 
-                    value = Convert.ToString(dr[oPieMapViewModel.SelectValue])
+                    value = Convert.ToString(dr[oPieMapViewModel.PieMapSelectValue])
 
                 };
 
                 listss.Add(obj);
 
-                lists.Add(Convert.ToString(dr[oPieMapViewModel.SelectName]));
+                lists.Add(Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]));
 
                 
             }
