@@ -68,5 +68,14 @@ namespace LiveAzure.Resources.Models.Common {
                 return ResourceManager.GetString("fileName1", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 net 的本地化字符串。
+        /// </summary>
+        public static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
+            }
+        }
     }
 }

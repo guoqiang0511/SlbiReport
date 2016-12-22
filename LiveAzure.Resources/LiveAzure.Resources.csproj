@@ -71,6 +71,7 @@
       <DependentUpon>ModelEnum.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\CwReportController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

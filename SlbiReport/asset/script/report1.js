@@ -13,7 +13,7 @@ var barChart = echarts.init(document.getElementById('bar'));
 
 
 
-// 为echarts对象加载数据
+//为echarts对象加载数据
 //var pie_option = getPieOption();
 //myChart.setOption(pie_option);
 //myChart.showLoading();
