@@ -216,6 +216,7 @@ function drawtable2(pagequeryParams, id, metaurl, url) {
 
 
 }
+
 function getPieOption() {
 
     return {
