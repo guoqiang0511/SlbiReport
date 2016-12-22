@@ -61,7 +61,8 @@ function drawbar1(pagequeryParams, id, url) {
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post(url, { pagequeryParams:pagequeryParams }, function (response, status) {
+    $.post(url, { pagequeryParams: pagequeryParams }, function (response, status) {
+        var ss = JSON.stringify(response.result.Series);
         barChart.hideLoading();
         barChart.setOption({
             title: {

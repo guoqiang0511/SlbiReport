@@ -12,7 +12,7 @@ $(window).load(function () {
     //要执行的方法体
     initselect();
     drawtable2(null, "tt", "Rp2_Table1Metadata", "Rp2_Table1data");
-    drawbar1(null,"bar","BarMap2");
+    drawbar1(null,"bar","BarMap");
     drawpie1(null, "main", "Pie2");
 });
 

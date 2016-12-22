@@ -119,7 +119,7 @@ namespace SlbiReport.Controllers
 
                 for (int i = 0; i < AxisDataStrs.Count(); i++)
                 {
-                    xaxisdata.Add(Convert.ToString(ds.Tables["properties"].Rows[0][AxisDataStrs[i]]));
+                    xaxisdata.Add(Convert.ToString(dr[AxisDataStrs[i]]));
                 }
 
                 for (int i = 0; i < SeriesStrs.Count(); i++)
