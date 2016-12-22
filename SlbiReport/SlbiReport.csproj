@@ -214,6 +214,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utilities\CommonHelper.cs" />
+    <Compile Include="Utilities\PostParams.cs" />
+    <Content Include="App_Code\Class1.cs" />
+    <Compile Include="App_Code\PostParams.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -239,6 +243,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="asset\script\myslreport.js" />
+    <Content Include="asset\script\report4.js" />
+    <Content Include="asset\script\report3.js" />
     <Content Include="asset\script\report2.js" />
     <Content Include="asset\script\report1_ag.js" />
     <Content Include="asset\script\report1.js" />
@@ -671,9 +678,10 @@
     <Content Include="Views\CwReport\Report1.cshtml" />
     <Content Include="Views\Shared\_LayoutEchart.cshtml" />
     <Content Include="Views\CwReport\Report2.cshtml" />
+    <Content Include="Views\CwReport\Report3.cshtml" />
+    <Content Include="Views\CwReport\Report4.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -683,6 +691,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LiveAzure.Resources\LiveAzure.Resources.csproj">
+      <Project>{093d6211-b41c-45c7-8ec6-435b22778af1}</Project>
+      <Name>LiveAzure.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

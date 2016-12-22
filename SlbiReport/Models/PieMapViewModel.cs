@@ -16,6 +16,11 @@ namespace SlbiReport.Models
 
         public List<string> LegendData { get; set; }
 
+        public string Url { get; set; }
+
+        public string PieMapSelectName { get; set; }
+
+        public string PieMapSelectValue { get; set; }
         /// <summary>
         /// 图表数据
         /// </summary>

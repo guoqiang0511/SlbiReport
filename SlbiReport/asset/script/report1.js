@@ -67,9 +67,9 @@ function initselect()
                 pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
 
 
-                drawpie(pagequeryParams);
+             //   drawpie(pagequeryParams);
                 drawbar(pagequeryParams);
-                $('#tt').datagrid('load', { pagequeryParams });
+                $('#tt').datagrid('load', { pagequeryParams : pagequeryParams });
                 });
 
                 }
@@ -77,7 +77,7 @@ function initselect()
 }
 
 function drawpie(pagequeryParams) {
-    $.post("PieMap1", { pagequeryParams }, function (text, status) {
+    $.post("PieMap1", { pagequeryParams:pagequeryParams }, function (text, status) {
         myChart.hideLoading();
         myChart.setOption({
             title: {
@@ -99,7 +99,7 @@ function drawpie(pagequeryParams) {
 }
 
 function drawbar(pagequeryParams) {
-    $.post("BarMap", { pagequeryParams }, function (response, status) {
+    $.post("BarMap", { pagequeryParams :pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -111,7 +111,7 @@ function drawbar(pagequeryParams) {
                 data: response.result.LegendData
             },
             xAxis: {
-                data: response.result.XAxisData
+                data: response.result.AxisData
             },
 
             series: [{
