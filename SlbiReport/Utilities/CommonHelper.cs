@@ -140,10 +140,6 @@ namespace SlbiReport.Utilities
 
         {
 
-
-
-
-
             string[] sFkKey = sKey.Split('.');
 
             var oObjectNew = new object();

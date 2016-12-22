@@ -206,9 +206,6 @@ function drawtable2(pagequeryParams, id, metaurl, url) {
         if (response){
             fs = response.result.FrozenColumns;
             s = response.result.Columns;
-
-        }
-        response.result.Column
         var option = getTableOption();
         //  var fs = "[[{field: 'ZCUSTOMER_T',title: '客户',sortable:true, formatter:'',fixed:true}]]";
         // var s = "[[{field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',title: '本月到期款-原币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAN433USWUC_F',title: '本月到期款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',title: '回款金额-现汇',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F',title: '回款金额-承兑',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F',title: '回款金额-小计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F',title: '回款率',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F',title: '差异',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJNMJX09XV3R_F',title: '下月到期应收款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJL761AEC6TP_F',title: '其中:现汇-下月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJL761AECJGT_F',title: '其中:承兑-下月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJNTW3NR5IOF_F',title: '下两月到期应收款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KSKTPID9VX9_F',title: '其中:现汇-下两月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KSKTPIDA8KD_F',title: '其中:承兑-下两月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KUZP2W1YUI3_F',title: 'YTD累计到期应收',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KYVTHOIXSQ6_F',title: '其中:现汇-YTD累计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KYXREMNVSNA_F',title: '其中:承兑-YTD累计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L0X3KSO96S7_F',title: 'YTD累计回款-现金',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L0X3KSO9D3R_F',title: 'YTD累计回款-承兑',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L16PKA5JCF2_F',title: 'YTD累计回款-小计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L1965NXFU03_F',title: 'YTD回款率',sortable:true, fixed:true,align:'right'}]]";
@@ -220,7 +217,7 @@ function drawtable2(pagequeryParams, id, metaurl, url) {
         option.url = url;
         option.queryParams = { id: metaurl }
         $('#' + id + '').datagrid(option);
-
+        }
     });
 
 

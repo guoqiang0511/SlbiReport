@@ -219,7 +219,6 @@
     <Compile Include="Utilities\CommonHelper.cs" />
     <Compile Include="Utilities\PostParams.cs" />
     <Content Include="App_Code\Class1.cs" />
-    <Compile Include="App_Code\PostParams.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

@@ -74,6 +74,109 @@ namespace SlbiReport.Controllers
              return Json(new { status = 1, result = pie });
         }
 
+
+        [HttpPost]
+        public ActionResult BarMap(string id)
+        {
+            string cmd = Request["pagequeryParams"];
+            string urltt = QueryParamsurl(cmd);
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002" + urltt + "Results?$select=A0CALMONTH,A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA&" + token;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            List<string> legend = new List<string>();
+
+
+            List<string> xaxisdata = new List<string>();
+            List<BarSeriesModel> series = new List<BarSeriesModel>();
+            //List<TempObjectModel> s1 = new List<TempObjectModel>();
+            BarViewModel oBarViewModel = new BarViewModel();
+            oBarViewModel.SeriesStr = "A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA";
+            oBarViewModel.AxisDataStr = "A0CALMONTH";
+            string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
+            string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
+            PostParams oPostParams = new PostParams();
+           
+
+            //for (int i = 0; i <= SeriesStrs.Count(); i++)
+            //{
+            //    oPostParams.Add(SeriesStrs[0], new List<string>());
+            //}
+            foreach (DataRow dr in ds.Tables["properties"].Rows)
+            {
+
+                for (int i = 0; i < AxisDataStrs.Count(); i++)
+                {
+                    xaxisdata.Add(Convert.ToString(ds.Tables["properties"].Rows[0][AxisDataStrs[i]]));
+                }
+
+                for (int i = 0; i < SeriesStrs.Count(); i++)
+                {
+
+                    List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+                    if (valuelist == null)
+                    {
+                        valuelist = new List<string>();
+                        oPostParams.Add(SeriesStrs[i], valuelist);
+                    }
+                    valuelist.Add(Convert.ToString(dr[SeriesStrs[i]]));
+
+
+                }
+                //var obj = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
+                //var obj1 = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
+
+
+
+                //BarSeriesModel oBarSeriesModel1 = new BarSeriesModel();
+                //oBarSeriesModel1.SeriesName = Convert.ToString(dr["A0CALMONTH"]);
+                //oBarSeriesModel1.SeriesData.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
+                //series.Add(oBarSeriesModel1);
+
+                //BarSeriesModel oBarSeriesModel2 = new BarSeriesModel();
+                //oBarSeriesModel2.SeriesName = Convert.ToString(dr["A0CALMONTH"]);
+                //oBarSeriesModel2.SeriesData.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
+                //series.Add(oBarSeriesModel2);
+                //s1.Add(obj);
+                //s1.Add(obj1);
+            }
+
+
+
+
+            legend.Add("实际");
+            legend.Add("预测");
+            //return result;
+
+            var bar = new BarViewModel()
+            {
+                Title = "testbar",
+                SubTitle = "subtestbar",
+                AxisData = xaxisdata,
+                LegendData = legend,
+                Series = oPostParams.GetInsideParams(),
+                //SeriesData1 = series1,
+                //SeriesData2 = series2,
+                //SeriesName1 = "实际",
+                //SeriesName2 = "预测"
+            };
+
+
+            return Json(new { status = 1, result = bar });
+        }
+
         public static Dictionary<string, object> PostParams(string queryString, string split1 = "|", string split2 = "(0_0)")
         {
 
@@ -433,7 +536,7 @@ namespace SlbiReport.Controllers
         }
 
         [HttpPost]
-        public ActionResult BarMap(string id)
+        public ActionResult BarMap1(string id)
         {
             string cmd = Request["pagequeryParams"];
             string urltt = QueryParamsurl(cmd);
@@ -581,7 +684,6 @@ namespace SlbiReport.Controllers
             //return Json(new { status = 1, rows = result },JsonRequestBehavior.AllowGet);
         }
 
-
         [HttpPost]
         public ActionResult TableMetadata(string id)
         {
@@ -629,8 +731,6 @@ namespace SlbiReport.Controllers
 
             return Json(new { status = 1, result = tablecol });
         }
-
-
 
         [HttpPost]
         public ActionResult Select(string id)
