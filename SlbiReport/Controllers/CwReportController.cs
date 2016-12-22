@@ -26,7 +26,7 @@ namespace SlbiReport.Controllers
 
 
         [HttpPost]
-        public ActionResult PieMap1(string id)
+        public ActionResult PieMap(string id)
         {
 
             string cmd = Request["pagequeryParams"];
@@ -34,7 +34,7 @@ namespace SlbiReport.Controllers
 
             var pie = new PieMapViewModel();
 
-            pie = CommonHelper.GetPieMapViewModel("Pie2", urltt, token);
+            pie = CommonHelper.GetPieMapViewModel(id, urltt, token);
 
 
             //DataTable dt = new DataTable();
@@ -828,7 +828,9 @@ namespace SlbiReport.Controllers
             var table = new TableViewModel()
             {
                 Title = "到期回款状况：",
-                Column = tablecol
+               // Column = tablecol,
+                FrozenColumns = "[[{field: 'ZCUSTOMER_T',title: '客户',sortable:true, formatter:'',fixed:true}]]",
+                Columns = "[[{ title: 'Item Details', colspan: 7 }], [{ field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',  title: '本月到期款-原币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAN433USWUC_F',   title: '本月到期款-本币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',   title: '回款金额-现汇', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F', title: '回款金额-承兑', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F', title: '回款金额-小计', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F', title: '回款率', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F', title: '差异', sortable: true, fixed: true, align: 'right' }]]"
             };
 
             return Json(new { status = 1, result = table });

@@ -16,9 +16,11 @@ namespace SlbiReport.Models
 
         public List<TableColumn> Column { get; set; }
 
-        /// <summary>
-        /// 图表数据
-        /// </summary>
-       // public List<VisitSource> SeriesData { get; set; }
+        public string FrozenColumns { get; set; }
+
+        public string Columns { get; set; }
+
+        public string URL { get; set; }
+
     }
 }

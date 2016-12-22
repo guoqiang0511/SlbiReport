@@ -31,7 +31,7 @@ $(window).load(function () {
     //inittable();
     //drawpie();
     //drawbar();
-    drawpie1(null, "main", "PieMap1");
+    drawpie1(null, "main", "Pie2");
 });
 
 //function initselect()
