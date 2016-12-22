@@ -70,6 +70,15 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        public static string file {
+            get {
+                return ResourceManager.GetString("file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?|Title(0_0)test|SubTitle(0_0)subtest|PieMapSelectName(0_0)ZDMPLANT_T|PieMapSelectValue(0_0)A00O2TFKZNC7K2N5JLDC4434TM 的本地化字符串。
         /// </summary>
         public static string Pie1 {
@@ -79,11 +88,11 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 net 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)test|SubTitle(0_0)subtest|PieMapSelectName(0_0)ZPROFTCTR__ZBU_T|PieMapSelectValue(0_0)A00O2TFHXIFF3PJJNMJX09XV3R_F|SeriesName(0_0)111 的本地化字符串。
         /// </summary>
-        public static string String {
+        public static string Pie2 {
             get {
-                return ResourceManager.GetString("String", resourceCulture);
+                return ResourceManager.GetString("Pie2", resourceCulture);
             }
         }
     }

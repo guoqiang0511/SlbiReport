@@ -24,6 +24,7 @@ namespace SlbiReport.Models
         /// <summary>
         /// 图表数据
         /// </summary>
+        public String SeriesName { get; set; }
         public List<VisitSource> SeriesData { get; set; }
     }
 }

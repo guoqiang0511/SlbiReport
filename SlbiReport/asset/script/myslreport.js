@@ -1,10 +1,10 @@
 ﻿//标准饼图
-function drawpie1(pagequeryParams, id, url) {
-    var myChart = echarts.init(document.getElementById(id));
+function drawpie1(pagequeryParams, container, id) {
+    var myChart = echarts.init(document.getElementById(container));
     var pie_option = getPieOption();
     myChart.setOption(pie_option);
     myChart.showLoading();
-    $.post(url, { pagequeryParams: pagequeryParams }, function (text, status) {
+    $.post('PieMap', { id:id , pagequeryParams: pagequeryParams }, function (text, status) {
         myChart.hideLoading();
         myChart.setOption({
             title: {
@@ -192,23 +192,30 @@ function drawtable1(pagequeryParams, id, metaurl, url) {
 
 function drawtable2(pagequeryParams, id, metaurl, url) {
 
+    $.post(metaurl, {}, function (response, status) {
 
+        var fs = "";
+        var s = "";
+        if (response){
+            fs = response.result.FrozenColumns;
+            s = response.result.Columns;
         var option = getTableOption();
-        var s = "[[{field: 'ZCUSTOMER_T',title: '客户',sortable:true, formatter:'',fixed:true},{field: 'A0BLINE_DATE_T',title: ' 基限日期',sortable:true, formatter:'',fixed:true},{field: 'A0DOC_CURRCY_T',title: '原币单位',sortable:true, formatter:'',fixed:true},{field: 'A0NETDUEDATE_T',title: '净到期日',sortable:true, formatter:'',fixed:true},{field: 'A0PSTNG_DATE_T',title: '过帐日期',sortable:true, formatter:'',fixed:true},{field: 'ZCOMPCODE_T',title: '公司代码',sortable:true, formatter:'',fixed:true},{field: 'ZPLANT_T',title: '工厂',sortable:true, formatter:'',fixed:true},{field: 'ZPROFTCTR_T',title: '利润中心',sortable:true, formatter:'',fixed:true},{field: 'ZPROFTCTR__ZBU_T',title: '事业部',sortable:true, formatter:'',fixed:true}]]";
-        var fs = "[[{field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',title: '本月到期款-原币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAN433USWUC_F',title: '本月到期款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',title: '回款金额-现汇',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F',title: '回款金额-承兑',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F',title: '回款金额-小计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F',title: '回款率',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F',title: '差异',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJNMJX09XV3R_F',title: '下月到期应收款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJL761AEC6TP_F',title: '其中:现汇-下月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJL761AECJGT_F',title: '其中:承兑-下月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJNTW3NR5IOF_F',title: '下两月到期应收款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KSKTPID9VX9_F',title: '其中:现汇-下两月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KSKTPIDA8KD_F',title: '其中:承兑-下两月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KUZP2W1YUI3_F',title: 'YTD累计到期应收',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KYVTHOIXSQ6_F',title: '其中:现汇-YTD累计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KYXREMNVSNA_F',title: '其中:承兑-YTD累计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L0X3KSO96S7_F',title: 'YTD累计回款-现金',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L0X3KSO9D3R_F',title: 'YTD累计回款-承兑',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L16PKA5JCF2_F',title: 'YTD累计回款-小计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L1965NXFU03_F',title: 'YTD回款率',sortable:true, fixed:true,align:'right'}]]";
-
+        //  var fs = "[[{field: 'ZCUSTOMER_T',title: '客户',sortable:true, formatter:'',fixed:true}]]";
+        // var s = "[[{field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',title: '本月到期款-原币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAN433USWUC_F',title: '本月到期款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',title: '回款金额-现汇',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F',title: '回款金额-承兑',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F',title: '回款金额-小计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F',title: '回款率',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F',title: '差异',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJNMJX09XV3R_F',title: '下月到期应收款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJL761AEC6TP_F',title: '其中:现汇-下月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJL761AECJGT_F',title: '其中:承兑-下月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJNTW3NR5IOF_F',title: '下两月到期应收款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KSKTPID9VX9_F',title: '其中:现汇-下两月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KSKTPIDA8KD_F',title: '其中:承兑-下两月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KUZP2W1YUI3_F',title: 'YTD累计到期应收',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KYVTHOIXSQ6_F',title: '其中:现汇-YTD累计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KYXREMNVSNA_F',title: '其中:承兑-YTD累计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L0X3KSO96S7_F',title: 'YTD累计回款-现金',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L0X3KSO9D3R_F',title: 'YTD累计回款-承兑',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L16PKA5JCF2_F',title: 'YTD累计回款-小计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L1965NXFU03_F',title: 'YTD回款率',sortable:true, fixed:true,align:'right'}]]";
+        //  var s = "  [[{ title: 'Item Details', colspan: 7 }], [{ field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',  title: '本月到期款-原币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAN433USWUC_F',   title: '本月到期款-本币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',   title: '回款金额-现汇', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F', title: '回款金额-承兑', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F', title: '回款金额-小计', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F', title: '回款率', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F', title: '差异', sortable: true, fixed: true, align: 'right' }]]"
 
         option.frozenColumns = eval(fs);
         option.columns = eval(s);
-      //  option.title = response.result.Title;
+        //  option.title = response.result.Title;
         option.url = url;
-
+        option.queryParams = { id: metaurl }
         $('#' + id + '').datagrid(option);
-
-
+        }
+    });
 
 
 }
+
 function getPieOption() {
 
     return {
@@ -231,7 +238,7 @@ function getPieOption() {
                 {
                     name: '',
                     type: 'pie',
-                    radius : '55%',
+                    radius : '65%',
                     center: ['50%', '60%'],
                     data:[ ],
                     itemStyle: {
@@ -461,7 +468,7 @@ function getTableOption() {
             rownumbers: true,
             pagination: true,
             nowrap: true,
-            pageSize: 10,
+            pageSize: 20,
             pageList: [10, 20, 50, 100, 150, 200],
             // showFooter: true,
             columns: [[]],
