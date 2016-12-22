@@ -218,7 +218,7 @@ function drawtable2(pagequeryParams, id, metaurl, url) {
         option.columns = eval(s);
         //  option.title = response.result.Title;
         option.url = url;
-        option.queryParams = {url1 : 111 }
+        option.queryParams = { id: metaurl }
         $('#' + id + '').datagrid(option);
 
     });

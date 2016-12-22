@@ -837,7 +837,7 @@ namespace SlbiReport.Controllers
         }
 
 
-        public String Rp2_Table1data(int page, int rows)
+        public String Rp2_Table1data(String id ,int page, int rows)
         {
             int skip = (page - 1) * rows;
 
