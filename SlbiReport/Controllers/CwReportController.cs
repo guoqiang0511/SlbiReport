@@ -102,15 +102,12 @@ namespace SlbiReport.Controllers
             List<BarSeriesModel> series = new List<BarSeriesModel>();
             //List<TempObjectModel> s1 = new List<TempObjectModel>();
             BarViewModel oBarViewModel = new BarViewModel();
+            oBarViewModel.Series = new List<BarSeriesModel>();
             oBarViewModel.SeriesStr = "A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA";
             oBarViewModel.AxisDataStr = "A0CALMONTH";
             string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
-            string[] AxisDataStrs = oBarViewModel.SeriesStr.Split(',');
+            string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
             PostParams oPostParams = new PostParams();
-            for (int i = 0; i < AxisDataStrs.Count(); i++)
-            {
-                xaxisdata.Add(Convert.ToString(ds.Tables["properties"].Rows[0][AxisDataStrs[i]]));
-            }
             
             //for (int i = 0; i <= SeriesStrs.Count(); i++)
             //{
@@ -118,7 +115,12 @@ namespace SlbiReport.Controllers
             //}
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
-                
+
+                for (int i = 0; i < AxisDataStrs.Count(); i++)
+                {
+                    xaxisdata.Add(Convert.ToString(dr[AxisDataStrs[i]]));
+                }
+
                 for (int i = 0; i < SeriesStrs.Count(); i++)
                 {
 
@@ -128,8 +130,7 @@ namespace SlbiReport.Controllers
                         valuelist = new List<string>();
                         oPostParams.Add(SeriesStrs[i], valuelist);
                     }
-                    valuelist.Add(Convert.ToString(dr[SeriesStrs[i]]));
-                   
+                    valuelist.Add(Convert.ToString(dr[SeriesStrs[i]]));  
                     
                 }
                 //var obj = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
@@ -150,20 +151,31 @@ namespace SlbiReport.Controllers
                 //s1.Add(obj1);
             }
 
+            for (int i = 0; i < SeriesStrs.Count(); i++)
+            {
+
+                List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+
+                oBarViewModel.Series.Add(new BarSeriesModel()
+                {
+                    SeriesName = SeriesStrs[i],
+                    SeriesData = valuelist
+                });
+            }
+            oBarViewModel.LegendDataStr = "实际,预测";
+            legend = oBarViewModel.LegendDataStr.Split(',').ToList();
 
 
-
-            legend.Add("实际");
-            legend.Add("预测");
+            //legend.Add("实际");
+            //legend.Add("预测");
             //return result;
-
             var bar = new BarViewModel()
             {
                 Title = "testbar",
                 SubTitle = "subtestbar",
                 AxisData = xaxisdata,
                 LegendData = legend,
-                Series = oPostParams.GetInsideParams(),
+                Series = oBarViewModel.Series
                 //SeriesData1 = series1,
                 //SeriesData2 = series2,
                 //SeriesName1 = "实际",

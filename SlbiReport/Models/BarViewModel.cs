@@ -16,10 +16,13 @@ namespace SlbiReport.Models
 
         public List<string> LegendData { get; set; }
 
+
         public List<string> AxisData { get; set; }
         
-        public Dictionary<string, object> Series { get; set; }
+        public List<BarSeriesModel> Series { get; set; }
 
+        public string LegendDataStr { get; set; }
+        
         public string SeriesStr { get; set; }
 
         public string AxisDataStr { get; set; }
