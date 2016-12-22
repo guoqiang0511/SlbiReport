@@ -32,5 +32,12 @@ namespace SlbiReport.Models
         public string SeriesName2 { get; set; }
 
         public string SeriesName3 { get; set; }
+
+        public string Url { get; set; }
+
+        public string BarSelectName { get; set; }
+
+        public string BarSelectValue1 { get; set; }
+        public string BarSelectValue2 { get; set; }
     }
 }
