@@ -26,7 +26,7 @@ namespace SlbiReport.Controllers
 
 
         [HttpPost]
-        public ActionResult PieMap(string id)
+        public ActionResult PieMap1(string id)
         {
 
             string cmd = Request["pagequeryParams"];
@@ -34,7 +34,7 @@ namespace SlbiReport.Controllers
 
             var pie = new PieMapViewModel();
 
-            pie = CommonHelper.GetPieMapViewModel(id, urltt, token);
+            pie = CommonHelper.GetPieMapViewModel("fileName1", urltt, token);
 
 
             //DataTable dt = new DataTable();
@@ -74,469 +74,8 @@ namespace SlbiReport.Controllers
              return Json(new { status = 1, result = pie });
         }
 
-
         [HttpPost]
         public ActionResult BarMap(string id)
-        {
-            string cmd = Request["pagequeryParams"];
-            string urltt = QueryParamsurl(cmd);
-
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-            string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002" + urltt + "Results?$select=A0CALMONTH,A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA&" + token;
-            XmlDocument doc = new XmlDocument();
-            try
-            {
-                doc.Load(fileName);
-            }
-            catch
-            {
-
-                return null;
-            }
-            ds = ConvertXMLFileToDataSet(doc);
-
-            List<string> legend = new List<string>();
-
-
-            List<string> xaxisdata = new List<string>();
-            List<BarSeriesModel> series = new List<BarSeriesModel>();
-            //List<TempObjectModel> s1 = new List<TempObjectModel>();
-            BarViewModel oBarViewModel = new BarViewModel();
-            oBarViewModel.SeriesStr = "A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA";
-            oBarViewModel.AxisDataStr = "A0CALMONTH";
-            string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
-            string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
-            PostParams oPostParams = new PostParams();
-           
-
-            //for (int i = 0; i <= SeriesStrs.Count(); i++)
-            //{
-            //    oPostParams.Add(SeriesStrs[0], new List<string>());
-            //}
-            foreach (DataRow dr in ds.Tables["properties"].Rows)
-            {
-
-                for (int i = 0; i < AxisDataStrs.Count(); i++)
-                {
-                    xaxisdata.Add(Convert.ToString(dr[AxisDataStrs[i]]));
-                }
-
-                for (int i = 0; i < SeriesStrs.Count(); i++)
-                {
-
-                    List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
-                    if (valuelist == null)
-                    {
-                        valuelist = new List<string>();
-                        oPostParams.Add(SeriesStrs[i], valuelist);
-                    }
-                    valuelist.Add(Convert.ToString(dr[SeriesStrs[i]]));
-
-
-                }
-                //var obj = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
-                //var obj1 = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
-
-
-
-                //BarSeriesModel oBarSeriesModel1 = new BarSeriesModel();
-                //oBarSeriesModel1.SeriesName = Convert.ToString(dr["A0CALMONTH"]);
-                //oBarSeriesModel1.SeriesData.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
-                //series.Add(oBarSeriesModel1);
-
-                //BarSeriesModel oBarSeriesModel2 = new BarSeriesModel();
-                //oBarSeriesModel2.SeriesName = Convert.ToString(dr["A0CALMONTH"]);
-                //oBarSeriesModel2.SeriesData.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
-                //series.Add(oBarSeriesModel2);
-                //s1.Add(obj);
-                //s1.Add(obj1);
-            }
-
-
-
-
-            legend.Add("实际");
-            legend.Add("预测");
-            //return result;
-
-            var bar = new BarViewModel()
-            {
-                Title = "testbar",
-                SubTitle = "subtestbar",
-                AxisData = xaxisdata,
-                LegendData = legend,
-                Series = oPostParams.GetInsideParams(),
-                //SeriesData1 = series1,
-                //SeriesData2 = series2,
-                //SeriesName1 = "实际",
-                //SeriesName2 = "预测"
-            };
-
-
-            return Json(new { status = 1, result = bar });
-        }
-
-        public static Dictionary<string, object> PostParams(string queryString, string split1 = "|", string split2 = "(0_0)")
-        {
-
-            Dictionary<string, object> oInsideParams = new Dictionary<string, object>();
-
-            if (!String.IsNullOrEmpty(queryString))
-            {
-
-                try
-
-                {
-
-                    string[] strList1 = queryString.Split(split1.ToArray());
-
-                    for (int i = 0; i < strList1.Length; i++)
-
-                    {
-
-                        string[] strList2 = strList1[i].Replace("(0_0)", "|").Split(split1.ToArray());
-
-                        if (String.IsNullOrEmpty(strList2[0])) continue;
-
-                        if (oInsideParams.ContainsKey(strList2[0]))
-
-                            oInsideParams[strList2[0]] = strList2[1];
-
-                        else
-
-                            oInsideParams.Add(strList2[0], strList2[1]);
-
-                    }
-
-                }
-
-                catch { }
-
-            }
-
-            return oInsideParams;
-
-        }
-
-        public static Object StringToEntityValue(object oOject, string sParamStr)
-
-        {
-
-            Dictionary<string, object> oDic = PostParams(sParamStr);
-
-            string sFieldName = string.Empty;
-
-            foreach (var item in oDic)
-
-            {
-
-                FieldAssignment(oOject, item.Key, item.Value.ToString());
-
-            }
-
-            return oOject;
-
-        }
-
-        public static int FieldAssignment(object oObject, string sKey, string sValue)
-
-        {
-
-
-
-
-
-            string[] sFkKey = sKey.Split('.');
-
-            var oObjectNew = new object();
-
-            if (sFkKey.Length > 1)
-
-            {
-
-                oObjectNew = GetForeignkeyObject(oObject, sFkKey[0]);
-
-                if (oObjectNew == null)
-
-                {
-
-                    return -1;
-
-                }
-
-            }
-
-            else
-
-                oObjectNew = oObject;
-
-            for (int i = 1; i < sFkKey.Length - 1; i++)
-
-            {
-
-                oObjectNew = GetForeignkeyObject(oObjectNew, sFkKey[i]);
-
-            }
-
-            PropertyInfo oProperty = oObjectNew.GetType().GetProperty(sFkKey[sFkKey.Length - 1]);
-
-            if (oProperty != null)
-
-            {
-
-                switch (oProperty.PropertyType.Name)
-
-                {
-
-                    case "String":
-
-                        oProperty.SetValue(oObjectNew, sValue);
-
-                        break;
-
-                    case "Int32":
-
-                        int nValue = 0;
-
-                        Int32.TryParse(sValue, out nValue);
-
-                        oProperty.SetValue(oObjectNew, nValue);
-
-                        break;
-
-                    case "Byte":
-
-                        byte bValue = 0;
-
-                        //bValue = CommonHelper.Getbyte(sValue);
-
-                        Byte.TryParse(sValue, out bValue);
-
-                        oProperty.SetValue(oObjectNew, bValue);
-
-                        break;
-
-                    case "Guid":
-
-                        Guid gGuid;
-
-                        Guid.TryParse(sValue, out gGuid);
-
-                        oProperty.SetValue(oObjectNew, gGuid);
-
-                        break;
-
-                    case "DateTimeOffset":
-
-                        DateTimeOffset oData;
-
-                        DateTimeOffset.TryParse(sValue, out oData);
-
-                        oProperty.SetValue(oObjectNew, oData);
-
-                        break;
-
-                    case "Decimal":
-
-                        System.Decimal dDecimal = 0;
-
-                        System.Decimal.TryParse(sValue, out dDecimal);
-
-                        oProperty.SetValue(oObjectNew, dDecimal);
-
-                        break;
-
-                    case "Int64":
-
-                        long lLong = 0;
-
-                        long.TryParse(sValue, out lLong);
-
-                        oProperty.SetValue(oObjectNew, lLong);
-
-                        break;
-
-                    case "Boolean":
-
-                        Boolean oBool = true;
-
-                        //sValue = sValue == "0" ? "false" : "true";
-
-                        //Boolean.TryParse(sValue, out oBool);
-
-                        if (sValue == "0" || sValue.ToLower() == "false" || String.IsNullOrEmpty(sValue))
-
-                            oBool = false;
-
-                        oProperty.SetValue(oObjectNew, oBool);
-
-                        break;
-
-                    case "Nullable`1":
-
-                        if (oProperty.PropertyType.GenericTypeArguments[0].Name == "Guid")
-
-                        {
-
-                            Guid oGid;
-
-                            Guid.TryParse(sValue, out oGid);
-
-                            if (oGid == null || oGid == Guid.Empty)
-
-                            {
-
-                                oProperty.SetValue(oObjectNew, null);
-
-                            }
-
-                            else
-
-                            {
-
-                                oProperty.SetValue(oObjectNew, oGid);
-
-                            }
-
-
-
-                        }
-
-                        if (oProperty.PropertyType.GenericTypeArguments[0].Name == "DateTimeOffset")
-
-                        {
-
-                            DateTimeOffset oNullableData;
-
-                            DateTimeOffset.TryParse(sValue, out oNullableData);
-
-                            oProperty.SetValue(oObjectNew, oNullableData);
-
-                        }
-
-                        break;
-
-                    default:
-
-                        return -1;
-
-                }
-
-            }
-
-            else
-
-                return -1;
-
-            return 0;
-
-        }
-
-        public static object GetForeignkeyObject(object oObject, string sKey)
-
-        {
-
-            PropertyInfo oPropertyInfo = oObject.GetType().GetProperty(sKey);
-
-            if (oPropertyInfo == null)
-
-            {
-
-                return null;
-
-            }
-
-            var oValue = oPropertyInfo.GetValue(oObject);
-
-
-
-            if (oValue == null)
-
-            {
-
-                var oIsValueType = oPropertyInfo.PropertyType.IsValueType;
-
-                oValue = Activator.CreateInstance(oPropertyInfo.PropertyType);
-
-            }
-
-            oObject.GetType().GetProperty(sKey).SetValue(oObject, oValue);
-
-            //}
-
-            return oValue;
-
-        }
-
-
-        public PieMapViewModel GetPieMapViewModel(string sName, string sUrltt, string sToken)
-
-        {
-
-            PieMapViewModel oPieMapViewModel = new PieMapViewModel();
-
-            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
-
-
-
-            StringToEntityValue(oPieMapViewModel, sResources);
-
-
-
-            oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt)+ sToken;
-
-
-
-            List<string> lists = new List<string>();
-
-            DataTable dt = new DataTable();
-
-            DataSet ds = new DataSet();
-
-
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load(oPieMapViewModel.Url);
-            ds = ConvertXMLFileToDataSet(doc);
-
-            List<VisitSource> listss = new List<VisitSource>();
-
-
-
-            foreach (DataRow dr in ds.Tables["properties"].Rows)
-            {
-                var obj = new VisitSource()
-
-                {
-
-                    name = Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]),
-
-                    value = Convert.ToString(dr[oPieMapViewModel.PieMapSelectValue])
-
-                };
-
-                listss.Add(obj);
-
-                lists.Add(Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]));
-
-                
-            }
-
-
-
-            dt = ds.Tables["properties"];
-
-            oPieMapViewModel.LegendData = lists;
-
-            oPieMapViewModel.SeriesData = listss;
-
-            return oPieMapViewModel;
-
-        }
-
-        [HttpPost]
-        public ActionResult BarMap1(string id)
         {
             string cmd = Request["pagequeryParams"];
             string urltt = QueryParamsurl(cmd);
@@ -561,30 +100,82 @@ namespace SlbiReport.Controllers
 
             List<string> xaxisdata = new List<string>();
             List<BarSeriesModel> series = new List<BarSeriesModel>();
-            List<TempObjectModel> s1 = new List<TempObjectModel>();
+            //List<TempObjectModel> s1 = new List<TempObjectModel>();
+            BarViewModel oBarViewModel = new BarViewModel();
+            oBarViewModel.Series = new List<BarSeriesModel>();
+            oBarViewModel.SeriesStr = "A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA";
+            oBarViewModel.AxisDataStr = "A0CALMONTH";
+            string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
+            string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
+            PostParams oPostParams = new PostParams();
+            
+            //for (int i = 0; i <= SeriesStrs.Count(); i++)
+            //{
+            //    oPostParams.Add(SeriesStrs[0], new List<string>());
+            //}
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
-               var  obj = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
-               var obj1 = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
 
-                s1.Add(obj);
-                s1.Add(obj1);
+                for (int i = 0; i < AxisDataStrs.Count(); i++)
+                {
+                    xaxisdata.Add(Convert.ToString(dr[AxisDataStrs[i]]));
+                }
+
+                for (int i = 0; i < SeriesStrs.Count(); i++)
+                {
+
+                    List<string> valuelist = (List<string>) oPostParams.GetObject(SeriesStrs[i]);
+                    if (valuelist == null)
+                    {
+                        valuelist = new List<string>();
+                        oPostParams.Add(SeriesStrs[i], valuelist);
+                    }
+                    valuelist.Add(Convert.ToString(dr[SeriesStrs[i]]));  
+                    
+                }
+                //var obj = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
+                //var obj1 = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
+
+
+
+                //BarSeriesModel oBarSeriesModel1 = new BarSeriesModel();
+                //oBarSeriesModel1.SeriesName = Convert.ToString(dr["A0CALMONTH"]);
+                //oBarSeriesModel1.SeriesData.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
+                //series.Add(oBarSeriesModel1);
+
+                //BarSeriesModel oBarSeriesModel2 = new BarSeriesModel();
+                //oBarSeriesModel2.SeriesName = Convert.ToString(dr["A0CALMONTH"]);
+                //oBarSeriesModel2.SeriesData.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
+                //series.Add(oBarSeriesModel2);
+                //s1.Add(obj);
+                //s1.Add(obj1);
             }
 
+            for (int i = 0; i < SeriesStrs.Count(); i++)
+            {
 
-            
+                List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+
+                oBarViewModel.Series.Add(new BarSeriesModel()
+                {
+                    name = SeriesStrs[i],
+                    data = valuelist
+                });
+            }
+            oBarViewModel.LegendDataStr = "实际,预测";
+            legend = oBarViewModel.LegendDataStr.Split(',').ToList();
 
 
-            legend.Add("实际");
-            legend.Add("预测");
+            //legend.Add("实际");
+            //legend.Add("预测");
             //return result;
-
             var bar = new BarViewModel()
             {
                 Title = "testbar",
                 SubTitle = "subtestbar",
                 AxisData = xaxisdata,
                 LegendData = legend,
+                Series = oBarViewModel.Series
                 //SeriesData1 = series1,
                 //SeriesData2 = series2,
                 //SeriesName1 = "实际",
@@ -684,6 +275,7 @@ namespace SlbiReport.Controllers
             //return Json(new { status = 1, rows = result },JsonRequestBehavior.AllowGet);
         }
 
+
         [HttpPost]
         public ActionResult TableMetadata(string id)
         {
@@ -731,6 +323,8 @@ namespace SlbiReport.Controllers
 
             return Json(new { status = 1, result = tablecol });
         }
+
+
 
         [HttpPost]
         public ActionResult Select(string id)
@@ -928,16 +522,14 @@ namespace SlbiReport.Controllers
             var table = new TableViewModel()
             {
                 Title = "到期回款状况：",
-               // Column = tablecol,
-                FrozenColumns = "[[{field: 'ZCUSTOMER_T',title: '客户',sortable:true, formatter:'',fixed:true}]]",
-                Columns = "[[{ title: 'Item Details', colspan: 7 }], [{ field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',  title: '本月到期款-原币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAN433USWUC_F',   title: '本月到期款-本币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',   title: '回款金额-现汇', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F', title: '回款金额-承兑', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F', title: '回款金额-小计', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F', title: '回款率', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F', title: '差异', sortable: true, fixed: true, align: 'right' }]]"
+                Column = tablecol
             };
 
             return Json(new { status = 1, result = table });
         }
 
 
-        public String Rp2_Table1data(String id ,int page, int rows)
+        public String Rp2_Table1data(int page, int rows)
         {
             int skip = (page - 1) * rows;
 
