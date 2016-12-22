@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 using System.Xml;
 using SlbiReport.Models;
 using System.Reflection;
-using SlbiReport.App_Code.Common;
+using SlbiReport.App_Code;
 
 namespace SlbiReport.Controllers
 {
@@ -23,8 +23,6 @@ namespace SlbiReport.Controllers
         {
             return View();
         }
-
-
         [HttpPost]
         public ActionResult PieMap1(string id)
         {
@@ -74,364 +72,6 @@ namespace SlbiReport.Controllers
              return Json(new { status = 1, result = pie });
         }
 
-        public static Dictionary<string, object> PostParams(string queryString, string split1 = "|", string split2 = "(0_0)")
-        {
-
-            Dictionary<string, object> oInsideParams = new Dictionary<string, object>();
-
-            if (!String.IsNullOrEmpty(queryString))
-            {
-
-                try
-
-                {
-
-                    string[] strList1 = queryString.Split(split1.ToArray());
-
-                    for (int i = 0; i < strList1.Length; i++)
-
-                    {
-
-                        string[] strList2 = strList1[i].Replace("(0_0)", "|").Split(split1.ToArray());
-
-                        if (String.IsNullOrEmpty(strList2[0])) continue;
-
-                        if (oInsideParams.ContainsKey(strList2[0]))
-
-                            oInsideParams[strList2[0]] = strList2[1];
-
-                        else
-
-                            oInsideParams.Add(strList2[0], strList2[1]);
-
-                    }
-
-                }
-
-                catch { }
-
-            }
-
-            return oInsideParams;
-
-        }
-
-        public static Object StringToEntityValue(object oOject, string sParamStr)
-
-        {
-
-            Dictionary<string, object> oDic = PostParams(sParamStr);
-
-            string sFieldName = string.Empty;
-
-            foreach (var item in oDic)
-
-            {
-
-                FieldAssignment(oOject, item.Key, item.Value.ToString());
-
-            }
-
-            return oOject;
-
-        }
-
-        public static int FieldAssignment(object oObject, string sKey, string sValue)
-
-        {
-
-
-
-
-
-            string[] sFkKey = sKey.Split('.');
-
-            var oObjectNew = new object();
-
-            if (sFkKey.Length > 1)
-
-            {
-
-                oObjectNew = GetForeignkeyObject(oObject, sFkKey[0]);
-
-                if (oObjectNew == null)
-
-                {
-
-                    return -1;
-
-                }
-
-            }
-
-            else
-
-                oObjectNew = oObject;
-
-            for (int i = 1; i < sFkKey.Length - 1; i++)
-
-            {
-
-                oObjectNew = GetForeignkeyObject(oObjectNew, sFkKey[i]);
-
-            }
-
-            PropertyInfo oProperty = oObjectNew.GetType().GetProperty(sFkKey[sFkKey.Length - 1]);
-
-            if (oProperty != null)
-
-            {
-
-                switch (oProperty.PropertyType.Name)
-
-                {
-
-                    case "String":
-
-                        oProperty.SetValue(oObjectNew, sValue);
-
-                        break;
-
-                    case "Int32":
-
-                        int nValue = 0;
-
-                        Int32.TryParse(sValue, out nValue);
-
-                        oProperty.SetValue(oObjectNew, nValue);
-
-                        break;
-
-                    case "Byte":
-
-                        byte bValue = 0;
-
-                        //bValue = CommonHelper.Getbyte(sValue);
-
-                        Byte.TryParse(sValue, out bValue);
-
-                        oProperty.SetValue(oObjectNew, bValue);
-
-                        break;
-
-                    case "Guid":
-
-                        Guid gGuid;
-
-                        Guid.TryParse(sValue, out gGuid);
-
-                        oProperty.SetValue(oObjectNew, gGuid);
-
-                        break;
-
-                    case "DateTimeOffset":
-
-                        DateTimeOffset oData;
-
-                        DateTimeOffset.TryParse(sValue, out oData);
-
-                        oProperty.SetValue(oObjectNew, oData);
-
-                        break;
-
-                    case "Decimal":
-
-                        System.Decimal dDecimal = 0;
-
-                        System.Decimal.TryParse(sValue, out dDecimal);
-
-                        oProperty.SetValue(oObjectNew, dDecimal);
-
-                        break;
-
-                    case "Int64":
-
-                        long lLong = 0;
-
-                        long.TryParse(sValue, out lLong);
-
-                        oProperty.SetValue(oObjectNew, lLong);
-
-                        break;
-
-                    case "Boolean":
-
-                        Boolean oBool = true;
-
-                        //sValue = sValue == "0" ? "false" : "true";
-
-                        //Boolean.TryParse(sValue, out oBool);
-
-                        if (sValue == "0" || sValue.ToLower() == "false" || String.IsNullOrEmpty(sValue))
-
-                            oBool = false;
-
-                        oProperty.SetValue(oObjectNew, oBool);
-
-                        break;
-
-                    case "Nullable`1":
-
-                        if (oProperty.PropertyType.GenericTypeArguments[0].Name == "Guid")
-
-                        {
-
-                            Guid oGid;
-
-                            Guid.TryParse(sValue, out oGid);
-
-                            if (oGid == null || oGid == Guid.Empty)
-
-                            {
-
-                                oProperty.SetValue(oObjectNew, null);
-
-                            }
-
-                            else
-
-                            {
-
-                                oProperty.SetValue(oObjectNew, oGid);
-
-                            }
-
-
-
-                        }
-
-                        if (oProperty.PropertyType.GenericTypeArguments[0].Name == "DateTimeOffset")
-
-                        {
-
-                            DateTimeOffset oNullableData;
-
-                            DateTimeOffset.TryParse(sValue, out oNullableData);
-
-                            oProperty.SetValue(oObjectNew, oNullableData);
-
-                        }
-
-                        break;
-
-                    default:
-
-                        return -1;
-
-                }
-
-            }
-
-            else
-
-                return -1;
-
-            return 0;
-
-        }
-
-        public static object GetForeignkeyObject(object oObject, string sKey)
-
-        {
-
-            PropertyInfo oPropertyInfo = oObject.GetType().GetProperty(sKey);
-
-            if (oPropertyInfo == null)
-
-            {
-
-                return null;
-
-            }
-
-            var oValue = oPropertyInfo.GetValue(oObject);
-
-
-
-            if (oValue == null)
-
-            {
-
-                var oIsValueType = oPropertyInfo.PropertyType.IsValueType;
-
-                oValue = Activator.CreateInstance(oPropertyInfo.PropertyType);
-
-            }
-
-            oObject.GetType().GetProperty(sKey).SetValue(oObject, oValue);
-
-            //}
-
-            return oValue;
-
-        }
-
-
-        public PieMapViewModel GetPieMapViewModel(string sName, string sUrltt, string sToken)
-
-        {
-
-            PieMapViewModel oPieMapViewModel = new PieMapViewModel();
-
-            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
-
-
-
-            StringToEntityValue(oPieMapViewModel, sResources);
-
-
-
-            oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt)+ sToken;
-
-
-
-            List<string> lists = new List<string>();
-
-            DataTable dt = new DataTable();
-
-            DataSet ds = new DataSet();
-
-
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load(oPieMapViewModel.Url);
-            ds = ConvertXMLFileToDataSet(doc);
-
-            List<VisitSource> listss = new List<VisitSource>();
-
-
-
-            foreach (DataRow dr in ds.Tables["properties"].Rows)
-            {
-                var obj = new VisitSource()
-
-                {
-
-                    name = Convert.ToString(dr[oPieMapViewModel.SelectName]),
-
-                    value = Convert.ToString(dr[oPieMapViewModel.SelectValue])
-
-                };
-
-                listss.Add(obj);
-
-                lists.Add(Convert.ToString(dr[oPieMapViewModel.SelectName]));
-
-                
-            }
-
-
-
-            dt = ds.Tables["properties"];
-
-            oPieMapViewModel.LegendData = lists;
-
-            oPieMapViewModel.SeriesData = listss;
-
-            return oPieMapViewModel;
-
-        }
-
         [HttpPost]
         public ActionResult BarMap(string id)
         {
@@ -454,23 +94,18 @@ namespace SlbiReport.Controllers
             ds = ConvertXMLFileToDataSet(doc);
 
             List<string> legend = new List<string>();
-
-
             List<string> xaxisdata = new List<string>();
-            List<BarSeriesModel> series = new List<BarSeriesModel>();
-            List<TempObjectModel> s1 = new List<TempObjectModel>();
+            List<string> series1 = new List<string>();
+            List<string> series2 = new List<string>();
+
+ 
+
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
-               var  obj = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
-               var obj1 = new TempObjectModel { name = Convert.ToString(dr["A0CALMONTH"]), value = Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]), group = "实际" };
-
-                s1.Add(obj);
-                s1.Add(obj1);
+                xaxisdata.Add(Convert.ToString(dr["A0CALMONTH"]));
+                series1.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443B56"]));
+                series2.Add(Convert.ToString(dr["A00O2TFKZNC7K2N5JLDC443NSA"]));
             }
-
-
-            
-
 
             legend.Add("实际");
             legend.Add("预测");
@@ -482,10 +117,10 @@ namespace SlbiReport.Controllers
                 SubTitle = "subtestbar",
                 AxisData = xaxisdata,
                 LegendData = legend,
-                //SeriesData1 = series1,
-                //SeriesData2 = series2,
-                //SeriesName1 = "实际",
-                //SeriesName2 = "预测"
+                SeriesData1 = series1,
+                SeriesData2 = series2,
+                SeriesName1 = "实际",
+                SeriesName2 = "预测"
             };
 
 
@@ -538,12 +173,12 @@ namespace SlbiReport.Controllers
                 SubTitle = "subtestbar",
                 AxisData = xaxisdata,
                 LegendData = legend,
-                //SeriesData1 = series1,
-                //SeriesData2 = series2,
-                //SeriesData3 = series3,
-                //SeriesName1 = "实际",
-                //SeriesName2 = "预测",
-                //SeriesName3 = "XX"
+                SeriesData1 = series1,
+                SeriesData2 = series2,
+                SeriesData3 = series3,
+                SeriesName1 = "实际",
+                SeriesName2 = "预测",
+                SeriesName3 = "XX"
             };
 
 
@@ -877,6 +512,7 @@ namespace SlbiReport.Controllers
         }
 
 
+
         public ActionResult Rp2_Bar1Map(string id)
         {
             string cmd = Request["pagequeryParams"];
@@ -921,15 +557,16 @@ namespace SlbiReport.Controllers
                 SubTitle = "subtestbar",
                 AxisData = xaxisdata,
                 LegendData = legend,
-                //SeriesData1 = series1,
-                //SeriesData2 = series2,
-                //SeriesName1 = "实际",
-                //SeriesName2 = "预测"
+                SeriesData1 = series1,
+                SeriesData2 = series2,
+                SeriesName1 = "实际",
+                SeriesName2 = "预测"
             };
 
 
             return Json(new { status = 1, result = bar });
         }
+
 
 
         private static List<T> TableToEntity<T>(DataTable dt) where T : class, new()
@@ -954,7 +591,6 @@ namespace SlbiReport.Controllers
             }
             return list;
         }
-
         public ActionResult Report1()
         {
             return View();
