@@ -158,8 +158,8 @@ namespace SlbiReport.Controllers
 
                 oBarViewModel.Series.Add(new BarSeriesModel()
                 {
-                    SeriesName = SeriesStrs[i],
-                    SeriesData = valuelist
+                    name = SeriesStrs[i],
+                    data = valuelist
                 });
             }
             oBarViewModel.LegendDataStr = "实际,预测";

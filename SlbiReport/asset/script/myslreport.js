@@ -76,14 +76,7 @@ function drawbar1(pagequeryParams, id, url) {
                 data: response.result.AxisData
             },
 
-            series: [{
-                name: response.result.SeriesName1,
-                data: response.result.SeriesData1
-            },
-            {
-                name: response.result.SeriesName2,
-                data: response.result.SeriesData2
-            }]
+            series: [response.result.Series]
         });
 
     });

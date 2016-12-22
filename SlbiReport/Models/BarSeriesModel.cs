@@ -12,10 +12,10 @@ namespace SlbiReport.Models
         /// 图表数据
         /// </summary>
 
-        public List<string> SeriesData { get; set; }
+        public List<string> data { get; set; }
 
 
-        public string SeriesName { get; set; }
+        public string name { get; set; }
 
 
     }
