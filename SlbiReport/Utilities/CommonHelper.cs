@@ -45,53 +45,53 @@ namespace SlbiReport.Utilities
             return oPieMapViewModel;
         }
 
-        public static BarViewModel GetBarViewModel(string sName, string sUrltt, string sToken)
-        {
-            BarViewModel oBarViewModel = new BarViewModel();
+        //public static BarViewModel GetBarViewModel(string sName, string sUrltt, string sToken)
+        //{
+        //    BarViewModel oBarViewModel = new BarViewModel();
 
-            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
-            StringToEntityValue(oBarViewModel, sResources);
-            oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
-            if (!string.IsNullOrEmpty(oBarViewModel.BarSelectName) && !string.IsNullOrEmpty(oBarViewModel.BarSelectValue1)&& !string.IsNullOrEmpty(oBarViewModel.BarSelectValue2))
-                oBarViewModel.Url += "$select=" + oBarViewModel.BarSelectName + "," + oBarViewModel.BarSelectValue1 + "," + oBarViewModel.BarSelectValue2 + "&";
-            oBarViewModel.Url += sToken;
+        //    string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
+        //    StringToEntityValue(oBarViewModel, sResources);
+        //    oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
+        //    if (!string.IsNullOrEmpty(oBarViewModel.BarSelectName) && !string.IsNullOrEmpty(oBarViewModel.BarSelectValue1)&& !string.IsNullOrEmpty(oBarViewModel.BarSelectValue2))
+        //        oBarViewModel.Url += "$select=" + oBarViewModel.BarSelectName + "," + oBarViewModel.BarSelectValue1 + "," + oBarViewModel.BarSelectValue2 + "&";
+        //    oBarViewModel.Url += sToken;
 
 
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-            XmlDocument doc = new XmlDocument();
-            try
-            {
-                doc.Load(oBarViewModel.Url);
-            }
-            catch
-            {
-                return null;
-            }
-            ds = ConvertXMLFileToDataSet(doc);
+        //    DataTable dt = new DataTable();
+        //    DataSet ds = new DataSet();
+        //    XmlDocument doc = new XmlDocument();
+        //    try
+        //    {
+        //        doc.Load(oBarViewModel.Url);
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //    ds = ConvertXMLFileToDataSet(doc);
 
-            List<string> legend = new List<string>();
-            legend.Add(oBarViewModel.SeriesName1);
-            legend.Add(oBarViewModel.SeriesName2);
-            //legend.Add("");
-            List<string> xaxisdata = new List<string>();
-            List<string> series1 = new List<string>();
-            List<string> series2 = new List<string>();
+        //    List<string> legend = new List<string>();
+        //    legend.Add(oBarViewModel.SeriesName1);
+        //    legend.Add(oBarViewModel.SeriesName2);
+        //    //legend.Add("");
+        //    List<string> xaxisdata = new List<string>();
+        //    List<string> series1 = new List<string>();
+        //    List<string> series2 = new List<string>();
 
-            foreach (DataRow dr in ds.Tables["properties"].Rows)
-            {
-                xaxisdata.Add(Convert.ToString(dr[oBarViewModel.BarSelectName]));
-                series1.Add(Convert.ToString(dr[oBarViewModel.BarSelectValue1]));
-                series2.Add(Convert.ToString(dr[oBarViewModel.BarSelectValue2]));
-            }
+        //    foreach (DataRow dr in ds.Tables["properties"].Rows)
+        //    {
+        //        xaxisdata.Add(Convert.ToString(dr[oBarViewModel.BarSelectName]));
+        //        series1.Add(Convert.ToString(dr[oBarViewModel.BarSelectValue1]));
+        //        series2.Add(Convert.ToString(dr[oBarViewModel.BarSelectValue2]));
+        //    }
 
-            oBarViewModel.LegendData = legend;
-            oBarViewModel.AxisData = xaxisdata;
-            oBarViewModel.SeriesData1 = series1;
-            oBarViewModel.SeriesData2 = series2;
+        //    oBarViewModel.LegendData = legend;
+        //    oBarViewModel.AxisData = xaxisdata;
+        //    oBarViewModel.SeriesData1 = series1;
+        //    oBarViewModel.SeriesData2 = series2;
 
-            return oBarViewModel;
-        }
+        //    return oBarViewModel;
+        //}
 
         public static Object StringToEntityValue(object oOject, string sParamStr)
         {            PostParams oPostParams = new PostParams(sParamStr);

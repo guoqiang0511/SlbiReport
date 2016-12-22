@@ -183,6 +183,27 @@ namespace SlbiReport.Utilities
 
         #endregion
 
+        /// <summary>
+        /// 添加项
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public void Add(string key, object value)
+        {
+            if (oInsideParams.ContainsKey(key))
+                oInsideParams[key] = value;
+            else
+                oInsideParams.Add(key, value);
+        }
 
+        /// <summary>
+        /// 移除项
+        /// </summary>
+        /// <param name="key"></param>
+        public void Remove(string key)
+        {
+            if (oInsideParams.ContainsKey(key))
+                oInsideParams.Remove(key);
+        }
     }
 }
