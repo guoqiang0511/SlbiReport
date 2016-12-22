@@ -77,7 +77,7 @@ function drawbar1(pagequeryParams, id, url) {
                 data: response.result.AxisData
             },
 
-            series: [response.result.Series]
+            series: response.result.Series
         });
 
     });
