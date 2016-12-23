@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Xml;
 
 namespace SlbiReport.Utilities
@@ -15,7 +16,7 @@ namespace SlbiReport.Utilities
         public static PieMapViewModel GetPieMapViewModel(string sName, string sUrltt, string sToken)
         {
             PieMapViewModel oPieMapViewModel = new PieMapViewModel();
-            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             StringToEntityValue(oPieMapViewModel, sResources);
             oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
             if (!string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectName) && !string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectValue))
@@ -45,53 +46,150 @@ namespace SlbiReport.Utilities
             return oPieMapViewModel;
         }
 
-        //public static BarViewModel GetBarViewModel(string sName, string sUrltt, string sToken)
-        //{
-        //    BarViewModel oBarViewModel = new BarViewModel();
+        public static BarViewModel GetBarViewModel(string sName, string sUrltt, string sToken)
+        {
+            BarViewModel oBarViewModel = new BarViewModel();
 
-        //    string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
-        //    StringToEntityValue(oBarViewModel, sResources);
-        //    oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
-        //    if (!string.IsNullOrEmpty(oBarViewModel.BarSelectName) && !string.IsNullOrEmpty(oBarViewModel.BarSelectValue1)&& !string.IsNullOrEmpty(oBarViewModel.BarSelectValue2))
-        //        oBarViewModel.Url += "$select=" + oBarViewModel.BarSelectName + "," + oBarViewModel.BarSelectValue1 + "," + oBarViewModel.BarSelectValue2 + "&";
-        //    oBarViewModel.Url += sToken;
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            StringToEntityValue(oBarViewModel, sResources);
+
+            oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
+            if (!string.IsNullOrEmpty(oBarViewModel.AxisDataStr) && !string.IsNullOrEmpty(oBarViewModel.SeriesStr))
+                oBarViewModel.Url += "$select=" + oBarViewModel.AxisDataStr + "," + oBarViewModel.SeriesStr + "&";
+            oBarViewModel.Url += sToken;
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(oBarViewModel.Url);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+            string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
+            string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
+            List<string> xaxisdata = new List<string>();
+
+            PostParams oPostParams = new PostParams();
+            foreach (DataRow dr in ds.Tables["properties"].Rows)
+            {
+
+                for (int i = 0; i < AxisDataStrs.Count(); i++)
+                {
+                    xaxisdata.Add(Convert.ToString(dr[AxisDataStrs[i]]));
+                }
+
+                for (int i = 0; i < SeriesStrs.Count(); i++)
+                {
+
+                    List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+                    if (valuelist == null)
+                    {
+                        valuelist = new List<string>();
+                        oPostParams.Add(SeriesStrs[i], valuelist);
+                    }
+                    valuelist.Add(Convert.ToString(dr[SeriesStrs[i]]));
+
+                }
+            }
+            oBarViewModel.Series = new List<BarSeriesModel>();
+            for (int i = 0; i < SeriesStrs.Count(); i++)
+            {
+
+                List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+
+                oBarViewModel.Series.Add(new BarSeriesModel()
+                {
+                    name = SeriesStrs[i],
+                    data = valuelist
+                });
+            }
+
+            List<string> legend = new List<string>();
+            legend = oBarViewModel.LegendDataStr.Split(',').ToList();
+
+            var bar = new BarViewModel()
+            {
+                Title = "testbar",
+                SubTitle = "subtestbar",
+                AxisData = xaxisdata,
+                LegendData = legend,
+                Series = oBarViewModel.Series
+            };
+
+            return bar;
+        }
+
+        public static TableViewModel GetTableMetadata(string sName)
+        {
+            TableViewModel oTableViewModel = new TableViewModel();
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+
+            StringToEntityValue(oTableViewModel, sResources);
+
+            return oTableViewModel;
+        }
+
+        public static string GetTableDate(string sName, string sUrltt, string sSkip, string sRows, string sToken)
+        {
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            TableViewModel oTableViewModel = new TableViewModel();
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            StringToEntityValue(oTableViewModel, sResources);
+
+            oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
+            oTableViewModel.Url += "$inlinecount=allpages&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
+
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(oTableViewModel.Url);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["properties"];
+
+            DataRow dr = ds.Tables["feed"].Select()[0];
+
+            string totalnum = Convert.ToString(dr["count"]);
 
 
-        //    DataTable dt = new DataTable();
-        //    DataSet ds = new DataSet();
-        //    XmlDocument doc = new XmlDocument();
-        //    try
-        //    {
-        //        doc.Load(oBarViewModel.Url);
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
-        //    ds = ConvertXMLFileToDataSet(doc);
 
-        //    List<string> legend = new List<string>();
-        //    legend.Add(oBarViewModel.SeriesName1);
-        //    legend.Add(oBarViewModel.SeriesName2);
-        //    //legend.Add("");
-        //    List<string> xaxisdata = new List<string>();
-        //    List<string> series1 = new List<string>();
-        //    List<string> series2 = new List<string>();
 
-        //    foreach (DataRow dr in ds.Tables["properties"].Rows)
-        //    {
-        //        xaxisdata.Add(Convert.ToString(dr[oBarViewModel.BarSelectName]));
-        //        series1.Add(Convert.ToString(dr[oBarViewModel.BarSelectValue1]));
-        //        series2.Add(Convert.ToString(dr[oBarViewModel.BarSelectValue2]));
-        //    }
+            List<String> items = new List<String>();
 
-        //    oBarViewModel.LegendData = legend;
-        //    oBarViewModel.AxisData = xaxisdata;
-        //    oBarViewModel.SeriesData1 = series1;
-        //    oBarViewModel.SeriesData2 = series2;
+            string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
 
-        //    return oBarViewModel;
-        //}
+            return result;
+        }
+        public static string Dtb2Json(DataTable dtb)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            System.Collections.ArrayList dic = new System.Collections.ArrayList();
+            foreach (DataRow dr in dtb.Rows)
+            {
+                System.Collections.Generic.Dictionary<string, object> drow = new System.Collections.Generic.Dictionary<string, object>();
+                foreach (DataColumn dc in dtb.Columns)
+                {
+                    drow.Add(dc.ColumnName, dr[dc.ColumnName]);
+                }
+                dic.Add(drow);
+
+            }
+            //序列化  
+            return jss.Serialize(dic);
+        }
 
         public static Object StringToEntityValue(object oOject, string sParamStr)
         {            PostParams oPostParams = new PostParams(sParamStr);

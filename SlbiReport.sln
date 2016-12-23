@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlbiReport", "SlbiReport\Sl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveAzure.Resources", "LiveAzure.Resources\LiveAzure.Resources.csproj", "{093D6211-B41C-45C7-8EC6-435B22778AF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{093D6211-B41C-45C7-8EC6-435B22778AF1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{093D6211-B41C-45C7-8EC6-435B22778AF1}.Release|x64.ActiveCfg = Release|x64
 		{093D6211-B41C-45C7-8EC6-435B22778AF1}.Release|x64.Build.0 = Release|x64
+		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Debug|x64.Build.0 = Debug|Any CPU
+		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Release|x64.ActiveCfg = Release|Any CPU
+		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

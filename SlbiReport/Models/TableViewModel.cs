@@ -20,7 +20,7 @@ namespace SlbiReport.Models
 
         public string Columns { get; set; }
 
-        public string URL { get; set; }
+        public string Url { get; set; }
 
     }
 }
