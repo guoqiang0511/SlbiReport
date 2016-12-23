@@ -61,7 +61,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?|Title(0_0)Bar图Title|SubTitle(0_0)Bar图TitleSubTitle|Title(0_0)test|SubTitle(0_0)subtest|BarSelectName(0_0)A0CALMONTH|BarSelectValue1(0_0)A00O2TFKZNC7K2N5JLDC443B56|BarSelectValue2(0_0)A00O2TFKZNC7K2N5JLDC443NSA|SeriesName1(0_0)实际|SeriesName2(0_0)预测 的本地化字符串。
+        ///   查找类似 Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?|Title(0_0)testbar|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA|AxisDataStr(0_0)A0CALMONTH|LegendDataStr(0_0)实际,预测 的本地化字符串。
         /// </summary>
         public static string Bar1 {
             get {
@@ -93,6 +93,15 @@ namespace LiveAzure.Resources.Models.Common {
         public static string Pie2 {
             get {
                 return ResourceManager.GetString("Pie2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)到期回款状况：|FrozenColumns(0_0)[[{field: &apos;ZCUSTOMER_T&apos;,title: &apos;客户&apos;,sortable:true, formatter:&apos;&apos;,fixed:true}]]|Columns(0_0)[[{ title: &apos;Item Details&apos;, colspan: 7 }], [{ field: &apos;A00O2TFHXIFF3PJIBEFO12Z9IL_F&apos;,  title: &apos;本月到期款-原币&apos;, sortable: true, fixed: true, align: &apos;right&apos; },{ field: &apos;A00O2TFHXIFF3PJJAN433USWUC_F&apos;,   title: &apos;本月到期款-本币&apos;, sortable: true, fixed: true, align: &apos;right&apos; },{ field: &apos;A00O2TFHXIFF3PJ [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string Tab1 {
+            get {
+                return ResourceManager.GetString("Tab1", resourceCulture);
             }
         }
     }
