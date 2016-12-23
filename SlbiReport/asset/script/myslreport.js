@@ -217,6 +217,51 @@ function drawtable2(pagequeryParams, id, metaurl, url) {
 
 }
 
+//画选择框
+function drawselect(container, id) {
+    var selectarea = $("#" + container + "");
+    $.post("Select", { id: id }, function (response, status) {
+        if (response) {
+            //   DrawPie(data, "echart1");
+            $.each(response.result, function (i, result) {
+                searchlist.push(result.valueField);
+                selectarea.append("<input id=\"" + result.valueField + "\" name=\"" + result.valueField + "\">  ")
+                $('#' + result.valueField + '').combobox({
+                    label: result.label,
+                    url: 'Select_Dim',
+                    queryParams: {
+                        "id": result.valueField
+                    },
+                    labelPosition: 'left',
+                    valueField: 'id',
+                    width: result.width,
+                    multiple: result.multiple,
+                    textField: 'text'
+                });
+
+            });
+            selectarea.append("<a id=\"subbtn\" href=\"#\">查询</a>");
+            $('#subbtn').linkbutton({
+                iconCls: 'icon-search',
+            });
+
+            $('#subbtn').bind('click', function search() {
+                pagequeryParams = "";
+                for (var i = 0; i < searchlist.length; i++) {
+                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValue") + ","
+                }
+                pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
+
+                //drawpie1(pagequeryParams, "main", "PieMap1");
+                //drawbar1(pagequeryParams, "bar", "BarMap");
+                //$('#tt').datagrid('load', { pagequeryParams });
+            });
+
+        }
+    });
+}
+
+
 function getPieOption() {
 
     return {

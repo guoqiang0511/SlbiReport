@@ -13,20 +13,35 @@ namespace SlbiReport.Utilities
     public static class CommonHelper
     {
         public static PieMapViewModel GetPieMapViewModel(string sName, string sUrltt, string sToken)
-        {
+        {
+
             PieMapViewModel oPieMapViewModel = new PieMapViewModel();
-            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
-            StringToEntityValue(oPieMapViewModel, sResources);
-            oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+
+            StringToEntityValue(oPieMapViewModel, sResources);
+
+            if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null)
+                oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
+
             if (!string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectName) && !string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectValue))
                 oPieMapViewModel.Url += "$select=" + oPieMapViewModel.PieMapSelectName + "," + oPieMapViewModel.PieMapSelectValue + "&";
             oPieMapViewModel.Url += sToken;
 
-            List <string> lists = new List<string>();
+            List<string> lists = new List<string>();
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             XmlDocument doc = new XmlDocument();
-            doc.Load(oPieMapViewModel.Url);
+
+            try
+            {
+                doc.Load(oPieMapViewModel.Url);
+            }
+            catch
+            {
+
+                return null;
+            }
+
             ds = ConvertXMLFileToDataSet(doc);
             List<VisitSource> listss = new List<VisitSource>();
             foreach (DataRow dr in ds.Tables["properties"].Rows)

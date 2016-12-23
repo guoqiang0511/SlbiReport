@@ -16,6 +16,11 @@ namespace SlbiReport.Models
         public string value { get; set; }
 
         public string labelPosition { get; set; }
-       
+
+        public string width { get; set; }
+
+        public Boolean  multiple { get; set; }
+
+
     }
 }

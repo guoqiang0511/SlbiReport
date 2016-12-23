@@ -748,7 +748,9 @@ namespace SlbiReport.Controllers
 
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
-            string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
+          //  string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
+            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/$metadata?" + token;
+            
             XmlDocument doc = new XmlDocument();
             try
             {
@@ -779,7 +781,7 @@ namespace SlbiReport.Controllers
 
             foreach (DataRow dr in dtNew.Rows)
             {
-                var obj = new SelectColumn() { valueField = Convert.ToString(dr["name"]), label = Convert.ToString(dr["label"]), textField = Convert.ToString(dr["text"]) };
+                var obj = new SelectColumn() { valueField = Convert.ToString(dr["name"]), width = "200", multiple=true , label = Convert.ToString(dr["label"]), textField = Convert.ToString(dr["text"]) };
                 selectlist.Add(obj);
             }
 
@@ -793,7 +795,10 @@ namespace SlbiReport.Controllers
             String text = Request["text"];
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
-            string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002?$select=" + id + "," + text + "&" + token;
+           // string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003Results?$select=" + id + "," + text + "&" + token;
+
+            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/" + id + "?" + token;
+
             XmlDocument doc = new XmlDocument();
             try
             {
@@ -810,7 +815,7 @@ namespace SlbiReport.Controllers
             List<object> lists = new List<object>();
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
-                var obj = new { id = dr[id], text = dr[text] };
+                var obj = new { id = dr[id+"_ID"], text = dr[id + "_TEXT"] };
                 lists.Add(obj);
             }
 
