@@ -391,45 +391,45 @@ namespace SlbiReport.Controllers
         public ActionResult Select(string id)
         {
 
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-          //  string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
-            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/$metadata?" + token;
-            
-            XmlDocument doc = new XmlDocument();
-            try
-            {
-                doc.Load(fileName);
-            }
-            catch
-            {
+            //DataTable dt = new DataTable();
+            //DataSet ds = new DataSet();
+            ////  string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
+            //string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/$metadata?" + token;
 
-                return null;
-            }
-            ds = ConvertXMLFileToDataSet(doc);
+            //XmlDocument doc = new XmlDocument();
+            //try
+            //{
+            //    doc.Load(fileName);
+            //}
+            //catch
+            //{
 
-            dt = ds.Tables["Property"];
+            //    return null;
+            //}
+            //ds = ConvertXMLFileToDataSet(doc);
 
-            DataRow[] drArr = dt.Select("EntityType_Id=1 and  text <> '' ");//查询
+            //dt = ds.Tables["Property"];
 
-            DataTable dtNew = dt.Clone();
+            //DataRow[] drArr = dt.Select("EntityType_Id=1 and  text <> '' ");//查询
+
+            //DataTable dtNew = dt.Clone();
 
 
-            for (int i = 0; i < drArr.Length; i++)
-            {
-                dtNew.ImportRow(drArr[i]);
+            //for (int i = 0; i < drArr.Length; i++)
+            //{
+            //    dtNew.ImportRow(drArr[i]);
 
-            }
+            //}
 
-            //return result;
-            List<SelectColumn> selectlist = new List<Models.SelectColumn>();
+            ////return result;
+            //List<SelectColumn> selectlist = new List<Models.SelectColumn>();
 
-            foreach (DataRow dr in dtNew.Rows)
-            {
-                var obj = new SelectColumn() { valueField = Convert.ToString(dr["name"]), width = "200", multiple=true , label = Convert.ToString(dr["label"]), textField = Convert.ToString(dr["text"]) };
-                selectlist.Add(obj);
-            }
-
+            //foreach (DataRow dr in dtNew.Rows)
+            //{
+            //    var obj = new SelectColumn() { ValueField = Convert.ToString(dr["name"]), Width = "200", Multiple = true, Label = Convert.ToString(dr["label"]), TextField = Convert.ToString(dr["text"]) };
+            //    selectlist.Add(obj);
+            //}
+            List<SelectColumn> selectlist = CommonHelper.GetSelect("Sel1");
 
             return Json(new { status = 1, result = selectlist });
         }
@@ -438,35 +438,38 @@ namespace SlbiReport.Controllers
         {
             String id = Request["id"];
             String text = Request["text"];
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-           // string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003Results?$select=" + id + "," + text + "&" + token;
+            //DataTable dt = new DataTable();
+            //DataSet ds = new DataSet();
+            //// string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003Results?$select=" + id + "," + text + "&" + token;
 
-            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/" + id + "?" + token;
+            //string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/" + id + "?" + token;
 
-            XmlDocument doc = new XmlDocument();
-            try
-            {
-                doc.Load(fileName);
-            }
-            catch
-            {
+            //XmlDocument doc = new XmlDocument();
+            //try
+            //{
+            //    doc.Load(fileName);
+            //}
+            //catch
+            //{
 
-                return null;
-            }
-            ds = ConvertXMLFileToDataSet(doc);
+            //    return null;
+            //}
+            //ds = ConvertXMLFileToDataSet(doc);
 
-            dt = ds.Tables["Property"];
-            List<object> lists = new List<object>();
-            foreach (DataRow dr in ds.Tables["properties"].Rows)
-            {
-                var obj = new { id = dr[id+"_ID"], text = dr[id + "_TEXT"] };
-                lists.Add(obj);
-            }
+            //dt = ds.Tables["Property"];
+            //List<object> lists = new List<object>();
+            //foreach (DataRow dr in ds.Tables["properties"].Rows)
+            //{
+            //    var obj = new { id = dr[id + "_ID"], text = dr[id + "_TEXT"] };
+            //    lists.Add(obj);
+            //}
 
 
-            JavaScriptSerializer jsS = new JavaScriptSerializer();
-            String result = jsS.Serialize(lists);
+            //JavaScriptSerializer jsS = new JavaScriptSerializer();
+            //String result = jsS.Serialize(lists);
+
+            String result = CommonHelper.GetSelect_Dim("Sel1", id, token);
+
             return result;
         }
 

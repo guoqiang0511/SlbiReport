@@ -7,20 +7,20 @@ namespace SlbiReport.Models
 {
     public class SelectColumn
     {
-        public string label { get; set; }
+        public string Label { get; set; }
 
-        public string valueField { get; set; }
+        public string ValueField { get; set; }
 
-        public string textField { get; set; }
+        public string TextField { get; set; }
 
-        public string value { get; set; }
+        public string Value { get; set; }
 
-        public string labelPosition { get; set; }
+        public string LabelPosition { get; set; }
 
-        public string width { get; set; }
+        public string Width { get; set; }
 
-        public Boolean  multiple { get; set; }
+        public Boolean Multiple { get; set; }
 
-
+        
     }
 }

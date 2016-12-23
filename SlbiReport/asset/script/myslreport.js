@@ -224,18 +224,18 @@ function drawselect(container, id) {
         if (response) {
             //   DrawPie(data, "echart1");
             $.each(response.result, function (i, result) {
-                searchlist.push(result.valueField);
-                selectarea.append("<input id=\"" + result.valueField + "\" name=\"" + result.valueField + "\">  ")
-                $('#' + result.valueField + '').combobox({
-                    label: result.label,
+                searchlist.push(result.ValueField);
+                selectarea.append("<input id=\"" + result.ValueField + "\" name=\"" + result.ValueField + "\">  ")
+                $('#' + result.ValueField + '').combobox({
+                    label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        "id": result.valueField
+                        "id": result.ValueField
                     },
                     labelPosition: 'left',
                     valueField: 'id',
-                    width: result.width,
-                    multiple: result.multiple,
+                    width: result.Width,
+                    multiple: result.Multiple,
                     textField: 'text'
                 });
 

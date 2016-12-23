@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
+            panel4.Visible = false;
             panel1.Show();
             
         }
@@ -37,6 +38,7 @@ namespace WindowsFormsApplication1
         {
             panel2.Visible = false;
             panel3.Visible = false;
+            panel4.Visible = false;
             panel1.Show();
         }
 
@@ -44,6 +46,7 @@ namespace WindowsFormsApplication1
         {
             panel1.Visible = false;
             panel3.Visible = false;
+            panel4.Visible = false;
             panel2.Show();
         }
 
@@ -63,9 +66,32 @@ namespace WindowsFormsApplication1
         {
             panel1.Visible = false;
             panel2.Visible = false;
+            panel4.Visible = false;
             panel3.Show();
         }
 
-    
+        private void button8_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            panel4.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string s = "Url(0_0)" + sel1.Text.ToString() + "|Label(0_0)" + sel2.Text.ToString() + "|TextField(0_0)" + sel3.Text.ToString() + "|ValueField(0_0)" + sel4.Text.ToString() + "|Width(0_0)" + sel5.Text.ToString() + "|Multiple(0_0)" + sel7.Text.ToString()+ "*";
+            sel6.Text = s;
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
