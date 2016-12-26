@@ -46,7 +46,7 @@ namespace SlbiReport.Controllers
             string cmd = Request["pagequeryParams"];
             string urltt = QueryParamsurl(cmd);
 
-            var bar = CommonHelper.GetBarViewModel("BarZPU_M001_Q0002", urltt, token);
+            var bar = CommonHelper.GetBarViewModel(id, urltt, token);
 
             return Json(new { status = 1, result = bar });
         }

@@ -129,8 +129,8 @@ namespace SlbiReport.Utilities
 
             var bar = new BarViewModel()
             {
-                Title = "testbar",
-                SubTitle = "subtestbar",
+                Title = oBarViewModel.Title,
+                SubTitle = oBarViewModel.SubTitle,
                 AxisData = xaxisdata,
                 LegendData = legend,
                 Series = oBarViewModel.Series
