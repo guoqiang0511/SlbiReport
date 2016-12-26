@@ -15,14 +15,14 @@ function initselect() {
         if (response) {
             //   DrawPie(data, "echart1");
             $.each(response.result, function (i, result) {
-                searchlist.push(result.valueField);
-                selectarea.append("<input id=\"" + result.valueField + "\" name=\"" + result.valueField + "\" >  ")
-                $('#' + result.valueField + '').combobox({
-                    label: result.label,
+                searchlist.push(result.ValueField);
+                selectarea.append("<input id=\"" + result.ValueField + "\" name=\"" + result.ValueField + "\" >  ")
+                $('#' + result.ValueField + '').combobox({
+                    label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        "id": result.valueField,
-                        "text": result.textField
+                        "id": result.ValueField,
+                        "text": result.TextField
                     },
                     labelPosition: 'left',
                     valueField: 'id',
