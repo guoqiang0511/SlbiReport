@@ -221,8 +221,8 @@ function drawtable(pagequeryParams, container, id) {
 
 //画选择框
 function drawselect(container, id) {
-    var selectarea = $("#" + container + "");
     var searchlist = new Array();
+    var selectarea = $("#" + container + "");
     $.post("Select", { id: id }, function (response, status) {
         if (response) {
             //   DrawPie(data, "echart1");
@@ -233,7 +233,7 @@ function drawselect(container, id) {
                     label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        "field": result.ValueField
+                        "id": result.valueField
                     },
                     labelPosition: 'left',
                     valueField: 'id',
@@ -251,13 +251,15 @@ function drawselect(container, id) {
             $('#subbtn').bind('click', function search() {
                 pagequeryParams = "";
                 for (var i = 0; i < searchlist.length; i++) {
-                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValue") + ","
+                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValues").join(',') + ","
                 }
                 pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
-
+                //alert(pagequeryParams);
                 //drawpie1(pagequeryParams, "main", "PieMap1");
                 //drawbar1(pagequeryParams, "bar", "BarMap");
                 //$('#tt').datagrid('load', { pagequeryParams });
+               // buttononclick(pagequeryParams);
+                drawpie1(pagequeryParams, "main", "Pie2");
             });
 
         }
