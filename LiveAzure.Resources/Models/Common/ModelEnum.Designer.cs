@@ -88,7 +88,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)test|SubTitle(0_0)subtest|PieMapSelectName(0_0)ZPROFTCTR__ZBU_T|PieMapSelectValue(0_0)A00O2TFHXIFF3PJJNMJX09XV3R_F|SeriesName(0_0)111 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)test|SubTitle(0_0)subtest|PieMapSelectName(0_0)ZPROFTCTR__ZBU_T|PieMapSelectValue(0_0)A00O2TFHXIFF3PJJNMJX09XV3R|SeriesName(0_0)test 的本地化字符串。
         /// </summary>
         public static string Pie2 {
             get {
