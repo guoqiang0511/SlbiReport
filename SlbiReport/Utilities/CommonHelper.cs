@@ -179,8 +179,6 @@ namespace SlbiReport.Utilities
             string totalnum = Convert.ToString(dr["count"]);
 
 
-
-
             List<String> items = new List<String>();
 
             string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
@@ -273,8 +271,6 @@ namespace SlbiReport.Utilities
 
         public static int FieldAssignment(object oObject, string sKey, string sValue)
         {
-
-
             string[] sFkKey = sKey.Split('.');
             var oObjectNew = new object();
             if (sFkKey.Length > 1)
@@ -368,7 +364,7 @@ namespace SlbiReport.Utilities
                 return -1;
             return 0;
         }
-        public static object GetForeignkeyObject(object oObject, string sKey)
+        public static object GetForeignkeyObject(object oObject, string sKey)
         {
             PropertyInfo oPropertyInfo = oObject.GetType().GetProperty(sKey);
             if (oPropertyInfo == null)
