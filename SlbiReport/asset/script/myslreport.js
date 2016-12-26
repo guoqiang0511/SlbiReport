@@ -221,24 +221,24 @@ function drawtable(pagequeryParams, container, id) {
 
 //画选择框
 function drawselect(container, id) {
-    var searchlist = new Array();
     var selectarea = $("#" + container + "");
+    var searchlist = new Array();
     $.post("Select", { id: id }, function (response, status) {
         if (response) {
             //   DrawPie(data, "echart1");
             $.each(response.result, function (i, result) {
-                searchlist.push(result.valueField);
-                selectarea.append("<input id=\"" + result.valueField + "\" name=\"" + result.valueField + "\">  ")
-                $('#' + result.valueField + '').combobox({
-                    label: result.label,
+                searchlist.push(result.ValueField);
+                selectarea.append("<input id=\"" + result.ValueField + "\" name=\"" + result.ValueField + "\">  ")
+                $('#' + result.ValueField + '').combobox({
+                    label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        "field": result.valueField
+                        "field": result.ValueField
                     },
                     labelPosition: 'left',
                     valueField: 'id',
-                    width: result.width,
-                    multiple: result.multiple,
+                    width: result.Width,
+                    multiple: result.Multiple,
                     textField: 'text'
                 });
 
@@ -251,15 +251,13 @@ function drawselect(container, id) {
             $('#subbtn').bind('click', function search() {
                 pagequeryParams = "";
                 for (var i = 0; i < searchlist.length; i++) {
-                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValues").join(',') + ","
+                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValue") + ","
                 }
                 pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
-                //alert(pagequeryParams);
+
                 //drawpie1(pagequeryParams, "main", "PieMap1");
                 //drawbar1(pagequeryParams, "bar", "BarMap");
                 //$('#tt').datagrid('load', { pagequeryParams });
-               // buttononclick(pagequeryParams);
-                drawpie1(pagequeryParams, "main", "Pie2");
             });
 
         }

@@ -289,7 +289,7 @@ namespace SlbiReport.Controllers
 
             foreach (DataRow dr in dtNew.Rows)
             {
-                var obj = new SelectColumn() { valueField = Convert.ToString(dr["name"]), width = "200", multiple=true , label = Convert.ToString(dr["label"]), textField = Convert.ToString(dr["text"]) };
+                var obj = new SelectColumn() { ValueField = Convert.ToString(dr["name"]), Width = "200", Multiple=false , Label = Convert.ToString(dr["label"]), TextField = Convert.ToString(dr["text"]) };
                 selectlist.Add(obj);
             }
 
