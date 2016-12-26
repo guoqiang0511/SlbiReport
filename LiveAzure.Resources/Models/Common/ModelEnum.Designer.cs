@@ -97,6 +97,15 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)日历年月(单值必输,默认本月)|TextField(0_0)ZMONHT003_PText|ValueField(0_0)ZMONHT003_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MText|Valu [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string Sel1 {
+            get {
+                return ResourceManager.GetString("Sel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)到期回款状况：|FrozenColumns(0_0)[[{field: &apos;ZCUSTOMER_T&apos;,title: &apos;客户&apos;,sortable:true, formatter:&apos;&apos;,fixed:true}]]|Columns(0_0)[[{ title: &apos;Item Details&apos;, colspan: 7 }], [{ field: &apos;A00O2TFHXIFF3PJIBEFO12Z9IL_F&apos;,  title: &apos;本月到期款-原币&apos;, sortable: true, fixed: true, align: &apos;right&apos; },{ field: &apos;A00O2TFHXIFF3PJJAN433USWUC_F&apos;,   title: &apos;本月到期款-本币&apos;, sortable: true, fixed: true, align: &apos;right&apos; },{ field: &apos;A00O2TFHXIFF3PJ [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string Tab1 {

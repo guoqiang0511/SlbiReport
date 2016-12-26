@@ -185,6 +185,60 @@ namespace SlbiReport.Utilities
 
             return result;
         }
+
+        public static List<SelectColumn> GetSelect(string sName)
+        {
+            List<SelectColumn> selectlist = new List<Models.SelectColumn>();
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+
+            string[] selects = sResources.Split('*');
+            for (int i = 0; i < selects.Count()-1; i++)
+            {
+                SelectColumn oSelectColumn = new SelectColumn();
+                StringToEntityValue(oSelectColumn, selects[i]);
+                selectlist.Add(oSelectColumn);
+            }
+
+            return selectlist;
+        }
+
+        public static string GetSelect_Dim(string sName, string sId, string sToken)
+        {
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            // string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003Results?$select=" + id + "," + text + "&" + token;
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+
+            PostParams oPostParams = new PostParams(sResources);
+
+            string sUrl = oPostParams.GetString("*Url");
+            string fileName = sUrl + sId + "?" + sToken;
+
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["Property"];
+            List<object> lists = new List<object>();
+            foreach (DataRow dr in ds.Tables["properties"].Rows)
+            {
+                var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_TEXT"] };
+                lists.Add(obj);
+            }
+
+
+            JavaScriptSerializer jsS = new JavaScriptSerializer();
+            String result = jsS.Serialize(lists);
+            return result;
+        }
         public static string Dtb2Json(DataTable dtb)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
