@@ -135,4 +135,10 @@
   <data name="Tab1" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)到期回款状况：|FrozenColumns(0_0)[[{field: 'ZCUSTOMER_T',title: '客户',sortable:true, formatter:'',fixed:true}]]|Columns(0_0)[[{ title: 'Item Details', colspan: 7 }], [{ field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',  title: '本月到期款-原币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAN433USWUC_F',   title: '本月到期款-本币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',   title: '回款金额-现汇', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F', title: '回款金额-承兑', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F', title: '回款金额-小计', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F', title: '回款率', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F', title: '差异', sortable: true, fixed: true, align: 'right' }]]</value>
   </data>
+  <data name="BarZPU_M001_Q0002" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)</value>
+  </data>
+  <data name="PieZPU_M001_Q0002" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0003_SRV/ZPU_M001_Q0003{0}Results?|Title(0_0)各类别材料采购占比|SubTitle(0_0)|PieMapSelectName(0_0)A0MATL_GROUP|PieMapSelectValue(0_0)A00O2TFHXIFF1Z9LDOWFPYMB7E|SeriesName(0_0)采购金额</value>
+  </data>
 </root>

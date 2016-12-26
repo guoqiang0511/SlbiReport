@@ -70,6 +70,15 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0) 的本地化字符串。
+        /// </summary>
+        public static string BarZPU_M001_Q0002 {
+            get {
+                return ResourceManager.GetString("BarZPU_M001_Q0002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
         public static string file {
@@ -93,6 +102,15 @@ namespace LiveAzure.Resources.Models.Common {
         public static string Pie2 {
             get {
                 return ResourceManager.GetString("Pie2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0003_SRV/ZPU_M001_Q0003{0}Results?|Title(0_0)各类别材料采购占比|SubTitle(0_0)|PieMapSelectName(0_0)A0MATL_GROUP|PieMapSelectValue(0_0)A00O2TFHXIFF1Z9LDOWFPYMB7E|SeriesName(0_0)采购金额 的本地化字符串。
+        /// </summary>
+        public static string PieZPU_M001_Q0002 {
+            get {
+                return ResourceManager.GetString("PieZPU_M001_Q0002", resourceCulture);
             }
         }
         
