@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pie6 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.pie7 = new System.Windows.Forms.TextBox();
             this.pie2 = new System.Windows.Forms.TextBox();
             this.pie5 = new System.Windows.Forms.TextBox();
             this.pie4 = new System.Windows.Forms.TextBox();
@@ -95,6 +97,8 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pie6);
+            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.pie7);
             this.panel1.Controls.Add(this.pie2);
             this.panel1.Controls.Add(this.pie5);
             this.panel1.Controls.Add(this.pie4);
@@ -106,18 +110,35 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.Url);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(194, 25);
+            this.panel1.Location = new System.Drawing.Point(181, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(849, 456);
             this.panel1.TabIndex = 5;
             // 
             // pie6
             // 
-            this.pie6.Location = new System.Drawing.Point(22, 335);
-            this.pie6.Multiline = true;
+            this.pie6.Location = new System.Drawing.Point(174, 220);
             this.pie6.Name = "pie6";
-            this.pie6.Size = new System.Drawing.Size(621, 105);
-            this.pie6.TabIndex = 22;
+            this.pie6.Size = new System.Drawing.Size(667, 25);
+            this.pie6.TabIndex = 24;
+            this.pie6.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(16, 220);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(87, 15);
+            this.label21.TabIndex = 23;
+            this.label21.Text = "SeriesName";
+            // 
+            // pie7
+            // 
+            this.pie7.Location = new System.Drawing.Point(22, 335);
+            this.pie7.Multiline = true;
+            this.pie7.Name = "pie7";
+            this.pie7.Size = new System.Drawing.Size(621, 105);
+            this.pie7.TabIndex = 22;
             // 
             // pie2
             // 
@@ -624,6 +645,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 537);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
@@ -631,7 +653,6 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
@@ -649,7 +670,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox pie6;
+        private System.Windows.Forms.TextBox pie7;
         private System.Windows.Forms.TextBox pie2;
         private System.Windows.Forms.TextBox pie5;
         private System.Windows.Forms.TextBox pie4;
@@ -706,6 +727,8 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox sel7;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox pie6;
+        private System.Windows.Forms.Label label21;
     }
 }
 

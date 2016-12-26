@@ -26,12 +26,12 @@ namespace WindowsFormsApplication1
         private void Url_Click(object sender, EventArgs e)
         {
             string s = pie1.Text.ToString();
-            pie6.Text = s;
+            pie7.Text = s;
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string s = "Url(0_0)"+pie1.Text.ToString()+ "{0}Results?"+ "|Title(0_0)"+ pie2.Text.ToString() + "|SubTitle(0_0)"+pie3.Text.ToString() + "|PieMapSelectName(0_0)" + pie4.Text.ToString() + "|PieMapSelectValue(0_0)"+pie5.Text.ToString();
-            pie6.Text = s;
+            string s = "Url(0_0)"+pie1.Text.ToString()+ "{0}Results?"+ "|Title(0_0)"+ pie2.Text.ToString() + "|SubTitle(0_0)"+pie3.Text.ToString() + "|PieMapSelectName(0_0)" + pie4.Text.ToString() + "|PieMapSelectValue(0_0)"+pie5.Text.ToString() + "|SeriesName(0_0)" + pie6.Text.ToString();
+            pie7.Text = s;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -90,6 +90,12 @@ namespace WindowsFormsApplication1
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
