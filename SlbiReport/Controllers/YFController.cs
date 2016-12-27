@@ -46,7 +46,7 @@ namespace SlbiReport.Controllers
             string cmd = Request["pagequeryParams"];
             string urltt = QueryParamsurl(cmd);
 
-            var bar = CommonHelper.GetBarViewModel(id, urltt, token);
+            var bar = CommonHelper.GetBarViewModel("ZPU_M001_Q0007", urltt, token);
 
             return Json(new { status = 1, result = bar });
         }
@@ -190,6 +190,11 @@ namespace SlbiReport.Controllers
     
 
         public ActionResult ZPU_M001_Q0002port()
+        {
+            return View();
+        }
+
+        public ActionResult ZPU_M001_Q0006port()
         {
             return View();
         }

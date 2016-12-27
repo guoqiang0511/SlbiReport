@@ -131,5 +131,14 @@ namespace LiveAzure.Resources.Models.Common {
                 return ResourceManager.GetString("Tab1", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0007_SRV/ZPU_M001_Q0007{0}Results?|Title(0_0)采购降本月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PL4CK7IZYJKWW,A00O2TFHXIFF3PL4CK7IZYJR8G|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)本年降本,本年降本目标 的本地化字符串。
+        /// </summary>
+        public static string ZPU_M001_Q0007 {
+            get {
+                return ResourceManager.GetString("ZPU_M001_Q0007", resourceCulture);
+            }
+        }
     }
 }
