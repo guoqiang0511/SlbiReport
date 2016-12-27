@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/SlbiReport/Views/YF/ZPU_M001_Q0004port.cshtml
