@@ -90,7 +90,7 @@ function drawbar2(pagequeryParams, container, id) {
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post('BarMap', { pagequeryParams: pagequeryParams }, function (response, status) {
+    $.post('BarMap', {id:id , pagequeryParams: pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -118,7 +118,7 @@ function drawbar3(pagequeryParams, container, id) {
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post('BarMap', { pagequeryParams: pagequeryParams }, function (response, status) {
+    $.post('BarMap', {id:id, pagequeryParams: pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {

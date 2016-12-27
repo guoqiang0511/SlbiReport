@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LiveAzure.Resources.Models.Common {
+namespace LiveAzure.Resources.Models.Common备份怕冲突版本 {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace LiveAzure.Resources.Models.Common {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LiveAzure.Resources.Models.Common.ModelEnum", typeof(ModelEnum).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LiveAzure.Resources.Models.Common备份怕冲突版本.ModelEnum", typeof(ModelEnum).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -133,7 +133,16 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0007_SRV/ZPU_M001_Q0007{0}Results?|Title(0_0)采购降本月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PL4CK7IZYJKWW,A00O2TFHXIFF3PL4CK7IZYJR8G|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)本年降本,本年降本目标 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0006_SRV/ZPU_M001_Q0006{0}Results?|Title(0_0)采购降本目标达成分析|FrozenColumns(0_0)|Columns(0_0)[[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2},{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2}，{field: &apos;A0MATL_GROUP&apos;,title: &apos;类别&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2}， {title:&apos;月度完成情况&apos;,colspan:6}， {title:&apos;累计完成情况&apos;,colspan:7} ，{title:&apos;上年同期降本情况&apos;,colspan [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string ZPU_M001_Q0006 {
+            get {
+                return ResourceManager.GetString("ZPU_M001_Q0006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0007_SRV/ZPU_M001_Q0007{0}Results?|Title(0_0)采购降本月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PL4CK7IZYJKWW,A00O2TFHXIFF3PL4CK7IZYJR8G,A00O2TFHXIFF3PL4CK7IZYJXK0|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)本年降本,本年降本目标 的本地化字符串。
         /// </summary>
         public static string ZPU_M001_Q0007 {
             get {

@@ -46,7 +46,7 @@ namespace SlbiReport.Controllers
             string cmd = Request["pagequeryParams"];
             string urltt = QueryParamsurl(cmd);
 
-            var bar = CommonHelper.GetBarViewModel("ZPU_M001_Q0007", urltt, token);
+            var bar = CommonHelper.GetBarViewModel(id, urltt, token);
 
             return Json(new { status = 1, result = bar });
         }
@@ -187,7 +187,30 @@ namespace SlbiReport.Controllers
             return list;
         }
 
-    
+        public ActionResult TableMetaMap(string id)
+        {
+
+            TableViewModel table = CommonHelper.GetTableMetadata(id);
+
+            return Json(new { status = 1, result = table });
+        }
+
+
+        public String TableMap(String id, int page, int rows)
+        {
+            int skip = (page - 1) * rows;
+
+            string cmd = Request["pagequeryParams"];
+            string urltt = QueryParamsurl(cmd);
+
+
+            string result = CommonHelper.GetTableDate(id, urltt, skip.ToString(), rows.ToString(), token);
+
+            return result;
+
+            //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult ZPU_M001_Q0002port()
         {
