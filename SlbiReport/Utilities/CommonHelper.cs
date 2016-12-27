@@ -17,7 +17,7 @@ namespace SlbiReport.Utilities
         {
 
             PieMapViewModel oPieMapViewModel = new PieMapViewModel();
-            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
+            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oPieMapViewModel, sResources);
 
             if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null)
@@ -64,7 +64,7 @@ namespace SlbiReport.Utilities
         {
             BarViewModel oBarViewModel = new BarViewModel();
 
-            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oBarViewModel, sResources);
 
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
@@ -107,7 +107,8 @@ namespace SlbiReport.Utilities
                         valuelist = new List<string>();
                         oPostParams.Add(SeriesStrs[i], valuelist);
                     }
-                    valuelist.Add(Convert.ToString(dr[SeriesStrs[i]]));
+                    double odouble = Convert.ToDouble(dr[SeriesStrs[i]]);
+                    valuelist.Add(Convert.ToString(odouble.ToString()));
 
                 }
             }
@@ -143,7 +144,7 @@ namespace SlbiReport.Utilities
         {
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-
+            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
 
             return oTableViewModel;
@@ -155,6 +156,7 @@ namespace SlbiReport.Utilities
             DataSet ds = new DataSet();
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
 
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);

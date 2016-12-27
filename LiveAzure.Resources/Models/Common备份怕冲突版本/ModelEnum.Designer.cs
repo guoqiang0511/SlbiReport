@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LiveAzure.Resources.Models.Common {
+namespace LiveAzure.Resources.Models.Common备份怕冲突版本 {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace LiveAzure.Resources.Models.Common {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LiveAzure.Resources.Models.Common.ModelEnum", typeof(ModelEnum).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LiveAzure.Resources.Models.Common备份怕冲突版本.ModelEnum", typeof(ModelEnum).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

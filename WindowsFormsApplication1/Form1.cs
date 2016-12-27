@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SlbiReport.Utilities;
 
 namespace WindowsFormsApplication1
 {
@@ -19,6 +21,7 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
             panel3.Visible = false;
             panel4.Visible = false;
+            panel5.Visible = false;
             panel1.Show();
             
         }
@@ -39,6 +42,7 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
             panel3.Visible = false;
             panel4.Visible = false;
+            panel5.Visible = false;
             panel1.Show();
         }
 
@@ -67,6 +71,7 @@ namespace WindowsFormsApplication1
             panel1.Visible = false;
             panel2.Visible = false;
             panel4.Visible = false;
+            panel5.Visible = false;
             panel3.Show();
         }
 
@@ -75,6 +80,7 @@ namespace WindowsFormsApplication1
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
+            panel5.Visible = false;
             panel4.Show();
         }
 
@@ -84,20 +90,56 @@ namespace WindowsFormsApplication1
             sel6.Text = s;
         }
 
-        private void label11_Click(object sender, EventArgs e)
-        {
+      
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            panel4.Visible = false;
+            panel5.Show();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void button10_Click(object sender, EventArgs e)
         {
+            string s = z1.Text.ToString().Replace("\r\n","");
+            string[] ss = s.Replace("/>", "|").Split('|');
+            //< Property Name =\"A00O2TFHXIFF3PK5MID5C3J9PX\" Type=\"Edm.Decimal\" Precision=\"36\" Scale=\"34\" sap:aggregation-role=\"measure\" sap:creatable=\"false\" sap:filterable=\"false\" sap:label=\"月采购金额\" sap:text=\"A00O2TFHXIFF3PK5MID5C3J9PX_F\" sap:updatable=\"false\"
+            List<oDatas> oDataslist = new List<oDatas>();
+            foreach (var item in ss)
+            {
+                if (!string.IsNullOrEmpty(item))
+                {
+                    string a = item.Replace("=\"", "(0_0)").Replace("\"", "|").Replace("<", "").Replace(" ", "").Replace(":", "");
+                    PostParams oPostParams = new PostParams(a);
+                    oDatas oData = new oDatas();
+                    CommonHelper.StringToEntityValue(oData, a);
+                    if (!oData.PropertyName.Contains("_F"))
+                    {
+                        if (oDataslist.Where(o => o.saplabel == oData.saplabel).FirstOrDefault() == null)
+                        {
+                            oDataslist.Add(oData);
+                        }
+                    }
+                }
+            }
+            string res = "";
+            foreach (var item in oDataslist)
+            {
+                res += "{ field: '" + item.PropertyName + "',   title: '" + item.saplabel + "', sortable: true, fixed: true, align: 'right' } ，";
+            }
 
+            z2.Text = res;
         }
 
+        
+    }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
+    public class oDatas
+    {
+        public string PropertyName { get; set; }
 
-        }
+        public string saplabel { get; set; }
     }
 }
