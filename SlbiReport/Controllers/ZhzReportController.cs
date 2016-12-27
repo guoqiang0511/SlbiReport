@@ -35,7 +35,7 @@ namespace SlbiReport.Controllers
         {
             String field = Request["field"];
             String text = Request["text"];
-
+            id = "ZBU001_M";
             String result = CommonHelper.GetSelect_Dim("SelZFI_M001_Q0005", id, token);
 
             return result;
@@ -124,7 +124,7 @@ namespace SlbiReport.Controllers
             string urltt = QueryParamsurl(cmd);
 
 
-            string result = CommonHelper.GetTableDate(id, urltt, skip.ToString(), rows.ToString(), token);
+            string result = CommonHelper.GetTableData(id, urltt, skip.ToString(), rows.ToString(), token);
 
             return result;
 
@@ -150,7 +150,7 @@ namespace SlbiReport.Controllers
             string urltt = QueryParamsurl(cmd);
 
 
-            string result = CommonHelper.GetTableDate("TabZFI_M001_Q0005", urltt, skip.ToString(), rows.ToString(), token);
+            string result = CommonHelper.GetTableData("TabZFI_M001_Q0005", urltt, skip.ToString(), rows.ToString(), token);
 
             return result;
 

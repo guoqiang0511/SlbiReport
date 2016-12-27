@@ -77,5 +77,14 @@ namespace LiveAzure.Resources.Models.Common {
                 return ResourceManager.GetString("Tab2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/ZFI_M001_Q0005{0}Results?|Title{0}Results?|Title(0_0)预收帐款统计分析|FrozenColumns(0_0)|FrozenColumns(0_0)[[ {field:&apos;ZPROFTCTR__ZBU&apos;,title:&apos;事业部 &apos;,rowspan:2,sortable:true, formatter:&apos;&apos;,fixed:true, align: &apos;center&apos; }]]|Columns(0_0)[[{field:&apos;ZPLANT&apos;,title:&apos;工厂&apos;,rowspan:2,sortable:true, align: &apos;center&apos;}]]|Columns(0_0)[[{field:&apos;itemid&apos;,title:&apos;账龄&apos;,rowspan:2,sortable:true}]]|Columns(0_0)[[{field:&apos;&apos;,title:&apos;期末余额（本币）&apos;,colspan:2,sortable:true}, {field [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        internal static string TabZFI_M001_Q0005 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0005", resourceCulture);
+            }
+        }
     }
 }

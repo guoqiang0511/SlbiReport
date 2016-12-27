@@ -360,7 +360,7 @@ namespace SlbiReport.Utilities
 
             PostParams oPostParams = new PostParams(sResources);
 
-            string sUrl = oPostParams.GetString("*Url");
+            string sUrl = oPostParams.GetString("Url");
             string fileName = sUrl + sId + "?" + sToken;
 
             XmlDocument doc = new XmlDocument();
