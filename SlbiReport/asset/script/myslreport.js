@@ -84,13 +84,13 @@ function drawbar1(pagequeryParams, container, id) {
 }
 
 //两柱一线（线对应y轴）
-function drawbar2(pagequeryParams, id, url) {
-    var barChart = echarts.init(document.getElementById(id));
+function drawbar2(pagequeryParams, container, id) {
+    var barChart = echarts.init(document.getElementById(container));
     var bar_option = getBarOption2();
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post(url, { pagequeryParams : pagequeryParams }, function (response, status) {
+    $.post('BarMap', {id:id , pagequeryParams: pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -105,32 +105,20 @@ function drawbar2(pagequeryParams, id, url) {
                 data: response.result.AxisData
             },
 
-            series: [{
-                name: response.result.SeriesName1,
-                data: response.result.SeriesData1
-            },
-            {
-                name: response.result.SeriesName2,
-                data: response.result.SeriesData2
-            },
-            {
-                name: response.result.SeriesName3,
-                data: response.result.SeriesData3
-            }
-            ]
+            series: response.result.Series
         });
 
     });
 }
 
 //两条柱状图（y轴）
-function drawbar3(pagequeryParams, id, url) {
-    var barChart = echarts.init(document.getElementById(id));
+function drawbar3(pagequeryParams, container, id) {
+    var barChart = echarts.init(document.getElementById(container));
     var bar_option = getBarOption3();
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post(url, { pagequeryParams: pagequeryParams }, function (response, status) {
+    $.post('BarMap', {id:id, pagequeryParams: pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -144,24 +132,20 @@ function drawbar3(pagequeryParams, id, url) {
                 data: response.result.AxisData
             },
 
-            series: [{
-                name: response.result.SeriesName1,
-                data: response.result.SeriesData1
-            },
-            {
-                name: response.result.SeriesName2,
-                data: response.result.SeriesData2
-            }]
+            series: response.result.Series
         });
 
     });
 }
 
-//画表格
-function drawtable1(pagequeryParams, id, metaurl, url) {
-    $.post(metaurl, {}, function (response, status) {
+//画表格,自动画出表头
+function drawtable_auto(pagequeryParams, container, id) {
+
+    $.post('TableMetaMap_Auto', { pagequeryParams: pagequeryParams ,id:id}, function (response, status) {
 
         var option = getTableOption();
+        var field = "";
+        var frozenfield = "";
         var s = "";
         var fs = "";
         fs = "[[";
@@ -169,7 +153,9 @@ function drawtable1(pagequeryParams, id, metaurl, url) {
         if (response) {
             //   DrawPie(data, "echart1");
             $.each(response.result.Column, function (i, result) {
+                field = field + result.field + ",";
                 if (result.frozen == true) {
+                    frozenfield = frozenfield + result.field + ",";
                     fs = fs + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,width: " + result.width + ",formatter:'',fixed:true},";
                 } else {
                     s = s + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,width: " + result.width + ",fixed:true,align:'right'},";
@@ -178,13 +164,19 @@ function drawtable1(pagequeryParams, id, metaurl, url) {
         }
         fs = fs + "]]";
         s = s + "]]";
+  
+        field = field.substring(0, field.length - 1);
+        frozenfield = frozenfield.substring(0, frozenfield.length - 1);
 
         option.frozenColumns = eval(fs);
         option.columns = eval(s);
         option.title = response.result.Title;
-        option.url = url;
-
-        $('#' + id + '').datagrid(option);
+        option.url = 'TableMap_Auto';
+        option.onLoadSuccess = function (data) {
+            mergeCellsByField(container, field);
+        };
+        option.queryParams = { field: field, id: id };
+        $('#' + container + '').datagrid(option);
 
 
     });
@@ -197,6 +189,7 @@ function drawtable(pagequeryParams, container, id) {
 
         var fs = "";
         var s = "";
+        var field = "";
         if (response){
             fs = response.result.FrozenColumns;
             s = response.result.Columns;
@@ -211,7 +204,10 @@ function drawtable(pagequeryParams, container, id) {
         option.columns = eval(s);
         option.title = response.result.Title;
         option.url = 'TableMap';
-        option.queryParams = { id: id }
+        option.onLoadSuccess = function (data) {
+            mergeCellsByField(container, "");
+        };
+        option.queryParams = { id: id };
         $('#' + container + '').datagrid(option);
         }
     });
@@ -233,7 +229,7 @@ function drawselect(container, id) {
                     label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        "id": result.valueField
+                        "field": result.valueField
                     },
                     labelPosition: 'left',
                     valueField: 'id',
@@ -511,6 +507,58 @@ function getBarOption3() {
             }
         ]
 
+    }
+}
+
+/**
+* EasyUI DataGrid根据字段动态合并单元格
+* 参数 tableID 要合并table的id
+* 参数 colList 要合并的列,用逗号分隔(例如："name,department,office");
+*/
+function mergeCellsByField(tableID, colList) {
+    var ColArray = colList.split(",");
+    var tTable = $("#" + tableID);
+    var TableRowCnts = tTable.datagrid("getRows").length;
+    var tmpA;
+    var tmpB;
+    var PerTxt = "";
+    var CurTxt = "";
+    var alertStr = "";
+    for (j = ColArray.length - 1; j >= 0; j--) {
+        PerTxt = "";
+        tmpA = 1;
+        tmpB = 0;
+
+        for (i = 0; i <= TableRowCnts; i++) {
+            if (i == TableRowCnts) {
+                CurTxt = "";
+            }
+            else {
+                CurTxt = tTable.datagrid("getRows")[i][ColArray[j]];
+            }
+            if (PerTxt == CurTxt) {
+                tmpA += 1;
+            }
+            else {
+                tmpB += tmpA;
+
+                tTable.datagrid("mergeCells", {
+                    index: i - tmpA,
+                    field: ColArray[j],　　//合并字段
+                    rowspan: tmpA,
+                    colspan: null
+                });
+                tTable.datagrid("mergeCells", { //根据ColArray[j]进行合并
+                    index: i - tmpA,
+                    field: "Ideparture",
+                    rowspan: tmpA,
+                    colspan: null
+                });
+
+                tmpA = 1;
+            }
+            PerTxt = CurTxt;
+        }
     }
 }
 

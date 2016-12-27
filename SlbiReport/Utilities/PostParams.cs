@@ -28,7 +28,7 @@ namespace SlbiReport.Utilities
                     string[] strList1 = queryString.Split(split1.ToArray());
                     for (int i = 0; i < strList1.Length; i++)
                     {
-                        string[] strList2 = strList1[i].Replace("(0_0)", "|").Split(split1.ToArray());
+                        string[] strList2 = strList1[i].Replace(split2, "|").Split(split1.ToArray());
                         if (String.IsNullOrEmpty(strList2[0])) continue;
                         if (oInsideParams.ContainsKey(strList2[0]))
                             oInsideParams[strList2[0]] = strList2[1];

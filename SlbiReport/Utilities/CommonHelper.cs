@@ -17,7 +17,7 @@ namespace SlbiReport.Utilities
         {
 
             PieMapViewModel oPieMapViewModel = new PieMapViewModel();
-            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
+            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oPieMapViewModel, sResources);
 
             if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null)
@@ -64,7 +64,7 @@ namespace SlbiReport.Utilities
         {
             BarViewModel oBarViewModel = new BarViewModel();
 
-            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oBarViewModel, sResources);
 
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
@@ -107,7 +107,8 @@ namespace SlbiReport.Utilities
                         valuelist = new List<string>();
                         oPostParams.Add(SeriesStrs[i], valuelist);
                     }
-                    valuelist.Add(Convert.ToString(dr[SeriesStrs[i]]));
+                    double odouble = Convert.ToDouble(dr[SeriesStrs[i]]);
+                    valuelist.Add(Convert.ToString(odouble.ToString()));
 
                 }
             }
@@ -143,18 +144,19 @@ namespace SlbiReport.Utilities
         {
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-
+            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
 
             return oTableViewModel;
         }
 
-        public static string GetTableDate(string sName, string sUrltt, string sSkip, string sRows, string sToken)
+        public static string GetTableData(string sName, string sUrltt, string sSkip, string sRows, string sToken)
         {
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
 
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
@@ -186,6 +188,44 @@ namespace SlbiReport.Utilities
             return result;
         }
 
+        public static string GetTableData_Auto(string sName, string sUrltt, string sSkip,string field, string sRows, string sToken)
+        {
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            TableViewModel oTableViewModel = new TableViewModel();
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            StringToEntityValue(oTableViewModel, sResources);
+
+            oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
+            oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
+
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(oTableViewModel.Url);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["properties"];
+
+            DataRow dr = ds.Tables["feed"].Select()[0];
+
+            string totalnum = Convert.ToString(dr["count"]);
+
+
+            List<String> items = new List<String>();
+
+            string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
+
+            return result;
+        }
+
+
         public static List<SelectColumn> GetSelect(string sName)
         {
             List<SelectColumn> selectlist = new List<Models.SelectColumn>();
@@ -200,6 +240,115 @@ namespace SlbiReport.Utilities
             }
 
             return selectlist;
+        }
+
+        public static List<SelectColumn> GetSelect_Auto(string sName, string sToken)
+        {
+
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            string fileName = sResources + sToken;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["Property"];
+
+            DataRow[] drArr = dt.Select("EntityType_Id=1 and  text <> '' ");//查询
+
+            DataTable dtNew = dt.Clone();
+
+
+            for (int i = 0; i < drArr.Length; i++)
+            {
+                dtNew.ImportRow(drArr[i]);
+
+            }
+
+            //return result;
+            List<SelectColumn> selectlist = new List<Models.SelectColumn>();
+
+            foreach (DataRow dr in dtNew.Rows)
+            {
+                var obj = new SelectColumn() { ValueField = Convert.ToString(dr["name"]), Width = "200", Multiple = false, Label = Convert.ToString(dr["label"]), TextField = Convert.ToString(dr["text"]) };
+                selectlist.Add(obj);
+            }
+
+        
+            return selectlist;
+        }
+
+        public static TableViewModel GetTableMetadata_Auto(string sName, string sToken)
+        {
+
+
+            TableViewModel oTableViewModel = new TableViewModel();
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+
+            StringToEntityValue(oTableViewModel, sResources);
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = oTableViewModel.Url + sToken;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["Property"];
+
+            DataRow[] drArr = dt.Select("EntityType_Id=0 and  text <> '' ");//查询
+
+            DataTable dtNew = dt.Clone();
+
+            //DataRow drd = dt.Select("EntityType_Id=0 and  Name = 'A0CALMONTH' ")[0];//查询
+            //drd["text"] = "A0CALMONTH";
+            //dtNew.ImportRow(drd);
+
+            for (int i = 0; i < drArr.Length; i++)
+            {
+                dtNew.ImportRow(drArr[i]);
+
+            }
+
+            //return result;
+            List<TableColumn> tablecol = new List<TableColumn>();
+
+            foreach (DataRow dr in dtNew.Rows)
+            {
+                Boolean frozen = false;
+                if (Convert.ToString(dr["aggregation-role"]) == "dimension")
+                    frozen = true;
+
+                var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "100", frozen = frozen };
+                tablecol.Add(obj);
+            }
+
+
+            var table = new TableViewModel()
+            {
+                Title = oTableViewModel.Title,
+                Column = tablecol
+            };
+
+
+            return table;
         }
 
         public static string GetSelect_Dim(string sName, string sId, string sToken)
@@ -239,6 +388,7 @@ namespace SlbiReport.Utilities
             String result = jsS.Serialize(lists);
             return result;
         }
+
         public static string Dtb2Json(DataTable dtb)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();

@@ -683,6 +683,7 @@
     <Content Include="Views\CwReport\Report3.cshtml" />
     <Content Include="Views\CwReport\Report4.cshtml" />
     <Content Include="Views\YF\ZPU_M001_Q0002port.cshtml" />
+    <Content Include="Views\YF\ZPU_M001_Q0006port.cshtml" />
     <Content Include="Views\ZhzReport\ZFI_M001_Q0005Report.cshtml" />
   </ItemGroup>
   <ItemGroup>

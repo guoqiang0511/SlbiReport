@@ -156,7 +156,7 @@ namespace SlbiReport.Controllers
             string urltt = QueryParamsurl(cmd);
 
           
-            string result = CommonHelper.GetTableDate("Tab1", urltt, skip.ToString(), rows.ToString(), token);
+            string result = CommonHelper.GetTableData("Tab1", urltt, skip.ToString(), rows.ToString(), token);
 
             return result;
 
@@ -187,9 +187,37 @@ namespace SlbiReport.Controllers
             return list;
         }
 
-    
+        public ActionResult TableMetaMap(string id)
+        {
+
+            TableViewModel table = CommonHelper.GetTableMetadata(id);
+
+            return Json(new { status = 1, result = table });
+        }
+
+
+        public String TableMap(String id, int page, int rows)
+        {
+            int skip = (page - 1) * rows;
+
+            string cmd = Request["pagequeryParams"];
+            string urltt = QueryParamsurl(cmd);
+
+
+            string result = CommonHelper.GetTableDate(id, urltt, skip.ToString(), rows.ToString(), token);
+
+            return result;
+
+            //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult ZPU_M001_Q0002port()
+        {
+            return View();
+        }
+
+        public ActionResult ZPU_M001_Q0006port()
         {
             return View();
         }
