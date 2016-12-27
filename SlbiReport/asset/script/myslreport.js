@@ -90,7 +90,7 @@ function drawbar2(pagequeryParams, container, id) {
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post(url, { pagequeryParams : pagequeryParams }, function (response, status) {
+    $.post('BarMap', { pagequeryParams: pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -112,13 +112,13 @@ function drawbar2(pagequeryParams, container, id) {
 }
 
 //两条柱状图（y轴）
-function drawbar3(pagequeryParams, id, url) {
-    var barChart = echarts.init(document.getElementById(id));
+function drawbar3(pagequeryParams, container, id) {
+    var barChart = echarts.init(document.getElementById(container));
     var bar_option = getBarOption3();
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post(url, { pagequeryParams: pagequeryParams }, function (response, status) {
+    $.post('BarMap', { pagequeryParams: pagequeryParams }, function (response, status) {
         barChart.hideLoading();
         barChart.setOption({
             title: {
@@ -132,14 +132,7 @@ function drawbar3(pagequeryParams, id, url) {
                 data: response.result.AxisData
             },
 
-            series: [{
-                name: response.result.SeriesName1,
-                data: response.result.SeriesData1
-            },
-            {
-                name: response.result.SeriesName2,
-                data: response.result.SeriesData2
-            }]
+            series: response.result.Series
         });
 
     });
