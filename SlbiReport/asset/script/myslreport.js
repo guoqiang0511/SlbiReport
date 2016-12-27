@@ -83,6 +83,7 @@ function drawbar1(pagequeryParams, container, id) {
     });
 }
 
+
 //两柱一线（线对应y轴）
 function drawbar2(pagequeryParams, container, id) {
     var barChart = echarts.init(document.getElementById(container));
@@ -138,6 +139,34 @@ function drawbar3(pagequeryParams, container, id) {
     });
 }
 
+//一柱一线
+function drawbar4(pagequeryParams, container, id) {
+    var barChart = echarts.init(document.getElementById(container));
+    var bar_option = getBarOption4();
+    barChart.setOption(bar_option);
+    barChart.showLoading();
+
+    $.post('BarMap', { id: id, pagequeryParams: pagequeryParams }, function (response, status) {
+        var ss = JSON.stringify(response.result.Series);
+        barChart.hideLoading();
+        barChart.setOption({
+            title: {
+                text: response.result.Title,
+                subtext: response.result.SubTitle,
+                x: 'left'
+            },
+            legend: {
+                data: response.result.LegendData
+            },
+            xAxis: {
+                data: response.result.AxisData
+            },
+
+            series: response.result.Series
+        });
+
+    });
+}
 //画表格,自动画出表头
 function drawtable_auto(pagequeryParams, container, id) {
 
@@ -216,7 +245,7 @@ function drawtable(pagequeryParams, container, id) {
 }
 
 //画选择框
-function drawselect(container, id) {
+function drawselect_Auto(container, id) {
     var searchlist = new Array();
     var selectarea = $("#" + container + "");
     $.post("Select", { id: id }, function (response, status) {
@@ -510,6 +539,54 @@ function getBarOption3() {
     }
 }
 
+function getBarOption4() {
+
+    return {
+
+        tooltip: {
+            trigger: 'axis'
+        },
+        toolbox: {
+            feature: {
+                dataView: { show: true, readOnly: false },
+                magicType: { show: true, type: ['line', 'bar'] },
+                restore: { show: true },
+                saveAsImage: { show: true }
+            }
+        },
+        legend: {
+            data: []
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: []
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '',
+                axisLabel: {
+                    formatter: '{value} '
+                }
+            }
+        ],
+        series: [
+            {
+                name: '',
+                type: 'bar',
+                data: []
+
+            },
+            {
+                name: '',
+                type: 'line',
+                data: []
+            }
+        ]
+    }
+}
 /**
 * EasyUI DataGrid根据字段动态合并单元格
 * 参数 tableID 要合并table的id
