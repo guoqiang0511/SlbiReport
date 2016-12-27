@@ -18,8 +18,7 @@
     <div id="selectArea"></div>
 
     <div>
-        <div id="bar1" ng-controller="myBarCtrl" style="height: 400px;float:left;width:60%"></div>
-        <div id="bar2" ng-controller="myBarCtrl" style="height: 400px;float:left;width:40%"></div>
+        <div id="bar" ng-controller="myBarCtrl" style="height: 400px;float:left;width:70%"></div>
     </div>
 
 
@@ -34,10 +33,9 @@
 $(window).load(function () {
     //要执行的方法体
     //drawselect("selectArea","");
-    drawtable(null, "tt", "ZPU_M001_Q0006");
+    //drawtable2(null, "tt", "Rp2_Table1Metadata", "Rp2_Table1data");
 
-    drawbar2(null, "bar1", "ZPU_M001_Q0007");
-    drawbar3(null, "bar2", "ZPU_M001_Q0008");
-    //drawpie1(null, "main", "PieZPU_M001_Q0002");
+    drawbar2(null, "bar", "ZPU_M001_Q0005");
+   // drawpie1(null, "main", "PieZPU_M001_Q0002");
 });
 </script>

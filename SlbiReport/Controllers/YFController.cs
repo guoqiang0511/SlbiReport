@@ -204,7 +204,7 @@ namespace SlbiReport.Controllers
             string urltt = QueryParamsurl(cmd);
 
 
-            string result = CommonHelper.GetTableDate(id, urltt, skip.ToString(), rows.ToString(), token);
+            string result = CommonHelper.GetTableData(id, urltt, skip.ToString(), rows.ToString(), token);
 
             return result;
 
@@ -218,6 +218,10 @@ namespace SlbiReport.Controllers
         }
 
         public ActionResult ZPU_M001_Q0006port()
+        {
+            return View();
+        }
+        public ActionResult ZPU_M001_Q0004()
         {
             return View();
         }
