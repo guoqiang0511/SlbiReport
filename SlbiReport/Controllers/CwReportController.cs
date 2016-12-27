@@ -426,6 +426,105 @@ namespace SlbiReport.Controllers
         }
 
 
+        public ActionResult TableMetaMap_Auto(string id)
+        {
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?" + token;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["Property"];
+
+            DataRow[] drArr = dt.Select("EntityType_Id=0 and  text <> '' ");//查询
+
+            DataTable dtNew = dt.Clone();
+
+            //DataRow drd = dt.Select("EntityType_Id=0 and  Name = 'A0CALMONTH' ")[0];//查询
+            //drd["text"] = "A0CALMONTH";
+            //dtNew.ImportRow(drd);
+
+            for (int i = 0; i < drArr.Length; i++)
+            {
+                dtNew.ImportRow(drArr[i]);
+
+            }
+
+            //return result;
+            List<TableColumn> tablecol = new List<TableColumn>();
+
+            foreach (DataRow dr in dtNew.Rows)
+            {
+                Boolean frozen = false;
+                if (Convert.ToString(dr["aggregation-role"]) == "dimension")
+                    frozen = true;
+
+                var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "100", frozen = frozen };
+                tablecol.Add(obj);
+            }
+
+
+            var table = new TableViewModel()
+            {
+                Title = "test：",
+                Column = tablecol
+            };
+
+            return Json(new { status = 1, result = table });
+        }
+
+
+        public String TableMap_Auto(String id,int page, int rows)
+        {
+            int skip = (page - 1) * rows;
+
+            string cmd = Request["pagequeryParams"];
+            string field = Request["field"];
+            string urltt = QueryParamsurl(cmd);
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/ZPU_M001_Q0001" + urltt + "Results?$select="+ field + "&$inlinecount=allpages&$skip=" + skip + "&$top=" + rows + "&" + token;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["properties"];
+
+            DataRow dr = ds.Tables["feed"].Select()[0];
+
+            string totalnum = Convert.ToString(dr["count"]);
+
+
+
+            List<String> items = new List<String>();
+
+            string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
+
+
+            return result;
+
+            //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
+        }
+
+
         //public ActionResult Rp2_Bar1Map(string id)
         //{
         //    string cmd = Request["pagequeryParams"];
