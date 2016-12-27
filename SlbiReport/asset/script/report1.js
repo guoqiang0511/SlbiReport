@@ -31,7 +31,8 @@ $(window).load(function () {
     //inittable();
     //drawpie();
     //drawbar();
-    drawpie1(null, "main", "Pie2");
+    // drawpie1(null, "main", "Pie2");
+    drawtable_auto(null, "tt", "11");
 });
 
 //function initselect()
@@ -65,7 +66,6 @@ $(window).load(function () {
 //                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValue") + ","
 //                }
 //                pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
-
 
 //             //   drawpie(pagequeryParams);
 //                drawbar(pagequeryParams);

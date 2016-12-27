@@ -139,10 +139,11 @@ function drawbar3(pagequeryParams, container, id) {
 }
 
 //画表格
-function drawtable1(pagequeryParams, id, metaurl, url) {
-    $.post(metaurl, {}, function (response, status) {
+function drawtable_auto(pagequeryParams, container, id) {
 
+    $.post('TableMetaMap_Auto', {}, function (response, status) {
         var option = getTableOption();
+        var field = "";
         var s = "";
         var fs = "";
         fs = "[[";
@@ -150,6 +151,7 @@ function drawtable1(pagequeryParams, id, metaurl, url) {
         if (response) {
             //   DrawPie(data, "echart1");
             $.each(response.result.Column, function (i, result) {
+                field = field + result.field + ",";
                 if (result.frozen == true) {
                     fs = fs + "{field: '" + result.field + "',title: '" + result.title + "',sortable:true,width: " + result.width + ",formatter:'',fixed:true},";
                 } else {
@@ -159,13 +161,15 @@ function drawtable1(pagequeryParams, id, metaurl, url) {
         }
         fs = fs + "]]";
         s = s + "]]";
+  
+        field = field.substring(0, field.length - 1);
 
         option.frozenColumns = eval(fs);
         option.columns = eval(s);
         option.title = response.result.Title;
-        option.url = url;
-
-        $('#' + id + '').datagrid(option);
+        option.url = 'TableMap_Auto';
+        option.queryParams = { field: field ,id:id}
+        $('#' + container + '').datagrid(option);
 
 
     });
