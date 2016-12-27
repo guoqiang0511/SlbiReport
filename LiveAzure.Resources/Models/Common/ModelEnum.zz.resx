@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,34 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Bar1" xml:space="preserve">
-    <value>Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?|Title(0_0)testbar|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA|AxisDataStr(0_0)A0CALMONTH|LegendDataStr(0_0)实际,预测</value>
-  </data>
-  <data name="file" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Pie1" xml:space="preserve">
-    <value>Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?|Title(0_0)test|SubTitle(0_0)subtest|PieMapSelectName(0_0)ZDMPLANT_T|PieMapSelectValue(0_0)A00O2TFKZNC7K2N5JLDC4434TM</value>
-  </data>
-  <data name="Pie2" xml:space="preserve">
-    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)test|SubTitle(0_0)subtest|PieMapSelectName(0_0)ZPROFTCTR__ZBU_T|PieMapSelectValue(0_0)A00O2TFHXIFF3PJJNMJX09XV3R|SeriesName(0_0)test</value>
-  </data>
-  <data name="Sel1" xml:space="preserve">
-    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)日历年月(单值必输,默认本月)|TextField(0_0)ZMONHT003_PText|ValueField(0_0)ZMONHT003_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MText|ValueField(0_0)ZCOMPCODE001_M|Width(0_0)200|Multiple(0_0)true*</value>
-  </data>
-  <data name="Tab1" xml:space="preserve">
-    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)到期回款状况：|FrozenColumns(0_0)[[{field: 'ZCUSTOMER_T',title: '客户',sortable:true, formatter:'',fixed:true}]]|Columns(0_0)[[{ title: 'Item Details', colspan: 7 }], [{ field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',  title: '本月到期款-原币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAN433USWUC_F',   title: '本月到期款-本币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',   title: '回款金额-现汇', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F', title: '回款金额-承兑', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F', title: '回款金额-小计', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F', title: '回款率', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F', title: '差异', sortable: true, fixed: true, align: 'right' }]]</value>
-  </data>
-  <data name="BarZPU_M001_Q0002" xml:space="preserve">
-    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)</value>
-  </data>
-  <data name="PieZPU_M001_Q0002" xml:space="preserve">
-    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0003_SRV/ZPU_M001_Q0003{0}Results?|Title(0_0)各类别材料采购占比|SubTitle(0_0)|PieMapSelectName(0_0)A0MATL_GROUP|PieMapSelectValue(0_0)A00O2TFHXIFF1Z9LDOWFPYMB7E|SeriesName(0_0)采购金额</value>
-  </data>
-  <data name="SelZFI_M001_Q0005" xml:space="preserve">
+  <data name="Sel2" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)日历年月(单值必输,默认本月)|TextField(0_0)ZMONHT003_PText|ValueField(0_0)ZMONHT003_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZPROFTCTR__ZBUText|ValueField(0_0)ZPROFTCTR__ZBU|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)工厂(多值,可选)|TextField(0_0)ZPLANTText|ValueField(0_0)ZPLANT|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)客户(多值,可选)|TextField(0_0)ZCUSTOMERText|ValueField(0_0)ZCUSTOMER|Width(0_0)200|Multiple(0_0)true*</value>
   </data>
-  <data name="TabZFI_M001_Q0005" xml:space="preserve">
+  <data name="Tab2" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/ZFI_M001_Q0005{0}Results?|Title{0}Results?|Title(0_0)预收帐款统计分析|FrozenColumns(0_0)|FrozenColumns(0_0)[[ {field:'ZPROFTCTR__ZBU',title:'事业部 ',rowspan:2,sortable:true, formatter:'',fixed:true, align: 'center' }]]|Columns(0_0)[[{field:'ZPLANT',title:'工厂',rowspan:2,sortable:true, align: 'center'}]]|Columns(0_0)[[{field:'itemid',title:'账龄',rowspan:2,sortable:true}]]|Columns(0_0)[[{field:'',title:'期末余额（本币）',colspan:2,sortable:true}, {field:'',title:'期末余额（美元）',colspan:3,sortable:true}, {field:'',title:'期末余额（欧元）',colspan:4,sortable:true}, {field:'',title:'期末余额（英镑）',colspan:4,sortable:true},{field:'',title:'期末余额（日元）',colspan:4,sortable:true}, {field:'',title:'累计折合（RMB）',colspan:4,sortable:true}],[{field:'00O2TFHXIFF1Z9LH1MDNK58DK',title:'账面余额',width:80,align:'right',sortable:true},{field:'00O2TFHXIFF1Z9LH1MDNK63ZC',title:'比例(%)',width:80,align:'right',sortable:true}, {field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'原币金额',width:100},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'人民币金额',width:100},{field:'00O2TFHXIFF3PK1515IOLMA1S',title:'原币金额',width:60} ,{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF3PK1515IOLMMOW',title:'人民币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100},{field:'00O2TFHXIFF3PK1515IOLMA1S',title:'原币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF3PK1515IOLMMOW',title:'人民币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100},{field:'00O2TFHXIFF3PK1515IOLMA1S',title:'原币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF3PK1515IOLMMOW',title:'人民币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100},{field:'00O2TFHXIFF3PK1515IOLMA1S',title:'原币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF3PK1515IOLMMOW',title:'人民币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100}]]</value>
   </data>
 </root>

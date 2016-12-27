@@ -70,6 +70,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelEnum.resx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Common\ModelEnum.zz.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEnum.zz.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -86,9 +91,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelEnum.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Common\ModelEnum.zz.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelEnum.zz.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
