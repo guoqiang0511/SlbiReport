@@ -32,7 +32,7 @@ $(window).load(function () {
     //drawpie();
     //drawbar();
     // drawpie1(null, "main", "Pie2");
-    drawtable_auto(null, "tt", "11");
+    drawtable_auto(null, "tt", "Tab2");
 });
 
 //function initselect()

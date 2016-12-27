@@ -253,82 +253,51 @@ namespace SlbiReport.Controllers
         [HttpPost]
         public ActionResult Select(string id)
         {
+    
+            return Json(new { status = 1, result = CommonHelper.GetSelect(id) });
+        }
 
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-          //  string fileName = "http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/$metadata?" + token;
-            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/$metadata?" + token;
-            
-            XmlDocument doc = new XmlDocument();
-            try
-            {
-                doc.Load(fileName);
-            }
-            catch
-            {
+        public ActionResult Select_Auto(string id)
+        {
 
-                return null;
-            }
-            ds = ConvertXMLFileToDataSet(doc);
-
-            dt = ds.Tables["Property"];
-
-            DataRow[] drArr = dt.Select("EntityType_Id=1 and  text <> '' ");//查询
-
-            DataTable dtNew = dt.Clone();
-
-
-            for (int i = 0; i < drArr.Length; i++)
-            {
-                dtNew.ImportRow(drArr[i]);
-
-            }
-
-            //return result;
-            List<SelectColumn> selectlist = new List<Models.SelectColumn>();
-
-            foreach (DataRow dr in dtNew.Rows)
-            {
-                var obj = new SelectColumn() { ValueField = Convert.ToString(dr["name"]), Width = "200", Multiple=false , Label = Convert.ToString(dr["label"]), TextField = Convert.ToString(dr["text"]) };
-                selectlist.Add(obj);
-            }
-
-
-            return Json(new { status = 1, result = selectlist });
+            return Json(new { status = 1, result = CommonHelper.GetSelect_Auto(id,token) });
         }
 
         public String Select_Dim(string id)
         {
             String field = Request["field"];
-            String text = Request["text"];
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
+           // String text = Request["text"];
+
+            String result = CommonHelper.GetSelect_Dim(id, field, token);
+
+            //DataTable dt = new DataTable();
+            //DataSet ds = new DataSet();
      
-            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/" + field + "?" + token;
+            //string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/" + field + "?" + token;
 
-            XmlDocument doc = new XmlDocument();
-            try
-            {
-                doc.Load(fileName);
-            }
-            catch
-            {
+            //XmlDocument doc = new XmlDocument();
+            //try
+            //{
+            //    doc.Load(fileName);
+            //}
+            //catch
+            //{
 
-                return null;
-            }
-            ds = ConvertXMLFileToDataSet(doc);
+            //    return null;
+            //}
+            //ds = ConvertXMLFileToDataSet(doc);
 
-            dt = ds.Tables["Property"];
-            List<object> lists = new List<object>();
-            foreach (DataRow dr in ds.Tables["properties"].Rows)
-            {
-                var obj = new { id = dr[field + "_ID"], text = dr[field + "_TEXT"] };
-                lists.Add(obj);
-            }
+            //dt = ds.Tables["Property"];
+            //List<object> lists = new List<object>();
+            //foreach (DataRow dr in ds.Tables["properties"].Rows)
+            //{
+            //    var obj = new { id = dr[field + "_ID"], text = dr[field + "_TEXT"] };
+            //    lists.Add(obj);
+            //}
 
 
-            JavaScriptSerializer jsS = new JavaScriptSerializer();
-            String result = jsS.Serialize(lists);
+            //JavaScriptSerializer jsS = new JavaScriptSerializer();
+            //String result = jsS.Serialize(lists);
             return result;
         }
 
@@ -417,69 +386,16 @@ namespace SlbiReport.Controllers
             string cmd = Request["pagequeryParams"];
             string urltt = QueryParamsurl(cmd);
 
-           
-            string result = CommonHelper.GetTableDate(id , urltt, skip.ToString(), rows.ToString(), token);
+            string result = CommonHelper.GetTableData(id , urltt, skip.ToString(), rows.ToString(), token);
 
             return result;
-
             //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
         }
 
 
         public ActionResult TableMetaMap_Auto(string id)
         {
-
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?" + token;
-            XmlDocument doc = new XmlDocument();
-            try
-            {
-                doc.Load(fileName);
-            }
-            catch
-            {
-                return null;
-            }
-            ds = ConvertXMLFileToDataSet(doc);
-
-            dt = ds.Tables["Property"];
-
-            DataRow[] drArr = dt.Select("EntityType_Id=0 and  text <> '' ");//查询
-
-            DataTable dtNew = dt.Clone();
-
-            //DataRow drd = dt.Select("EntityType_Id=0 and  Name = 'A0CALMONTH' ")[0];//查询
-            //drd["text"] = "A0CALMONTH";
-            //dtNew.ImportRow(drd);
-
-            for (int i = 0; i < drArr.Length; i++)
-            {
-                dtNew.ImportRow(drArr[i]);
-
-            }
-
-            //return result;
-            List<TableColumn> tablecol = new List<TableColumn>();
-
-            foreach (DataRow dr in dtNew.Rows)
-            {
-                Boolean frozen = false;
-                if (Convert.ToString(dr["aggregation-role"]) == "dimension")
-                    frozen = true;
-
-                var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "100", frozen = frozen };
-                tablecol.Add(obj);
-            }
-
-
-            var table = new TableViewModel()
-            {
-                Title = "test：",
-                Column = tablecol
-            };
-
-            return Json(new { status = 1, result = table });
+            return Json(new { status = 1, result = CommonHelper.GetTableMetadata_Auto(id,token) });
         }
 
 

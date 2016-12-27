@@ -141,8 +141,7 @@ function drawbar3(pagequeryParams, container, id) {
 //画表格,自动画出表头
 function drawtable_auto(pagequeryParams, container, id) {
 
-
-    $.post('TableMetaMap_Auto', {}, function (response, status) {
+    $.post('TableMetaMap_Auto', { pagequeryParams: pagequeryParams ,id:id}, function (response, status) {
 
         var option = getTableOption();
         var field = "";
@@ -190,6 +189,7 @@ function drawtable(pagequeryParams, container, id) {
 
         var fs = "";
         var s = "";
+        var field = "";
         if (response){
             fs = response.result.FrozenColumns;
             s = response.result.Columns;
@@ -207,7 +207,7 @@ function drawtable(pagequeryParams, container, id) {
         option.onLoadSuccess = function (data) {
             mergeCellsByField(container, "");
         };
-        option.queryParams = { id: id }
+        option.queryParams = { id: id };
         $('#' + container + '').datagrid(option);
         }
     });
@@ -229,7 +229,7 @@ function drawselect(container, id) {
                     label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        "id": result.valueField
+                        "field": result.valueField
                     },
                     labelPosition: 'left',
                     valueField: 'id',
