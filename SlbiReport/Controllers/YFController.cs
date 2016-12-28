@@ -204,7 +204,7 @@ namespace SlbiReport.Controllers
             string urltt = QueryParamsurl(cmd);
 
 
-            string result = CommonHelper.GetTableDate(id, urltt, skip.ToString(), rows.ToString(), token);
+            string result = CommonHelper.GetTableData(id, urltt, skip.ToString(), rows.ToString(), token);
 
             return result;
 
