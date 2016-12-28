@@ -65,7 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Common备份怕冲突版本\ModelEnum.Designer.cs">
+    <Compile Include="Models\Common 复制版本怕冲突\ModelEnum.Designer.cs">
       <DependentUpon>ModelEnum.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,11 +86,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Models\Common备份怕冲突版本\ModelEnum.resx">
+    <EmbeddedResource Include="Models\Common 复制版本怕冲突\ModelEnum.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelEnum.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\Common备份怕冲突版本\ModelEnum.zh-CN.resx" />
+    <EmbeddedResource Include="Models\Common 复制版本怕冲突\ModelEnum.zh-CN.resx" />
     <EmbeddedResource Include="Models\Common\ModelEnum.zh-CN.resx" />
     <EmbeddedResource Include="Models\Common\ModelEnum.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
