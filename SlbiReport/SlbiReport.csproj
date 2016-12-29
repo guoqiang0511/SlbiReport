@@ -690,6 +690,8 @@
     <Content Include="Views\ZhzReport\ZCA_M001_Q0001Report.cshtml" />
     <Content Include="Views\ZhzReport\ZFI_M001_Q0011Report.cshtml" />
     <Content Include="Views\ZhzReport\ZFI_M001_Q0008Report.cshtml" />
+    <Content Include="Views\YF\ZSD_M001_Q0011port.cshtml" />
+    <Content Include="Views\YF\ZSD_M001_Q0008port.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

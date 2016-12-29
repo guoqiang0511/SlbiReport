@@ -210,7 +210,21 @@ namespace SlbiReport.Controllers
 
             //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
         }
+        public ActionResult TableMetaMap_Auto(string id)
+        {
+            return Json(new { status = 1, result = CommonHelper.GetTableMetadata_Auto(id, token) });
+        }
 
+        public String TableMap_Auto(String id, int page, int rows)
+        {
+            int skip = (page - 1) * rows;
+
+            string cmd = Request["pagequeryParams"];
+            string field = Request["field"];
+            string urltt = QueryParamsurl(cmd);
+            string result = CommonHelper.GetTableData_Auto(id, urltt, skip.ToString(), field, rows.ToString(), token);
+            return result;
+        }
 
         public ActionResult ZPU_M001_Q0002port()
         {
@@ -221,5 +235,18 @@ namespace SlbiReport.Controllers
         {
             return View();
         }
+        public ActionResult ZPU_M001_Q0004port()
+        {
+            return View();
+        }
+        public ActionResult ZSD_M001_Q0011port()
+        {
+            return View();
+        }
+        public ActionResult ZSD_M001_Q0008port()
+        {
+            return View();
+        }
+       
     }
 }

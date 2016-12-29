@@ -28,11 +28,11 @@ function drawpie1(pagequeryParams, container, id) {
 
 //环形图
 function drawpie2(pagequeryParams, container , id) {
-    var myChart = echarts.init(document.getElementById(id));
+    var myChart = echarts.init(document.getElementById(container));
     var pie_option = getPieOption2();
     myChart.setOption(pie_option);
     myChart.showLoading();
-    $.post('PieMap', { pagequeryParams: pagequeryParams }, function (text, status) {
+    $.post('PieMap', {id:id, pagequeryParams: pagequeryParams }, function (text, status) {
         myChart.hideLoading();
         myChart.setOption({
             title: {

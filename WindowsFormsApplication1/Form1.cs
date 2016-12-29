@@ -122,6 +122,19 @@ namespace WindowsFormsApplication1
                             oDataslist.Add(oData);
                         }
                     }
+                    else
+                    {
+                        string sPropertyName = oData.PropertyName.Replace("_F", "");
+                        var oDatas = oDataslist.Where(o => o.PropertyName == sPropertyName).FirstOrDefault();
+                        if (oDatas == null)
+                        {
+                            oDataslist.Add(oData);
+                        }
+                        else
+                        {
+                            oDatas.PropertyName = oData.PropertyName;
+                        }
+                    }
                 }
             }
             string res = "";
