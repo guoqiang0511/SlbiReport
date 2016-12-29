@@ -70,6 +70,15 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001Results?ZINDICATR eq &apos;C0107004&apos;&amp;$select=A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2,A0CALMONTH2&amp;|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)实际,预算,同期 的本地化字符串。
+        /// </summary>
+        public static string barZCA_M001_Q0001 {
+            get {
+                return ResourceManager.GetString("barZCA_M001_Q0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0) 的本地化字符串。
         /// </summary>
         public static string BarZPU_M001_Q0002 {
@@ -135,6 +144,17 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0012_SRV/|Label(0_0)日历日(单值必输,默认当前一天)|TextField(0_0)ZDAY001_PText|ValueField(0_0)ZDAY001_P|Width(0_0)200|Multiple(0_0)true
+        ///*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_M_TEXT|ValueField(0_0)ZBU001_M_ID|Width(0_0)200|Multiple(0_0)true
+        ///*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)工厂(多值,可选)|TextField(0_0)ZPLANT_TText|ValueFi [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0012 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
         public static string String {
@@ -167,6 +187,27 @@ namespace LiveAzure.Resources.Models.Common {
         public static string TabZFI_M001_Q0005 {
             get {
                 return ResourceManager.GetString("TabZFI_M001_Q0005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0011_SRV/ZFI_M001_Q0011{0}Results?|Title(0_0)预付账款统计分析|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:3}，{title:&apos;期末余额（英镑）&apos;,colspan:3}， {title:&apos;期末余额（日元）&apos;,colspan:3}， {title:&apos;累计折合（RMB）&apos;,f [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string TabZFI_M001_Q0011 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0012_SRV/ZFI_M001_Q0012{0}Results?|Title(0_0)到期应付款分析|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},
+        ///{ field: &apos;A0DOC_CURRCY_T&apos;,   title: &apos;原币单位&apos;, sortable: true, fixed: true, align: &apos;right&apos; ,rowspan:2},
+        ///{ field: &apos;ZVENDOR_T&apos;,   title: &apos;供应商&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},
+        ///{title:&apos;到期应付款&apos;,colspan:3},{title:&apos;本期实际付款&apos;,colspan:3},{ field:  [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string TabZFI_M001_Q0012 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0012", resourceCulture);
             }
         }
         

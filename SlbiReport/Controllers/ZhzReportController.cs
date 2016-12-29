@@ -23,6 +23,17 @@ namespace SlbiReport.Controllers
         }
 
         [HttpPost]
+        public ActionResult BarMap(string id)
+        {
+            string cmd = Request["pagequeryParams"];
+            string urltt = QueryParamsurl(cmd);
+
+            var bar = CommonHelper.GetBarViewModel(id, urltt, token);
+
+            return Json(new { status = 1, result = bar });
+        }
+
+        [HttpPost]
         public ActionResult Select(string id)
         {
 
@@ -181,6 +192,20 @@ namespace SlbiReport.Controllers
 
 
         public ActionResult ZFI_M001_Q0005Report()
+        {
+            return View();
+        }
+
+        public ActionResult ZFI_M001_Q0012Report()
+        {
+            return View();
+        }
+        public ActionResult ZCA_M001_Q0001Report()
+        {
+            return View();
+        }
+
+        public ActionResult ZFI_M001_Q0011Report()
         {
             return View();
         }
