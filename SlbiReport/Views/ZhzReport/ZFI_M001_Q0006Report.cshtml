@@ -1,14 +1,15 @@
-﻿@{
+﻿
+@{
     Layout = "~/Views/Shared/_LayoutEchart.cshtml";
 }
-@{
 
+@{
     ViewBag.Title = "shuanglin";
 }
 
 <h2>@ViewBag.Title</h2>
 
-<p>Hello from our View Template5!</p>
+<p>关联方交易分析</p>
 
 <div id="selectArea"></div>
 
@@ -18,10 +19,9 @@
 <script style="">
 $(window).load(function () {
     //要执行的方法体
-    //drawselect("selectArea", "SelZFI_M001_Q0011");
-    drawtable(null, "tt1", "TabZFI_M001_Q0011");
-    drawtable(null, "tt2", "TabZFI_M001_Q0015");
+    //drawselect("selectArea", "SelZFI_M001_Q0003");
+    drawtable(null, "tt1", "TabZFI_M001_Q0006");
+    drawtable(null, "tt2", "TabZFI_M001_Q0007");
 
 });
 </script>
-
