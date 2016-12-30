@@ -70,7 +70,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001Results?ZINDICATR eq &apos;C0107004&apos;&amp;$select=A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2,A0CALMONTH2&amp;|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)实际,预算,同期 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001Results?ZINDICATR eq &apos;C0107004&apos;&amp;$select=A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2,A0CALMONTH2&amp;|Title(0_0)应收账款周转天数|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)实际,预算,同期 的本地化字符串。
         /// </summary>
         public static string barZCA_M001_Q0001 {
             get {
@@ -181,6 +181,32 @@ namespace LiveAzure.Resources.Models.Common {
         public static string Tab2 {
             get {
                 return ResourceManager.GetString("Tab2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0001_SRV/ZFI_M001_Q0001{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},
+        ///{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},
+        ///{ field: &apos;A0DOC_CURRCY_T&apos;,   title: &apos;货币&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:11},
+        ///{field: &apos;A00O2TFHXIFF1Z9LHQCOIQ581M_F&apos; [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string TabZFI_M001_Q0001 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0002_SRV/ZFI_M001_Q0002{0}Results?|Title(0_0)按欠款方期末余额前五名的应收排行|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{field: &apos;ZCUSTOMER_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:3}],
+        ///[{field: &apos;A00O2TFHXIFF1Z9355BIZYES2F_F&apos;, title: &apos;应收账款&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
+        ///{field: &apos;A00O2TFHXIFF1Z935F4B13NOOH_F&apos;,title: &apos;占应收账款合计数的比例（%）&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
+        ///{field: &apos;A [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string TabZFI_M001_Q0002 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0002", resourceCulture);
             }
         }
         

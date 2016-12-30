@@ -9,7 +9,45 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>Hello from our View Template2!</p>
+<p>应收账款统计分析</p>
+
+<div id="selectArea"></div>
+
+<div>
+    <div id="bar" ng-controller="myBarCtrl" style="height: 400px;float:left;width:100%"></div>
+</div>
+
+<div>&nbsp;<table id="tt1" class="easyui-datagrid"></table></div>
+<div>&nbsp;<table id="tt2" class="easyui-datagrid"></table></div>
+<div>&nbsp;<table id="tt3" class="easyui-datagrid"></table></div>
+@*<div>&nbsp;<table id="tt1" class="easyui-datagrid"></table></div>
+<div>&nbsp;<table id="tt2" class="easyui-datagrid"></table></div>
+<div>&nbsp;<table id="tt3" class="easyui-datagrid"></table></div>*@
+
+<script style="">
+$(window).load(function () {
+    //要执行的方法体
+    drawbar2(null, "bar", "barZCA_M001_Q0001");
+    drawtable(null, "tt1", "TabZFI_M001_Q0001");
+    drawtable(null, "tt2", "TabZFI_M001_Q0002");
+    drawtable(null, "tt3", "TabZCA_M001_Q0001");
+
+});
+</script>
+
+
+
+@*@{
+    Layout = "~/Views/Shared/_LayoutEchart.cshtml";
+}
+
+@{
+    ViewBag.Title = "shuanglin";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>应收账款统计分析</p>
 
 <div id="selectArea"></div>
 <div>
@@ -23,10 +61,10 @@
 <script style="">
 $(window).load(function () {
     //要执行的方法体
-    drawbar2(null, "bar", "barZCA_M001_Q0001");
-    //drawtable(null, "tt1", "TabZFI_M001_Q0008");
+   // drawbar2(null, "bar", "barZCA_M001_Q0001");
+    drawtable(null, "tt1", "TabZFI_M001_Q0001");
     //drawtable(null, "tt2", "TabZFI_M001_Q0009");
     //drawtable(null, "tt1", "TabZFI_M001_Q0008");
 
 });
-</script>
+</script>*@
