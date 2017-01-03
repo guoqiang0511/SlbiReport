@@ -142,7 +142,52 @@ namespace SlbiReport.Controllers
             //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult TableMetaMap_Auto(string id)
+        {
+            return Json(new { status = 1, result = CommonHelper.GetTableMetadata_Auto(id, token) });
+        }
 
+
+        public String TableMap_Auto(String id, int page, int rows)
+        {
+            int skip = (page - 1) * rows;
+
+            string cmd = Request["pagequeryParams"];
+            string field = Request["field"];
+            string urltt = QueryParamsurl(cmd);
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001" + urltt + "Results?$select=" + field + "&$inlinecount=allpages&$skip=" + skip + "&$top=" + rows + "&" + token;
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(fileName);
+            }
+            catch
+            {
+
+                return null;
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["properties"];
+
+            DataRow dr = ds.Tables["feed"].Select()[0];
+
+            string totalnum = Convert.ToString(dr["count"]);
+
+
+
+            List<String> items = new List<String>();
+
+            string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
+
+
+            return result;
+
+            //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Rp2_Table1Metadata(string id)
         {
