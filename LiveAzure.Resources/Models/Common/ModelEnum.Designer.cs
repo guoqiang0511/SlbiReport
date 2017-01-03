@@ -195,10 +195,10 @@ namespace LiveAzure.Resources.Models.Common {
         
         /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0001_SRV/ZFI_M001_Q0001{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},
-        ///{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},
-        ///{ field: &apos;A0DOC_CURRCY_T&apos;,   title: &apos;货币&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:11},
-        ///{field: &apos;A00O2TFHXIFF1Z9LHQCOIQ581M_F&apos; [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},
+        ///{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},
+        ///{ field: &apos;A0DOC_CURRCY_T&apos;,   title: &apos;货币&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:11},
+        ///{field: &apos;A00O2TFHXIFF1Z9LHQCOIQ581M_F&apos;,   [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0001 {
             get {
@@ -208,10 +208,10 @@ namespace LiveAzure.Resources.Models.Common {
         
         /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0002_SRV/ZFI_M001_Q0002{0}Results?|Title(0_0)按欠款方期末余额前五名的应收排行|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{field: &apos;ZCUSTOMER_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:3}],
+        ///[[{field: &apos;ZCUSTOMER_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:3}],
         ///[{field: &apos;A00O2TFHXIFF1Z9355BIZYES2F_F&apos;, title: &apos;应收账款&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
         ///{field: &apos;A00O2TFHXIFF1Z935F4B13NOOH_F&apos;,title: &apos;占应收账款合计数的比例（%）&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
-        ///{field: &apos;A [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///{field: &apos;A0 [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0002 {
             get {
@@ -221,9 +221,9 @@ namespace LiveAzure.Resources.Models.Common {
         
         /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)到期回款状况|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2},{field: &apos;ZPLANT_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2}，
-        ///{field: &apos;ZCUSTOMER&apos;,title: &apos;客户编号&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2}，{field: &apos;ZCUSTOMER_T&apos;,title: &apos;客户&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2}, 
-        ///{ [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///[[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2},{field: &apos;ZPLANT_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2}，
+        ///{field: &apos;ZCUSTOMER&apos;,title: &apos;客户编号&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2}，{field: &apos;ZCUSTOMER_T&apos;,title: &apos;客户&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2}, 
+        ///{fiel [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0003 {
             get {
@@ -234,9 +234,9 @@ namespace LiveAzure.Resources.Models.Common {
         /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0004_SRV/ZFI_M001_Q0004{0}Results?|Title(0_0)应收账龄与逾期状况|FrozenColumns(0_0)|Columns(0_0)
         ///[
-        ///[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:3},{field: &apos;ZPLANT_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:3}，
-        ///{field: &apos;ZCUSTOMER_T&apos;,title: &apos;客户&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:3}, {title: &apos;本月实际&apos;,colspan:13}], 
-        ///[{field: &apos;A00O2TFHXIFF1Z9L44RHTXF07W_F&apos;,title: &apos;结余金额&apos;, [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:3},{field: &apos;ZPLANT_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:3}，
+        ///{field: &apos;ZCUSTOMER_T&apos;,title: &apos;客户&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:3}, {title: &apos;本月实际&apos;,colspan:13}], 
+        ///[{field: &apos;A00O2TFHXIFF1Z9L44RHTXF07W_F&apos;,title: &apos;结余金额&apos;,sor [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0004 {
             get {
@@ -245,7 +245,8 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/ZFI_M001_Q0005{0}Results?|Title(0_0)预收帐款统计分析|FrozenColumns(0_0)|Columns(0_0)[[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2},{field: &apos;ZPLANT_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2}， {title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:4}，{title:&apos;期末余额（英镑）&apos;,colspan:4}， {title:&apos;期末余额（日元）&apos;,colspan:4}， {title:&apos;累计折合（RMB）&apos;,colspan:1}] [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/ZFI_M001_Q0005{0}Results?|Title(0_0)预收帐款统计分析|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2},{field: &apos;ZPLANT_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2}， {title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:4}，{title:&apos;期末余额（英镑）&apos;,colspan:4}， {title:&apos;期末余额（日元）&apos;,colspan:4}， {title:&apos;累计折合（RMB）&apos;,colspan:1}] [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0005 {
             get {
@@ -257,8 +258,8 @@ namespace LiveAzure.Resources.Models.Common {
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0006_SRV/ZFI_M001_Q0006{0}Results?|Title(0_0)往来部份（重分类后）|FrozenColumns(0_0)|Columns(0_0)
         ///[[{title: &apos;债权单位信息&apos;,colspan:2},{title: &apos;债务单位信息&apos;,colspan:2},{title: &apos;债权单位发生额&apos;,colspan:5},{title: &apos;债务单位发生额&apos;,colspan:5}，
         ///{field: &apos;A00O2TFHXIFF1Z9OGYMFIJP3WA_F&apos;,title: &apos;平衡检查&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2}]
-        ///,[{ field: &apos;ZCRDTCOMY&apos;,   title: &apos;单位编码&apos;, sortable: true, fixed: true, align: &apos;right&apos; } ，
-        ///{ field: &apos;ZCRDTCOMY_T&apos;,   title: &apos;单位名称&apos; [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///,[{ field: &apos;ZCRDTCOMY&apos;,   title: &apos;单位编码&apos;, sortable: true, fixed: true, left: &apos;right&apos; } ，
+        ///{ field: &apos;ZCRDTCOMY_T&apos;,   title: &apos;单位名称&apos;, [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0006 {
             get {
@@ -280,7 +281,8 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0008_SRV/ZFI_M001_Q0008{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:3}，{title:&apos;期末余额（英镑）&apos;,colspan:3}， {title:&apos;期末余额（日元）&apos;,colspan:3}， {title:&apos;累计折合（RMB）&apos;}],        /// [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0008_SRV/ZFI_M001_Q0008{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:3}，{title:&apos;期末余额（英镑）&apos;,colspan:3}， {title:&apos;期末余额（日元）&apos;,colspan:3}， {title:&apos;累计折合（RMB）&apos;}],        /// [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0008 {
             get {
@@ -289,8 +291,8 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0009_SRV/ZFI_M001_Q0009{0}Results?|Title(0_0)到期回款状况|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{field: &apos;ZVENDOR_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:2}],
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0009_SRV/ZFI_M001_Q0009{0}Results?|Title(0_0)按付款方期末余额前五名的应付排行|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{field: &apos;ZVENDOR_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:2}],
         ///[{field: &apos;A00O2TFHXIFF1Z9P15KV9N553I_F&apos;, title: &apos;应付账款&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
         ///{field: &apos;A00O2TFHXIFF1Z9P15KV9N96HA_F&apos;,title: &apos;占预付账款合计数的比例（%）&apos;, sortable: true, fixed: true, align: &apos;right&apos; }]] 的本地化字符串。
         /// </summary>
@@ -301,7 +303,8 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0011_SRV/ZFI_M001_Q0011{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:3}，{title:&apos;期末余额（英镑）&apos;,colspan:3}， {title:&apos;期末余额（日元）&apos;,colspan:3}],
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0011_SRV/ZFI_M001_Q0011{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:3}，{title:&apos;期末余额（英镑）&apos;,colspan:3}， {title:&apos;期末余额（日元）&apos;,colspan:3}],
         ///[{ field: &apos;A00O2TFHX [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0011 {
@@ -311,10 +314,11 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0012_SRV/ZFI_M001_Q0012{0}Results?|Title(0_0)到期应付款分析|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},
-        ///{ field: &apos;A0DOC_CURRCY_T&apos;,   title: &apos;原币单位&apos;, sortable: true, fixed: true, align: &apos;right&apos; ,rowspan:2},
-        ///{ field: &apos;ZVENDOR_T&apos;,   title: &apos;对方单位&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},
-        ///{title:&apos;到期应付款&apos;,colspan:3},{title:&apos;本期实际付款&apos;,colspan:3},{ field: [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0012_SRV/ZFI_M001_Q0012{0}Results?|Title(0_0)到期应付款分析|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},
+        ///{ field: &apos;A0DOC_CURRCY_T&apos;,   title: &apos;原币单位&apos;, sortable: true, fixed: true, align: &apos;left&apos; ,rowspan:2},
+        ///{ field: &apos;ZVENDOR_T&apos;,   title: &apos;对方单位&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},
+        ///{title:&apos;到期应付款&apos;,colspan:3},{title:&apos;本期实际付款&apos;,colspan:3},{ field:  [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0012 {
             get {
@@ -324,7 +328,7 @@ namespace LiveAzure.Resources.Models.Common {
         
         /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0015_SRV/ZFI_M001_Q0015{0}Results?|Title(0_0)按付款方期末余额前五名的预付排行|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{field: &apos;ZVENDOR_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:2}],
+        ///[[{field: &apos;ZVENDOR_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:2}],
         ///[{field: &apos;A00O2TFHXIFF3PLPTJZU11CGJX_F&apos;, title: &apos;预付账款&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
         ///{field: &apos;A00O2TFHXIFF3PLPTV10XK7FU0_F&apos;,title: &apos;占预付账款合计数的比例（%）&apos;, sortable: true, fixed: true, align: &apos;right&apos; }]] 的本地化字符串。
         /// </summary>

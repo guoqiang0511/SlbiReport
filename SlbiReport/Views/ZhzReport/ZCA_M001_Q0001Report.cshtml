@@ -4,12 +4,10 @@
 }
 
 @{
-    ViewBag.Title = "shuanglin";
+    ViewBag.Title = "应收账款统计分析";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<p>应收账款统计分析</p>
+<h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
 
 <div id="selectArea"></div>
 
@@ -29,6 +27,75 @@ $(window).load(function () {
     drawtable(null, "tt2", "TabZFI_M001_Q0002");
     drawtable_auto(null, "tt3", "TabZCA_M001_Q0001");
 
+});
+
+
+    //$('#tt3').datagrid('appendRow', {
+    //    Saler: '<span  ">合计</span>'
+    //    //TotalOrderCount: '<span  "> </span>',
+    //    //TotalOrderMoney: '<span ">' + compute("TotalOrderMoney") + '</span>',
+    //    //TotalOrderScore: '<span  ">' + compute("TotalOrderScore") + '</span>',
+    //    //TotalTrailCount: '<span ">' + compute("TotalTrailCount") + '</span>',
+    //    //Rate: '<span  ">' + ((compute("TotalOrderScore") / compute("TotalTrailCount")) * 100).toFixed(2) + '</span>'
+    //});
+
+    //$('#tt2').datagrid('appendRow', {
+    //    ZCUSTOMER_T: '新名称',
+    //    A00O2TFHXIFF1Z935F4B13NOOH_F: 30
+    //});
+function onLoadSuccess() {
+    alert("add");
+    $('#tt2').datagrid('insertRow', {
+        index: 12,	// 索引从0开始
+        row: {
+            ZCUSTOMER_T: '新名称',
+            A00O2TFHXIFF1Z935F4B13NOOH_F: 30
+        }
+
+    });
+}
+
+
+
+
+$('#tt1').datagrid({
+
+    title: 'DataGrid',
+    fitColumns: true,
+    rownumbers: true,
+    showFooter: true,
+    columns: [[{
+        field: 'A00O2TFHXIFF1Z9LHQCOIQ581M_F',
+        title: 'Product Name',
+        width: 80
+    }, {
+        field: 'A00O2TFHXIFF1Z9LHUUCF3KV7S_F',
+        title: 'Unit Price',
+        width: 40, align: 'right'
+    }]]
+
+   
+});
+
+$('#tt2').datagrid(
+    {
+    title: 'DataGrid',
+    width: 650,
+
+    "total": 11,
+  "rows": [
+    {
+        "id": 1,
+        "name": "Chai",
+        "price": 18.00
+    }
+  ],
+  "footer": [
+    {
+        "name": "Total",
+        "price": 18.00
+    }
+]
 });
 </script>
 

@@ -3,13 +3,16 @@
     Layout = "~/Views/Shared/_LayoutEchart.cshtml";
 }
 
+
 @{
-    ViewBag.Title = "shuanglin";
+    Layout = "~/Views/Shared/_LayoutEchart.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+@{
+    ViewBag.Title = "客户回款与应收账龄分析";
+}
 
-<p>客户回款与应收账龄分析</p>
+<h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
 
 <div id="selectArea"></div>
 
