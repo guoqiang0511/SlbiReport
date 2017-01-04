@@ -45,8 +45,7 @@ namespace SlbiReport.Utilities
             }
 
             ds = ConvertXMLFileToDataSet(doc);
-            List<VisitSource> listss = new List<VisitSource>();
-
+            List<VisitSource> listss = new List<VisitSource>();
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
                 var obj = new VisitSource()
@@ -72,7 +71,7 @@ namespace SlbiReport.Utilities
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             sResources = sResources.Replace("，", ",");
             StringToEntityValue(oBarViewModel, sResources);
-
+            string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
             if (!string.IsNullOrEmpty(oBarViewModel.AxisDataStr) && !string.IsNullOrEmpty(oBarViewModel.SeriesStr))
                 oBarViewModel.Url += "$select=" + oBarViewModel.AxisDataStr + "," + oBarViewModel.SeriesStr + "&";
@@ -91,6 +90,12 @@ namespace SlbiReport.Utilities
                 return null;
             }
             ds = ConvertXMLFileToDataSet(doc);
+
+            if (ds.Tables["properties"] == null)
+            {
+                return null;
+            }
+
             string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
             string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
             List<string> xaxisdata = new List<string>();
@@ -118,18 +123,56 @@ namespace SlbiReport.Utilities
 
                 }
             }
-            oBarViewModel.Series = new List<BarSeriesModel>();
-            for (int i = 0; i < SeriesStrs.Count(); i++)
+
+            try
+            {
+                doc.Load(sMetadataUrl);
+            }
+            catch
             {
 
-                List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
-
-                oBarViewModel.Series.Add(new BarSeriesModel()
-                {
-                    name = SeriesStrs[i],
-                    data = valuelist
-                });
+                return null;
             }
+            ds = ConvertXMLFileToDataSet(doc);
+            if (ds.Tables["Schema"] == null)
+            {
+                return null;
+            }
+           
+            //Dictionary<string, string> sDictionary = new Dictionary<string, string>();
+            oBarViewModel.Series = new List<BarSeriesModel>();
+            foreach (DataRow item in ds.Tables["Property"].Rows)
+            {           
+                //var b = item.ItemArray;
+                //sDictionary.Add(b[0].ToString(),b[6].ToString());
+                for (int i = 0; i < SeriesStrs.Count(); i++)
+                {
+                    List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+                    if (item["Name"].ToString() == SeriesStrs[i])
+                    {
+                        oBarViewModel.Series.Add(new BarSeriesModel()
+                        {
+                            name = Convert.ToString(item["label"]),
+                            data = valuelist
+                        });
+                    } 
+                }
+            }
+
+            
+            //for (int i = 0; i < SeriesStrs.Count(); i++)
+            //{
+
+            //    List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+            //    var sSeriesName = (from o in sDictionary
+            //                       where o.Key == SeriesStrs[0]
+            //                       select o.Value).FirstOrDefault();
+            //    oBarViewModel.Series.Add(new BarSeriesModel()
+            //    {
+            //        name = sSeriesName,
+            //        data = valuelist
+            //    });
+            //}
 
             List<string> legend = new List<string>();
             legend = oBarViewModel.LegendDataStr.Split(',').ToList();
@@ -179,6 +222,11 @@ namespace SlbiReport.Utilities
                 return null;
             }
             ds = ConvertXMLFileToDataSet(doc);
+
+            if (ds.Tables["properties"] == null)
+            {
+                return null;
+            }
 
             dt = ds.Tables["properties"];
 
@@ -305,7 +353,9 @@ namespace SlbiReport.Utilities
 
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
-            string fileName = oTableViewModel.Url + sToken;
+            //string fileName = oTableViewModel.Url + sToken;
+            string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+            //fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?sap-user=guoq&sap-password=ghg2587758";
             XmlDocument doc = new XmlDocument();
             try
             {

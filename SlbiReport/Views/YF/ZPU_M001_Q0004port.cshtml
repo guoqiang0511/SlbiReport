@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutEchart.cshtml";
+}
+
+
+@{
+
+    ViewBag.Title = "shuanglin";
+
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>Hello from our View Template2!</p>
+
+    <div id="selectArea"></div>
+
+    <div>
+        <div id="bar" ng-controller="myBarCtrl" style="height: 400px;float:left;width:100%"></div>
+    </div>
+
+
+    <div>&nbsp;<table id="tt"  class="easyui-datagrid" ></table></div>
+
+<script style="">
+$(window).load(function () {
+    //drawtable(null, "tt", "ZPU_M001_Q0004");
+    drawbar4(null, "bar", "ZPU_M001_Q0005");
+});
+</script>
