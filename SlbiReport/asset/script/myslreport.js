@@ -83,7 +83,6 @@ function drawbar1(pagequeryParams, container, id) {
     });
 }
 
-
 //两柱一线（线对应y轴）
 function drawbar2(pagequeryParams, container, id) {
     var barChart = echarts.init(document.getElementById(container));
@@ -253,10 +252,56 @@ function drawtable(pagequeryParams, container, id) {
 }
 
 //画选择框
-function drawselect_Auto(container, id) {
+function drawselect(container, id) {
     var searchlist = new Array();
     var selectarea = $("#" + container + "");
     $.post("Select", { id: id }, function (response, status) {
+        if (response) {
+            //   DrawPie(data, "echart1");
+            $.each(response.result, function (i, result) {
+                searchlist.push(result.ValueField);
+                selectarea.append("<input id=\"" + result.ValueField + "\" name=\"" + result.ValueField + "\">  ")
+                $('#' + result.ValueField + '').combobox({
+                    label: result.Label,
+                    url: 'Select_Dim',
+                    queryParams: {
+                        "field": result.valueField
+                    },
+                    labelPosition: 'left',
+                    valueField: 'id',
+                    width: result.Width,
+                    multiple: result.Multiple,
+                    textField: 'text'
+                });
+
+            });
+            selectarea.append("<a id=\"subbtn\" href=\"#\">查询</a>");
+            $('#subbtn').linkbutton({
+                iconCls: 'icon-search',
+            });
+
+            $('#subbtn').bind('click', function search() {
+                pagequeryParams = "";
+                for (var i = 0; i < searchlist.length; i++) {
+                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValues").join(',') + ","
+                }
+                pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
+                //alert(pagequeryParams);
+                //drawpie1(pagequeryParams, "main", "PieMap1");
+                //drawbar1(pagequeryParams, "bar", "BarMap");
+                //$('#tt').datagrid('load', { pagequeryParams });
+                // buttononclick(pagequeryParams);
+                drawpie1(pagequeryParams, "main", "Pie2");
+            });
+
+        }
+    });
+}
+
+function drawselect_Auto(container, id) {
+    var searchlist = new Array();
+    var selectarea = $("#" + container + "");
+    $.post("Select_Auto", { id: id }, function (response, status) {
         if (response) {
             //   DrawPie(data, "echart1");
             $.each(response.result, function (i, result) {
@@ -595,6 +640,7 @@ function getBarOption4() {
         ]
     }
 }
+
 /**
 * EasyUI DataGrid根据字段动态合并单元格
 * 参数 tableID 要合并table的id
