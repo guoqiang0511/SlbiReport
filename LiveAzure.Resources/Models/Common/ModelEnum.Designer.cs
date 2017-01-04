@@ -185,7 +185,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/$metadata?|Title(0_0)应收账款周转天数分析 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/$metadata?|Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001Results?|Title(0_0)应收账款周转天数分析 的本地化字符串。
         /// </summary>
         public static string TabZCA_M001_Q0001 {
             get {

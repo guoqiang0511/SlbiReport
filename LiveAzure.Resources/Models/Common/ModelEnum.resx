@@ -388,7 +388,7 @@
 {field: 'A00O2TFHXIFF3PLPTV10XK7FU0_F',title: '占预付账款合计数的比例（%）', sortable: true, fixed: true, align: 'right' }]]</value>
   </data>
   <data name="TabZCA_M001_Q0001" xml:space="preserve">
-    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/$metadata?|Title(0_0)应收账款周转天数分析</value>
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/$metadata?|Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001Results?|Title(0_0)应收账款周转天数分析</value>
   </data>
   <data name="TabZFI_M001_Q0001" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0001_SRV/ZFI_M001_Q0001{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)

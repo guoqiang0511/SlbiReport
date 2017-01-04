@@ -249,7 +249,15 @@ namespace SlbiReport.Utilities
             DataSet ds = new DataSet();
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-            StringToEntityValue(oTableViewModel, sResources);
+            //TableData的Url特殊标记（★）
+            string sURL = sResources.Replace("Url(0_0)", "★");
+            //TableData的开始位置
+            int iStartIndex = sURL.LastIndexOf("★", sURL.Length - 1) + 1;
+            //TableData的结束位置
+            int iEndIndex = sURL.IndexOf("|Title", 1);
+            //TableData的Url取得
+            sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
+            oTableViewModel.Url=sURL;
 
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
@@ -279,7 +287,6 @@ namespace SlbiReport.Utilities
 
             return result;
         }
-
 
         public static List<SelectColumn> GetSelect(string sName)
         {
@@ -345,8 +352,6 @@ namespace SlbiReport.Utilities
 
         public static TableViewModel GetTableMetadata_Auto(string sName, string sToken)
         {
-
-
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
 
@@ -354,8 +359,18 @@ namespace SlbiReport.Utilities
 
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
-            //string fileName = oTableViewModel.Url + sToken;
-            string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+            string fileName = "";
+
+            StringToEntityValue(oTableViewModel, sResources);
+            //Url特殊标记（★）
+            string sURL = sResources.Replace("Url(0_0)", "★");
+            //Metadata的Url结尾
+            int iIndex = sURL.IndexOf("|", 1);
+             sURL = sURL.Substring(1, iIndex-1);
+
+            fileName = sURL + sToken;
+            // fileName = oTableViewModel.Url + sToken;
+            // string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
             //fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?sap-user=guoq&sap-password=ghg2587758";
             XmlDocument doc = new XmlDocument();
             try
