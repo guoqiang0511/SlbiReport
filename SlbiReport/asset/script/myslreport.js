@@ -245,22 +245,7 @@ function drawtable(pagequeryParams, container, id) {
 
             option.onLoadSuccess = function (data) {
                 mergeCellsByField(container, field);
-
-                var rows = $("#tt2").datagrid("getRows"); //这段代码是获取当前页的所有行。
-                alert(rows.length);
-                var ptotal = 0//计算listprice的总和
-                , utotal = 0;//统计unitcost的总和
-                for (var i = 0; i < rows.length; i++) {
-                    ptotal += rows[i].A00O2TFHXIFF1Z9355BIZYES2F_F;
-                    utotal += rows[i].A00O2TFHXIFF1Z9355BIZYK80N_F;
-                }
-                alert(ptotal);
-                alert(utotal);
-                //新增一行显示统计信息
-                $('#tt2').datagrid('appendRow', { ZCUSTOMER_T: '<b>统计：</b>', A00O2TFHXIFF1Z9355BIZYES2F_F: ptotal, A00O2TFHXIFF1Z9355BIZYK80N_F: utotal });
-
             };
-
         }
     });
 

@@ -212,6 +212,14 @@ namespace SlbiReport.Utilities
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
 
+            int iTotalIndex = sResources.IndexOf("Total(0_0)");
+            string strTotle = string.Empty;
+            if (iTotalIndex > 0)
+            {
+                strTotle = sResources.Substring(iTotalIndex, sResources.Length - iTotalIndex).ToString().Replace("Total(0_0)", "");
+            }
+
+            string[] sTotle = strTotle.Split(',');
             XmlDocument doc = new XmlDocument();
             try
             {
@@ -237,6 +245,34 @@ namespace SlbiReport.Utilities
 
 
             List<String> items = new List<String>();
+
+            //合计处理
+            if (sTotle.Length > 1)
+            {
+                DataRow drProperties = dt.NewRow();
+                drProperties["" + sTotle[0].ToString() + ""] = "合计";
+                double dSum = 0;
+                //合计列值计算
+                for (int i = 1; i < sTotle.Length; i++)
+                {
+                    foreach (DataRow drP in dt.Rows)
+                    {
+                        if (drP["" + sTotle[i] + ""].Equals(string.Empty))
+                        {
+                            dSum = 0;
+                        }
+                        else
+                        {
+                            dSum = Convert.ToDouble(drP["" + sTotle[i] + ""].ToString().Replace(",", ""));
+                        }
+                        dSum += dSum;
+                    }
+
+                    drProperties["" + sTotle[i] + ""] = string.Format("{0:N}", dSum);
+                }
+                dt.Rows.Add(drProperties);
+            }
+
 
             string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
 
@@ -370,7 +406,7 @@ namespace SlbiReport.Utilities
 
             fileName = sURL + sToken;
             // fileName = oTableViewModel.Url + sToken;
-            // string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+            //string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
             //fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?sap-user=guoq&sap-password=ghg2587758";
             XmlDocument doc = new XmlDocument();
             try

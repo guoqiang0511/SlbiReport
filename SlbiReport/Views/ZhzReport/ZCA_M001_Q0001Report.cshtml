@@ -26,33 +26,7 @@ $(window).load(function () {
     drawtable(null, "tt1", "TabZFI_M001_Q0001");
     drawtable(null, "tt2", "TabZFI_M001_Q0002");
     drawtable_auto(null, "tt3", "TabZCA_M001_Q0001");
-    compute();
-
 });
-
-function compute() {//计算函数
-
-    var rows = $("#tt2").datagrid("getRows"); //这段代码是获取当前页的所有行。
-    var ptotal = 0//计算listprice的总和
-    , utotal = 0;//统计unitcost的总和
-    for (var i = 0; i < rows.length; i++) {
-        ptotal += rows[i].A00O2TFHXIFF1Z9355BIZYES2F_F;
-        utotal += rows[i].A00O2TFHXIFF1Z9355BIZYK80N_F;
-    }
-    //alert(ptotal);
-    //alert(utotal);
-    //新增一行显示统计信息
-    $('#tt2').datagrid('appendRow', { ZCUSTOMER_T: '<b>统计：</b>', A00O2TFHXIFF1Z9355BIZYES2F_F: ptotal, A00O2TFHXIFF1Z9355BIZYK80N_F: utotal });
-}
-
-$('#tt2')
-  .datagrid({
-      onLoadSuccess: function (data) {
-          var data = $('#tt2').datagrid('getData');
-          alert('总数据量:' + data.total)//注意你的数据源一定要定义了total，要不会为undefined，datagrid分页就是靠这个total定义
-          alert('当前页数据量:' + data.rows.length);
-      }
-  });
 
 $('#tt2').datagrid(
     {

@@ -417,7 +417,7 @@
 [[{field: 'ZCUSTOMER_T',title: '单位名称', sortable: true, fixed: true, align: 'left',rowspan:2},{title: '期末余额',colspan:3}],
 [{field: 'A00O2TFHXIFF1Z9355BIZYES2F_F', title: '应收账款', sortable: true, fixed: true, align: 'right' },
 {field: 'A00O2TFHXIFF1Z935F4B13NOOH_F',title: '占应收账款合计数的比例（%）', sortable: true, fixed: true, align: 'right' },
-{field: 'A00O2TFHXIFF1Z9355BIZYK80N_F',title: '坏账准备', sortable: true, fixed: true, align: 'right' }]]</value>
+{field: 'A00O2TFHXIFF1Z9355BIZYK80N_F',title: '坏账准备', sortable: true, fixed: true, align: 'right' }]]|Total(0_0)ZCUSTOMER_T,A00O2TFHXIFF1Z9355BIZYES2F_F,A00O2TFHXIFF1Z9355BIZYK80N_F</value>
   </data>
   <data name="TabZFI_M001_Q0009" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0009_SRV/ZFI_M001_Q0009{0}Results?|Title(0_0)按付款方期末余额前五名的应付排行|FrozenColumns(0_0)|Columns(0_0)
