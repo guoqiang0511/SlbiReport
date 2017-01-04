@@ -178,4 +178,185 @@
   <data name="Tab2" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?|Title(0_0)testbar</value>
   </data>
+  <data name="TabZCA_M001_Q0001" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/$metadata?|Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001Results?|Title(0_0)应收账款周转天数分析</value>
+  </data>
+  <data name="TabZFI_M001_Q0001" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0001_SRV/ZFI_M001_Q0001{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
+[[{ field: 'ZPROFTCTR__ZBU_T', title: '事业部', sortable: true, fixed: true, align: 'left',rowspan:2},
+{ field: 'ZPLANT_T',   title: '工厂', sortable: true, fixed: true, align: 'left',rowspan:2},
+{ field: 'A0DOC_CURRCY_T',   title: '货币', sortable: true, fixed: true, align: 'left',rowspan:2},{title: '期末余额',colspan:11},
+{field: 'A00O2TFHXIFF1Z9LHQCOIQ581M_F',   title: '关联方内部往来', sortable: true, fixed: true, align: 'right',rowspan:2},
+{field: 'A00O2TFHXIFF1Z9LHUUCF3KV7S_F',   title: '应提坏账准备', sortable: true, fixed: true, align: 'right',rowspan:2},
+{field: 'A00O2TFHXIFF1Z9LI04Z3QK7PS_F',   title: '已计提准备', sortable: true, fixed: true, align: 'right',rowspan:2},
+{field: 'A00O2TFHXIFF1Z9LI6O2LL3960_F',   title: '应补提或冲回准备', sortable: true, fixed: true, align: 'right',rowspan:2}
+],
+[{ field: 'A00O2TFHXIFF1Z8NRIYTH9TW96_F',   title: '原币余额', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z8NRIYTH9U2KQ_F',   title: '本币余额', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z8NRKU1CINT6Z_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z8O6SNI2O3KLN_F',   title: '1年以内-本币余额', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z9PBJLCIRE5ZX_F',   title: '1年以内-占比', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z8O6UE11E4M4S_F',   title: '1至2年内-本币余额', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z9P95WP2GH49I_F',   title: '1至2年内-占比', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z8O6YT1550W0D_F',   title: '2至3年内-本币余额', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z9PBJLCIRECBH_F',   title: '2至3年内-占比', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z8O6YT15512BX_F',   title: '3年以上-本币余额', sortable: true, fixed: true, align: 'right' },
+{ field: 'A00O2TFHXIFF1Z9PBJLCIREIN1_F',   title: '3年以上-占比', sortable: true, fixed: true, align: 'right' } ]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0002" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0002_SRV/ZFI_M001_Q0002{0}Results?|Title(0_0)按欠款方期末余额前五名的应收排行|FrozenColumns(0_0)|Columns(0_0)
+[[{field: 'ZCUSTOMER_T',title: '单位名称', sortable: true, fixed: true, align: 'left',rowspan:2},{title: '期末余额',colspan:3}],
+[{field: 'A00O2TFHXIFF1Z9355BIZYES2F_F', title: '应收账款', sortable: true, fixed: true, align: 'right' },
+{field: 'A00O2TFHXIFF1Z935F4B13NOOH_F',title: '占应收账款合计数的比例（%）', sortable: true, fixed: true, align: 'right' },
+{field: 'A00O2TFHXIFF1Z9355BIZYK80N_F',title: '坏账准备', sortable: true, fixed: true, align: 'right' }]]|Total(0_0)ZCUSTOMER_T,A00O2TFHXIFF1Z9355BIZYES2F_F,A00O2TFHXIFF1Z9355BIZYK80N_F</value>
+  </data>
+  <data name="TabZFI_M001_Q0003" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)到期回款状况|FrozenColumns(0_0)|Columns(0_0)
+[[{field: 'ZPROFTCTR__ZBU_T',title: '事业部',sortable:true, fixed: true,align: 'left',rowspan:2},{field: 'ZPLANT_T',title: '工厂',sortable:true, fixed: true,align: 'left',rowspan:2}，
+{field: 'ZCUSTOMER',title: '客户编号',sortable:true, fixed: true,align: 'left',rowspan:2}，{field: 'ZCUSTOMER_T',title: '客户',sortable:true, fixed: true,align: 'left',rowspan:2}, 
+{field: 'A0DOC_CURRCY_T',title: '币种',sortable:true, fixed: true,align: 'left',rowspan:2},
+{title: '本月到期款',colspan:2}, {title: '回款金额',colspan:3}, {field: 'A00O2TFHXIFF1Z9L1965NXFU03_F',title: '回款率',sortable:true, fixed: true,align: 'right',rowspan:2}
+, {field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F',title: '差异',sortable:true, fixed: true,align: 'right',rowspan:2},{title: '下月到期应收款',colspan:3},{title: '下两月到期应收款',colspan:3},
+{title: 'YTD累计到期应收',colspan:3},{title: 'YTD累计回款',colspan:3}, {field: 'A00O2TFHXIFF1Z9L1965NXFU03_F',title: 'YTD回款率',sortable:true, fixed: true,align: 'right',rowspan:2}],
+[{ field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',   title: '原币', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PJJAN433USWUC_F',   title: '本币', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',   title: '现汇', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F',   title: '承兑', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PJJB7XWANDFNH',   title: '小计', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PJJNMJX09XV3R_F',   title: '本币', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PJJL761AEC6TP_F',   title: '下月到期', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PJJL761AECJGT_F',   title: '下月到期', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PJJNTW3NR5IOF_F',   title: '本币', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9KSKTPID9VX9_F',   title: '两月到期', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9KSKTPIDA8KD_F',   title: '下两月到期', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9KUZP2W1YUI3_F',   title: '现金', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9KYVTHOIXSQ6_F',   title: '承兑', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9KYXREMNVSNA_F',   title: '小计', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L0X3KSO96S7_F',   title: '现金', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L0X3KSO9D3R_F',   title: '承兑', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L16PKA5JCF2_F',   title: '小计', sortable: true, fixed: true, align: 'right' } ]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0004" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0004_SRV/ZFI_M001_Q0004{0}Results?|Title(0_0)应收账龄与逾期状况|FrozenColumns(0_0)|Columns(0_0)
+[
+[{field: 'ZPROFTCTR__ZBU_T',title: '事业部',sortable:true, fixed: true,align: 'left',rowspan:3},{field: 'ZPLANT_T',title: '工厂',sortable:true, fixed: true,align: 'left',rowspan:3}，
+{field: 'ZCUSTOMER_T',title: '客户',sortable:true, fixed: true,align: 'left',rowspan:3}, {title: '本月实际',colspan:13}], 
+[{field: 'A00O2TFHXIFF1Z9L44RHTXF07W_F',title: '结余金额',sortable:true, fixed: true,align: 'right',rowspan:2},
+ {title: '账龄≤3月',colspan:2}, {title: '3月&lt;账龄≤6月',colspan:2}, {title: '6月&lt;账龄≤12月',colspan:2},
+{title: '1年&lt;账龄≤2年',colspan:2},{title: '账龄&gt;2年',colspan:2},
+{field: 'A00O2TFHXIFF1Z9L1965NXFU03_F',title: '逾期金额',sortable:true, fixed: true,align: 'right',rowspan:2},
+{field: 'A00O2TFHXIFF1Z9L1965NXFU03_F',title: '周转天数',sortable:true, fixed: true,align: 'right',rowspan:2}],
+[{ field: 'A00O2TFHXIFF1Z9L6GN2301MN3_F',   title: '金额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L6GN2301SYN_F',   title: '比重', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L74FEMEEHB5_F',   title: '金额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L760D6R6Y3Z_F',   title: '比重', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L90YMPTGFZO_F',   title: '金额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L90YMPTGYYC_F',   title: '比重', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L92B4VMVG8M_F',   title: '金额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L92B4VMVZ7A_F',   title: '比重', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L9JBBA152R4_F',   title: '金额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9L9JBBA15LPS_F',   title: '比重', sortable: true, fixed: true, align: 'right' } ]
+]</value>
+  </data>
+  <data name="TabZFI_M001_Q0005" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/ZFI_M001_Q0005{0}Results?|Title{0}Results?|Title(0_0)预收帐款统计分析|FrozenColumns(0_0)|FrozenColumns(0_0)[[ {field:'ZPROFTCTR__ZBU',title:'事业部 ',rowspan:2,sortable:true, formatter:'',fixed:true, align: 'center' }]]|Columns(0_0)[[{field:'ZPLANT',title:'工厂',rowspan:2,sortable:true, align: 'center'}]]|Columns(0_0)[[{field:'itemid',title:'账龄',rowspan:2,sortable:true}]]|Columns(0_0)[[{field:'',title:'期末余额（本币）',colspan:2,sortable:true}, {field:'',title:'期末余额（美元）',colspan:3,sortable:true}, {field:'',title:'期末余额（欧元）',colspan:4,sortable:true}, {field:'',title:'期末余额（英镑）',colspan:4,sortable:true},{field:'',title:'期末余额（日元）',colspan:4,sortable:true}, {field:'',title:'累计折合（RMB）',colspan:4,sortable:true}],[{field:'00O2TFHXIFF1Z9LH1MDNK58DK',title:'账面余额',width:80,align:'right',sortable:true},{field:'00O2TFHXIFF1Z9LH1MDNK63ZC',title:'比例(%)',width:80,align:'right',sortable:true}, {field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'原币金额',width:100},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'人民币金额',width:100},{field:'00O2TFHXIFF3PK1515IOLMA1S',title:'原币金额',width:60} ,{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF3PK1515IOLMMOW',title:'人民币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100},{field:'00O2TFHXIFF3PK1515IOLMA1S',title:'原币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF3PK1515IOLMMOW',title:'人民币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100},{field:'00O2TFHXIFF3PK1515IOLMA1S',title:'原币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF3PK1515IOLMMOW',title:'人民币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100},{field:'00O2TFHXIFF3PK1515IOLMA1S',title:'原币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'折算汇率',width:100},{field:'00O2TFHXIFF3PK1515IOLMMOW',title:'人民币金额',width:60},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100},{field:'00O2TFHXIFF1Z9LH1MDNK4VQG',title:'比例(%)',width:100}]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0006" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0006_SRV/ZFI_M001_Q0006{0}Results?|Title(0_0)往来部份（重分类后）|FrozenColumns(0_0)|Columns(0_0)
+[[{title: '债权单位信息',colspan:2},{title: '债务单位信息',colspan:2},{title: '债权单位发生额',colspan:5},{title: '债务单位发生额',colspan:5}，
+{field: 'A00O2TFHXIFF1Z9OGYMFIJP3WA_F',title: '平衡检查',sortable:true, fixed: true,align: 'right',rowspan:2}]
+,[{ field: 'ZCRDTCOMY',   title: '单位编码', sortable: true, fixed: true, left: 'right' } ，
+{ field: 'ZCRDTCOMY_T',   title: '单位名称', sortable: true, fixed: true, left: 'right' } ，
+{ field: 'ZDEBTCOMY',   title: '单位编码', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'ZDEBTCOMY_T',   title: '单位名称', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'A0GL_ACCOUNT_T',   title: '科目', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'A00O2TFHXIFF1Z9OGYMFIJPMUY_F',   title: '期初余额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OGYMFIJPZI2_F',   title: '借方', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OGYMFIJQ5TM_F',   title: '贷方', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OGYMFIJQIGQ_F',   title: '期末余额', sortable: true, fixed: true, align: 'right' },
+{ field: 'A0GL_ACCOUNT_T',   title: '科目', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'A00O2TFHXIFF1Z9OGYMFIJQC56_F',   title: '期初余额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OGYMFIJPT6I_F',   title: '借方', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OGYMFIJPGJE_F',   title: '贷方', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OGYMFIJPA7U_F',   title: '期末余额', sortable: true, fixed: true, align: 'right' }]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0007" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0007_SRV/ZFI_M001_Q0007{0}Results?|Title(0_0)关联交易|FrozenColumns(0_0)|Columns(0_0)
+[[{title: '销售单位',colspan:2},{title: '采购单位',colspan:2},{title: '销售单位发生额',colspan:3},{title: '采购单位发生额',colspan:3}，
+{field: 'A00O2TFHXIFF1Z9OXRJS8XOI3X_F',title: '本月平衡检查',sortable:true, fixed: true,align: 'right',rowspan:2}，
+{field: 'A00O2TFHXIFF1Z9OXRJS8XOOFH_F',title: '累计平衡检查',sortable:true, fixed: true,align: 'right',rowspan:2}]
+,[{ field: 'ZCRDTCOMY',   title: '单位编码', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'ZCRDTCOMY_T',   title: '单位名称', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'ZDEBTCOMY',   title: '单位编码', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'ZDEBTCOMY_T',   title: '单位名称', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'A0GL_ACCOUNT_T',   title: '科目', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'A00O2TFHXIFF1Z9OXEDSDWMN3Y_F',   title: '本月发生额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OXG8GFMBRLT_F',   title: '累计发生额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A0GL_ACCOUNT_T',   title: '科目', sortable: true, fixed: true, align: 'left' } ，
+{ field: 'A00O2TFHXIFF1Z9OXK2IGQCFBO_F',   title: '本月发生额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OXK2IGQCLN8_F',   title: '累计发生额', sortable: true, fixed: true, align: 'right' }]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0008" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0008_SRV/ZFI_M001_Q0008{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
+[[{ field: 'ZPROFTCTR__ZBU_T', title:'事业部', sortable: true, fixed: true, align: 'left',rowspan:2},{ field: 'ZPLANT_T',   title: '工厂', sortable: true, fixed: true, align: 'left',rowspan:2},{title:'期末余额（本币）',colspan:9}， {title:'期末余额（美元）',colspan:3}， {title:'期末余额（欧元）',colspan:3}，{title:'期末余额（英镑）',colspan:3}， {title:'期末余额（日元）',colspan:3}， {title:'累计折合（RMB）'}],
+[{ field: 'A00O2TFHXIFF1Z9OYJPLS3V5Z2_F',   title: '账面余额', sortable: true, fixed: true, align: 'right' }，
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3VOXQ_F',   title: '1年以内-本币余额', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3W1KU_F',   title: '1年以内-占比', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3W7WE_F',   title: '1至2年内-本币余额', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3WKJI_F',   title: '1至2年内-占比', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3WQV2_F',   title: '2至3年内-本币余额', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3X3I6_F',   title: '2至3年内-占比', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3X9TQ_F',   title: '3年以上-本币余额', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3XMGU_F',   title: '3年以上-占比', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3UTBY_F',   title: '原币金额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9OYJPLS3VIM6_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF1Z9P06RWP4U9II_F',   title: '人民币金额', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF3PK4Q17IV82URI_F',   title: '原币金额 ', sortable: true, fixed: true, align: 'right' } ，   
+{ field: 'A00O2TFHXIFF3PK4Q17IV83K1Q_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF3PK4Q17IV837EM_F',   title: '人民币金额', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF3PK4Q9BG0EI921_F',   title: '原币金额 ', sortable: true, fixed: true, align: 'right' } ，   
+{ field: 'A00O2TFHXIFF3PK4Q9BG0EIYC9_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF3PK4Q9BG0EILP5_F',   title: '人民币金额', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF3PK4R63SUK2GN9_F',   title: '原币金额 ', sortable: true, fixed: true, align: 'right' } ，   
+{ field: 'A00O2TFHXIFF3PK4R63SUK35XH_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF3PK4R63SUK2TAD_F',   title: '人民币金额', sortable: true, fixed: true,align: 'right' } ，     
+{ field: 'A00O2TFHXIFF3PK4RFWVFQCI5C_F',   title: '人民币金额', sortable: true,fixed: true,align: 'right' } ]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0009" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0009_SRV/ZFI_M001_Q0009{0}Results?|Title(0_0)按付款方期末余额前五名的应付排行|FrozenColumns(0_0)|Columns(0_0)
+[[{field: 'ZVENDOR_T',title: '单位名称', sortable: true, fixed: true, align: 'left',rowspan:2},{title: '期末余额',colspan:2}],
+[{field: 'A00O2TFHXIFF1Z9P15KV9N553I_F', title: '应付账款', sortable: true, fixed: true, align: 'right' },
+{field: 'A00O2TFHXIFF1Z9P15KV9N96HA_F',title: '占预付账款合计数的比例（%）', sortable: true, fixed: true, align: 'right' }]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0011" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0011_SRV/ZFI_M001_Q0011{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
+[[{ field: 'ZPROFTCTR__ZBU_T', title:'事业部', sortable: true, fixed: true, align: 'left',rowspan:2},{ field: 'ZPLANT_T',   title: '工厂', sortable: true, fixed: true, align: 'left',rowspan:2},{title:'期末余额（本币）',colspan:9}， {title:'期末余额（美元）',colspan:3}， {title:'期末余额（欧元）',colspan:3}，{title:'期末余额（英镑）',colspan:3}， {title:'期末余额（日元）',colspan:3}],
+[{ field: 'A00O2TFHXIFF1Z9P2IPMQO33J3_F',   title: '账面余额', sortable: true, fixed: true, align: 'right' }，
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO69B3_F',   title: '1年以内-本币余额', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO6LY7_F',   title: '1年以内-占比', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO6S9R_F',   title: '1至2年内-本币余额', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO74WV_F',   title: '1至2年内-占比', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO7B8F_F',   title: '2至3年内-本币余额', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO7NVJ_F',   title: '2至3年内-占比', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO7U73_F',   title: '3年以上-本币余额', sortable: true, fixed: true, align: 'right' } ， 
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO86U7_F',   title: '3年以上-占比', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO3G67_F',   title: '原币金额', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO3Z4V_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO3STB_F',   title: '人民币金额', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO45GF_F',   title: '原币金额 ', sortable: true, fixed: true, align: 'right' } ，   
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO4OF3_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO4I3J_F',   title: '人民币金额', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO4UQN_F',   title: '原币金额 ', sortable: true, fixed: true, align: 'right' } ，   
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO5DPB_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO57DR_F',   title: '人民币金额', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO5K0V_F',   title: '原币金额 ', sortable: true, fixed: true, align: 'right' } ，   
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO62ZJ_F',   title: '折算汇率', sortable: true, fixed: true, align: 'right' } ，    
+{ field: 'A00O2TFHXIFF1Z9P2IPMQO5WNZ_F',   title: '人民币金额', sortable: true, fixed: true,align: 'right' } ]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0015" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0015_SRV/ZFI_M001_Q0015{0}Results?|Title(0_0)按付款方期末余额前五名的预付排行|FrozenColumns(0_0)|Columns(0_0)
+[[{field: 'ZVENDOR_T',title: '单位名称', sortable: true, fixed: true, align: 'left',rowspan:2},{title: '期末余额',colspan:2}],
+[{field: 'A00O2TFHXIFF3PLPTJZU11CGJX_F', title: '预付账款', sortable: true, fixed: true, align: 'right' },
+{field: 'A00O2TFHXIFF3PLPTV10XK7FU0_F',title: '占预付账款合计数的比例（%）', sortable: true, fixed: true, align: 'right' }]]</value>
+  </data>
 </root>

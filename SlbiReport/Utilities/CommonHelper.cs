@@ -45,7 +45,8 @@ namespace SlbiReport.Utilities
             }
 
             ds = ConvertXMLFileToDataSet(doc);
-            List<VisitSource> listss = new List<VisitSource>();
+            List<VisitSource> listss = new List<VisitSource>();
+
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
                 var obj = new VisitSource()
@@ -401,7 +402,10 @@ namespace SlbiReport.Utilities
             string sURL = sResources.Replace("Url(0_0)", "★");
             //Metadata的Url结尾
             int iIndex = sURL.IndexOf("|", 1);
-             sURL = sURL.Substring(1, iIndex-1);
+            if (iIndex > 1)
+            {
+                sURL = sURL.Substring(1, iIndex - 1);
+            }
 
             fileName = sURL + sToken;
             // fileName = oTableViewModel.Url + sToken;
