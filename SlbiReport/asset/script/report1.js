@@ -31,7 +31,7 @@ $(window).load(function () {
     //inittable();
     //drawpie();
     //drawbar();
-    // drawpie1(null, "main", "Pie2");
+    drawselect_Auto("selectArea","Sel1")
     drawtable_auto(null, "tt", "Tab2");
 });
 
