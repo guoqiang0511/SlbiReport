@@ -45,7 +45,8 @@ namespace SlbiReport.Utilities
             }
 
             ds = ConvertXMLFileToDataSet(doc);
-            List<VisitSource> listss = new List<VisitSource>();
+            List<VisitSource> listss = new List<VisitSource>();
+
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
                 var obj = new VisitSource()
@@ -221,6 +222,14 @@ namespace SlbiReport.Utilities
                 oTableViewModel.Url += "&$top=" + sRows;
             }
 
+            int iTotalIndex = sResources.IndexOf("Total(0_0)");
+            string strTotle = string.Empty;
+            if (iTotalIndex > 0)
+            {
+                strTotle = sResources.Substring(iTotalIndex, sResources.Length - iTotalIndex).ToString().Replace("Total(0_0)", "");
+            }
+
+            string[] sTotle = strTotle.Split(',');
             XmlDocument doc = new XmlDocument();
             try
             {
@@ -247,18 +256,90 @@ namespace SlbiReport.Utilities
 
             List<String> items = new List<String>();
 
+            //合计处理
+            if (sTotle.Length > 1)
+            {
+                DataRow drProperties = dt.NewRow();
+                drProperties["" + sTotle[0].ToString() + ""] = "合计";
+                double dSum = 0;
+                //合计列值计算
+                for (int i = 1; i < sTotle.Length; i++)
+                {
+                    foreach (DataRow drP in dt.Rows)
+                    {
+                        if (drP["" + sTotle[i] + ""].Equals(string.Empty))
+                        {
+                            dSum = 0;
+                        }
+                        else
+                        {
+                            dSum = Convert.ToDouble(drP["" + sTotle[i] + ""].ToString().Replace(",", ""));
+                        }
+                        dSum += dSum;
+                    }
+
+                    drProperties["" + sTotle[i] + ""] = string.Format("{0:N}", dSum);
+                }
+                dt.Rows.Add(drProperties);
+            }
+
+
             string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
 
             return result;
         }
 
-        public static string GetTableData_Auto(string sName, string sUrltt, string sSkip,string field, string sRows, string sToken)
+        //public static string GetTableData_Auto(string sName, string sUrltt, string sSkip,string field, string sRows, string sToken)
+        //{
+        //    DataTable dt = new DataTable();
+        //    DataSet ds = new DataSet();
+        //    TableViewModel oTableViewModel = new TableViewModel();
+        //    string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+        //    StringToEntityValue(oTableViewModel, sResources);
+
+        //    oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
+        //    oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
+
+        //    XmlDocument doc = new XmlDocument();
+        //    try
+        //    {
+        //        doc.Load(oTableViewModel.Url);
+        //    }
+        //    catch
+        //    {
+
+        //        return null;
+        //    }
+        //    ds = ConvertXMLFileToDataSet(doc);
+
+        //    dt = ds.Tables["properties"];
+
+        //    DataRow dr = ds.Tables["feed"].Select()[0];
+
+        //    string totalnum = Convert.ToString(dr["count"]);
+
+
+        //    List<String> items = new List<String>();
+
+        //    string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
+
+        //    return result;
+        //}
+        public static string GetTableData_Auto(string sName, string sUrltt, string sSkip, string field, string sRows, string sToken)
         {
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-            StringToEntityValue(oTableViewModel, sResources);
+            //TableData的Url特殊标记（★）
+            string sURL = sResources.Replace("Url(0_0)", "★");
+            //TableData的开始位置
+            int iStartIndex = sURL.LastIndexOf("★", sURL.Length - 1) + 1;
+            //TableData的结束位置
+            int iEndIndex = sURL.IndexOf("|Title", 1);
+            //TableData的Url取得
+            sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
+            oTableViewModel.Url=sURL;
 
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
@@ -288,7 +369,6 @@ namespace SlbiReport.Utilities
 
             return result;
         }
-
 
         public static List<SelectColumn> GetSelect(string sName)
         {
@@ -425,7 +505,7 @@ namespace SlbiReport.Utilities
 
             PostParams oPostParams = new PostParams(sResources);
 
-            string sUrl = oPostParams.GetString("*Url");
+            string sUrl = oPostParams.GetString("Url");
             string fileName = sUrl + sId + "?" + sToken;
 
             XmlDocument doc = new XmlDocument();

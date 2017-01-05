@@ -28,12 +28,14 @@ namespace SlbiReport.Controllers
         [HttpPost]
         public ActionResult PieMap(string id)
         {
+
             string cmd = Request["pagequeryParams"];
             string urltt = QueryParamsurl(cmd);
 
             var pie = new PieMapViewModel();
 
             pie = CommonHelper.GetPieMapViewModel(id, urltt, token);
+
 
             return Json(new { status = 1, result = pie });
         }
@@ -46,8 +48,10 @@ namespace SlbiReport.Controllers
             string urltt = QueryParamsurl(cmd);
 
             var bar = CommonHelper.GetBarViewModel(id,urltt,token);
+
             return Json(new { status = 1, result = bar });
         }
+
 
         //[HttpPost]
         //public ActionResult BarMap1(string id)
@@ -249,11 +253,13 @@ namespace SlbiReport.Controllers
         [HttpPost]
         public ActionResult Select(string id)
         {
+    
             return Json(new { status = 1, result = CommonHelper.GetSelect(id) });
         }
 
         public ActionResult Select_Auto(string id)
         {
+
             return Json(new { status = 1, result = CommonHelper.GetSelect_Auto(id,token) });
         }
 
