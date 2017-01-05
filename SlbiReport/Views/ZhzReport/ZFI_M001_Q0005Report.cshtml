@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutEchart.cshtml";
+}
+
+@{
+    ViewBag.Title = "预收帐款统计分析";
+}
+
+<h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
+
+<div id="selectArea"></div>
+
+<div>&nbsp;<table id="tt" class="easyui-datagrid"></table></div>
+
+<script style="">
+$(window).load(function () {
+    //要执行的方法体
+    drawselect("selectArea", "SelZFI_M001_Q0005");
+    drawtable(null, "tt", "TabZFI_M001_Q0005");
+});
+</script>
+

@@ -13,11 +13,13 @@ namespace SlbiReport.Utilities
 {
     public static class CommonHelper
     {
-        public static PieMapViewModel GetPieMapViewModel(string sName, string sUrltt, string sToken)
+        public static PieMapViewModel GetPieMapViewModel(string sName, string sUrltt, string sToken)
+
         {
 
             PieMapViewModel oPieMapViewModel = new PieMapViewModel();
-            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();            sResources = sResources.Replace("，", ",");
+            string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
+            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oPieMapViewModel, sResources);
 
             if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null)
@@ -43,13 +45,8 @@ namespace SlbiReport.Utilities
             }
 
             ds = ConvertXMLFileToDataSet(doc);
+            List<VisitSource> listss = new List<VisitSource>();
 
-            if (ds.Tables["properties"] == null)
-            {
-                return null;
-            }
-
-            List<VisitSource> listss = new List<VisitSource>();
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
                 var obj = new VisitSource()
@@ -59,18 +56,21 @@ namespace SlbiReport.Utilities
                 };
                 listss.Add(obj);
                 lists.Add(Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]));
-            }
+            }
+
             dt = ds.Tables["properties"];
             oPieMapViewModel.LegendData = lists;
             oPieMapViewModel.SeriesData = listss;
-            return oPieMapViewModel;
+            return oPieMapViewModel;
+
         }
 
         public static BarViewModel GetBarViewModel(string sName, string sUrltt, string sToken)
         {
             BarViewModel oBarViewModel = new BarViewModel();
 
-            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));            sResources = sResources.Replace("，", ",");
+            string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oBarViewModel, sResources);
             string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
@@ -292,8 +292,26 @@ namespace SlbiReport.Utilities
             StringToEntityValue(oTableViewModel, sResources);
 
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
-            oTableViewModel.Url += "$inlinecount=allpages&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
+            oTableViewModel.Url += "$inlinecount=allpages&" + sToken;
 
+            if (sSkip != null && sSkip != "")
+            {
+                oTableViewModel.Url += "&$skip=" + sSkip ;
+            }
+
+            if (sRows != null && sRows != "")
+            {
+                oTableViewModel.Url += "&$top=" + sRows;
+            }
+
+            int iTotalIndex = sResources.IndexOf("Total(0_0)");
+            string strTotle = string.Empty;
+            if (iTotalIndex > 0)
+            {
+                strTotle = sResources.Substring(iTotalIndex, sResources.Length - iTotalIndex).ToString().Replace("Total(0_0)", "");
+            }
+
+            string[] sTotle = strTotle.Split(',');
             XmlDocument doc = new XmlDocument();
             try
             {
@@ -320,18 +338,90 @@ namespace SlbiReport.Utilities
 
             List<String> items = new List<String>();
 
+            //合计处理
+            if (sTotle.Length > 1)
+            {
+                DataRow drProperties = dt.NewRow();
+                drProperties["" + sTotle[0].ToString() + ""] = "合计";
+                double dSum = 0;
+                //合计列值计算
+                for (int i = 1; i < sTotle.Length; i++)
+                {
+                    foreach (DataRow drP in dt.Rows)
+                    {
+                        if (drP["" + sTotle[i] + ""].Equals(string.Empty))
+                        {
+                            dSum = 0;
+                        }
+                        else
+                        {
+                            dSum = Convert.ToDouble(drP["" + sTotle[i] + ""].ToString().Replace(",", ""));
+                        }
+                        dSum += dSum;
+                    }
+
+                    drProperties["" + sTotle[i] + ""] = string.Format("{0:N}", dSum);
+                }
+                dt.Rows.Add(drProperties);
+            }
+
+
             string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
 
             return result;
         }
 
-        public static string GetTableData_Auto(string sName, string sUrltt, string sSkip,string field, string sRows, string sToken)
+        //public static string GetTableData_Auto(string sName, string sUrltt, string sSkip,string field, string sRows, string sToken)
+        //{
+        //    DataTable dt = new DataTable();
+        //    DataSet ds = new DataSet();
+        //    TableViewModel oTableViewModel = new TableViewModel();
+        //    string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+        //    StringToEntityValue(oTableViewModel, sResources);
+
+        //    oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
+        //    oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
+
+        //    XmlDocument doc = new XmlDocument();
+        //    try
+        //    {
+        //        doc.Load(oTableViewModel.Url);
+        //    }
+        //    catch
+        //    {
+
+        //        return null;
+        //    }
+        //    ds = ConvertXMLFileToDataSet(doc);
+
+        //    dt = ds.Tables["properties"];
+
+        //    DataRow dr = ds.Tables["feed"].Select()[0];
+
+        //    string totalnum = Convert.ToString(dr["count"]);
+
+
+        //    List<String> items = new List<String>();
+
+        //    string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
+
+        //    return result;
+        //}
+        public static string GetTableData_Auto(string sName, string sUrltt, string sSkip, string field, string sRows, string sToken)
         {
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-            StringToEntityValue(oTableViewModel, sResources);
+            //TableData的Url特殊标记（★）
+            string sURL = sResources.Replace("Url(0_0)", "★");
+            //TableData的开始位置
+            int iStartIndex = sURL.LastIndexOf("★", sURL.Length - 1) + 1;
+            //TableData的结束位置
+            int iEndIndex = sURL.IndexOf("|Title", 1);
+            //TableData的Url取得
+            sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
+            oTableViewModel.Url=sURL;
 
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
@@ -361,7 +451,6 @@ namespace SlbiReport.Utilities
 
             return result;
         }
-
 
         public static List<SelectColumn> GetSelect(string sName)
         {
@@ -560,130 +649,251 @@ namespace SlbiReport.Utilities
             return jss.Serialize(dic);
         }
 
-        public static Object StringToEntityValue(object oOject, string sParamStr)
-        {            PostParams oPostParams = new PostParams(sParamStr);
+        public static Object StringToEntityValue(object oOject, string sParamStr)
 
-            Dictionary<string, object> oDic = oPostParams.GetInsideParams();
-            string sFieldName = string.Empty;
-            foreach (var item in oDic)
-            {
-                FieldAssignment(oOject, item.Key, item.Value.ToString());
-            }
-            return oOject;
+        {
+            PostParams oPostParams = new PostParams(sParamStr);
+
+
+            Dictionary<string, object> oDic = oPostParams.GetInsideParams();
+
+            string sFieldName = string.Empty;
+
+            foreach (var item in oDic)
+
+            {
+
+                FieldAssignment(oOject, item.Key, item.Value.ToString());
+
+            }
+
+            return oOject;
+
         }
 
-        public static int FieldAssignment(object oObject, string sKey, string sValue)
-        {
-            string[] sFkKey = sKey.Split('.');
-            var oObjectNew = new object();
-            if (sFkKey.Length > 1)
-            {
-                oObjectNew = GetForeignkeyObject(oObject, sFkKey[0]);
-                if (oObjectNew == null)
-                {
-                    return -1;
-                }
-            }
-            else
-                oObjectNew = oObject;
-            for (int i = 1; i < sFkKey.Length - 1; i++)
-            {
-                oObjectNew = GetForeignkeyObject(oObjectNew, sFkKey[i]);
-            }
-            PropertyInfo oProperty = oObjectNew.GetType().GetProperty(sFkKey[sFkKey.Length - 1]);
-            if (oProperty != null)
-            {
-                switch (oProperty.PropertyType.Name)
-                {
-                    case "String":
-                        oProperty.SetValue(oObjectNew, sValue);
-                        break;
-                    case "Int32":
-                        int nValue = 0;
-                        Int32.TryParse(sValue, out nValue);
-                        oProperty.SetValue(oObjectNew, nValue);
-                        break;
-                    case "Byte":
-                        byte bValue = 0;
-                        //bValue = CommonHelper.Getbyte(sValue);
-                        Byte.TryParse(sValue, out bValue);
-                        oProperty.SetValue(oObjectNew, bValue);
-                        break;
-                    case "Guid":
-                        Guid gGuid;
-                        Guid.TryParse(sValue, out gGuid);
-                        oProperty.SetValue(oObjectNew, gGuid);
-                        break;
-                    case "DateTimeOffset":
-                        DateTimeOffset oData;
-                        DateTimeOffset.TryParse(sValue, out oData);
-                        oProperty.SetValue(oObjectNew, oData);
-                        break;
-                    case "Decimal":
-                        System.Decimal dDecimal = 0;
-                        System.Decimal.TryParse(sValue, out dDecimal);
-                        oProperty.SetValue(oObjectNew, dDecimal);
-                        break;
-                    case "Int64":
-                        long lLong = 0;
-                        long.TryParse(sValue, out lLong);
-                        oProperty.SetValue(oObjectNew, lLong);
-                        break;
-                    case "Boolean":
-                        Boolean oBool = true;
-                        //sValue = sValue == "0" ? "false" : "true";
-                        //Boolean.TryParse(sValue, out oBool);
-                        if (sValue == "0" || sValue.ToLower() == "false" || String.IsNullOrEmpty(sValue))
-                            oBool = false;
-                        oProperty.SetValue(oObjectNew, oBool);
-                        break;
-                    case "Nullable`1":
-                        if (oProperty.PropertyType.GenericTypeArguments[0].Name == "Guid")
-                        {
-                            Guid oGid;
-                            Guid.TryParse(sValue, out oGid);
-                            if (oGid == null || oGid == Guid.Empty)
-                            {
-                                oProperty.SetValue(oObjectNew, null);
-                            }
-                            else
-                            {
-                                oProperty.SetValue(oObjectNew, oGid);
-                            }
-
-                        }
-                        if (oProperty.PropertyType.GenericTypeArguments[0].Name == "DateTimeOffset")
-                        {
-                            DateTimeOffset oNullableData;
-                            DateTimeOffset.TryParse(sValue, out oNullableData);
-                            oProperty.SetValue(oObjectNew, oNullableData);
-                        }
-                        break;
-                    default:
-                        return -1;
-                }
-            }
-            else
-                return -1;
-            return 0;
-        }
+        public static int FieldAssignment(object oObject, string sKey, string sValue)
+
+        {
+
+            string[] sFkKey = sKey.Split('.');
+
+            var oObjectNew = new object();
+
+            if (sFkKey.Length > 1)
+
+            {
+
+                oObjectNew = GetForeignkeyObject(oObject, sFkKey[0]);
+
+                if (oObjectNew == null)
+
+                {
+
+                    return -1;
+
+                }
+
+            }
+
+            else
+
+                oObjectNew = oObject;
+
+            for (int i = 1; i < sFkKey.Length - 1; i++)
+
+            {
+
+                oObjectNew = GetForeignkeyObject(oObjectNew, sFkKey[i]);
+
+            }
+
+            PropertyInfo oProperty = oObjectNew.GetType().GetProperty(sFkKey[sFkKey.Length - 1]);
+
+            if (oProperty != null)
+
+            {
+
+                switch (oProperty.PropertyType.Name)
+
+                {
+
+                    case "String":
+
+                        oProperty.SetValue(oObjectNew, sValue);
+
+                        break;
+
+                    case "Int32":
+
+                        int nValue = 0;
+
+                        Int32.TryParse(sValue, out nValue);
+
+                        oProperty.SetValue(oObjectNew, nValue);
+
+                        break;
+
+                    case "Byte":
+
+                        byte bValue = 0;
+
+                        //bValue = CommonHelper.Getbyte(sValue);
+
+                        Byte.TryParse(sValue, out bValue);
+
+                        oProperty.SetValue(oObjectNew, bValue);
+
+                        break;
+
+                    case "Guid":
+
+                        Guid gGuid;
+
+                        Guid.TryParse(sValue, out gGuid);
+
+                        oProperty.SetValue(oObjectNew, gGuid);
+
+                        break;
+
+                    case "DateTimeOffset":
+
+                        DateTimeOffset oData;
+
+                        DateTimeOffset.TryParse(sValue, out oData);
+
+                        oProperty.SetValue(oObjectNew, oData);
+
+                        break;
+
+                    case "Decimal":
+
+                        System.Decimal dDecimal = 0;
+
+                        System.Decimal.TryParse(sValue, out dDecimal);
+
+                        oProperty.SetValue(oObjectNew, dDecimal);
+
+                        break;
+
+                    case "Int64":
+
+                        long lLong = 0;
+
+                        long.TryParse(sValue, out lLong);
+
+                        oProperty.SetValue(oObjectNew, lLong);
+
+                        break;
+
+                    case "Boolean":
+
+                        Boolean oBool = true;
+
+                        //sValue = sValue == "0" ? "false" : "true";
+
+                        //Boolean.TryParse(sValue, out oBool);
+
+                        if (sValue == "0" || sValue.ToLower() == "false" || String.IsNullOrEmpty(sValue))
+
+                            oBool = false;
+
+                        oProperty.SetValue(oObjectNew, oBool);
+
+                        break;
+
+                    case "Nullable`1":
+
+                        if (oProperty.PropertyType.GenericTypeArguments[0].Name == "Guid")
+
+                        {
+
+                            Guid oGid;
+
+                            Guid.TryParse(sValue, out oGid);
+
+                            if (oGid == null || oGid == Guid.Empty)
+
+                            {
+
+                                oProperty.SetValue(oObjectNew, null);
+
+                            }
+
+                            else
+
+                            {
+
+                                oProperty.SetValue(oObjectNew, oGid);
+
+                            }
+
+
+
+                        }
+
+                        if (oProperty.PropertyType.GenericTypeArguments[0].Name == "DateTimeOffset")
+
+                        {
+
+                            DateTimeOffset oNullableData;
+
+                            DateTimeOffset.TryParse(sValue, out oNullableData);
+
+                            oProperty.SetValue(oObjectNew, oNullableData);
+
+                        }
+
+                        break;
+
+                    default:
+
+                        return -1;
+
+                }
+
+            }
+
+            else
+
+                return -1;
+
+            return 0;
+
+        }
+
         public static object GetForeignkeyObject(object oObject, string sKey)
-        {
-            PropertyInfo oPropertyInfo = oObject.GetType().GetProperty(sKey);
-            if (oPropertyInfo == null)
-            {
-                return null;
-            }
-            var oValue = oPropertyInfo.GetValue(oObject);
-
-            if (oValue == null)
-            {
-                var oIsValueType = oPropertyInfo.PropertyType.IsValueType;
-                oValue = Activator.CreateInstance(oPropertyInfo.PropertyType);
-            }
-            oObject.GetType().GetProperty(sKey).SetValue(oObject, oValue);
-            //}
-            return oValue;
+        {
+
+            PropertyInfo oPropertyInfo = oObject.GetType().GetProperty(sKey);
+
+            if (oPropertyInfo == null)
+
+            {
+
+                return null;
+
+            }
+
+            var oValue = oPropertyInfo.GetValue(oObject);
+
+
+
+            if (oValue == null)
+
+            {
+
+                var oIsValueType = oPropertyInfo.PropertyType.IsValueType;
+
+                oValue = Activator.CreateInstance(oPropertyInfo.PropertyType);
+
+            }
+
+            oObject.GetType().GetProperty(sKey).SetValue(oObject, oValue);
+
+            //}
+
+            return oValue;
+
         }
 
         public static DataSet ConvertXMLFileToDataSet(XmlDocument xmld)
