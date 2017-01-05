@@ -178,4 +178,7 @@
   <data name="Tab2" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?|Title(0_0)testbar</value>
   </data>
+  <data name="Dashtable" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/ZPU_M001_Q0001Results?</value>
+  </data>
 </root>

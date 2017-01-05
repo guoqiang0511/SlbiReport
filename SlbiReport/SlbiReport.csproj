@@ -214,6 +214,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\YFController.cs" />
     <Compile Include="Models\BarSeriesModel.cs" />
     <Compile Include="Models\TempObjectModel.cs" />
@@ -244,6 +245,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="asset\script\dash\dash2.js" />
+    <Content Include="asset\script\dash\dash1.js" />
+    <Content Include="asset\script\dash\mysldashboard.js" />
     <Content Include="asset\script\myslreport.js" />
     <Content Include="asset\script\report4.js" />
     <Content Include="asset\script\report3.js" />
@@ -609,6 +613,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Img\green.png" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -626,6 +631,7 @@
     <Content Include="Scripts\echarts.common.min.js" />
     <Content Include="Scripts\echarts\echarts-map.js" />
     <Content Include="Scripts\echarts\echarts.js" />
+    <Content Include="Scripts\echarts\echarts.min.js" />
     <Content Include="Scripts\echarts\esl.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -686,6 +692,10 @@
     <Content Include="Views\YF\ZPU_M001_Q0004port.cshtml" />
     <Content Include="Views\YF\ZSD_M001_Q0011port.cshtml" />
     <Content Include="Views\YF\ZSD_M001_Q0008port.cshtml" />
+    <Content Include="Views\Shared\_LayoutDash.cshtml" />
+    <Content Include="Views\DashBoard\BusinessOverview1.cshtml" />
+    <Content Include="Views\DashBoard\report.cshtml" />
+    <Content Include="Views\DashBoard\BusinessOverview2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
