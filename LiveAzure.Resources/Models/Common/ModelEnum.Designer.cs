@@ -355,6 +355,18 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0004_SRV/ZMM_M001_Q0004Results{0}Results?|Title(0_0)存货库龄分析|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU&apos;,   title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;right&apos; } ，
+        ///{ field: &apos;ZPLANT&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;right&apos; } ，
+        ///{ field: &apos;ZSTOR_LOC&apos;,   title: &apos;库存地点&apos;, sortable: true, fixed: true, align: &apos;right&apos; } ，
+        ///{ field: &apos;A0STOCKTYPE&apos;,   title: &apos;库存类型&apos;, sortable: true, fixed: true, align: &apos;right&apos; } ，        /// [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string TabZMM_M001_Q0004 {
+            get {
+                return ResourceManager.GetString("TabZMM_M001_Q0004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0001_SRV/ZSD_M001_Q0001{0}Results?|Title(0_0)3年销售汇总趋势|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;,   title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;ZPLANT_T&apos;,   title: &apos;生产工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;ZDISTCHAN_T&apos;,   title: &apos;销售类型&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;ZSALESDIT_T&apos;,   title: &apos;地域&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos; [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZSD_M001_Q0001 {

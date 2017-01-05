@@ -421,4 +421,19 @@ Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM
   <data name="SelZFI_M001_Q0005" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)日历日(单值必输,默认当前一天)|TextField(0_0)ZDAY001_PText|ValueField(0_0)ZDAY001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_M_TEXT|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)工厂(多值,可选)|TextField(0_0)ZPLANT_TText|ValueField(0_0)ZPLANT_T|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)客户(多值,可选)|TextField(0_0)ZCUSTOMER_TText|ValueField(0_0)ZCUSTOMER_T|Width(0_0)200|Multiple(0_0)true*sap-user=guoq&amp;sap-password=ghg2587758</value>
   </data>
+  <data name="TabZMM_M001_Q0004" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0004_SRV/ZMM_M001_Q0004Results{0}Results?|Title(0_0)存货库龄分析|FrozenColumns(0_0)|Columns(0_0)[[{ field: 'ZPROFTCTR__ZBU',   title: '事业部', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'ZPLANT',   title: '工厂', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'ZSTOR_LOC',   title: '库存地点', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A0STOCKTYPE',   title: '库存类型', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'ZBATCHDAT',   title: '批次日期', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'ZMATERIAL',   title: '产品', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PK56H30QM9Y9H_F',   title: '库存数量', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PK5OB68PIM5L7_F',   title: '库龄0~30天', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PK5OB68PIMBWR_F',   title: '库龄30~60天', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PK5OB68PIMI8B_F',   title: '库龄60-90天', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PK5ODTLD7GY4U_F',   title: '库龄90-180天', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PK5OKR7VHB208_F',   title: '库龄&gt;180天', sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF3PK5OXNKVXIFIK_F',   title: '呆滞库存占比', sortable: true, fixed: true, align: 'right' }]]</value>
+  </data>
 </root>
