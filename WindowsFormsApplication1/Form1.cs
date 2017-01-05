@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
             {
                 if (!string.IsNullOrEmpty(item))
                 {
-                    string a = item.Replace("=\"", "(0_0)").Replace("\"", "|").Replace("<", "").Replace(" ", "").Replace(":", "");
+                    string a = item.Replace("=\"", "(0_0)").Replace("\"", "|").Replace("<", "").Replace(" ", "").Replace(":", "").Replace("-","");
                     PostParams oPostParams = new PostParams(a);
                     oDatas oData = new oDatas();
                     CommonHelper.StringToEntityValue(oData, a);
@@ -140,7 +140,15 @@ namespace WindowsFormsApplication1
             string res = "";
             foreach (var item in oDataslist)
             {
-                res += "{ field: '" + item.PropertyName + "',   title: '" + item.saplabel + "', sortable: true, fixed: true, align: 'right' } ，";
+                if (item.sapaggregationrole== "dimension")
+                {
+                    res += "{ field: '" + item.PropertyName + "',   title: '" + item.saplabel + "',sortable: true, fixed: true, align: 'left' } ，";
+                }
+                else
+                {
+                    res += "{ field: '" + item.PropertyName + "',   title: '" + item.saplabel + "',sortable: true, fixed: true, align: 'right' } ，";
+                }
+              
             }
 
             z2.Text = res;
@@ -154,5 +162,7 @@ namespace WindowsFormsApplication1
         public string PropertyName { get; set; }
 
         public string saplabel { get; set; }
+
+        public string sapaggregationrole { get;set;}
     }
 }
