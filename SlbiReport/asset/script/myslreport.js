@@ -219,10 +219,11 @@ function drawtable(pagequeryParams, container, id) {
         var fs = "";
         var s = "";
         var field = "";
+        var ColList = "";
         if (response){
             fs = response.result.FrozenColumns;
             s = response.result.Columns;
-
+            ColList = response.result.ColList;
             var option = getTableOption();
 
         //  var fs = "[[{field: 'ZCUSTOMER_T',title: '客户',sortable:true, formatter:'',fixed:true}]]";
@@ -234,7 +235,7 @@ function drawtable(pagequeryParams, container, id) {
         option.title = response.result.Title;
         option.url = 'TableMap';
         option.onLoadSuccess = function (data) {
-            mergeCellsByField(container, "");
+            mergeCellsByField(container, ColList);
         };
         option.queryParams = { id: id };
         $('#' + container + '').datagrid(option);
@@ -258,7 +259,8 @@ function drawselect_Auto(container, id) {
                     label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        "field": result.valueField
+                        "field": result.ValueField,
+                        "id":id,
                     },
                     labelPosition: 'left',
                     valueField: 'id',
