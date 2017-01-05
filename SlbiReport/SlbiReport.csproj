@@ -214,8 +214,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CxController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\YFController.cs" />
+    <Compile Include="Controllers\ZhzReportController.cs" />
     <Compile Include="Models\BarSeriesModel.cs" />
     <Compile Include="Models\TempObjectModel.cs" />
     <Compile Include="Utilities\CommonHelper.cs" />
@@ -701,6 +703,13 @@
     <Content Include="Views\DashBoard\BusinessOverview1.cshtml" />
     <Content Include="Views\DashBoard\report.cshtml" />
     <Content Include="Views\DashBoard\BusinessOverview2.cshtml" />
+    <Content Include="Views\ZhzReport\ZFI_M001_Q0003Report.cshtml" />
+    <Content Include="Views\ZhzReport\ZFI_M001_Q0006Report.cshtml" />
+    <Content Include="Views\Cx\ZMM_M001_Q0001AndQ0002AndQ0003.cshtml" />
+    <Content Include="Views\Cx\ZSD_M001_Q0001AndQ0002AndQ0003.cshtml" />
+    <Content Include="Views\Cx\ZSD_M001_Q0004AndQ0005.cshtml" />
+    <Content Include="Views\Cx\ZSD_M001_Q0006AndQ0007.cshtml" />
+    <Content Include="Views\Cx\ZSD_M001_Q0013.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
