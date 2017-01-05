@@ -243,7 +243,43 @@ namespace SlbiReport.Utilities
             return result;
         }
 
-        public static string GetTableData_Auto(string sName, string sUrltt, string sSkip,string field, string sRows, string sToken)
+        //public static string GetTableData_Auto(string sName, string sUrltt, string sSkip,string field, string sRows, string sToken)
+        //{
+        //    DataTable dt = new DataTable();
+        //    DataSet ds = new DataSet();
+        //    TableViewModel oTableViewModel = new TableViewModel();
+        //    string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+        //    StringToEntityValue(oTableViewModel, sResources);
+
+        //    oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
+        //    oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
+
+        //    XmlDocument doc = new XmlDocument();
+        //    try
+        //    {
+        //        doc.Load(oTableViewModel.Url);
+        //    }
+        //    catch
+        //    {
+
+        //        return null;
+        //    }
+        //    ds = ConvertXMLFileToDataSet(doc);
+
+        //    dt = ds.Tables["properties"];
+
+        //    DataRow dr = ds.Tables["feed"].Select()[0];
+
+        //    string totalnum = Convert.ToString(dr["count"]);
+
+
+        //    List<String> items = new List<String>();
+
+        //    string result = "{ \"total\":" + totalnum + " ,\"rows\": " + Dtb2Json(dt) + "}";
+
+        //    return result;
+        //}
+        public static string GetTableData_Auto(string sName, string sUrltt, string sSkip, string field, string sRows, string sToken)
         {
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
@@ -343,10 +379,72 @@ namespace SlbiReport.Utilities
             return selectlist;
         }
 
+        //public static TableViewModel GetTableMetadata_Auto(string sName, string sToken)
+        //{
+
+
+        //    TableViewModel oTableViewModel = new TableViewModel();
+        //    string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+
+        //    StringToEntityValue(oTableViewModel, sResources);
+
+        //    DataTable dt = new DataTable();
+        //    DataSet ds = new DataSet();
+        //    //string fileName = oTableViewModel.Url + sToken;
+        //    string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+        //    //fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?sap-user=guoq&sap-password=ghg2587758";
+        //    XmlDocument doc = new XmlDocument();
+        //    try
+        //    {
+        //        doc.Load(fileName);
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //    ds = ConvertXMLFileToDataSet(doc);
+
+        //    dt = ds.Tables["Property"];
+
+        //    DataRow[] drArr = dt.Select("EntityType_Id=0 and  text <> '' ");//查询
+
+        //    DataTable dtNew = dt.Clone();
+
+        //    //DataRow drd = dt.Select("EntityType_Id=0 and  Name = 'A0CALMONTH' ")[0];//查询
+        //    //drd["text"] = "A0CALMONTH";
+        //    //dtNew.ImportRow(drd);
+
+        //    for (int i = 0; i < drArr.Length; i++)
+        //    {
+        //        dtNew.ImportRow(drArr[i]);
+
+        //    }
+
+        //    //return result;
+        //    List<TableColumn> tablecol = new List<TableColumn>();
+
+        //    foreach (DataRow dr in dtNew.Rows)
+        //    {
+        //        Boolean frozen = false;
+        //        if (Convert.ToString(dr["aggregation-role"]) == "dimension")
+        //            frozen = true;
+
+        //        var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "100", frozen = frozen };
+        //        tablecol.Add(obj);
+        //    }
+
+
+        //    var table = new TableViewModel()
+        //    {
+        //        Title = oTableViewModel.Title,
+        //        Column = tablecol
+        //    };
+
+
+        //    return table;
+        //}
         public static TableViewModel GetTableMetadata_Auto(string sName, string sToken)
         {
-
-
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
 
@@ -354,8 +452,18 @@ namespace SlbiReport.Utilities
 
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
-            //string fileName = oTableViewModel.Url + sToken;
-            string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+            string fileName = "";
+
+            StringToEntityValue(oTableViewModel, sResources);
+            //Url特殊标记（★）
+            string sURL = sResources.Replace("Url(0_0)", "★");
+            //Metadata的Url结尾
+            int iIndex = sURL.IndexOf("|", 1);
+            sURL = sURL.Substring(1, iIndex - 1);
+
+            fileName = sURL + sToken;
+            // fileName = oTableViewModel.Url + sToken;
+            // string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
             //fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?sap-user=guoq&sap-password=ghg2587758";
             XmlDocument doc = new XmlDocument();
             try
