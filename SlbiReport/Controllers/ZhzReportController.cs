@@ -224,5 +224,16 @@ namespace SlbiReport.Controllers
             return View();
         }
 
+        public ActionResult ZMM_M001_Q0004Report()
+        {
+            return View();
+        }
+
+        public ActionResult ZMM_M001_Q0005Report()
+        {
+            return View();
+        }
+
+
     }
 }

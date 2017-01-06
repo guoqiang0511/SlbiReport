@@ -79,6 +79,15 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/ZMM_M001_Q0005{0}Results?|Title(0_0)库存呆滞状况分析|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFHXIFF1ZAA3BD18ZDI2A，A00O2TFHXIFF3PKN6FN2VEPWTM，A00O2TFHXIFF3PKN6FN2VEPQI2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)呆滞金额,上年同期呆滞率，同期呆滞率 的本地化字符串。
+        /// </summary>
+        public static string barZMM_M001_Q0005 {
+            get {
+                return ResourceManager.GetString("barZMM_M001_Q0005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH|LegendDataStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U 的本地化字符串。
         /// </summary>
         public static string BarZPU_M001_Q0002 {

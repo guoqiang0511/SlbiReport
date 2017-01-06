@@ -52,7 +52,7 @@ namespace SlbiReport.Utilities
                 var obj = new VisitSource()
                 {
                     name = Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]),
-                    value = Convert.ToString(Convert.ToDouble(dr[oPieMapViewModel.PieMapSelectValue]))
+                    value = Convert.ToString(dr[oPieMapViewModel.PieMapSelectValue])
                 };
                 listss.Add(obj);
                 lists.Add(Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]));
@@ -219,92 +219,10 @@ namespace SlbiReport.Utilities
         {
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-            sResources = sResources.Replace("，", ",").Replace("\r\n", "").Replace("‘","'").Replace("’", "'").Replace("：", ":");
+            sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
-            string sColList = "";
 
-            if (oTableViewModel.Columns.Contains("dimension"))
-            {
-                string sColumns1 = oTableViewModel.Columns.Replace(" ", "").Replace("},", "|");
-                sColumns1 = StringReplace(sColumns1, "[,],{");
-                string[] oColumns = sColumns1.Split('|');
-
-                foreach (var item in oColumns)
-                {
-                    if (item.Contains("dimension"))
-                    {
-                        string[] oColumns2 = item.Replace("'", "").Split(',');
-                        if (oColumns2 != null)
-                        {
-                            if (!string.IsNullOrEmpty(oColumns2[0]))
-                            {
-                                sColList += oColumns2[0].Replace("field:", "") + ",";
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                string sColumns = StringReplace(oTableViewModel.Columns, "[,],{,},'");
-                var sColumn = sColumns.Split(',');
-                List<string> oColumnList = new List<string>();
-
-                foreach (string item in sColumn)
-                {
-                    if (item.Contains("field:"))
-                    {
-                        string sItem = item.Replace("field:", "").Replace(" ","");
-                        oColumnList.Add(sItem);
-                    }
-
-                }
-
-                string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + "sap-user=guoq&sap-password=ghg2587758";
-                DataTable dt = new DataTable();
-                DataSet ds = new DataSet();
-                XmlDocument doc = new XmlDocument();
-                try
-                {
-                    doc.Load(fileName);
-                }
-                catch
-                {
-                    return null;
-                }
-                ds = ConvertXMLFileToDataSet(doc);
-
-                foreach (DataRow dr in ds.Tables["Property"].Rows)
-                {
-                    if (Convert.ToString(dr["aggregation-role"]) == "dimension")
-                    {
-                        string sNames = Convert.ToString(dr["Name"]);
-                        var abc = oColumnList.Contains(sNames);
-                        if (oColumnList.Contains(sNames))
-                        {
-                            sColList += sNames + ",";
-                        }
-                    }                   
-                }
-            }
-
-            oTableViewModel.Columns.Replace("aggregation:dimension ,", "");
-
-            oTableViewModel.ColList = sColList;
-            
             return oTableViewModel;
-        }
-
-        public static string StringReplace(string sStr,string sSplit)
-        {
-            sStr.Replace(" ", "");
-            string[] oSplits = sSplit.Split(',');
-            foreach (var item in oSplits)
-            {
-                sStr = sStr.Replace(item, "");
-            }
-
-            return sStr;
         }
 
         public static string GetTableData(string sName, string sUrltt, string sSkip, string sRows, string sToken)
@@ -568,32 +486,21 @@ namespace SlbiReport.Utilities
 
             DataRow[] drArr = dt.Select("EntityType_Id=0 and  text <> '' ");//查询
 
-            //DataTable dtNew = dt.Clone();
+            DataTable dtNew = dt.Clone();
 
             //DataRow drd = dt.Select("EntityType_Id=0 and  Name = 'A0CALMONTH' ")[0];//查询
             //drd["text"] = "A0CALMONTH";
             //dtNew.ImportRow(drd);
 
-            //for (int i = 0; i < drArr.Length; i++)
-            //{
-            //    dtNew.ImportRow(drArr[i]);
-
-            //}
+            for (int i = 0; i < drArr.Length; i++)
+            {
+                dtNew.ImportRow(drArr[i]);
+            }
 
             //return result;
             List<TableColumn> tablecol = new List<TableColumn>();
 
-            //foreach (DataRow dr in dtNew.Rows)
-            //{
-            //    Boolean frozen = false;
-            //    if (Convert.ToString(dr["aggregation-role"]) == "dimension")
-            //        frozen = true;
-
-            //    var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "100", frozen = frozen };
-            //    tablecol.Add(obj);
-            //}
-
-            foreach (var dr in drArr)
+            foreach (DataRow dr in dtNew.Rows)
             {
                 Boolean frozen = false;
                 if (Convert.ToString(dr["aggregation-role"]) == "dimension")
@@ -602,6 +509,7 @@ namespace SlbiReport.Utilities
                 var obj = new TableColumn() { field = Convert.ToString(dr["text"]), title = Convert.ToString(dr["label"]), width = "100", frozen = frozen };
                 tablecol.Add(obj);
             }
+
 
             var table = new TableViewModel()
             {
@@ -622,11 +530,7 @@ namespace SlbiReport.Utilities
 
             PostParams oPostParams = new PostParams(sResources);
 
-            string sUrl = oPostParams.GetString("*Url");
-            if (string.IsNullOrEmpty(sUrl))
-            {
-                sUrl = oPostParams.GetString("Url");
-            }
+            string sUrl = oPostParams.GetString("Url");
             string fileName = sUrl + sId + "?" + sToken;
 
             XmlDocument doc = new XmlDocument();
@@ -641,16 +545,15 @@ namespace SlbiReport.Utilities
             }
             ds = ConvertXMLFileToDataSet(doc);
 
-            //dt = ds.Tables["Property"];
+            dt = ds.Tables["Property"];
             List<object> lists = new List<object>();
-            if (ds != null)
+            foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
-                foreach (DataRow dr in ds.Tables["properties"].Rows)
-                {
-                    var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_TEXT"] };
-                    lists.Add(obj);
-                }
+                var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_TEXT"] };
+                lists.Add(obj);
             }
+
+
             JavaScriptSerializer jsS = new JavaScriptSerializer();
             String result = jsS.Serialize(lists);
             return result;

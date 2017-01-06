@@ -55,17 +55,17 @@ namespace SlbiReport.Controllers
         public ActionResult Select(string id)
         {
 
-            List<SelectColumn> selectlist = CommonHelper.GetSelect(id);
+            List<SelectColumn> selectlist = CommonHelper.GetSelect("Sel1");
 
             return Json(new { status = 1, result = selectlist });
         }
 
-        public String Select_Dim(string id)
+        public String Select_Dim()
         {
-            String ids = Request["field"];
+            String id = Request["id"];
             String text = Request["text"];
       
-            String result = CommonHelper.GetSelect_Dim(id, ids, token);
+            String result = CommonHelper.GetSelect_Dim("Sel1", id, token);
 
             return result;
         }
