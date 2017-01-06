@@ -22,5 +22,6 @@ namespace SlbiReport.Models
 
         public string Url { get; set; }
 
+        public string ColList { get; set; }
     }
 }

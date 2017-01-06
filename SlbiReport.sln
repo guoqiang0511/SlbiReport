@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveAzure.Resources", "Live
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication2", "WindowsFormsApplication2\WindowsFormsApplication2.csproj", "{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Release|x64.ActiveCfg = Release|Any CPU
 		{D7DEDDC8-B7A7-4B94-8869-5CD6A546B824}.Release|x64.Build.0 = Release|Any CPU
+		{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}.Debug|x64.Build.0 = Debug|Any CPU
+		{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}.Release|x64.ActiveCfg = Release|Any CPU
+		{B8E35C10-5F3B-4291-AA88-3FC0359D11D0}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

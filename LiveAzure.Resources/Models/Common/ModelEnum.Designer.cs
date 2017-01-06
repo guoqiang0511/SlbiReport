@@ -70,7 +70,25 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0) 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001Results?ZINDICATR eq &apos;C0107004&apos;&amp;$select=A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2,A0CALMONTH2&amp; Top=5|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)实际,预算,同期 的本地化字符串。
+        /// </summary>
+        public static string barZCA_M001_Q0001 {
+            get {
+                return ResourceManager.GetString("barZCA_M001_Q0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/ZMM_M001_Q0005{0}Results?|Title(0_0)库存呆滞状况分析|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFHXIFF1ZAA3BD18ZDI2A，A00O2TFHXIFF3PKN6FN2VEPWTM，A00O2TFHXIFF3PKN6FN2VEPQI2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)呆滞金额,上年同期呆滞率，同期呆滞率 的本地化字符串。
+        /// </summary>
+        public static string barZMM_M001_Q0005 {
+            get {
+                return ResourceManager.GetString("barZMM_M001_Q0005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH|LegendDataStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U 的本地化字符串。
         /// </summary>
         public static string BarZPU_M001_Q0002 {
             get {
@@ -178,75 +196,11 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0001_SRV/ZFI_M001_Q0001{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},
-        ///{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},
-        ///{ field: &apos;A0DOC_CURRCY_T&apos;,   title: &apos;货币&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:11},
-        ///{field: &apos;A00O2TFHXIFF1Z9LHQCOIQ581M_F&apos;,   [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///   查找类似 http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0012_SRV/$metadata? 的本地化字符串。
         /// </summary>
-        public static string TabZFI_M001_Q0001 {
+        public static string Sel2 {
             get {
-                return ResourceManager.GetString("TabZFI_M001_Q0001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0002_SRV/ZFI_M001_Q0002{0}Results?|Title(0_0)按欠款方期末余额前五名的应收排行|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{field: &apos;ZCUSTOMER_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:3}],
-        ///[{field: &apos;A00O2TFHXIFF1Z9355BIZYES2F_F&apos;, title: &apos;应收账款&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
-        ///{field: &apos;A00O2TFHXIFF1Z935F4B13NOOH_F&apos;,title: &apos;占应收账款合计数的比例（%）&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
-        ///{field: &apos;A0 [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZFI_M001_Q0002 {
-            get {
-                return ResourceManager.GetString("TabZFI_M001_Q0002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003{0}Results?|Title(0_0)到期回款状况|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2},{field: &apos;ZPLANT_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2}，
-        ///{field: &apos;ZCUSTOMER&apos;,title: &apos;客户编号&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2}，{field: &apos;ZCUSTOMER_T&apos;,title: &apos;客户&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:2}, 
-        ///{fiel [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZFI_M001_Q0003 {
-            get {
-                return ResourceManager.GetString("TabZFI_M001_Q0003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0004_SRV/ZFI_M001_Q0004{0}Results?|Title(0_0)应收账龄与逾期状况|FrozenColumns(0_0)|Columns(0_0)
-        ///[
-        ///[{field: &apos;ZPROFTCTR__ZBU_T&apos;,title: &apos;事业部&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:3},{field: &apos;ZPLANT_T&apos;,title: &apos;工厂&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:3}，
-        ///{field: &apos;ZCUSTOMER_T&apos;,title: &apos;客户&apos;,sortable:true, fixed: true,align: &apos;left&apos;,rowspan:3}, {title: &apos;本月实际&apos;,colspan:13}], 
-        ///[{field: &apos;A00O2TFHXIFF1Z9L44RHTXF07W_F&apos;,title: &apos;结余金额&apos;,sor [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZFI_M001_Q0004 {
-            get {
-                return ResourceManager.GetString("TabZFI_M001_Q0004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/ZFI_M001_Q0005{0}Results?|Title{0}Results?|Title(0_0)预收帐款统计分析|FrozenColumns(0_0)|FrozenColumns(0_0)[[ {field:&apos;ZPROFTCTR__ZBU&apos;,title:&apos;事业部 &apos;,rowspan:2,sortable:true, formatter:&apos;&apos;,fixed:true, align: &apos;center&apos; }]]|Columns(0_0)[[{field:&apos;ZPLANT&apos;,title:&apos;工厂&apos;,rowspan:2,sortable:true, align: &apos;center&apos;}]]|Columns(0_0)[[{field:&apos;itemid&apos;,title:&apos;账龄&apos;,rowspan:2,sortable:true}]]|Columns(0_0)[[{field:&apos;&apos;,title:&apos;期末余额（本币）&apos;,colspan:2,sortable:true}, {field [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZFI_M001_Q0005 {
-            get {
-                return ResourceManager.GetString("TabZFI_M001_Q0005", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0006_SRV/ZFI_M001_Q0006{0}Results?|Title(0_0)往来部份（重分类后）|FrozenColumns(0_0)|Columns(0_0)
-        ///[[{title: &apos;债权单位信息&apos;,colspan:2},{title: &apos;债务单位信息&apos;,colspan:2},{title: &apos;债权单位发生额&apos;,colspan:5},{title: &apos;债务单位发生额&apos;,colspan:5}，
-        ///{field: &apos;A00O2TFHXIFF1Z9OGYMFIJP3WA_F&apos;,title: &apos;平衡检查&apos;,sortable:true, fixed: true,align: &apos;right&apos;,rowspan:2}]
-        ///,[{ field: &apos;ZCRDTCOMY&apos;,   title: &apos;单位编码&apos;, sortable: true, fixed: true, left: &apos;right&apos; } ，
-        ///{ field: &apos;ZCRDTCOMY_T&apos;,   title: &apos;单位名称&apos;, [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZFI_M001_Q0006 {
-            get {
-                return ResourceManager.GetString("TabZFI_M001_Q0006", resourceCulture);
+                return ResourceManager.GetString("Sel2", resourceCulture);
             }
         }
         
@@ -258,6 +212,33 @@ namespace LiveAzure.Resources.Models.Common {
         ///,[{ field: &apos;ZCRDTCOMY&apos;,   t [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZFI_M001_Q0007 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0007_SRV/ZPU_M001_Q0007{0}Results?|Title(0_0)采购降本月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PL4CK7IZYJKWW,A00O2TFHXIFF3PL4CK7IZYJR8G|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)本年降本,本年降本目标 的本地化字符串。
+        /// </summary>
+        public static string ZPU_M001_Q0007 {
+            get {
+                return ResourceManager.GetString("ZPU_M001_Q0007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0008_SRV/ZPU_M001_Q0008{0}Results?|Title(0_0)供应商降本前十大排行榜|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PL4DAP8R06RZC,A00O2TFHXIFF3PL4DAP8R06YAW|AxisDataStr(0_0)ZVENDOR_T|LegendDataStr(0_0) 的本地化字符串。
+        /// </summary>
+        public static string ZPU_M001_Q0008 {
+            get {
+                return ResourceManager.GetString("ZPU_M001_Q0008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0008_SRV/ZSD_M001_Q0008{0}Results?|Title(0_0)没有名字|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZNBTYPE_T&apos;,   title: &apos;新业务分类&apos;, sortable: true, fixed: true, align: &apos;right&apos; ,rowspan:2} ，{title:&apos;客户&apos;,colspan:2}  ，{ field: &apos;ZEMPLOYEE_T&apos;,   title: &apos;员工&apos;, sortable: true, fixed: true, align: &apos;right&apos; ,rowspan:2} ，{ field: &apos;ZPROGTYPE&apos;,   title: &apos;项目类型&apos;, sortable: true, fixed: true, align: &apos;right&apos; ,rowspan:2} ，{ field: &apos;A0MATL_GROUP&apos;,   title: &apos;产品类型&apos;, sorta [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string ZSD_M001_Q0008 {
             get {
                 return ResourceManager.GetString("TabZFI_M001_Q0007", resourceCulture);
             }
@@ -305,70 +286,6 @@ namespace LiveAzure.Resources.Models.Common {
         public static string TabZFI_M001_Q0015 {
             get {
                 return ResourceManager.GetString("TabZFI_M001_Q0015", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0001_SRV/ZMM_M001_Q0001{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0) 的本地化字符串。
-        /// </summary>
-        public static string TabZMM_M001_Q0001 {
-            get {
-                return ResourceManager.GetString("TabZMM_M001_Q0001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/$metadata?|
-        ///Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM_M001_Q0002Results?|Title(0_0)未命名 的本地化字符串。
-        /// </summary>
-        public static string TabZMM_M001_Q0002 {
-            get {
-                return ResourceManager.GetString("TabZMM_M001_Q0002", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0003_SRV/ZMM_M001_Q0003{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0)(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0001_SRV/ZMM_M001_Q0001{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0) 的本地化字符串。
-        /// </summary>
-        public static string TabZMM_M001_Q0003 {
-            get {
-                return ResourceManager.GetString("TabZMM_M001_Q0003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0001_SRV/ZSD_M001_Q0001{0}Results?|Title(0_0)3年销售汇总趋势|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;,   title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;ZPLANT_T&apos;,   title: &apos;生产工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;ZDISTCHAN_T&apos;,   title: &apos;销售类型&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;ZSALESDIT_T&apos;,   title: &apos;地域&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos; [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZSD_M001_Q0001 {
-            get {
-                return ResourceManager.GetString("TabZSD_M001_Q0001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0004_SRV/ZSD_M001_Q0004{0}Results?|Title(0_0)新品销售贡献分析|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;,   title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;ZCUSTOMER_T&apos;,   title: &apos;客户&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field: &apos;A0MATL_GRP_1_T&apos;,   title: &apos;产品类别&apos;, sortable: true, fixed: true, align: &apos;left&apos; } ，{ field:  [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZSD_M001_Q0004 {
-            get {
-                return ResourceManager.GetString("TabZSD_M001_Q0004", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0006_SRV/ZSD_M001_Q0006{0}Results?|Title(0_0)销售价格变动分析(月报表)|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;,   title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;，rowspan:2 } ，{ field: &apos;ZPLANT_T&apos;,   title: &apos;生产工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;，rowspan:2 } ，{ field: &apos;ZDISTCHAN_T&apos;,   title: &apos;销售类型&apos;, sortable: true, fixed: true, align: &apos;left&apos;，rowspan:2 } ，{ field: &apos;ZSALESDIT_T&apos;,   title: &apos;地域&apos;, sortable: true, fixed [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZSD_M001_Q0006 {
-            get {
-                return ResourceManager.GetString("TabZSD_M001_Q0006", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0013_SRV/ZSD_M001_Q0013{0}Results?|Title(0_0)到期未开票情况分析|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;,   title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos; ,rowspan:2} ，{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2 } ，{ field: &apos;ZCUSTOMER&apos;,   title: &apos;客户编码&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2 } ，{ field: &apos;ZCUSTOMER_T&apos;,   title: &apos;客户名称&apos;, sortable: true, fixed: tru [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        public static string TabZSD_M001_Q0013 {
-            get {
-                return ResourceManager.GetString("TabZSD_M001_Q0013", resourceCulture);
             }
         }
         

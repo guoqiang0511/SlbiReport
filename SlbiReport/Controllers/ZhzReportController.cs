@@ -52,6 +52,12 @@ namespace SlbiReport.Controllers
             return result;
         }
 
+        public ActionResult Select_Auto(string id)
+        {
+
+            return Json(new { status = 1, result = CommonHelper.GetSelect_Auto(id, token) });
+        }
+
         private string Dtb2Json(DataTable dtb)
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -139,7 +145,6 @@ namespace SlbiReport.Controllers
 
             return result;
 
-            //return Json(new { total = 1, rows = result },JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult TableMetaMap_Auto(string id)
@@ -157,29 +162,6 @@ namespace SlbiReport.Controllers
             string urltt = QueryParamsurl(cmd);
             string result = CommonHelper.GetTableData_Auto(id, urltt, skip.ToString(), field, rows.ToString(), token);
             return result;
-        }
-
-        public ActionResult Rp2_Table1Metadata(string id)
-        {
-
-            TableViewModel table = CommonHelper.GetTableMetadata("TabZFI_M001_Q0005");
-
-
-            return Json(new { status = 1, result = table });
-        }
-
-        public String Rp2_Table1data(String id, int page, int rows)
-        {
-            int skip = (page - 1) * rows;
-
-            string cmd = Request["pagequeryParams"];
-            string urltt = QueryParamsurl(cmd);
-
-
-            string result = CommonHelper.GetTableData("TabZCA_M001_Q0001", urltt, skip.ToString(), rows.ToString(), token);
-
-            return result;
-
         }
 
         private static List<T> TableToEntity<T>(DataTable dt) where T : class, new()
@@ -241,6 +223,17 @@ namespace SlbiReport.Controllers
         {
             return View();
         }
+
+        public ActionResult ZMM_M001_Q0004Report()
+        {
+            return View();
+        }
+
+        public ActionResult ZMM_M001_Q0005Report()
+        {
+            return View();
+        }
+
 
     }
 }
