@@ -70,7 +70,16 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0) 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0001_SRV/ZCA_M001_Q0001Results?ZINDICATR eq &apos;C0107004&apos;&amp;$select=A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2,A0CALMONTH2&amp; Top=5|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z930ZZCA6AK1E,A00O2TFHXIFF1Z932YMOYVZJ5H,A00O2TFHXIFF1Z931LL9MVUFR2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)实际,预算,同期 的本地化字符串。
+        /// </summary>
+        public static string barZCA_M001_Q0001 {
+            get {
+                return ResourceManager.GetString("barZCA_M001_Q0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0002_SRV/ZPU_M001_Q0002{0}Results?|Title(0_0)采购金额月度趋势分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U|AxisDataStr(0_0)A0CALMONTH|LegendDataStr(0_0)A00O2TFHXIFF1Z9LAXSLCIHXPA,A00O2TFHXIFF1Z9LAXSLCII40U 的本地化字符串。
         /// </summary>
         public static string BarZPU_M001_Q0002 {
             get {
@@ -147,6 +156,42 @@ namespace LiveAzure.Resources.Models.Common {
         public static string Sel1 {
             get {
                 return ResourceManager.GetString("Sel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)日历日(单值必输,默认当前一天)|TextField(0_0)ZDAY001_PText|ValueField(0_0)ZDAY001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_M_TEXT|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)工厂(多值,可选)|TextField(0_0)ZPLANT_TText|ValueField(0_0 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0005 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/|Label(0_0)事业部|TextField(0_0)ZBU001_MText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/|Label(0_0)工厂|TextField(0_0)ZPLANT001_MText|ValueField(0_0)ZPLANT001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/|Label(0_0)物料组|TextField(0_0)ZMATLGROUP001_MText|ValueField(0_0)ZMATLGROUP001_M| [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZPU_M001_Q0001 {
+            get {
+                return ResourceManager.GetString("SelZPU_M001_Q0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0004_SRV/|Label(0_0)事业部|TextField(0_0)ZBU001_MText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0004_SRV/|Label(0_0)日历年/月|TextField(0_0)ZMONTH002_IText|ValueField(0_0)ZMONTH002_I|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0004_SRV/|Label(0_0)工厂|TextField(0_0)ZPLANT001_MText|ValueField(0_0)ZPLANT001_M|Width( [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZPU_M001_Q0004 {
+            get {
+                return ResourceManager.GetString("SelZPU_M001_Q0004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0008_SRV/|Label(0_0)日历年月|TextField(0_0)ZMONHT003_PText|ValueField(0_0)ZMONHT003_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)|Label(0_0)项目类型|TextField(0_0)ZPROGTYPE001_MText|ValueField(0_0)ZPROGTYPE001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)|Label(0_0)物料组|TextField(0_0)ZMATLGROUP001_MText|ValueField(0_0)ZMATLGROUP001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)|Label(0_0)项目|TextField(0_0)ZEINR001_MText|ValueField(0_0)ZEINR001_M|Width(0_0)200| [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZSD_M001_Q0008 {
+            get {
+                return ResourceManager.GetString("SelZSD_M001_Q0008", resourceCulture);
             }
         }
         
@@ -264,7 +309,52 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0004_SRV/ZPU_M001_Q0004{0}Results?|Title(0_0)不知道名字的表|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZMATERIAL_T&apos;,   title: &apos;物料&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2} ，{ field: &apos;A0MATL_GROUP&apos;,   title: &apos;物料类别&apos;, sortable: true, fixed: true, align: &apos;right&apos;,rowspan:2 } ，{title:&apos;当前价格&apos;,colspan:4},{title:&apos;同比价格&apos;,colspan:3} ],[{ field: &apos;A00O2TFHXIFF3PK1SDSSFNT0OI&apos;,   title: &apos;采购数量&apos;, sortable: true, fixed: true, align: &apos;right&apos; } ，{ field: [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0008_SRV/ZFI_M001_Q0008{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:3}，{title:&apos;期末余额（英镑）&apos;,colspan:3}， {title:&apos;期末余额（日元）&apos;,colspan:3}， {title:&apos;累计折合（RMB）&apos;}],        /// [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string TabZFI_M001_Q0008 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0009_SRV/ZFI_M001_Q0009{0}Results?|Title(0_0)按付款方期末余额前五名的应付排行|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{field: &apos;ZVENDOR_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:2}],
+        ///[{field: &apos;A00O2TFHXIFF1Z9P15KV9N553I_F&apos;, title: &apos;应付账款&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
+        ///{field: &apos;A00O2TFHXIFF1Z9P15KV9N96HA_F&apos;,title: &apos;占预付账款合计数的比例（%）&apos;, sortable: true, fixed: true, align: &apos;right&apos; }]] 的本地化字符串。
+        /// </summary>
+        public static string TabZFI_M001_Q0009 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0011_SRV/ZFI_M001_Q0011{0}Results?|Title(0_0)总体状况概览|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title:&apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{ field: &apos;ZPLANT_T&apos;,   title: &apos;工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title:&apos;期末余额（本币）&apos;,colspan:9}， {title:&apos;期末余额（美元）&apos;,colspan:3}， {title:&apos;期末余额（欧元）&apos;,colspan:3}，{title:&apos;期末余额（英镑）&apos;,colspan:3}， {title:&apos;期末余额（日元）&apos;,colspan:3}],
+        ///[{ field: &apos;A00O2TFHX [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string TabZFI_M001_Q0011 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0015_SRV/ZFI_M001_Q0015{0}Results?|Title(0_0)按付款方期末余额前五名的预付排行|FrozenColumns(0_0)|Columns(0_0)
+        ///[[{field: &apos;ZVENDOR_T&apos;,title: &apos;单位名称&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{title: &apos;期末余额&apos;,colspan:2}],
+        ///[{field: &apos;A00O2TFHXIFF3PLPTJZU11CGJX_F&apos;, title: &apos;预付账款&apos;, sortable: true, fixed: true, align: &apos;right&apos; },
+        ///{field: &apos;A00O2TFHXIFF3PLPTV10XK7FU0_F&apos;,title: &apos;占预付账款合计数的比例（%）&apos;, sortable: true, fixed: true, align: &apos;right&apos; }]] 的本地化字符串。
+        /// </summary>
+        public static string TabZFI_M001_Q0015 {
+            get {
+                return ResourceManager.GetString("TabZFI_M001_Q0015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0001_SRV/ZMM_M001_Q0001{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0) 的本地化字符串。
         /// </summary>
         public static string TabZMM_M001_Q0001 {
             get {
@@ -324,6 +414,25 @@ namespace LiveAzure.Resources.Models.Common {
         public static string TabZSD_M001_Q0013 {
             get {
                 return ResourceManager.GetString("TabZSD_M001_Q0013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0004_SRV/ZPU_M001_Q0004{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0)[[{field:&apos;ZMATERIAL_T&apos;,title:&apos;物料&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:3},{field:&apos;A0MATL_GROUP_T&apos;,title:&apos;物料类别&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:3},{title:&apos;3&apos;,colspan:7},],[{title:&apos;1&apos;,colspan:4},{title:&apos;2&apos;,colspan:3},],[{field:&apos;A00O2TFHXIFF3PK1SDSSFNT0OI_F&apos;,title:&apos;采购数量&apos;, sortable: true, fixed: true, align:&apos;right&apos;,},{field:&apos;A00O2TFHXIF [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string ZPU_M001_Q0004 {
+            get {
+                return ResourceManager.GetString("ZPU_M001_Q0004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0005_SRV/ZPU_M001_Q0005{0}Results?|Title(0_0)年度采购价格变动分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PK1T918NI02RV,A00O2TFHXIFF3PK1T918NHZWGB
+        ///|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)A00O2TFHXIFF3PK1T918NI02RV,A00O2TFHXIFF3PK1T918NHZWGB 的本地化字符串。
+        /// </summary>
+        public static string ZPU_M001_Q0005 {
+            get {
+                return ResourceManager.GetString("ZPU_M001_Q0005", resourceCulture);
             }
         }
         

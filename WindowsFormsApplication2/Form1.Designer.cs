@@ -31,23 +31,25 @@
             this.button1 = new System.Windows.Forms.Button();
             this.url = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dmtotab = new System.Windows.Forms.Button();
+            this.FrozenColumns = new System.Windows.Forms.TextBox();
+            this.tab1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tab2 = new System.Windows.Forms.Button();
+            this.TabP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.CreateT = new System.Windows.Forms.Button();
             this.tabname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.CreateT = new System.Windows.Forms.Button();
-            this.dmtotab = new System.Windows.Forms.Button();
+            this.tabstr = new System.Windows.Forms.TextBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.TabP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.tab2 = new System.Windows.Forms.Button();
-            this.tab1 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.tabstr = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.FrozenColumns = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -56,7 +58,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 35);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "tab";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -70,21 +72,12 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.FrozenColumns);
-            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.tabstr);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.tabname);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.CreateT);
-            this.panel1.Controls.Add(this.dmtotab);
             this.panel1.Controls.Add(this.treeView1);
-            this.panel1.Controls.Add(this.TabP);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.checkedListBox2);
-            this.panel1.Controls.Add(this.tab2);
-            this.panel1.Controls.Add(this.tab1);
             this.panel1.Controls.Add(this.checkedListBox1);
             this.panel1.Controls.Add(this.url);
             this.panel1.Controls.Add(this.button1);
@@ -93,19 +86,101 @@
             this.panel1.Size = new System.Drawing.Size(1529, 669);
             this.panel1.TabIndex = 2;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dmtotab);
+            this.panel2.Controls.Add(this.FrozenColumns);
+            this.panel2.Controls.Add(this.tab1);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.tab2);
+            this.panel2.Controls.Add(this.TabP);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.CreateT);
+            this.panel2.Controls.Add(this.tabname);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Location = new System.Drawing.Point(481, 39);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(93, 587);
+            this.panel2.TabIndex = 18;
+            // 
+            // dmtotab
+            // 
+            this.dmtotab.Location = new System.Drawing.Point(0, 3);
+            this.dmtotab.Name = "dmtotab";
+            this.dmtotab.Size = new System.Drawing.Size(93, 60);
+            this.dmtotab.TabIndex = 10;
+            this.dmtotab.Text = "添加";
+            this.dmtotab.UseVisualStyleBackColor = true;
+            this.dmtotab.Click += new System.EventHandler(this.dmtotab_Click);
+            // 
+            // FrozenColumns
+            // 
+            this.FrozenColumns.Location = new System.Drawing.Point(-1, 400);
+            this.FrozenColumns.Multiline = true;
+            this.FrozenColumns.Name = "FrozenColumns";
+            this.FrozenColumns.Size = new System.Drawing.Size(93, 73);
+            this.FrozenColumns.TabIndex = 17;
+            // 
+            // tab1
+            // 
+            this.tab1.Location = new System.Drawing.Point(0, 69);
+            this.tab1.Name = "tab1";
+            this.tab1.Size = new System.Drawing.Size(93, 58);
+            this.tab1.TabIndex = 3;
+            this.tab1.Text = "去除";
+            this.tab1.UseVisualStyleBackColor = true;
+            this.tab1.Click += new System.EventHandler(this.tab_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(-4, 382);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 15);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "FrozenColumns";
+            // 
+            // tab2
+            // 
+            this.tab2.Location = new System.Drawing.Point(-1, 227);
+            this.tab2.Name = "tab2";
+            this.tab2.Size = new System.Drawing.Size(93, 58);
+            this.tab2.TabIndex = 4;
+            this.tab2.Text = "添加父节点";
+            this.tab2.UseVisualStyleBackColor = true;
+            this.tab2.Click += new System.EventHandler(this.tab2_Click);
+            // 
+            // TabP
+            // 
+            this.TabP.Location = new System.Drawing.Point(-1, 148);
+            this.TabP.Multiline = true;
+            this.TabP.Name = "TabP";
+            this.TabP.Size = new System.Drawing.Size(93, 73);
+            this.TabP.TabIndex = 8;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(482, 342);
+            this.label4.Location = new System.Drawing.Point(-1, 288);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 15);
             this.label4.TabIndex = 14;
             this.label4.Text = "TableName";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // CreateT
+            // 
+            this.CreateT.Location = new System.Drawing.Point(-1, 504);
+            this.CreateT.Name = "CreateT";
+            this.CreateT.Size = new System.Drawing.Size(93, 58);
+            this.CreateT.TabIndex = 11;
+            this.CreateT.Text = "CreateT";
+            this.CreateT.UseVisualStyleBackColor = true;
+            this.CreateT.Click += new System.EventHandler(this.CreateT_Click);
+            // 
             // tabname
             // 
-            this.tabname.Location = new System.Drawing.Point(482, 360);
+            this.tabname.Location = new System.Drawing.Point(-1, 306);
             this.tabname.Multiline = true;
             this.tabname.Name = "tabname";
             this.tabname.Size = new System.Drawing.Size(93, 73);
@@ -114,48 +189,28 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(482, 184);
+            this.label3.Location = new System.Drawing.Point(-1, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "父节点名称";
             // 
-            // CreateT
+            // tabstr
             // 
-            this.CreateT.Location = new System.Drawing.Point(482, 558);
-            this.CreateT.Name = "CreateT";
-            this.CreateT.Size = new System.Drawing.Size(93, 58);
-            this.CreateT.TabIndex = 11;
-            this.CreateT.Text = "CreateT";
-            this.CreateT.UseVisualStyleBackColor = true;
-            this.CreateT.Click += new System.EventHandler(this.CreateT_Click);
-            // 
-            // dmtotab
-            // 
-            this.dmtotab.Location = new System.Drawing.Point(483, 57);
-            this.dmtotab.Name = "dmtotab";
-            this.dmtotab.Size = new System.Drawing.Size(93, 60);
-            this.dmtotab.TabIndex = 10;
-            this.dmtotab.Text = "添加";
-            this.dmtotab.UseVisualStyleBackColor = true;
-            this.dmtotab.Click += new System.EventHandler(this.dmtotab_Click);
+            this.tabstr.Location = new System.Drawing.Point(1085, 39);
+            this.tabstr.Multiline = true;
+            this.tabstr.Name = "tabstr";
+            this.tabstr.Size = new System.Drawing.Size(441, 587);
+            this.tabstr.TabIndex = 15;
             // 
             // treeView1
             // 
             this.treeView1.CheckBoxes = true;
-            this.treeView1.Location = new System.Drawing.Point(582, 29);
+            this.treeView1.Location = new System.Drawing.Point(579, 42);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(500, 587);
             this.treeView1.TabIndex = 9;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
-            // 
-            // TabP
-            // 
-            this.TabP.Location = new System.Drawing.Point(482, 202);
-            this.TabP.Multiline = true;
-            this.TabP.Name = "TabP";
-            this.TabP.Size = new System.Drawing.Size(93, 73);
-            this.TabP.TabIndex = 8;
             // 
             // label2
             // 
@@ -184,59 +239,14 @@
             this.checkedListBox2.Size = new System.Drawing.Size(465, 384);
             this.checkedListBox2.TabIndex = 5;
             // 
-            // tab2
-            // 
-            this.tab2.Location = new System.Drawing.Point(482, 281);
-            this.tab2.Name = "tab2";
-            this.tab2.Size = new System.Drawing.Size(93, 58);
-            this.tab2.TabIndex = 4;
-            this.tab2.Text = "添加父节点";
-            this.tab2.UseVisualStyleBackColor = true;
-            this.tab2.Click += new System.EventHandler(this.tab2_Click);
-            // 
-            // tab1
-            // 
-            this.tab1.Location = new System.Drawing.Point(483, 123);
-            this.tab1.Name = "tab1";
-            this.tab1.Size = new System.Drawing.Size(93, 58);
-            this.tab1.TabIndex = 3;
-            this.tab1.Text = "去除";
-            this.tab1.UseVisualStyleBackColor = true;
-            this.tab1.Click += new System.EventHandler(this.tab_Click);
-            // 
             // checkedListBox1
             // 
             this.checkedListBox1.CheckOnClick = true;
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(11, 29);
+            this.checkedListBox1.Location = new System.Drawing.Point(11, 39);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(465, 184);
             this.checkedListBox1.TabIndex = 2;
-            // 
-            // tabstr
-            // 
-            this.tabstr.Location = new System.Drawing.Point(1088, 29);
-            this.tabstr.Multiline = true;
-            this.tabstr.Name = "tabstr";
-            this.tabstr.Size = new System.Drawing.Size(441, 587);
-            this.tabstr.TabIndex = 15;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(479, 436);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 15);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "FrozenColumns";
-            // 
-            // FrozenColumns
-            // 
-            this.FrozenColumns.Location = new System.Drawing.Point(482, 454);
-            this.FrozenColumns.Multiline = true;
-            this.FrozenColumns.Name = "FrozenColumns";
-            this.FrozenColumns.Size = new System.Drawing.Size(93, 73);
-            this.FrozenColumns.TabIndex = 17;
             // 
             // Form1
             // 
@@ -248,6 +258,8 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -273,6 +285,7 @@
         private System.Windows.Forms.TextBox tabstr;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox FrozenColumns;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

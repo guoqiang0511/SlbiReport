@@ -70,7 +70,7 @@ namespace SlbiReport.Utilities
             BarViewModel oBarViewModel = new BarViewModel();
 
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-            sResources = sResources.Replace("，", ",");
+            sResources = sResources.Replace("，", ",").Replace("\r\n", "");
             StringToEntityValue(oBarViewModel, sResources);
             string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
@@ -139,26 +139,52 @@ namespace SlbiReport.Utilities
             {
                 return null;
             }
-           
+            List<string> legend = new List<string>();
+            legend = oBarViewModel.LegendDataStr.Split(',').ToList();
+            List<string> LegendDataStrs = new List<string>();
             //Dictionary<string, string> sDictionary = new Dictionary<string, string>();
             oBarViewModel.Series = new List<BarSeriesModel>();
-            foreach (DataRow item in ds.Tables["Property"].Rows)
-            {           
-                //var b = item.ItemArray;
-                //sDictionary.Add(b[0].ToString(),b[6].ToString());
-                for (int i = 0; i < SeriesStrs.Count(); i++)
+
+            for (int i = 0; i < SeriesStrs.Count(); i++)
+            {
+                List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+                foreach (DataRow item in ds.Tables["Property"].Rows)
                 {
-                    List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
                     if (item["Name"].ToString() == SeriesStrs[i])
                     {
+                        LegendDataStrs.Add(Convert.ToString(item["label"]));
                         oBarViewModel.Series.Add(new BarSeriesModel()
                         {
                             name = Convert.ToString(item["label"]),
                             data = valuelist
                         });
-                    } 
+                    }
                 }
             }
+
+            //foreach (DataRow item in ds.Tables["Property"].Rows)
+            //{           
+            //    for (int i = 0; i < legend.Count(); i++)
+            //    {
+            //        List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+            //        if (item["Name"].ToString() == SeriesStrs[i])
+            //        {
+            //            LegendDataStrs.Add(Convert.ToString(item["label"]));
+            //        } 
+            //    }
+            //    for (int i = 0; i < SeriesStrs.Count(); i++)
+            //    {
+            //        List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+            //        if (item["Name"].ToString() == SeriesStrs[i])
+            //        {
+            //            oBarViewModel.Series.Add(new BarSeriesModel()
+            //            {
+            //                name = Convert.ToString(item["label"]),
+            //                data = valuelist
+            //            });
+            //        }
+            //    }
+            //}
 
             
             //for (int i = 0; i < SeriesStrs.Count(); i++)
@@ -175,15 +201,14 @@ namespace SlbiReport.Utilities
             //    });
             //}
 
-            List<string> legend = new List<string>();
-            legend = oBarViewModel.LegendDataStr.Split(',').ToList();
+           
 
             var bar = new BarViewModel()
             {
                 Title = oBarViewModel.Title,
                 SubTitle = oBarViewModel.SubTitle,
                 AxisData = xaxisdata,
-                LegendData = legend,
+                LegendData = LegendDataStrs,
                 Series = oBarViewModel.Series
             };
 

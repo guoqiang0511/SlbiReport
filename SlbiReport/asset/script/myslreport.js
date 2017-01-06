@@ -319,7 +319,7 @@ function drawselect(container, id) {
                     label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        "field": result.valueField
+                        "field": result.ValueField
                     },
                     labelPosition: 'left',
                     valueField: 'id',
