@@ -229,71 +229,74 @@ function getDashOption3() {
 
 function getBarOption() {
     return {
-        xAxis: [
+        grid: {
+            left: '20%',
+        },
+            xAxis: [
             {
                 type: 'category',
-                axisLine: {
+                    axisLine: {
                     show: false
 
-                },
-                axisTick: {
+            },
+                    axisTick: {
                     show: false
-                },
+            },
                 data: ['销售额']
-            }
+    }
         ],
-        yAxis: [
+            yAxis: [
             {
                 type: 'value',
-                axisLine: {
+                    axisLine: {
                     show: false
 
-                },
-                axisTick: {
+            },
+                    axisTick: {
                     show: false
-                },
-                axisLabel: {
+            },
+                    axisLabel: {
                     show: false
-                },
-                splitLine: {
+            },
+                    splitLine: {
                     show: false
-                }
-            }
+        }
+    }
         ],
-        series: [
+            series: [
             {
                 name: 'xxx',
                 type: 'bar',
                 data: [2.0],
-                label: {
-                    normal: {
+                    label: {
+                        normal: {
                         show: true,
                         position: 'top'
-                    }
                 }
+        }
             },
             {
                 name: 'xxxx',
                 type: 'bar',
                 data: [2.6],
-                label: {
-                    normal: {
+                    label: {
+                        normal: {
                         show: true,
                         position: 'top'
-                    }
                 }
+        }
             } ,
             {
                 name: 'xxxxx',
                 type: 'bar',
                 data: [1.6],
-                label: {
-                    normal: {
+                    label: {
+                        normal: {
                         show: true,
                         position: 'top'
-                    }
                 }
-            }
+        }
+    }
         ]
     }
 }
