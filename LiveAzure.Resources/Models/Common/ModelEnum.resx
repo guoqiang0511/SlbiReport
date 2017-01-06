@@ -120,9 +120,6 @@
   <data name="Bar1" xml:space="preserve">
     <value>Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?|Title(0_0)testbar|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFKZNC7K2N5JLDC443B56,A00O2TFKZNC7K2N5JLDC443NSA|AxisDataStr(0_0)A0CALMONTH|LegendDataStr(0_0)实际,预测</value>
   </data>
-  <data name="file" xml:space="preserve">
-    <value />
-  </data>
   <data name="Pie1" xml:space="preserve">
     <value>Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?|Title(0_0)test|SubTitle(0_0)subtest|PieMapSelectName(0_0)ZDMPLANT_T|PieMapSelectValue(0_0)A00O2TFKZNC7K2N5JLDC4434TM</value>
   </data>
@@ -389,9 +386,6 @@
   </data>
   <data name="BarZSD_M001_Q0003" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0003_SRV/ZSD_M001_Q0003{0}Results?|Title(0_0)年度销售状况分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z93KU0PY37D8X_F|AxisDataStr(0_0)A0CALYEAR|LegendDataStr(0_0)</value>
-  </data>
-  <data name="BarZSD_M001_Q0007" xml:space="preserve">
-    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0007_SRV/ZSD_M001_Q0007{0}Results?|Title(0_0)年度销售价格变动趋势|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1ZAQ7PTQAJ19HB,A00O2TFHXIFF1ZAQ7PTQAJ1SFZ|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)</value>
   </data>
   <data name="TabZMM_M001_Q0001" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0001_SRV/ZMM_M001_Q0001{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0)</value>

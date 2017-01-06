@@ -704,6 +704,9 @@
     <Content Include="Views\DashBoard\BusinessOverview2.cshtml" />
     <Content Include="Views\ZhzReport\ZFI_M001_Q0003Report.cshtml" />
     <Content Include="Views\ZhzReport\ZFI_M001_Q0006Report.cshtml" />
+    <Content Include="Views\ZhzReport\ZMM_M001_Q0004Report.cshtml" />
+    <Content Include="Views\ZhzReport\ZMM_M001_Q0005Report.cshtml" />
+    <Content Include="Views\YF\ZPU_M001_Q0004port.cshtml" />
     <Content Include="Views\Cx\ZMM_M001_Q0001AndQ0002AndQ0003.cshtml" />
     <Content Include="Views\Cx\ZSD_M001_Q0001AndQ0002AndQ0003.cshtml" />
     <Content Include="Views\Cx\ZSD_M001_Q0004AndQ0005.cshtml" />
