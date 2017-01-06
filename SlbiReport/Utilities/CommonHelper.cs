@@ -55,7 +55,7 @@ namespace SlbiReport.Utilities
                 var obj = new VisitSource()
                 {
                     name = Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]),
-                    value = Convert.ToString(dr[oPieMapViewModel.PieMapSelectValue])
+                    value = Convert.ToString(Convert.ToDouble(dr[oPieMapViewModel.PieMapSelectValue]))
                 };
                 listss.Add(obj);
                 lists.Add(Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]));

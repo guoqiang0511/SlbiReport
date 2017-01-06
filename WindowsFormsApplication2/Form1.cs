@@ -31,6 +31,7 @@ namespace WindowsFormsApplication2
         private void button1_Click(object sender, EventArgs e)
         {
             panel2.Show();
+            Sel.Visible = false;
             checkedListBox1.Items.Clear();
             checkedListBox2.Items.Clear();
             treeView1.Nodes.Clear();
@@ -118,11 +119,6 @@ namespace WindowsFormsApplication2
                 {
                     if (checkedListBox1.GetItemChecked(i))
                     {
-                        //var oTabP = dimensionlist.Where(o => o.sNameValue == checkedListBox1.Items[i].ToString()).FirstOrDefault();
-                        //if (oTabP != null)
-                        //{
-                        //    dimensionlist.Remove(oTabP);
-                        //}
                         checkedListBox1.Items.RemoveAt(i);
                     }
                 }
@@ -134,16 +130,6 @@ namespace WindowsFormsApplication2
                 {
                     if (checkedListBox2.GetItemChecked(i))
                     {
-                        //var oTabP = measurelist.Where(o => o.sNameValue == checkedListBox2.Items[i].ToString()).FirstOrDefault();
-                        //if (oTabP != null)
-                        //{
-                        //    measurelist.Remove(new TabP()
-                        //    {
-                        //        sNameValue = sssssss,
-                        //        sName = Convert.ToString(dr["text"]),
-                        //        sValue = Convert.ToString(dr["label"]),
-                        //    });
-                        //}
                         checkedListBox2.Items.RemoveAt(i);
                     }
                 }
@@ -401,9 +387,93 @@ namespace WindowsFormsApplication2
             //return ison;
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            panel2.Visible = false;
+            Sel.Show();
 
+            checkedListBox1.Items.Clear();
+            checkedListBox2.Items.Clear();
+
+            dimensionlist = new List<TabP>();
+            measurelist = new List<TabP>();
+            TreeNodeList = new List<TreeNode>();
+            string sUrl = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/" + url.Text + "_SRV/$metadata?sap-user=guoq&sap-password=ghg2587758";
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(sUrl);
+            }
+            catch
+            {
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["Property"];
+
+            DataRow[] drArr = dt.Select("EntityType_Id=1 and  text <> '' ");//查询
+
+            DataTable dtNew = dt.Clone();
+
+
+            for (int i = 0; i < drArr.Length; i++)
+            {
+                dtNew.ImportRow(drArr[i]);
+
+            }
+
+            //return result;
+            dimensionlist = new List<WindowsFormsApplication2.TabP>();
+
+            foreach (DataRow dr in dtNew.Rows)
+            {
+                string sNV = Convert.ToString(dr["name"]) + ":" +  Convert.ToString(dr["label"]);
+                checkedListBox1.Items.Add(sNV, true);
+                dimensionlist.Add(
+                    new WindowsFormsApplication2.TabP()
+                    {
+                        sName = Convert.ToString(dr["name"]),
+                        
+                        sValue =Convert.ToString(dr["label"]),
+                        sNameValue =sNV,
+                    }
+                    );
+                //var obj = new SelectColumn() { ValueField = Convert.ToString(dr["name"]), Width = "200", Multiple = false, Label = Convert.ToString(dr["label"]), TextField = Convert.ToString(dr["text"]) };
+                //selectlist.Add(obj);
+            }
+        }
+
+        private void SelQ_Click(object sender, EventArgs e)
+        {
+            if (checkedListBox1.CheckedItems.Count != 0)
+            {
+                for (int i = checkedListBox1.Items.Count - 1; i >= 0; i--)
+                {
+                    if (checkedListBox1.GetItemChecked(i))
+                    {
+                       TabP oTabP = dimensionlist.Where(o => o.sNameValue == checkedListBox1.Items[i].ToString()).FirstOrDefault();
+                        if (oTabP != null)
+                        {
+                            dimensionlist.Remove(oTabP);
+                        }
+                        checkedListBox1.Items.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
+        private void SelC_Click(object sender, EventArgs e)
+        {
+            string selC = "";
+
+            foreach (var a in dimensionlist)
+            {
+                selC += "Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/" + url.Text + "_SRV/|Label(0_0)" + a.sValue + "|TextField(0_0)" + a.sName + "MText|ValueField(0_0)" + a.sName + "|Width(0_0)200|Multiple(0_0)true*";
+            }
+            tabstr.Text = selC;
         }
     }
     public class TabP
