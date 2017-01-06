@@ -255,6 +255,35 @@ function drawbar7(pagequeryParams, container, id) {
     });
 }
 
+//三柱一线
+function drawbar8(pagequeryParams, container, id) {
+    var barChart = echarts.init(document.getElementById(container));
+    var bar_option = getBarOption8();
+    barChart.setOption(bar_option);
+    barChart.showLoading();
+
+    $.post('BarMap', { id: id, pagequeryParams: pagequeryParams }, function (response, status) {
+        var ss = JSON.stringify(response.result.Series);
+        barChart.hideLoading();
+        barChart.setOption({
+            title: {
+                text: response.result.Title,
+                subtext: response.result.SubTitle,
+                x: 'left'
+            },
+            legend: {
+                data: response.result.LegendData
+            },
+            xAxis: {
+                data: response.result.AxisData
+            },
+
+            series: response.result.Series
+        });
+
+    });
+}
+
 //一柱两线
 function drawbar8(pagequeryParams, container, id) {
     var barChart = echarts.init(document.getElementById(container));
@@ -976,8 +1005,8 @@ toolbox: {
                     data: []
                     }
         ]
-        }
-        }
+    }
+}
 /**
 * EasyUI DataGrid根据字段动态合并单元格
 * 参数 tableID 要合并table的id

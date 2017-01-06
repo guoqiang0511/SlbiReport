@@ -79,6 +79,15 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0003_SRV/ZCA_M001_Q0003{0}Results?|Title(0_0)产品成本月度趋势状况|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFHXIFF3PL8NINK0A4FFL，A00O2TFHXIFF3PL8NINK0A4LR5，A00O2TFHXIFF3PLMCBWGKDDFWP，A00O2TFHXIFF3PLMBCWBWCXGM7|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)本期成本,预算成本，标准成本，上年同期金额 的本地化字符串。
+        /// </summary>
+        public static string barZCA_M001_Q0003 {
+            get {
+                return ResourceManager.GetString("barZCA_M001_Q0003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/ZMM_M001_Q0005{0}Results?|Title(0_0)库存呆滞状况分析|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFHXIFF1ZAA3BD18ZDI2A，A00O2TFHXIFF3PKN6FN2VEPWTM，A00O2TFHXIFF3PKN6FN2VEPQI2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)呆滞金额,上年同期呆滞率，同期呆滞率 的本地化字符串。
         /// </summary>
         public static string barZMM_M001_Q0005 {
@@ -147,6 +156,15 @@ namespace LiveAzure.Resources.Models.Common {
         public static string Pie2 {
             get {
                 return ResourceManager.GetString("Pie2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006{0}Results?|Title(0_0)月度库存占比结构|SubTitle(0_0)|PieMapSelectName(0_0)ZMATPTYPE_T|PieMapSelectValue(0_0)A00O2TFHXIFF1ZAAFQYU1044QJ|SeriesName(0_0)存货类别 的本地化字符串。
+        /// </summary>
+        public static string pieZMM_M001_Q0006 {
+            get {
+                return ResourceManager.GetString("pieZMM_M001_Q0006", resourceCulture);
             }
         }
         
@@ -282,6 +300,15 @@ namespace LiveAzure.Resources.Models.Common {
         public static string TabZCA_M001_Q0001 {
             get {
                 return ResourceManager.GetString("TabZCA_M001_Q0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        public static string TabZCA_M001_Q0003 {
+            get {
+                return ResourceManager.GetString("TabZCA_M001_Q0003", resourceCulture);
             }
         }
         
@@ -441,6 +468,16 @@ namespace LiveAzure.Resources.Models.Common {
         public static string TabZMM_M001_Q0003 {
             get {
                 return ResourceManager.GetString("TabZMM_M001_Q0003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/ZMM_M001_Q0005{0}Results?|Title(0_0)备选指标|FrozenColumns(0_0)|Columns(0_0)[[{ field: &apos;ZPROFTCTR__ZBU_T&apos;, title: &apos;事业部&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{ field: &apos;ZPROFTCTR_T&apos;, title: &apos;生产工厂&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2},{ field: &apos;ZMATPTYPE_T&apos;, title: &apos;存货类别&apos;, sortable: true, fixed: true, align: &apos;left&apos;,rowspan:2}, {title: &apos;上月库存状况&apos;,colspan:3}, {title: &apos;本月库存状况&apos;,colspan:3}],
+        ///[{ field: &apos;A00O2T [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string TabZMM_M001_Q0005 {
+            get {
+                return ResourceManager.GetString("TabZMM_M001_Q0005", resourceCulture);
             }
         }
         
