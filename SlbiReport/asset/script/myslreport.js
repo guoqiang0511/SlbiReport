@@ -77,7 +77,7 @@ function drawbar1(pagequeryParams, container, id) {
                 data: response.result.AxisData
             },
 
-            series: response.result.Series
+                series: response.result.Series
         });
 
     });
@@ -869,7 +869,7 @@ function mergeCellsByField(tableID, colList) {
 
 function getTableOption() {
     return {
-        height: 630,
+        maxheight: 630,
         method: 'POST',
         queryParams: {},
         striped: true,

@@ -75,7 +75,6 @@ function drawline1(pagequeryParams, container, id) {
 
 }
 
-
 function drawheat1(pagequeryParams, container, id) {
     var myChart = echarts.init(document.getElementById(container));
     var bar_option = getHeatOption();
@@ -306,7 +305,6 @@ function getHeatOption() {
     var data = [[0, 0, 5], [0, 1, 1], [0, 2, 3], [0, 3, 2], [0, 4, 1], [0, 5, 4], [0, 6, 3], [0, 7, 2], [0, 8, 7], [0, 9, 9], [0, 10, 6], [0, 11, 2], [0, 12, 4]];
     var data1 = [5, 6, 6, 8, 9, 3, 6, 8, 9, 3, 9, 3, 3];
 
-
     data = data.map(function (item) {
         return [item[1], item[0], item[2] || '-'];
     });
@@ -335,20 +333,20 @@ function getHeatOption() {
             // type: 'category',
             data: days,
             splitArea: {
-                // show: true
+            // show: true
             }
         },
        visualMap: {
-           min: 0,
-           orient: 'horizontal',
+        min: 0,
+        orient: 'horizontal',
         max: 10,
         splitNumber: 3,
         show:false,
         inRange: {
-            color: ['#d94e5d','#eac736','#09f511'].reverse()
+            color: ['#d94e5d', '#eac736', '#34c231'].reverse()
         },
     },
-        series: [{
+     series: [{
             name: 'xxxx',
             type: 'heatmap',
             data: data,
@@ -584,7 +582,6 @@ function drawbar2(pagequeryParams, container, id) {
     //});
 }
 
-
 function getPieOption2() {
 
     return {
@@ -673,7 +670,6 @@ function drawpie2(pagequeryParams, container, id) {
 
     //});
 }
-
 
 function getDash2Option()
 {
@@ -876,7 +872,6 @@ function getDash2Option()
     }
 }
     
-
 function drawdash2(pagequeryParams, container, id) {
     var myChart = echarts.init(document.getElementById(container));
     var dash_option = getDash2Option();
@@ -923,7 +918,6 @@ function drawdash3(pagequeryParams, container, id) {
 
 }
 
-
 function getBarOption3() {
 
     return {
@@ -956,6 +950,7 @@ function getBarOption3() {
             {
                 name: '2016年',
                 type: 'bar',
+                barWidth: '50%',
                 data: [104970, 131744, 63230],
                 label: {
                     normal: {
