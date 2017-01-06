@@ -25,10 +25,12 @@ namespace WindowsFormsApplication2
             InitializeComponent();
             dimensionlist = new List<TabP>();
             measurelist = new List<TabP>();
+            panel2.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            panel2.Show();
             checkedListBox1.Items.Clear();
             checkedListBox2.Items.Clear();
             treeView1.Nodes.Clear();
