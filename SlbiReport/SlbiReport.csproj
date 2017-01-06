@@ -216,7 +216,6 @@
   <ItemGroup>
     <Compile Include="Controllers\CxController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
-    <Compile Include="Controllers\CxController.cs" />
     <Compile Include="Controllers\YFController.cs" />
     <Compile Include="Controllers\ZhzReportController.cs" />
     <Compile Include="Models\BarSeriesModel.cs" />
