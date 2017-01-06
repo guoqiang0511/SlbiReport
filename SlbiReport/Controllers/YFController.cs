@@ -55,17 +55,17 @@ namespace SlbiReport.Controllers
         public ActionResult Select(string id)
         {
 
-            List<SelectColumn> selectlist = CommonHelper.GetSelect("Sel1");
+            List<SelectColumn> selectlist = CommonHelper.GetSelect(id);
 
             return Json(new { status = 1, result = selectlist });
         }
 
-        public String Select_Dim()
+        public String Select_Dim(string id)
         {
-            String id = Request["id"];
+            String ids = Request["field"];
             String text = Request["text"];
       
-            String result = CommonHelper.GetSelect_Dim("Sel1", id, token);
+            String result = CommonHelper.GetSelect_Dim(id, ids, token);
 
             return result;
         }
@@ -226,6 +226,12 @@ namespace SlbiReport.Controllers
             return result;
         }
 
+        public ActionResult Select_Auto(string id)
+        {
+
+            return Json(new { status = 1, result = CommonHelper.GetSelect_Auto(id, token) });
+        }
+
         public ActionResult ZPU_M001_Q0002port()
         {
             return View();
@@ -247,6 +253,18 @@ namespace SlbiReport.Controllers
         {
             return View();
         }
-       
+        public ActionResult ZMM_M002_Q0001port()
+        {
+            return View();
+        }
+        public ActionResult ZMM_M002_Q0004port()
+        {
+            return View();
+        }
+        public ActionResult ZSD_M002_Q0006port()
+        {
+            return View();
+        }
+        
     }
 }
