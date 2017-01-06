@@ -440,4 +440,22 @@ Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0005_SRV/ZPU_M001_Q0005{0}Results?|Title(0_0)年度采购价格变动分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PK1T918NI02RV,A00O2TFHXIFF3PK1T918NHZWGB
 |AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)A00O2TFHXIFF3PK1T918NI02RV,A00O2TFHXIFF3PK1T918NHZWGB</value>
   </data>
+  <data name="barZCA_M001_Q0003" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0003_SRV/ZCA_M001_Q0003{0}Results?|Title(0_0)产品成本月度趋势状况|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFHXIFF3PL8NINK0A4FFL，A00O2TFHXIFF3PL8NINK0A4LR5，A00O2TFHXIFF3PLMCBWGKDDFWP，A00O2TFHXIFF3PLMBCWBWCXGM7|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)本期成本,预算成本，标准成本，上年同期金额</value>
+  </data>
+  <data name="pieZMM_M001_Q0006" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006{0}Results?|Title(0_0)月度库存占比结构|SubTitle(0_0)|PieMapSelectName(0_0)ZMATPTYPE_T|PieMapSelectValue(0_0)A00O2TFHXIFF1ZAAFQYU1044QJ|SeriesName(0_0)存货类别</value>
+  </data>
+  <data name="TabZCA_M001_Q0003" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TabZMM_M001_Q0005" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/ZMM_M001_Q0005{0}Results?|Title(0_0)备选指标|FrozenColumns(0_0)|Columns(0_0)[[{ field: 'ZPROFTCTR__ZBU_T', title: '事业部', sortable: true, fixed: true, align: 'left',rowspan:2},{ field: 'ZPROFTCTR_T', title: '生产工厂', sortable: true, fixed: true, align: 'left',rowspan:2},{ field: 'ZMATPTYPE_T', title: '存货类别', sortable: true, fixed: true, align: 'left',rowspan:2}, {title: '上月库存状况',colspan:3}, {title: '本月库存状况',colspan:3}],
+[{ field: 'A00O2TFHXIFF1ZAA3LGYFWOV65_F',   title: '上月库存',sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1ZAA3D9O69HZN6_F',   title: '上月呆滞',sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1ZAA3QFGOPZXZJ_F',   title: '上月呆滞比',sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1ZAA3O0T9VMZF3_F',   title: '本月库存',sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1ZAA3BD18ZDI2A_F',   title: '本月呆滞',sortable: true, fixed: true, align: 'right' } ，
+{ field: 'A00O2TFHXIFF1ZAA3QFGOPZRNZ_F',   title: '本月呆滞比',sortable: true, fixed: true, align: 'right' }]]</value>
+  </data>
 </root>

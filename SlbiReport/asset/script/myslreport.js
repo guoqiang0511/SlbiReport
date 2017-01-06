@@ -255,6 +255,35 @@ function drawbar7(pagequeryParams, container, id) {
     });
 }
 
+//三柱一线
+function drawbar8(pagequeryParams, container, id) {
+    var barChart = echarts.init(document.getElementById(container));
+    var bar_option = getBarOption8();
+    barChart.setOption(bar_option);
+    barChart.showLoading();
+
+    $.post('BarMap', { id: id, pagequeryParams: pagequeryParams }, function (response, status) {
+        var ss = JSON.stringify(response.result.Series);
+        barChart.hideLoading();
+        barChart.setOption({
+            title: {
+                text: response.result.Title,
+                subtext: response.result.SubTitle,
+                x: 'left'
+            },
+            legend: {
+                data: response.result.LegendData
+            },
+            xAxis: {
+                data: response.result.AxisData
+            },
+
+            series: response.result.Series
+        });
+
+    });
+}
+
 //画表格,自动画出表头
 function drawtable_auto(pagequeryParams, container, id) {
 
@@ -884,6 +913,64 @@ function getBarOption7() {
                 data: []
             }
             ,
+            {
+                name: '',
+                type: 'line',
+                data: []
+            }
+        ]
+    }
+}
+
+function getBarOption8() {
+
+    return {
+
+        tooltip: {
+            trigger: 'axis'
+        },
+        toolbox: {
+            feature: {
+                dataView: { show: true, readOnly: false },
+                magicType: { show: true, type: ['line', 'bar'] },
+                restore: { show: true },
+                saveAsImage: { show: true }
+            }
+        },
+        legend: {
+            data: []
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: []
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '',
+                axisLabel: {
+                    formatter: '{value} '
+                }
+            }
+        ],
+        series: [
+            {
+                name: '',
+                type: 'bar',
+                data: []
+            },
+             {
+                 name: '',
+                 type: 'bar',
+                 data: []
+             },
+              {
+                name: '',
+                type: 'bar',
+                data: []
+            },
             {
                 name: '',
                 type: 'line',

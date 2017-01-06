@@ -712,6 +712,8 @@
     <Content Include="Views\ZhzReport\ZMM_M001_Q0004Report.cshtml" />
     <Content Include="Views\ZhzReport\ZMM_M001_Q0005Report.cshtml" />
     <Content Include="Views\YF\ZPU_M001_Q0004port.cshtml" />
+    <Content Include="Views\ZhzReport\ZMM_M001_Q0006Report.cshtml" />
+    <Content Include="Views\ZhzReport\ZCA_M001_Q0003Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

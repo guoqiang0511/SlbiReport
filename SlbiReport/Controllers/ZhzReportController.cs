@@ -34,6 +34,20 @@ namespace SlbiReport.Controllers
         }
 
         [HttpPost]
+        public ActionResult PieMap(string id)
+        {
+
+            string cmd = Request["pagequeryParams"];
+            string urltt = QueryParamsurl(cmd);
+
+            var pie = new PieMapViewModel();
+
+            pie = CommonHelper.GetPieMapViewModel(id, urltt, token);
+
+            return Json(new { status = 1, result = pie });
+        }
+
+        [HttpPost]
         public ActionResult Select(string id)
         {
 
@@ -233,6 +247,17 @@ namespace SlbiReport.Controllers
         {
             return View();
         }
+        public ActionResult ZMM_M001_Q0006Report()
+        {
+            return View();
+        }
+
+        public ActionResult ZCA_M001_Q0003Report()
+        {
+            return View();
+        }
+
+
 
 
     }
