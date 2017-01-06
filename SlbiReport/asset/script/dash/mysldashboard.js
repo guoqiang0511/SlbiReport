@@ -230,7 +230,8 @@ function getDashOption3() {
 function getBarOption() {
     return {
         grid: {
-            left: '20%',
+            width: '78%',
+            height: '38%'
         },
             xAxis: [
             {
