@@ -12,18 +12,19 @@
 <div id="selectArea"></div>
 
 <div>
-    <div id="bar" ng-controller="myBarCtrl" style="height: 400px;float:left;width:100%"></div>
+    <div id="bar1" ng-controller="myBarCtrl" style="height: 400px;float:left;width:70%"></div>
+    <div id="main" ng-controller="myCtrl" style="height: 400px;float:left;width:30%"></div>
+    <div id="bar2" ng-controller="myBarCtrl" style="height: 400px;float:left;width:50%"></div>
+    <div id="bar3" ng-controller="myBarCtrl" style="height: 400px;float:left;width:50%"></div>
 </div>
 
-<div>&nbsp;<table id="tt1" class="easyui-datagrid"></table></div>
-<div>&nbsp;<table id="tt2" class="easyui-datagrid"></table></div>
-<div>&nbsp;<table id="tt3" class="easyui-datagrid"></table></div>
+<div>&nbsp;<table id="tt" class="easyui-datagrid"></table></div>
 
 <script style="">
 $(window).load(function () {
     //要执行的方法体
     //drawselect("selectArea", "SelZMM_M001_Q0005");
-    drawbar7(null, "bar", "barZMM_M001_Q0005");
+    drawbar7(null, "bar1", "barZMM_M001_Q0005");
    // drawtable(null, "tt", "TabZMM_M001_Q0004");
 });
 </script>
