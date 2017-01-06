@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+
+    <script src="~/Scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="~/Css/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="~/Css/themes/icon.css">
+    <script src="~/Scripts/echarts/echarts.min.js" type="text/javascript"></script>
+    <script src="~/asset/script/dash/mysldashboard.js" type="text/javascript"></script>
+</head>
+<body>  
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - 双林BI系统</p>
+        </footer>
+    </div>
+
+  
+    @RenderSection("scripts", required: false)
+</body>
+</html>

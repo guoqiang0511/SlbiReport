@@ -210,7 +210,17 @@ namespace SlbiReport.Utilities
             StringToEntityValue(oTableViewModel, sResources);
 
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
-            oTableViewModel.Url += "$inlinecount=allpages&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
+            oTableViewModel.Url += "$inlinecount=allpages&" + sToken;
+
+            if (sSkip != null && sSkip != "")
+            {
+                oTableViewModel.Url += "&$skip=" + sSkip ;
+            }
+
+            if (sRows != null && sRows != "")
+            {
+                oTableViewModel.Url += "&$top=" + sRows;
+            }
 
             int iTotalIndex = sResources.IndexOf("Total(0_0)");
             string strTotle = string.Empty;
