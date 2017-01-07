@@ -424,7 +424,7 @@ Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM
   <data name="SelZSD_M001_Q0008" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0008_SRV/|Label(0_0)日历年月|TextField(0_0)ZMONHT003_PText|ValueField(0_0)ZMONHT003_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)|Label(0_0)项目类型|TextField(0_0)ZPROGTYPE001_MText|ValueField(0_0)ZPROGTYPE001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)|Label(0_0)物料组|TextField(0_0)ZMATLGROUP001_MText|ValueField(0_0)ZMATLGROUP001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)|Label(0_0)项目|TextField(0_0)ZEINR001_MText|ValueField(0_0)ZEINR001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)|Label(0_0)客户经理|TextField(0_0)ZEMPLOYEE002_MText|ValueField(0_0)ZEMPLOYEE002_M|Width(0_0)200|Multiple(0_0)true*</value>
   </data>
-  <data name="barZMM_M001_Q0005" xml:space="preserve">
+  <data name="BarZMM_M001_Q0005" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/ZMM_M001_Q0005{0}Results?|Title(0_0)库存呆滞状况分析|SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFHXIFF1ZAA3BD18ZDI2A，A00O2TFHXIFF3PKN6FN2VEPWTM，A00O2TFHXIFF3PKN6FN2VEPQI2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)呆滞金额,上年同期呆滞率，同期呆滞率</value>
   </data>
   <data name="ZPU_M001_Q0004" xml:space="preserve">
@@ -482,9 +482,6 @@ Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM
   <data name="pieZMM_M001_Q0006" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006{0}Results?|Title(0_0)月度库存占比结构|SubTitle(0_0)|PieMapSelectName(0_0)ZMATPTYPE_T|PieMapSelectValue(0_0)A00O2TFHXIFF1ZAAFQYU1044QJ|SeriesName(0_0)存货类别</value>
   </data>
-  <data name="TabZCA_M001_Q0003" xml:space="preserve">
-    <value />
-  </data>
   <data name="TabZMM_M001_Q0005" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/ZMM_M001_Q0005{0}Results?|Title(0_0)备选指标|FrozenColumns(0_0)|Columns(0_0)[[{ field: 'ZPROFTCTR__ZBU_T', title: '事业部', sortable: true, fixed: true, align: 'left',rowspan:2},{ field: 'ZPROFTCTR_T', title: '生产工厂', sortable: true, fixed: true, align: 'left',rowspan:2},{ field: 'ZMATPTYPE_T', title: '存货类别', sortable: true, fixed: true, align: 'left',rowspan:2}, {title: '上月库存状况',colspan:3}, {title: '本月库存状况',colspan:3}],
 [{ field: 'A00O2TFHXIFF1ZAA3LGYFWOV65_F',   title: '上月库存',sortable: true, fixed: true, align: 'right' } ，
@@ -493,5 +490,71 @@ Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM
 { field: 'A00O2TFHXIFF1ZAA3O0T9VMZF3_F',   title: '本月库存',sortable: true, fixed: true, align: 'right' } ，
 { field: 'A00O2TFHXIFF1ZAA3BD18ZDI2A_F',   title: '本月呆滞',sortable: true, fixed: true, align: 'right' } ，
 { field: 'A00O2TFHXIFF1ZAA3QFGOPZRNZ_F',   title: '本月呆滞比',sortable: true, fixed: true, align: 'right' }]]</value>
+  </data>
+  <data name="BarZCA_M001_Q0002" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0002_SRV/ZCA_M001_Q0002{0}Results?|Title(0_0)存货周转天数|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PKQ6YX4O2ZPJJ,A00O2TFHXIFF3PKQ6YX4O2ZVV3,A00O2TFHXIFF3PKQ6YX4O3026N|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)实际天数，预算天数，同期天数</value>
+  </data>
+  <data name="BarZFI_P001_Q0002" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_P001_Q0002_SRV/ZFI_P002_Q0001{0}Results?|Title(0_0)产品成本月度趋势状况SubTitle(0_0)subtestbar|SeriesStr(0_0)A00O2TFHXIFF1ZCD5XVIVC3DDI，A00O2TFHXIFF1ZCD5XVIVC371Y，A00O2TFHXIFF1ZCD5XVIVC3JP2|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)本期成本，标准成本，上年同期金额</value>
+  </data>
+  <data name="SelZMM_M001_Q0006" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/|Label(0_0)日历年/月(单值必输,默认上月)|TextField(0_0)ZMONTH001_PMText|ValueField(0_0)ZMONTH001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/|Label(0_0)利润中心(多值,可选)|TextField(0_0)ZPROFTCTR001_MMText|ValueField(0_0)ZPROFTCTR001_M|Width(0_0)200|Multiple(0_0)true*</value>
+  </data>
+  <data name="TabZCA_M001_Q0002" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0002_SRV/ZCA_M001_Q0002{0}Results?|Title(0_0)存货周转天数|FrozenColumns(0_0)|Columns(0_0)</value>
+  </data>
+  <data name="TabZCA_M001_Q0003" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0003_SRV/ZCA_M001_Q0003{0}Results?|Title(0_0)分析内容|FrozenColumns(0_0)|Columns(0_0)</value>
+  </data>
+  <data name="TabZCA_M001_Q0004" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0004_SRV/ZCA_M001_Q0004{0}Results?|Title(0_0)汇总损益状况：|FrozenColumns(0_0)|Columns(0_0)</value>
+  </data>
+  <data name="TabZCA_M001_Q0005" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0005_SRV/ZCA_M001_Q0005{0}Results?|Title(0_0)明细损益状况：|FrozenColumns(0_0)|Columns(0_0)</value>
+  </data>
+  <data name="TabZFI_M001_Q0013" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0013_SRV/ZFI_M001_Q0013{0}Results?|Title(0_0)对外结构、坏账分析|FrozenColumns(0_0)|Columns(0_0)
+[[{field:'ZPROFTCTR__ZSLLTD_T',title:'双林股司', sortable: true, fixed: true, align:'left',rowspan:2},{field:'ZPROFTCTR__ZBU_T',title:'事业部', sortable: true, fixed: true, align:'left',rowspan:2}
+,{field:'ZCOMPCODE_T',title:'公司代码', sortable: true, fixed: true, align:'left',rowspan:2},{title: '期初余额',colspan:3},{title: '本期增加金额',colspan:2}，{title: '本期增减金额',colspan:2}，{title: '期末余额',colspan:3}]，
+[{field:'A00O2TFHXIFF1ZAASJ9SMC6Z0S_F',title:'期初余额_存货', sortable: true, fixed: true, align:'right'},{field:'A00O2TFHXIFF1ZAAWSHFEADKTF_F',title:'跌价准备', sortable: true, fixed: true, align:'right'},
+{field:'A00O2TFHXIFF1ZAAX0XKREV9O9_F',title:'存货净值', sortable: true, fixed: true, align:'right'},
+{field:'A00O2TFHXIFF1ZAAX5369OEXFX_F',title:'本期增加金额_存货', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF1ZAAX8XF4ON7BM_F',title:'跌价准备', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF1ZAAXCGAGYK5WN_F',title:'本期减少金额_存货', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF1ZAAXCGAGYKIJR_F',title:'跌价准备', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF1ZAAXIUD419A83_F',title:'存货', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF1ZAAXIUD419MV7_F',title:'跌价准备', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF1ZAAXIUD419ZIB_F',title:'存货净值', sortable: true, fixed: true, align:'right',}]]</value>
+  </data>
+  <data name="TabZFI_M001_Q0014" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0014_SRV/ZFI_M001_Q0014{0}Results?|Title(0_0)量价差异分析|FrozenColumns(0_0)|Columns(0_0)</value>
+  </data>
+  <data name="TabZFI_P001_Q0001" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZZFI_P001_Q0001_SRV/ZFI_P001_Q0001{0}Results?|Title(0_0)成本内容|FrozenColumns(0_0)|Columns(0_0)</value>
+  </data>
+  <data name="TabZMM_M001_Q0006" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006{0}Results?|Title(0_0)备选指标|rozenColumns(0_0)|Columns(0_0)[[{field:'ZPROFTCTR__ZBU_T',title:'事业部', sortable: true, fixed: true, align:'left',rowspan:3},
+{field:'ZPROFTCTR_T',title:'生产工厂', sortable: true, fixed: true, align:'left',rowspan:3},
+{field:'ZMATPTYPE_T',title:'存货类别', sortable: true, fixed: true, align:'left',rowspan:3}，
+ {title: '年初库存状况',colspan:2}，{title: '期间库存状况',colspan:10}]，
+[{field:'A00O2TFHXIFF1ZAAFQYU1050CB_F',title:'年初库存', sortable: true, fixed: true, align:'right',rowspan:2},
+ {field:'A00O2TFHXIFF1ZAAFQYU10746Z_F',title:'呆滞库存', sortable: true, fixed: true, align:'right',rowspan:2},
+ {field:'A00O2TFHXIFF1ZAAFQYU106L8B_F',title:'上月库存', sortable: true, fixed: true, align:'right',rowspan:2},
+ {field:'A00O2TFHXIFF1ZAAFQYU105PMJ_F',title:'本月库存', sortable: true, fixed: true, align:'right',rowspan:2},
+ {field:'A00O2TFHXIFF1ZAAHAJZ2NQWF9_F',title:'销售成本', sortable: true, fixed: true, align:'right',rowspan:2},
+ {field:'A00O2TFHXIFF1ZAAFQYU105CZF_F',title:'呆滞品库存', sortable: true, fixed: true, align:'right',rowspan:2},
+  {title: '库存变化',colspan:2}，{title: '呆滞变化',colspan:10},
+  {field:'A00O2TFHXIFF1ZAAIEOCBLEV5H_F',title:'周转天数', sortable: true, fixed: true, align:'right',rowspan:2},
+  {field:'A00O2TFHXIFF1ZAAFQYU10629N_F',title:'实际呆滞率_本月', sortable: true, fixed: true, align:'right',rowspan:2}],
+[{field:'A00O2TFHXIFF3PMEW58BPNW32C_F',title:'与年初比', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF3PMEW58BPNW9DW_F',title:'与上月比', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF3PMEW8FONYELJ9_F',title:'与年初比', sortable: true, fixed: true, align:'right',},
+{field:'A00O2TFHXIFF3PMEW8FONYERUT_F',title:'与上月比', sortable: true, fixed: true, align:'right',}]]</value>
+  </data>
+  <data name="TabZMM_M001_Q0007" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0007_SRV/ZMM_M001_Q0007{0}Results?|Title(0_0)存货对内结构|FrozenColumns(0_0)|Columns(0_0)</value>
+  </data>
+  <data name="TabZMM_M001_Q0008" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0008_SRV/ZMM_M001_Q0008{0}Results?|Title(0_0)存货账龄|FrozenColumns(0_0)|Columns(0_0)</value>
   </data>
 </root>

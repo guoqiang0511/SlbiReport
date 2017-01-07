@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutEchart.cshtml";
+}
+
+@{
+    ViewBag.Title = "存货库龄分析";
+}
+
+<h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
+
+<div id="selectArea"></div>
+<div id="bar" ng-controller="myBarCtrl" style="height: 400px;float:left;width:100%"></div>
+<div>&nbsp;<table id="tt" class="easyui-datagrid"></table></div>
+
+<script style="">
+$(window).load(function () {
+    //要执行的方法体
+    //drawselect("selectArea", "SelZFI_P001_Q0001");
+    drawbar2(null, "bar1", "BarZFI_P001_Q0002");//drawbar7三柱一线
+    drawtable(null, "tt", "TabZFI_P001_Q0001");
+
+});
+</script>
