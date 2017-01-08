@@ -17,14 +17,14 @@
 $(window).load(function () {
     //要执行的方法体
     drawselect("selectArea", "SelZFI_P001_Q0001");
-    drawbar2(null, "bar1", "BarZFI_P001_Q0002");//drawbar7三柱一线
-    drawtable(null, "tt", "TabZFI_P001_Q0001");
+    drawbar2(null, "bar", "BarZFI_P001_Q0002");//drawbar7三柱一线
+    drawtable_auto(null, "tt", "TabZFI_P001_Q0001");
 
 });
 
 function buttononclick(pagequeryParams) {
-    drawbar2(pagequeryParams, "bar1", "BarZFI_P001_Q0002");
-    drawtable(pagequeryParams, "tt", "TabZFI_P001_Q0001");
+    drawbar2(pagequeryParams, "bar", "BarZFI_P001_Q0002");
+    drawtable_auto(pagequeryParams, "tt", "TabZFI_P001_Q0001");
 }
 
 </script>

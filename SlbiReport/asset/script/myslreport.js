@@ -1007,6 +1007,8 @@ toolbox: {
         ]
     }
 }
+
+
 /**
 * EasyUI DataGrid根据字段动态合并单元格
 * 参数 tableID 要合并table的id
