@@ -214,11 +214,128 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0003_SRV/|Label(0_0)日历年/月(单值必输,默认上月)|TextField(0_0)ZMONTH001_PMText|ValueField(0_0)ZMONTH001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0003_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0003_SRV/|Label(0_0)利润中心(多值,可选)|TextField(0_0)ZPROFTCTR001_MMText| [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZCA_M001_Q0003 {
+            get {
+                return ResourceManager.GetString("SelZCA_M001_Q0003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0004_SRV/|Label(0_0)日历年/月(单值必输,默认上月)|TextField(0_0)ZMONTH001_PMText|ValueField(0_0)ZMONTH001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0004_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0004_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MMText| [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZCA_M001_Q0004 {
+            get {
+                return ResourceManager.GetString("SelZCA_M001_Q0004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0001_SRV/|Label(0_0)日历日(单值必输,默认当前一天)|TextField(0_0)ZDAY001_PMText|ValueField(0_0)ZDAY001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0001_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0001_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MMText|Valu [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0001 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)日历年月(单值必输,默认本月)|TextField(0_0)ZMONHT003_PMText|ValueField(0_0)ZMONHT003_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MMText|V [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0003 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)日历日(单值必输,默认当前一天)|TextField(0_0)ZDAY001_PText|ValueField(0_0)ZDAY001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_M_TEXT|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0005_SRV/|Label(0_0)工厂(多值,可选)|TextField(0_0)ZPLANT_TText|ValueField(0_0 [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string SelZFI_M001_Q0005 {
             get {
                 return ResourceManager.GetString("SelZFI_M001_Q0005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0006_SRV/|Label(0_0)日历年月(单值必输,默认本月)|TextField(0_0)ZMONHT003_PMText|ValueField(0_0)ZMONHT003_P|Width(0_0)200|Multiple(0_0)true* 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0006 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0008_SRV/|Label(0_0)日历日(单值必输,默认当前一天)|TextField(0_0)ZDAY001_PMText|ValueField(0_0)ZDAY001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0008_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0008_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MMText|Valu [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0008 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0011_SRV/|Label(0_0)日历日(单值必输,默认当前一天)|TextField(0_0)ZDAY001_PMText|ValueField(0_0)ZDAY001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0011_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0011_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MMText|Valu [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0011 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0012_SRV/|Label(0_0)日历年月(单值必输,默认本月)|TextField(0_0)ZMONHT003_PMText|ValueField(0_0)ZMONHT003_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0012_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0012_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MMText|V [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0012 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0013_SRV/|Label(0_0)日历年/月(单值必输,默认上月)|TextField(0_0)ZMONTH001_PMText|ValueField(0_0)ZMONTH001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0013_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0013_SRV/|Label(0_0)公司代码(多值,可选)|TextField(0_0)ZCOMPCODE001_MMText| [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0013 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0014_SRV/|Label(0_0)日历年月(区间必输,默认本年)|TextField(0_0)ZMONTH004_IMText|ValueField(0_0)ZMONTH004_I|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0014_SRV/|Label(0_0)日历年月(区间必输,默认本年)|TextField(0_0)ZMONTH004_IToMText|ValueField(0_0)ZMONTH004_ITo|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0014_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_ [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_M001_Q0014 {
+            get {
+                return ResourceManager.GetString("SelZFI_M001_Q0014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_P001_Q0001_SRV/|Label(0_0)日历年/月(单值必输,默认上月)|TextField(0_0)ZMONTH001_PMText|ValueField(0_0)ZMONTH001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_P001_Q0001_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_P001_Q0001_SRV/|Label(0_0)工厂(多值,可选)|TextField(0_0)ZPLANT001_MMText|Value [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZFI_P001_Q0001 {
+            get {
+                return ResourceManager.GetString("SelZFI_P001_Q0001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0004_SRV/|Label(0_0)日历日(单值必输,默认当前一天)|TextField(0_0)ZDAY001_PMText|ValueField(0_0)ZDAY001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0004_SRV/|Label(0_0)工厂(多值,可选)|TextField(0_0)ZPLANT001_MMText|ValueField(0_0)ZPLANT001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0004_SRV/|Label(0_0)物料(多值,可选)|TextField(0_0)ZMATER001_MMText|Valu [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZMM_M001_Q0004 {
+            get {
+                return ResourceManager.GetString("SelZMM_M001_Q0004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/|Label(0_0)日历年/月(单值必输,默认上月)|TextField(0_0)ZMONTH001_PMText|ValueField(0_0)ZMONTH001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0005_SRV/|Label(0_0)利润中心(多值,可选)|TextField(0_0)ZPROFTCTR001_MMText| [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string SelZMM_M001_Q0005 {
+            get {
+                return ResourceManager.GetString("SelZMM_M001_Q0005", resourceCulture);
             }
         }
         

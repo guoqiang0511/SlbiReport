@@ -17,10 +17,15 @@
 <script style="">
 $(window).load(function () {
     //要执行的方法体
-    //drawselect("selectArea", "SelZFI_M001_Q0014");
+    drawselect("selectArea", "SelZCA_M001_Q0004");
     drawtable_auto(null, "tt1", "TabZCA_M001_Q0004");
     drawtable_auto(null, "tt2", "TabZCA_M001_Q0005");
 });
+
+function buttononclick(pagequeryParams) {
+    drawtable_auto(pagequeryParams, "tt1", "TabZCA_M001_Q0004");
+    drawtable_auto(pagequeryParams, "tt2", "TabZCA_M001_Q0005");
+}
 
 
 </script>
