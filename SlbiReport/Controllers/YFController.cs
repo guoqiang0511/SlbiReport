@@ -64,7 +64,11 @@ namespace SlbiReport.Controllers
         {
             String ids = Request["field"];
             String text = Request["text"];
-      
+
+            if (ids.EndsWith("To"))
+            {
+                ids = ids.Remove(ids.Length - 2);
+            }
             String result = CommonHelper.GetSelect_Dim(id, ids, token);
 
             return result;
@@ -226,6 +230,12 @@ namespace SlbiReport.Controllers
             return result;
         }
 
+        public ActionResult Select_Auto(string id)
+        {
+
+            return Json(new { status = 1, result = CommonHelper.GetSelect_Auto(id, token) });
+        }
+
         public ActionResult ZPU_M001_Q0002port()
         {
             return View();
@@ -247,6 +257,18 @@ namespace SlbiReport.Controllers
         {
             return View();
         }
-       
+        public ActionResult ZMM_M002_Q0001port()
+        {
+            return View();
+        }
+        public ActionResult ZMM_M002_Q0004port()
+        {
+            return View();
+        }
+        public ActionResult ZSD_M002_Q0006port()
+        {
+            return View();
+        }
+        
     }
 }

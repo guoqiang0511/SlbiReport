@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutEchart.cshtml";
+}
+
+@{
+    ViewBag.Title = "库存周转情况分析";
+}
+
+<h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
+
+<div id="selectArea"></div>
+
+<div>
+    <div id="bar1" ng-controller="myBarCtrl" style="height: 200px; float:left;width:70%"></div>
+    <div id="bar2" ng-controller="myBarCtrl" style="height: 200px;float:left;width:70%"></div>
+    <div id="main" ng-controller="myCtrl" style="height: 400px;float:left;width:30%"></div>
+    <div id="bar3" ng-controller="myBarCtrl" style="height: 400px;float:left;width:100%"></div>
+</div>
+
+<div>&nbsp;<table id="tt" class="easyui-datagrid" style="height: 400px;float:left;width:100%"></table></div>
+
+<script style="">
+$(window).load(function () {
+    //要执行的方法体
+    drawselect( "selectArea", "SelZMM_M001_Q0006");
+    // drawbar7(null, "bar1", "barZMM_M001_Q00061");
+    // drawbar7(null, "bar2", "barZMM_M001_Q00062");
+    drawpie2(null, "main", "pieZMM_M001_Q0006");
+    // drawbar9(null, "bar3", "barZMM_M001_Q00063");
+   drawtable(null, "tt", "TabZMM_M001_Q0006");
+});
+
+function buttononclick(pagequeryParams) {
+    // drawbar7(pagequeryParams, "bar1", "barZMM_M001_Q00061");
+    // drawbar7(pagequeryParams, "bar2", "barZMM_M001_Q00062");
+    drawpie2(pagequeryParams, "main", "pieZMM_M001_Q0006");
+    // drawbar9(null, "bar3", "barZMM_M001_Q00063");
+    drawtable(pagequeryParams, "tt", "TabZMM_M001_Q0006");
+}
+</script>

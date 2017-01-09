@@ -47,12 +47,15 @@ namespace SlbiReport.Utilities
             ds = ConvertXMLFileToDataSet(doc);
             List<VisitSource> listss = new List<VisitSource>();
 
+            if (ds.Tables["properties"] == null)
+            { return null; }
+
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
                 var obj = new VisitSource()
                 {
                     name = Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]),
-                    value = Convert.ToString(dr[oPieMapViewModel.PieMapSelectValue])
+                    value = Convert.ToString(Convert.ToDouble(dr[oPieMapViewModel.PieMapSelectValue]))
                 };
                 listss.Add(obj);
                 lists.Add(Convert.ToString(dr[oPieMapViewModel.PieMapSelectName]));
@@ -545,8 +548,12 @@ namespace SlbiReport.Utilities
             }
             ds = ConvertXMLFileToDataSet(doc);
 
-            dt = ds.Tables["Property"];
+            //dt = ds.Tables["Property"];
             List<object> lists = new List<object>();
+            if (ds.Tables["properties"] == null)
+            {
+                return null;
+            }
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
                 var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_TEXT"] };
@@ -561,6 +568,10 @@ namespace SlbiReport.Utilities
 
         public static string Dtb2Json(DataTable dtb)
         {
+            if (dtb == null)
+            {
+                return null;
+            }
             JavaScriptSerializer jss = new JavaScriptSerializer();
             System.Collections.ArrayList dic = new System.Collections.ArrayList();
             foreach (DataRow dr in dtb.Rows)

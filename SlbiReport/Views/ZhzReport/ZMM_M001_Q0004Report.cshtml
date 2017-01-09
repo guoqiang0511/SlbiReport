@@ -16,8 +16,12 @@
 <script style="">
 $(window).load(function () {
     //要执行的方法体
-    //drawselect("selectArea", "SelZMM_M001_Q0004");
+    drawselect("selectArea", "SelZMM_M001_Q0004");
     drawtable(null, "tt", "TabZMM_M001_Q0004");
 });
+
+function buttononclick(pagequeryParams) {
+    drawtable(pagequeryParams, "tt", "TabZMM_M001_Q0004");
+}
 </script>
  

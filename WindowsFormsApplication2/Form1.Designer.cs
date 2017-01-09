@@ -31,6 +31,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.url = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Sel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dmtotab = new System.Windows.Forms.Button();
             this.FrozenColumns = new System.Windows.Forms.TextBox();
@@ -48,7 +50,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.SelQ = new System.Windows.Forms.Button();
+            this.SelC = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.Sel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +77,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.Sel);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.tabstr);
             this.panel1.Controls.Add(this.treeView1);
@@ -85,6 +92,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1529, 669);
             this.panel1.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(395, 622);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 35);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Sel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Sel
+            // 
+            this.Sel.Controls.Add(this.SelC);
+            this.Sel.Controls.Add(this.SelQ);
+            this.Sel.Location = new System.Drawing.Point(482, 32);
+            this.Sel.Name = "Sel";
+            this.Sel.Size = new System.Drawing.Size(91, 584);
+            this.Sel.TabIndex = 19;
             // 
             // panel2
             // 
@@ -166,7 +192,6 @@
             this.label4.Size = new System.Drawing.Size(79, 15);
             this.label4.TabIndex = 14;
             this.label4.Text = "TableName";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // CreateT
             // 
@@ -248,6 +273,26 @@
             this.checkedListBox1.Size = new System.Drawing.Size(465, 184);
             this.checkedListBox1.TabIndex = 2;
             // 
+            // SelQ
+            // 
+            this.SelQ.Location = new System.Drawing.Point(4, 11);
+            this.SelQ.Name = "SelQ";
+            this.SelQ.Size = new System.Drawing.Size(75, 59);
+            this.SelQ.TabIndex = 0;
+            this.SelQ.Text = "去除";
+            this.SelQ.UseVisualStyleBackColor = true;
+            this.SelQ.Click += new System.EventHandler(this.SelQ_Click);
+            // 
+            // SelC
+            // 
+            this.SelC.Location = new System.Drawing.Point(4, 482);
+            this.SelC.Name = "SelC";
+            this.SelC.Size = new System.Drawing.Size(75, 58);
+            this.SelC.TabIndex = 1;
+            this.SelC.Text = "Creat";
+            this.SelC.UseVisualStyleBackColor = true;
+            this.SelC.Click += new System.EventHandler(this.SelC_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -258,6 +303,7 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.Sel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -286,6 +332,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox FrozenColumns;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel Sel;
+        private System.Windows.Forms.Button SelQ;
+        private System.Windows.Forms.Button SelC;
     }
 }
 

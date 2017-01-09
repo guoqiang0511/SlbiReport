@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutEchart.cshtml";
+}
+
+@{
+    ViewBag.Title = "存货呆滞状况分析";
+}
+
+<h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
+
+<div id="selectArea"></div>
+
+<div>
+    <div id="bar" ng-controller="myBarCtrl" style="height: 400px;float:left;width:100%"></div>
+</div>
+
+<div>&nbsp;<table id="tt" class="easyui-datagrid"></table></div>
+
+<script style="">
+$(window).load(function () {
+    //要执行的方法体
+    drawselect("selectArea", "SelZCA_M001_Q0003");
+    drawbar2(null, "bar", "BarZCA_M001_Q0003");
+    drawtable_auto(null, "tt", "TabZCA_M001_Q0003");
+});
+function buttononclick(pagequeryParams) {
+    drawbar2(pagequeryParams, "bar", "BarZCA_M001_Q0003");
+    drawtable_auto(pagequeryParams, "tt", "TabZCA_M001_Q0003");
+}
+</script>

@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutEchart.cshtml";
+}
+
+@{
+    ViewBag.Title = "存货结构与周转状况分析";
+}
+
+<h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
+
+<div id="selectArea"></div>
+<div>&nbsp;<table id="tt1" class="easyui-datagrid"></table></div>
+<div>&nbsp;<table id="tt2" class="easyui-datagrid"></table></div>
+<div id="bar" ng-controller="myBarCtrl" style="height: 400px;float:left;width:100%"></div>
+<div>&nbsp;<table id="tt3" class="easyui-datagrid"></table></div>
+<div>&nbsp;<table id="tt4" class="easyui-datagrid"></table></div>
+
+<script style="">
+$(window).load(function () {
+    //要执行的方法体
+    drawselect("selectArea", "SelZFI_M001_Q0013");
+    drawtable(null, "tt1", "TabZFI_M001_Q0013");
+    drawtable_auto(null, "tt2", "TabZCA_M001_Q0002");
+    drawbar5(null, "bar", "BarZCA_M001_Q0002");
+    drawtable_auto(null, "tt3", "TabZMM_M001_Q0007");
+    drawtable_auto(null, "tt4", "TabZMM_M001_Q0008");
+
+});
+
+function buttononclick(pagequeryParams) {
+    drawtable(pagequeryParams, "tt1", "TabZFI_M001_Q0013");
+    drawtable_auto(pagequeryParams, "tt2", "TabZCA_M001_Q0002");
+    drawbar5(pagequeryParams, "bar", "BarZCA_M001_Q0002");
+    drawtable_auto(pagequeryParams, "tt3", "TabZMM_M001_Q0007");
+    drawtable_auto(pagequeryParams, "tt4", "TabZMM_M001_Q0007");
+}
+
+</script>
