@@ -578,7 +578,7 @@ namespace SlbiReport.Utilities
             }
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
-                var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_ID"] };
+                var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_TEXT"] };
                 lists.Add(obj);
             }
 
@@ -884,36 +884,68 @@ namespace SlbiReport.Utilities
         public static string GetDateDefaultValue(string sStr)
         {
             //(ZBU001_M='',ZPLANT001_M='',ZMATLGROUP001_M='',ZMONTH002_I='2013.11',ZMONTH002_ITo='2014.02')
+            //(ZBU001_M = '',ZPLANT001_M = '2011',ZMATLGROUP001_M = '',ZMONTH002_I = '',ZMONTH002_ITo = '')
             //string[] oStr = sStr.Split(',');
-           
-            DateTime oDateTime1;
+            sStr = sStr.Replace(" ", "");
+             DateTime oDateTime1;
             DateTime oDateTime = DateTime.Now;
-            
+            //string sDateTime = oDateTime.ToString("yyyy-MM-dd");
+            //string[] a = sDateTime.Split('-');
             //日历年/月(单值必输,默认上月)默认单值 2016.12
             if (sStr.Contains("ZMONTH001_P=''"))
             {
                 oDateTime1 = oDateTime.AddMonths(-1);
-                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime1.Year + "." + oDateTime1.Month + "'");
+                string sMonth = oDateTime1.Month.ToString();
+                if (sMonth.Length==1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime1.Year + "." + sMonth + "'");
                 
             }
             //日历年/月(区间必输,默认上月)默认区间 2016.11 - 2016.12
             if (sStr.Contains("ZMONTH002_I=''"))
             {
                 oDateTime1 = oDateTime.AddMonths(-1);
-                sStr = sStr.Replace("ZMONTH002_I=''", "ZMONTH002_I='" + oDateTime1.Year + "." + oDateTime1.Month + "'");
-                sStr = sStr.Replace("ZMONTH002_ITo=''", "ZMONTH002_ITo='" + oDateTime.Year + "." + oDateTime.Month + "'");
+                string sMonth1 = oDateTime1.Month.ToString();
+                if (sMonth1.Length == 1)
+                {
+                    sMonth1 = "0" + sMonth1;
+                }
+                string sMonth = oDateTime.Month.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                sStr = sStr.Replace("ZMONTH002_I=''", "ZMONTH002_I='" + oDateTime1.Year + "." + sMonth1 + "'");
+                sStr = sStr.Replace("ZMONTH002_ITo=''", "ZMONTH002_ITo='" + oDateTime.Year + "." + sMonth + "'");
             }
             //日历年月(区间必输,默认本年)默认区间 2017.01 - 2017.01
             if (sStr.Contains("ZMONTH004_I=''"))
             {
-                sStr = sStr.Replace("ZMONTH004_I=''", "ZMONTH004_I='" + oDateTime.Year + "." + 1 + "'");
-                sStr = sStr.Replace("ZMONTH004_ITo=''", "ZMONTH004_ITo='" + oDateTime.Year + "." + oDateTime.Month + "'");
+                string sMonth = oDateTime.Month.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                sStr = sStr.Replace("ZMONTH004_I=''", "ZMONTH004_I='" + oDateTime.Year + "." + "01" + "'");
+                sStr = sStr.Replace("ZMONTH004_ITo=''", "ZMONTH004_ITo='" + oDateTime.Year + "." + sMonth + "'");
             }
             // 日历日(单值必输, 默认当前一天)默认单值 2017.01.08
             if (sStr.Contains("ZDAY001_P=''"))
             {
-                oDateTime1 = oDateTime.AddDays(-1);
-                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime.Year + "." + oDateTime.Month +"."+ oDateTime.Day+"'");
+                
+                string sMonth = oDateTime.Month.ToString();
+                string sDay = oDateTime.Day.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                if (sDay.Length == 1)
+                {
+                    sDay = "0" + sDay;
+                }
+                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime.Year + "." + sMonth + "."+ sDay + "'");
             }
             return sStr;
         }
