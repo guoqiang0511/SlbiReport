@@ -64,7 +64,11 @@ namespace SlbiReport.Controllers
         {
             String ids = Request["field"];
             String text = Request["text"];
-      
+
+            if (ids.EndsWith("To"))
+            {
+                ids = ids.Remove(ids.Length - 2);
+            }
             String result = CommonHelper.GetSelect_Dim(id, ids, token);
 
             return result;

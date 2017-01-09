@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LiveAzure.Resources.Models.Common {
+namespace LiveAzure.Resources.Models.Common_复制版本怕冲突 {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace LiveAzure.Resources.Models.Common {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ModelEnum {
+    public class 备份 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ModelEnum() {
+        internal 备份() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace LiveAzure.Resources.Models.Common {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LiveAzure.Resources.Models.Common.ModelEnum", typeof(ModelEnum).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LiveAzure.Resources.Models.Common_复制版本怕冲突.备份", typeof(备份).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -88,7 +88,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0003_SRV/ZCA_M001_Q0003Results?{0}|Title(0_0)产品成本月度趋势状况|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PL8NINK0A4FFL，A00O2TFHXIFF3PL8NINK0A4LR5，A00O2TFHXIFF3PLMBCWBWCXGM7|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)本期成本,预算成本，上年同期金额 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZCA_M001_Q0003_SRV/ZCA_M001_Q0003{0}Results?|Title(0_0)产品成本月度趋势状况|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PL8NINK0A4FFL，A00O2TFHXIFF3PL8NINK0A4LR5，A00O2TFHXIFF3PLMBCWBWCXGM7|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)本期成本,预算成本，上年同期金额 的本地化字符串。
         /// </summary>
         public static string BarZCA_M001_Q0003 {
             get {
@@ -178,7 +178,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006Results?{0}|Title(0_0)月度库存占比结构|SubTitle(0_0)|PieMapSelectName(0_0)ZMATPTYPE_T|PieMapSelectValue(0_0)A00O2TFHXIFF1ZAAFQYU1044QJ|SeriesName(0_0)存货类别 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006{0}Results?|Title(0_0)月度库存占比结构|SubTitle(0_0)|PieMapSelectName(0_0)ZMATPTYPE_T|PieMapSelectValue(0_0)A00O2TFHXIFF1ZAAFQYU1044QJ|SeriesName(0_0)存货类别 的本地化字符串。
         /// </summary>
         public static string pieZMM_M001_Q0006 {
             get {
@@ -707,11 +707,11 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006{0}Results?|Title(0_0)备选指标|FrozenColumns(0_0)|Columns(0_0)[[{field:&apos;ZPROFTCTR__ZBU_T&apos;,title:&apos;事业部&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:3},
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006{0}Results?|Title(0_0)备选指标|rozenColumns(0_0)|Columns(0_0)[[{field:&apos;ZPROFTCTR__ZBU_T&apos;,title:&apos;事业部&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:3},
         ///{field:&apos;ZPROFTCTR_T&apos;,title:&apos;生产工厂&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:3},
         ///{field:&apos;ZMATPTYPE_T&apos;,title:&apos;存货类别&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:3}，
         ///{title: &apos;年初库存状况&apos;,colspan:2}，{title: &apos;期间库存状况&apos;,colspan:10}]，
-        ///[{field:&apos;A00O2TFHXIFF1ZAAFQ [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///[{field:&apos;A00O2TFHXIFF1ZAAFQY [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string TabZMM_M001_Q0006 {
             get {
