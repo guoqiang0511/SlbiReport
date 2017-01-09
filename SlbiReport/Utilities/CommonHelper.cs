@@ -76,21 +76,21 @@ namespace SlbiReport.Utilities
             sResources = sResources.Replace("，", ",").Replace("\r\n", "");
             StringToEntityValue(oBarViewModel, sResources);
             string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
             if (!string.IsNullOrEmpty(oBarViewModel.AxisDataStr) && !string.IsNullOrEmpty(oBarViewModel.SeriesStr))
                 oBarViewModel.Url += "$select=" + oBarViewModel.AxisDataStr + "," + oBarViewModel.SeriesStr + "&";
             oBarViewModel.Url += sToken;
-
+            string sUrl = oBarViewModel.Url;
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             XmlDocument doc = new XmlDocument();
             try
             {
-                doc.Load(oBarViewModel.Url);
+                doc.Load(sUrl);
             }
             catch
             {
-
                 return null;
             }
             ds = ConvertXMLFileToDataSet(doc);
@@ -279,7 +279,7 @@ namespace SlbiReport.Utilities
 
             DataRow dr = ds.Tables["feed"].Select()[0];
 
-            string totalnum = Convert.ToString(dr["count"]);
+           string totalnum = Convert.ToString(dr["count"]);
 
 
             List<String> items = new List<String>();
