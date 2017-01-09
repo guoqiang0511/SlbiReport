@@ -23,7 +23,14 @@ namespace SlbiReport.Utilities
             StringToEntityValue(oPieMapViewModel, sResources);
 
             if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null)
+            {
+                //默认日期
+                if (!string.IsNullOrEmpty(sUrltt))
+                {
+                    sUrltt = GetDateDefaultValue(sUrltt);
+                }
                 oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
+            }   
 
             if (!string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectName) && !string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectValue))
                 oPieMapViewModel.Url += "$select=" + oPieMapViewModel.PieMapSelectName + "," + oPieMapViewModel.PieMapSelectValue + "&";
@@ -76,6 +83,11 @@ namespace SlbiReport.Utilities
             sResources = sResources.Replace("，", ",").Replace("\r\n", "");
             StringToEntityValue(oBarViewModel, sResources);
             string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+            //默认日期
+            if (!string.IsNullOrEmpty(sUrltt))
+            {
+                sUrltt = GetDateDefaultValue(sUrltt);
+            }
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
             if (!string.IsNullOrEmpty(oBarViewModel.AxisDataStr) && !string.IsNullOrEmpty(oBarViewModel.SeriesStr))
                 oBarViewModel.Url += "$select=" + oBarViewModel.AxisDataStr + "," + oBarViewModel.SeriesStr + "&";
@@ -236,7 +248,11 @@ namespace SlbiReport.Utilities
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
-
+            //默认日期
+            if (!string.IsNullOrEmpty(sUrltt))
+            {
+                sUrltt = GetDateDefaultValue(sUrltt);
+            }
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&" + sToken;
 
@@ -369,6 +385,12 @@ namespace SlbiReport.Utilities
             sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
             oTableViewModel.Url=sURL;
 
+            //默认日期
+            if (!string.IsNullOrEmpty(sUrltt))
+            {
+                sUrltt = GetDateDefaultValue(sUrltt);
+            }
+           
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
 
@@ -556,7 +578,7 @@ namespace SlbiReport.Utilities
             }
             foreach (DataRow dr in ds.Tables["properties"].Rows)
             {
-                var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_TEXT"] };
+                var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_ID"] };
                 lists.Add(obj);
             }
 
@@ -857,6 +879,43 @@ namespace SlbiReport.Utilities
             {
                 if (reader != null) reader.Close();
             }
+        }
+
+        public static string GetDateDefaultValue(string sStr)
+        {
+            //(ZBU001_M='',ZPLANT001_M='',ZMATLGROUP001_M='',ZMONTH002_I='2013.11',ZMONTH002_ITo='2014.02')
+            //string[] oStr = sStr.Split(',');
+           
+            DateTime oDateTime1;
+            DateTime oDateTime = DateTime.Now;
+            
+            //日历年/月(单值必输,默认上月)默认单值 2016.12
+            if (sStr.Contains("ZMONTH001_P=''"))
+            {
+                oDateTime1 = oDateTime.AddMonths(-1);
+                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime1.Year + "." + oDateTime1.Month + "'");
+                
+            }
+            //日历年/月(区间必输,默认上月)默认区间 2016.11 - 2016.12
+            if (sStr.Contains("ZMONTH002_I=''"))
+            {
+                oDateTime1 = oDateTime.AddMonths(-1);
+                sStr = sStr.Replace("ZMONTH002_I=''", "ZMONTH002_I='" + oDateTime1.Year + "." + oDateTime1.Month + "'");
+                sStr = sStr.Replace("ZMONTH002_ITo=''", "ZMONTH002_ITo='" + oDateTime.Year + "." + oDateTime.Month + "'");
+            }
+            //日历年月(区间必输,默认本年)默认区间 2017.01 - 2017.01
+            if (sStr.Contains("ZMONTH004_I=''"))
+            {
+                sStr = sStr.Replace("ZMONTH004_I=''", "ZMONTH004_I='" + oDateTime.Year + "." + 1 + "'");
+                sStr = sStr.Replace("ZMONTH004_ITo=''", "ZMONTH004_ITo='" + oDateTime.Year + "." + oDateTime.Month + "'");
+            }
+            // 日历日(单值必输, 默认当前一天)默认单值 2017.01.08
+            if (sStr.Contains("ZDAY001_P=''"))
+            {
+                oDateTime1 = oDateTime.AddDays(-1);
+                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime.Year + "." + oDateTime.Month +"."+ oDateTime.Day+"'");
+            }
+            return sStr;
         }
     }
 }
