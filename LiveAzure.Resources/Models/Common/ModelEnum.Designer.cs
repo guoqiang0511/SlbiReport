@@ -160,6 +160,15 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/ZPU_M001_Q0001Results? 的本地化字符串。
+        /// </summary>
+        public static string Dashtable {
+            get {
+                return ResourceManager.GetString("Dashtable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url(0_0)http://hanadev.shuanglin.com:8000/sap/opu/odata/sap/ZDM_M001_Q002_SRV/ZDM_M001_Q002{0}Results?|Title(0_0)test|SubTitle(0_0)subtest|PieMapSelectName(0_0)ZDMPLANT_T|PieMapSelectValue(0_0)A00O2TFKZNC7K2N5JLDC4434TM 的本地化字符串。
         /// </summary>
         public static string Pie1 {

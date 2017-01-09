@@ -639,4 +639,7 @@ Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM
   <data name="ZSD_M001_Q0012" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0012_SRV/ZSD_M001_Q0012{0}Results?|Title(0_0)销售预测准确率月度趋势|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PK1D7GM8E1MAL,A00O2TFHXIFF3PK1D7GM8E1SM5,A00O2TFHXIFF3PK1D7GM8E1YXP|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)</value>
   </data>
+  <data name="Dashtable" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/ZPU_M001_Q0001Results?</value>
+  </data>
 </root>
