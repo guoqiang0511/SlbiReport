@@ -18,7 +18,7 @@
 <div id="selectArea"></div>
 
 
-
+<div id="bar1" ng-controller="myBarCtrl" style="height: 400px;float:left;width:100%"></div>
 <div>&nbsp;<table id="tt" class="easyui-datagrid"></table></div>
 
 
@@ -29,9 +29,9 @@
 <script style="">
 $(window).load(function () {
     //要执行的方法体
-    //drawselect("selectArea","");
+    drawselect("selectArea", "SelZSD_M001_Q0004");
 
-
+    drawbar6(null, "bar1", "BarZSD_M001_Q0005");
     drawtable(null, "tt", "TabZSD_M001_Q0004");
 
 });

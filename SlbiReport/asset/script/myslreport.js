@@ -374,8 +374,8 @@ function drawselect(container, id) {
                 //drawpie1(pagequeryParams, "main", "PieMap1");
                 //drawbar1(pagequeryParams, "bar", "BarMap");
                 //$('#tt').datagrid('load', { pagequeryParams });
-                // buttononclick(pagequeryParams);
-                drawpie1(pagequeryParams, "main", "Pie2");
+                 buttononclick(pagequeryParams);
+               // drawpie1(pagequeryParams, "main", "Pie2");
             });
 
         }

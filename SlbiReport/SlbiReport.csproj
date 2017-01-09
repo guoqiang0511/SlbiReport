@@ -712,6 +712,7 @@
     <Content Include="Views\Cx\ZSD_M001_Q0004AndQ0005.cshtml" />
     <Content Include="Views\Cx\ZSD_M001_Q0006AndQ0007.cshtml" />
     <Content Include="Views\Cx\ZSD_M001_Q0013.cshtml" />
+    <Content Include="Views\Cx\ZMM_M002_Q0003.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
