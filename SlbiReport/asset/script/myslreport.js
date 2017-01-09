@@ -351,7 +351,7 @@ function drawtable_auto(pagequeryParams, container, id) {
         option.onLoadSuccess = function (data) {
             mergeCellsByField(container, field);
         };
-        option.queryParams = { field: field, id: id };
+        option.queryParams = { field: field, id: id, "pagequeryParams": pagequeryParams };
         $('#' + container + '').datagrid(option);
 
 
