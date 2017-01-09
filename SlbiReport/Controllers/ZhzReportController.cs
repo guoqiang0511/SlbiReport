@@ -128,7 +128,10 @@ namespace SlbiReport.Controllers
                     Console.WriteLine(tt);
 
                     string[] strss = tt.Split(new string[] { ":" }, StringSplitOptions.None);
-                    urltt = urltt + strss[0] + "='" + strss[1] + "',";
+                    if(strss.Length>1)
+                    {
+                        urltt = urltt + strss[0] + "='" + strss[1] + "',";
+                    }
                 }
                 urltt = urltt.Substring(0, urltt.Length - 1);
                 urltt = urltt + ")/";
