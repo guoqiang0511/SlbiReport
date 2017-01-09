@@ -465,7 +465,7 @@ Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M002_Q0002_SRV/ZMM_M002_Q0001{0}Results?|Title(0_0)分库存地点统计：|FrozenColumns(0_0)|Columns(0_0)</value>
   </data>
   <data name="TabZMM_M002_Q0004" xml:space="preserve">
-    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M002_Q0004_SRV/ZMM_M004_Q0001{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0)</value>
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M002_Q0004_SRV/ZMM_M002_Q0004{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0)</value>
   </data>
   <data name="TabZSD_M002_Q0006" xml:space="preserve">
     <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M002_Q0006_SRV/ZSD_M002_Q0006{0}Results?|Title(0_0)交期达成概况：|FrozenColumns(0_0)|Columns(0_0)</value>
@@ -623,5 +623,20 @@ Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0002_SRV/ZMM
 { field: 'A00O2TFHXIFF3PK5ODTLD7GY4U_F',   title: '库龄90-180天', sortable: true, fixed: true, align: 'right' } ，
 { field: 'A00O2TFHXIFF3PK5OKR7VHB208_F',   title: '库龄&gt;180天', sortable: true, fixed: true, align: 'right' } ，
 { field: 'A00O2TFHXIFF3PK5OXNKVXIFIK_F',   title: '呆滞库存占比', sortable: true, fixed: true, align: 'right' }]]</value>
+  </data>
+  <data name="ZSD_M001_Q0008" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0008_SRV/ZSD_M001_Q0008{0}Results?|Title(0_0)没有名字|FrozenColumns(0_0)|Columns(0_0)[[{ field: 'ZNBTYPE_T',   title: '新业务分类', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{title:'客户',colspan:2}  ，{ field: 'ZEMPLOYEE_T',   title: '员工', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'ZPROGTYPE',   title: '项目类型', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'A0MATL_GROUP',   title: '产品类型', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'ZZEINR',   title: '项目', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'ZCONTDATE',   title: '合同签订日期', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'ZPLANT_T',   title: '受益工厂', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'ZSOPDATE',   title: 'SOP日期', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'A00O2TFHXIFF1Z9LI3WWPLK74Z',   title: '产量(万/年)', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'A00O2TFHXIFF1Z9LI3WWPLKDGJ',   title: '产值(万元/年)', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'A00O2TFHXIFF1Z9LI3WWPLKJS3',   title: '预期净利率', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，{ field: 'A00O2TFHXIFF1Z9LI3WWPLKQ3N',   title: '预期毛利率', sortable: true, fixed: true, align: 'right' ,rowspan:2} ，],[{ field: 'ZCUSTOMER_T',   title: '客户', sortable: true, fixed: true, align: 'right' } ，{ field: 'ZADDRESS',   title: '地址', sortable: true, fixed: true, align: 'right' } ，]]</value>
+  </data>
+  <data name="ZSD_M001_Q0009" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0009_SRV/ZSD_M001_Q0009{0}Results?|Title(0_0)新业务累计完成情况|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z9LJVJ5TQTHBI,A00O2TFHXIFF1Z9LK9E5T7RTWK,A00O2TFHXIFF1Z9LK9E5T7S084|AxisDataStr(0_0)ZEMPLOYEE_T|LegendDataStr(0_0)</value>
+  </data>
+  <data name="ZSD_M001_Q0010" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0010_SRV/ZSD_M001_Q0010{0}Results?|Title(0_0)没名字的饼图|SubTitle(0_0)|PieMapSelectName(0_0)A0MATL_GROUP|PieMapSelectValue(0_0)A00O2TFHXIFF1Z9LKCSU9BX2QV|SeriesName(0_0)新业务月完成金额</value>
+  </data>
+  <data name="ZSD_M001_Q0011" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0011_SRV/ZSD_M001_Q0011{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0)[[{field:'ZPROFTCTR__ZBU_T',title:'事业部', sortable: true, fixed: true, align:'left',rowspan:2},{field:'ZPLANT_T',title:'工厂', sortable: true, fixed: true, align:'left',rowspan:2},{title:'客户',colspan:1},{field:'ZEMPLOYEE_T',title:'客户经理', sortable: true, fixed: true, align:'left',rowspan:2},{title:'月度预测准确率',colspan:3},{title:'YTD预测准确率',colspan:3},{title:'同比预测准确率',colspan:3},],[{field:'ZCUSTOMER_T',title:'客户', sortable: true, fixed: true, align:'left',},{field:'A00O2TFHXIFF3PK1C6LEVZTSIS_F',title:'销售预测数量', sortable: true, fixed: true, align:'right',},{field:'A00O2TFHXIFF3PK1C6LEVZTM78_F',title:'实际交货数量', sortable: true, fixed: true, align:'right',},{field:'A00O2TFHXIFF3PK1CC3VE4Q7JG_F',title:'客户订单预实比', sortable: true, fixed: true, align:'right',},{field:'A00O2TFHXIFF3PK1CQ7MNR2SPY_F',title:'YTD销售预测数量', sortable: true, fixed: true, align:'right',},{field:'A00O2TFHXIFF3PK1CQ7MNR2MEE_F',title:'YTD实际交货数量', sortable: true, fixed: true, align:'right',},{field:'A00O2TFHXIFF3PK1CQ7MNR2G2U_F',title:'YTD客户订单预实比', sortable: true, fixed: true, align:'right',},{field:'A00O2TFHXIFF3PK1D3BIMTSMBN_F',title:'YTD去年销售预测数量', sortable: true, fixed: true, align:'right',},{field:'A00O2TFHXIFF3PK1D3BIMTSG03_F',title:'YTD去年交货数量', sortable: true, fixed: true, align:'right',},{field:'A00O2TFHXIFF3PK1D3BIMTS9OJ_F',title:'YTD去年客户订单预实比', sortable: true, fixed: true, align:'right',},],]</value>
+  </data>
+  <data name="ZSD_M001_Q0012" xml:space="preserve">
+    <value>Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0012_SRV/ZSD_M001_Q0012{0}Results?|Title(0_0)销售预测准确率月度趋势|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF3PK1D7GM8E1MAL,A00O2TFHXIFF3PK1D7GM8E1SM5,A00O2TFHXIFF3PK1D7GM8E1YXP|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)</value>
   </data>
 </root>
