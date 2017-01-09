@@ -457,7 +457,7 @@ function drawtable(pagequeryParams, container, id) {
 
             var option = getTableOption();
 
-            s = "[[{field:'ZPLANT_T',title: '核心KPI',width:170,halign:'center'},{field: '11',title: '实际值',width:170,halign:'center',align:'right',formatter:function(value, rec){ return '111';  }},{field: 'A00O2TFHXIFF1Z9LAUUU9ORD22_F',title: '目标值',width:170,halign:'center',align:'right'},{field: 'A00O2TFHXIFF1Z9LAUUU9ORD22_F',title: '上年同期',width:170,halign:'center',align:'right'},{field: 'A00O2TFHXIFF1Z9LAUUU9ORD22_F',title: '达成率',width:170,halign:'center',align:'right'},{field: '2',title: '同比增长率',width:290,halign:'center',align:'right',formatter:function(value,row){ return '<img  src=\"../Img/green.png\"/> 99%';  } }]]";
+            s = "[[{field:'ZPLANT_T',title: '核心KPI',width:170,halign:'center'},{field: '11',title: '实际值',width:170,halign:'center',align:'right',formatter:function(value, rec){ return '111';  }},{field: 'A00O2TFHXIFF1Z9LAUUU9ORD22_F',title: '目标值',width:170,halign:'center',align:'right'},{field: 'A00O2TFHXIFF1Z9LAUUU9ORD22_F',title: '上年同期',width:170,halign:'center',align:'right'},{field: 'A00O2TFHXIFF1Z9LAUUU9ORD22_F',title: '达成率',width:170,halign:'center',align:'right'},{field: '2',title: '同比增长率',width:190,halign:'center',align:'right',formatter:function(value,row){ return '<img  src=\"../Img/green.png\"/> 99%';  } }]]";
 
             //  var s = "  [[{ title: 'Item Details', colspan: 7 }], [{ field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',  title: '本月到期款-原币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAN433USWUC_F',   title: '本月到期款-本币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',   title: '回款金额-现汇', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F', title: '回款金额-承兑', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F', title: '回款金额-小计', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F', title: '回款率', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F', title: '差异', sortable: true, fixed: true, align: 'right' }]]"
 
@@ -475,7 +475,7 @@ function drawtable(pagequeryParams, container, id) {
 
 function getTableOption() {
     return {
-        maxHeight: 630,
+        maxHeight: 830,
         method: 'POST',
         queryParams: {},
         striped: true,
