@@ -4,7 +4,7 @@
 }
 
 @{
-    ViewBag.Title = "预收帐款统计分析";
+    ViewBag.Title = "产品量价结构分析";
 }
 
 <h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
@@ -16,12 +16,12 @@
 <script style="">
 $(window).load(function () {
     //要执行的方法体
-    drawselect("selectArea", "SelZFI_M001_Q0005");
-    drawtable(null, "tt", "TabZFI_M001_Q0005");
+    drawselect("selectArea", "SelZFI_M001_Q0014");
+    drawtable_auto(null, "tt", "TabZFI_M001_Q0014");
 });
 
 function buttononclick(pagequeryParams) {
-    drawtable(pagequeryParams, "tt", "TabZFI_M001_Q0005");
+    drawtable(pagequeryParams, "tt", "TabZFI_M001_Q0014");
 }
 </script>
 

@@ -4,7 +4,7 @@
 }
 
 @{
-    ViewBag.Title = "关联方交易分析";
+    ViewBag.Title = "期间损益状况分析";
 }
 
 <h2 style="width:100%;text-align:center">@ViewBag.Title</h2>
@@ -17,14 +17,16 @@
 <script style="">
 $(window).load(function () {
     //要执行的方法体
-    drawselect("selectArea", "SelZFI_M001_Q0006");
-    drawtable(null, "tt1", "TabZFI_M001_Q0006");
-    drawtable(null, "tt2", "TabZFI_M001_Q0007");
-
+    drawselect("selectArea", "SelZCA_M001_Q0004");
+    drawtable_auto(null, "tt1", "TabZCA_M001_Q0004");
+    drawtable_auto(null, "tt2", "TabZCA_M001_Q0005");
 });
 
 function buttononclick(pagequeryParams) {
-    drawtable(pagequeryParams, "tt1", "TabZFI_M001_Q0006");
-    drawtable(pagequeryParams, "tt2", "TabZFI_M001_Q0007");
+    drawtable_auto(pagequeryParams, "tt1", "TabZCA_M001_Q0004");
+    drawtable_auto(pagequeryParams, "tt2", "TabZCA_M001_Q0005");
 }
+
+
 </script>
+

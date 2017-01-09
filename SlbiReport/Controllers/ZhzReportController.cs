@@ -51,17 +51,17 @@ namespace SlbiReport.Controllers
         public ActionResult Select(string id)
         {
 
-            List<SelectColumn> selectlist = CommonHelper.GetSelect("SelZFI_M001_Q0005");
+            List<SelectColumn> selectlist = CommonHelper.GetSelect(id);
 
             return Json(new { status = 1, result = selectlist });
         }
 
-        public String Select_Dim(String id)
+        public String Select_Dim(string id)
         {
-            String field = Request["field"];
+            String ids = Request["field"];
             String text = Request["text"];
-            id = "ZBU001_M";
-            String result = CommonHelper.GetSelect_Dim("SelZFI_M001_Q0005", id, token);
+
+            String result = CommonHelper.GetSelect_Dim(id, ids, token);
 
             return result;
         }
@@ -256,9 +256,25 @@ namespace SlbiReport.Controllers
         {
             return View();
         }
+        public ActionResult ZFI_M001_Q0014Report()
+        {
+            return View();
+        }
 
+        public ActionResult ZCA_M001_Q0004Report()
+        {
+            return View();
+        }
 
+        public ActionResult ZFI_P001_Q0001Report()
+        {
+            return View();
+        }
 
+        public ActionResult ZFI_M001_Q0013Report()
+        {
+            return View();
+        }
 
     }
 }

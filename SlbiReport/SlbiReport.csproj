@@ -712,13 +712,15 @@
     <Content Include="Views\Cx\ZSD_M001_Q0004AndQ0005.cshtml" />
     <Content Include="Views\Cx\ZSD_M001_Q0006AndQ0007.cshtml" />
     <Content Include="Views\Cx\ZSD_M001_Q0013.cshtml" />
-    <Content Include="Views\ZhzReport\ZMM_M001_Q0004Report.cshtml" />
-    <Content Include="Views\ZhzReport\ZMM_M001_Q0005Report.cshtml" />
     <Content Include="Views\YF\ZMM_M002_Q0001port.cshtml" />
     <Content Include="Views\YF\ZMM_M002_Q0004port.cshtml" />
     <Content Include="Views\YF\ZSD_M002_Q0006port.cshtml" />
     <Content Include="Views\ZhzReport\ZMM_M001_Q0006Report.cshtml" />
     <Content Include="Views\ZhzReport\ZCA_M001_Q0003Report.cshtml" />
+    <Content Include="Views\ZhzReport\ZFI_M001_Q0014Report.cshtml" />
+    <Content Include="Views\ZhzReport\ZCA_M001_Q0004Report.cshtml" />
+    <Content Include="Views\ZhzReport\ZFI_P001_Q0001Report.cshtml" />
+    <Content Include="Views\ZhzReport\ZFI_M001_Q0013Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
