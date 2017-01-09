@@ -128,8 +128,12 @@ namespace SlbiReport.Controllers
                     Console.WriteLine(tt);
 
                     string[] strss = tt.Split(new string[] { ":" }, StringSplitOptions.None);
-                    if(strss.Length>1)
+                    if (strss.Length > 1)
                     {
+                        if (strss[1] == "#")
+                        {
+                            strss[1] = "";
+                        }
                         urltt = urltt + strss[0] + "='" + strss[1] + "',";
                     }
                 }

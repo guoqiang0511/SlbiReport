@@ -187,7 +187,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006Results?{0}|Title(0_0)月度库存占比结构|SubTitle(0_0)|PieMapSelectName(0_0)ZMATPTYPE_T|PieMapSelectValue(0_0)A00O2TFHXIFF1ZAAFQYU1044QJ|SeriesName(0_0)存货类别 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M001_Q0006_SRV/ZMM_M001_Q0006{0}Results?|Title(0_0)月度库存占比结构|SubTitle(0_0)|PieMapSelectName(0_0)ZMATPTYPE_T|PieMapSelectValue(0_0)A00O2TFHXIFF1ZAAFQYU1044QJ|SeriesName(0_0)存货类别 的本地化字符串。
         /// </summary>
         public static string pieZMM_M001_Q0006 {
             get {
