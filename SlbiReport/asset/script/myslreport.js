@@ -413,7 +413,12 @@ function drawselect(container, id) {
                     labelPosition: 'left',
                     valueField: 'id',
                     width: result.Width,
-                    multiple: result.Multiple,
+                    onLoadSuccess: function (data) {
+                        if (data) {
+                            $('#' + result.ValueField + '').combobox('setValue',result.Select);
+                        }
+                    },
+                  //  multiple: result.Multiple,
                     textField: 'text'
                 });
 
