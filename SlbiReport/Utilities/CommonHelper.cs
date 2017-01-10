@@ -21,13 +21,13 @@ namespace SlbiReport.Utilities
             string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
             sResources = sResources.Replace("，", ",");
             StringToEntityValue(oPieMapViewModel, sResources);
-            sUrltt = AddQuery(sUrltt, oPieMapViewModel.Url, sToken);
             if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null)
             {
                 //默认日期
                 if (!string.IsNullOrEmpty(sUrltt))
                 {
                     sUrltt = GetDateDefaultValue(sUrltt);
+                    sUrltt = AddQuery(sUrltt, oPieMapViewModel.Url, sToken);
                 }
                 oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
             }   
@@ -82,14 +82,16 @@ namespace SlbiReport.Utilities
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             sResources = sResources.Replace("，", ",").Replace("\r\n", "");
             StringToEntityValue(oBarViewModel, sResources);
-            sUrltt = AddQuery(sUrltt, oBarViewModel.Url, sToken);
-            string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
 
-            //默认日期
             if (!string.IsNullOrEmpty(sUrltt))
             {
                 sUrltt = GetDateDefaultValue(sUrltt);
+                sUrltt = AddQuery(sUrltt, oBarViewModel.Url, sToken);
             }
+            
+
+            string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+           
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
             if (!string.IsNullOrEmpty(oBarViewModel.AxisDataStr) && !string.IsNullOrEmpty(oBarViewModel.SeriesStr))
                 oBarViewModel.Url += "$select=" + oBarViewModel.AxisDataStr + "," + oBarViewModel.SeriesStr + "&";
@@ -332,10 +334,10 @@ namespace SlbiReport.Utilities
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
-            sUrltt = AddQuery(sUrltt, oTableViewModel.Url, sToken);
             //默认日期
             if (!string.IsNullOrEmpty(sUrltt))
             {
+                sUrltt = AddQuery(sUrltt, oTableViewModel.Url, sToken);
                 sUrltt = GetDateDefaultValue(sUrltt);
             }
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
@@ -463,7 +465,11 @@ namespace SlbiReport.Utilities
 
             sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
-            sUrltt = AddQuery(sUrltt, oTableViewModel.Url, sToken);
+            if (!string.IsNullOrEmpty(sUrltt))
+            {
+                sUrltt = AddQuery(sUrltt, oTableViewModel.Url, sToken);
+                sUrltt = GetDateDefaultValue(sUrltt);
+            }
             //TableData的Url特殊标记（★）
             string sURL = sResources.Replace("Url(0_0)", "★"); 
             //TableData的开始位置
@@ -474,11 +480,6 @@ namespace SlbiReport.Utilities
             sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
             oTableViewModel.Url=sURL;
 
-            //默认日期
-            if (!string.IsNullOrEmpty(sUrltt))
-            {
-                sUrltt = GetDateDefaultValue(sUrltt);
-            }
            
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
@@ -1086,7 +1087,7 @@ namespace SlbiReport.Utilities
                 return sStr;
             }
 
-            string sStr1 = StringReplace(sStr, "(,),/,'");
+            string sStr1 = StringReplace(sStr, "(,),/");
             string[] oStrs = sStr1.Split(',');
             List<string> oNameList = new List<string>();
             List<string> oValueList = new List<string>();
@@ -1142,7 +1143,7 @@ namespace SlbiReport.Utilities
                 oDataRow.Add(Convert.ToString(dr["name"]));
             }
             string sRestr = "(";
-            for (int i = 0; i <oNameList.Count-1; i++)
+            for (int i = 0; i <=oNameList.Count-1; i++)
             {
                 if (oDataRow.Contains(oNameList[i]))
                 {
