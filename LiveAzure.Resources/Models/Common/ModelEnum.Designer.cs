@@ -838,7 +838,6 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M002_Q0004_SRV/ZMM_M004_Q0001{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0) 的本地化字符串。
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZMM_M002_Q0004_SRV/ZMM_M002_Q0004{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0) 的本地化字符串。
         /// </summary>
         public static string TabZMM_M002_Q0004 {
@@ -911,7 +910,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0004_SRV/ZPU_M001_Q0004{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0)[[{field:&apos;ZMATERIAL_T&apos;,title:&apos;物料&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:3},{field:&apos;A0MATL_GROUP_T&apos;,title:&apos;物料类别&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:3},{title:&apos;3&apos;,colspan:7},],[{title:&apos;1&apos;,colspan:4},{title:&apos;2&apos;,colspan:3},],[{field:&apos;A00O2TFHXIFF3PK1SDSSFNT0OI_F&apos;,title:&apos;采购数量&apos;, sortable: true, fixed: true, align:&apos;right&apos;,},{field:&apos;A00O2TFHXIF [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0004_SRV/ZPU_M001_Q0004{0}Results?|Title(0_0)|FrozenColumns(0_0)|Columns(0_0)[[{field:&apos;ZMATERIAL_T&apos;,title:&apos;物料&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:2},{field:&apos;A0MATL_GROUP_T&apos;,title:&apos;物料类别&apos;, sortable: true, fixed: true, align:&apos;left&apos;,rowspan:2},{title:&apos;当期价格&apos;,colspan:4},{title:&apos;同比价格&apos;,colspan:3},],[{field:&apos;A00O2TFHXIFF3PK1SDSSFNT0OI_F&apos;,title:&apos;采购数量&apos;, sortable: true, fixed: true, align:&apos;right&apos;,},{field:&apos;A00O2TFHXIFF3PK1SDSSFNT702_F&apos;, [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string ZPU_M001_Q0004 {
             get {
