@@ -471,17 +471,17 @@ namespace SlbiReport.Utilities
                 sUrltt = AddQuery(sUrltt, oTableViewModel.Url, sToken);
                 sUrltt = GetDateDefaultValue(sUrltt);
             }
-            //TableData的Url特殊标记（★）
-            string sURL = sResources.Replace("Url(0_0)", "★"); 
-            //TableData的开始位置
-            int iStartIndex = sURL.LastIndexOf("★", sURL.Length - 1) + 1;
-            //TableData的结束位置
-            int iEndIndex = sURL.IndexOf("|Title", 1);
-            //TableData的Url取得
-            sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
-            oTableViewModel.Url=sURL;
+            ////TableData的Url特殊标记（★）
+            //string sURL = sResources.Replace("Url(0_0)", "★");
+            ////TableData的开始位置
+            //int iStartIndex = sURL.LastIndexOf("★", sURL.Length - 1) + 1;
+            ////TableData的结束位置
+            //int iEndIndex = sURL.IndexOf("|Title", 1);
+            ////TableData的Url取得
+            //sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
+            //oTableViewModel.Url = sURL;
 
-           
+
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
 
@@ -595,7 +595,7 @@ namespace SlbiReport.Utilities
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             //string fileName = oTableViewModel.Url + sToken;
-            string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+            string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/')) + "/$metadata?" + sToken;
             //fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?sap-user=guoq&sap-password=ghg2587758";
             XmlDocument doc = new XmlDocument();
             try
