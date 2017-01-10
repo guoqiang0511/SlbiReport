@@ -82,6 +82,7 @@ namespace SlbiReport.Utilities
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             sResources = sResources.Replace("，", ",").Replace("\r\n", "");
             StringToEntityValue(oBarViewModel, sResources);
+            sUrltt = AddQuery(sUrltt, oBarViewModel.Url, sToken);
             string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
 
             //默认日期
@@ -331,6 +332,7 @@ namespace SlbiReport.Utilities
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
+            sUrltt = AddQuery(sUrltt, oTableViewModel.Url, sToken);
             //默认日期
             if (!string.IsNullOrEmpty(sUrltt))
             {
@@ -458,8 +460,12 @@ namespace SlbiReport.Utilities
             DataSet ds = new DataSet();
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+
+            sResources = sResources.Replace("，", ",");
+            StringToEntityValue(oTableViewModel, sResources);
+            sUrltt = AddQuery(sUrltt, oTableViewModel.Url, sToken);
             //TableData的Url特殊标记（★）
-            string sURL = sResources.Replace("Url(0_0)", "★");
+            string sURL = sResources.Replace("Url(0_0)", "★"); 
             //TableData的开始位置
             int iStartIndex = sURL.LastIndexOf("★", sURL.Length - 1) + 1;
             //TableData的结束位置
