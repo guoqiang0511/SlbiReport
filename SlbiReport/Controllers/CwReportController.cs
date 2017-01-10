@@ -524,11 +524,15 @@ namespace SlbiReport.Controllers
             return View();
         }
 
-        public ActionResult Report2()
+        public ActionResult List()
         {
             return View();
         }
 
+        public ActionResult Report2()
+        {
+            return View();
+        }
         public ActionResult Report3()
         {
             return View();

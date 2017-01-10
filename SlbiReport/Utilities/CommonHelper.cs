@@ -23,7 +23,14 @@ namespace SlbiReport.Utilities
             StringToEntityValue(oPieMapViewModel, sResources);
 
             if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null)
+            {
+                //默认日期
+                if (!string.IsNullOrEmpty(sUrltt))
+                {
+                    sUrltt = GetDateDefaultValue(sUrltt);
+                }
                 oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
+            }   
 
             if (!string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectName) && !string.IsNullOrEmpty(oPieMapViewModel.PieMapSelectValue))
                 oPieMapViewModel.Url += "$select=" + oPieMapViewModel.PieMapSelectName + "," + oPieMapViewModel.PieMapSelectValue + "&";
@@ -76,21 +83,26 @@ namespace SlbiReport.Utilities
             sResources = sResources.Replace("，", ",").Replace("\r\n", "");
             StringToEntityValue(oBarViewModel, sResources);
             string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+
+            //默认日期
+            if (!string.IsNullOrEmpty(sUrltt))
+            {
+                sUrltt = GetDateDefaultValue(sUrltt);
+            }
             oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
             if (!string.IsNullOrEmpty(oBarViewModel.AxisDataStr) && !string.IsNullOrEmpty(oBarViewModel.SeriesStr))
                 oBarViewModel.Url += "$select=" + oBarViewModel.AxisDataStr + "," + oBarViewModel.SeriesStr + "&";
             oBarViewModel.Url += sToken;
-
+            string sUrl = oBarViewModel.Url;
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             XmlDocument doc = new XmlDocument();
             try
             {
-                doc.Load(oBarViewModel.Url);
+                doc.Load(sUrl);
             }
             catch
             {
-
                 return null;
             }
             ds = ConvertXMLFileToDataSet(doc);
@@ -222,11 +234,94 @@ namespace SlbiReport.Utilities
         {
             TableViewModel oTableViewModel = new TableViewModel();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-            sResources = sResources.Replace("，", ",");
+            sResources = sResources.Replace("，", ",").Replace("\r\n", "").Replace("‘", "'").Replace("’", "'").Replace("：", ":");
             StringToEntityValue(oTableViewModel, sResources);
+            string sColList = "";
+
+            if (oTableViewModel.Columns.Contains("dimension"))
+            {
+                string sColumns1 = oTableViewModel.Columns.Replace(" ", "").Replace("},", "|");
+                sColumns1 = StringReplace(sColumns1, "[,],{");
+                string[] oColumns = sColumns1.Split('|');
+
+                foreach (var item in oColumns)
+                {
+                    if (item.Contains("dimension"))
+                    {
+                        string[] oColumns2 = item.Replace("'", "").Split(',');
+                        if (oColumns2 != null)
+                        {
+                            if (!string.IsNullOrEmpty(oColumns2[0]))
+                            {
+                                sColList += oColumns2[0].Replace("field:", "") + ",";
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                string sColumns = StringReplace(oTableViewModel.Columns, "[,],{,},'");
+                var sColumn = sColumns.Split(',');
+                List<string> oColumnList = new List<string>();
+
+                foreach (string item in sColumn)
+                {
+                    if (item.Contains("field:"))
+                    {
+                        string sItem = item.Replace("field:", "").Replace(" ", "");
+                        oColumnList.Add(sItem);
+                    }
+
+                }
+
+                string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + "sap-user=guoq&sap-password=ghg2587758";
+                DataTable dt = new DataTable();
+                DataSet ds = new DataSet();
+                XmlDocument doc = new XmlDocument();
+                try
+                {
+                    doc.Load(fileName);
+                }
+                catch
+                {
+                    return null;
+                }
+                ds = ConvertXMLFileToDataSet(doc);
+
+                foreach (DataRow dr in ds.Tables["Property"].Rows)
+                {
+                    if (Convert.ToString(dr["aggregation-role"]) == "dimension")
+                    {
+                        string sNames = Convert.ToString(dr["Name"]);
+                        var abc = oColumnList.Contains(sNames);
+                        if (oColumnList.Contains(sNames))
+                        {
+                            sColList += sNames + ",";
+                        }
+                    }
+                }
+            }
+
+            oTableViewModel.Columns.Replace("aggregation:dimension ,", "");
+
+            oTableViewModel.ColList = sColList;
 
             return oTableViewModel;
         }
+
+        public static string StringReplace(string sStr, string sSplit)
+        {
+            sStr.Replace(" ", "");
+            string[] oSplits = sSplit.Split(',');
+            foreach (var item in oSplits)
+            {
+                sStr = sStr.Replace(item, "");
+            }
+
+            return sStr;
+        }
+
 
         public static string GetTableData(string sName, string sUrltt, string sSkip, string sRows, string sToken)
         {
@@ -236,7 +331,11 @@ namespace SlbiReport.Utilities
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             sResources = sResources.Replace("，", ",");
             StringToEntityValue(oTableViewModel, sResources);
-
+            //默认日期
+            if (!string.IsNullOrEmpty(sUrltt))
+            {
+                sUrltt = GetDateDefaultValue(sUrltt);
+            }
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&" + sToken;
 
@@ -279,7 +378,7 @@ namespace SlbiReport.Utilities
 
             DataRow dr = ds.Tables["feed"].Select()[0];
 
-            string totalnum = Convert.ToString(dr["count"]);
+           string totalnum = Convert.ToString(dr["count"]);
 
 
             List<String> items = new List<String>();
@@ -369,6 +468,12 @@ namespace SlbiReport.Utilities
             sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
             oTableViewModel.Url=sURL;
 
+            //默认日期
+            if (!string.IsNullOrEmpty(sUrltt))
+            {
+                sUrltt = GetDateDefaultValue(sUrltt);
+            }
+           
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
 
@@ -533,7 +638,12 @@ namespace SlbiReport.Utilities
 
             PostParams oPostParams = new PostParams(sResources);
 
-            string sUrl = oPostParams.GetString("Url");
+            //string sUrl = oPostParams.GetString("Url");
+            string sUrl = oPostParams.GetString("*Url");
+            if (string.IsNullOrEmpty(sUrl))
+            {
+                sUrl = oPostParams.GetString("Url");
+            }
             string fileName = sUrl + sId + "?" + sToken;
 
             XmlDocument doc = new XmlDocument();
@@ -857,6 +967,75 @@ namespace SlbiReport.Utilities
             {
                 if (reader != null) reader.Close();
             }
+        }
+
+        public static string GetDateDefaultValue(string sStr)
+        {
+            //(ZBU001_M='',ZPLANT001_M='',ZMATLGROUP001_M='',ZMONTH002_I='2013.11',ZMONTH002_ITo='2014.02')
+            //(ZBU001_M = '',ZPLANT001_M = '2011',ZMATLGROUP001_M = '',ZMONTH002_I = '',ZMONTH002_ITo = '')
+            //string[] oStr = sStr.Split(',');
+            sStr = sStr.Replace(" ", "");
+             DateTime oDateTime1;
+            DateTime oDateTime = DateTime.Now;
+            //string sDateTime = oDateTime.ToString("yyyy-MM-dd");
+            //string[] a = sDateTime.Split('-');
+            //日历年/月(单值必输,默认上月)默认单值 2016.12
+            if (sStr.Contains("ZMONTH001_P=''"))
+            {
+                oDateTime1 = oDateTime.AddMonths(-1);
+                string sMonth = oDateTime1.Month.ToString();
+                if (sMonth.Length==1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime1.Year + "." + sMonth + "'");
+                
+            }
+            //日历年/月(区间必输,默认上月)默认区间 2016.11 - 2016.12
+            if (sStr.Contains("ZMONTH002_I=''"))
+            {
+                oDateTime1 = oDateTime.AddMonths(-1);
+                string sMonth1 = oDateTime1.Month.ToString();
+                if (sMonth1.Length == 1)
+                {
+                    sMonth1 = "0" + sMonth1;
+                }
+                string sMonth = oDateTime.Month.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                sStr = sStr.Replace("ZMONTH002_I=''", "ZMONTH002_I='" + oDateTime1.Year + "." + sMonth1 + "'");
+                sStr = sStr.Replace("ZMONTH002_ITo=''", "ZMONTH002_ITo='" + oDateTime.Year + "." + sMonth + "'");
+            }
+            //日历年月(区间必输,默认本年)默认区间 2017.01 - 2017.01
+            if (sStr.Contains("ZMONTH004_I=''"))
+            {
+                string sMonth = oDateTime.Month.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                sStr = sStr.Replace("ZMONTH004_I=''", "ZMONTH004_I='" + oDateTime.Year + "." + "01" + "'");
+                sStr = sStr.Replace("ZMONTH004_ITo=''", "ZMONTH004_ITo='" + oDateTime.Year + "." + sMonth + "'");
+            }
+            // 日历日(单值必输, 默认当前一天)默认单值 2017.01.08
+            if (sStr.Contains("ZDAY001_P=''"))
+            {
+                
+                string sMonth = oDateTime.Month.ToString();
+                string sDay = oDateTime.Day.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                if (sDay.Length == 1)
+                {
+                    sDay = "0" + sDay;
+                }
+                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime.Year + "." + sMonth + "."+ sDay + "'");
+            }
+            return sStr;
         }
     }
 }

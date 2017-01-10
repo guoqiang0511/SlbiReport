@@ -385,7 +385,7 @@ function drawtable(pagequeryParams, container, id) {
         option.onLoadSuccess = function (data) {
             mergeCellsByField(container, ColList);
         };
-        option.queryParams = { id: id };
+        option.queryParams = { id: id, "pagequeryParams": pagequeryParams };
         $('#' + container + '').datagrid(option);
         }
     });
@@ -408,7 +408,7 @@ function drawselect(container, id) {
                     url: 'Select_Dim',
                     queryParams: {
                         id:id,
-                        "field": result.ValueField
+                        "field": result.ValueField,
                     },
                     labelPosition: 'left',
                     valueField: 'id',
@@ -426,7 +426,7 @@ function drawselect(container, id) {
             $('#subbtn').bind('click', function search() {
                 pagequeryParams = "";
                 for (var i = 0; i < searchlist.length; i++) {
-                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValues").join(',') + ","
+                    pagequeryParams = pagequeryParams + searchlist[i] + ":" + $('#' + searchlist[i] + '').combobox("getValues").join('||') + ","
                 }
                 pagequeryParams = pagequeryParams.substring(0, pagequeryParams.length - 1);
                 //alert(pagequeryParams);

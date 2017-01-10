@@ -638,6 +638,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.3.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -721,6 +722,7 @@
     <Content Include="Views\ZhzReport\ZCA_M001_Q0004Report.cshtml" />
     <Content Include="Views\ZhzReport\ZFI_P001_Q0001Report.cshtml" />
     <Content Include="Views\ZhzReport\ZFI_M001_Q0013Report.cshtml" />
+    <Content Include="Views\CwReport\List.cshtml" />
     <Content Include="Views\Cx\ZMM_M002_Q0003.cshtml" />
   </ItemGroup>
   <ItemGroup>
