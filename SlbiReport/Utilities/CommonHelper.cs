@@ -521,9 +521,9 @@ namespace SlbiReport.Utilities
                 StringToEntityValue(oSelectColumn, selects[i]);
 
                 string strMrz = oSelectColumn.ValueField + "= ''";
-
+                strMrz = strMrz.Replace(" ", "");
                 string strMrz1 = GetDateDefaultValue(strMrz);
-                if (strMrz1.Length== strMrz.Length)
+                if (strMrz1.Length!= strMrz.Length)
                 {
                     strMrz1 = StringReplace(strMrz1, "(,),'");
                     oSelectColumn.Select = strMrz1.Split('=')[1];
@@ -680,7 +680,7 @@ namespace SlbiReport.Utilities
             //dt = ds.Tables["Property"];
             List<object> lists = new List<object>();
             lists.Add(new { id = "", text = "" });
-            
+
             if (ds.Tables["properties"] != null)
             {
                 foreach (DataRow dr in ds.Tables["properties"].Rows)
