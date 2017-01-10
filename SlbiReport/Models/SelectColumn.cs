@@ -21,6 +21,7 @@ namespace SlbiReport.Models
 
         public Boolean Multiple { get; set; }
 
+        public string Select { get; set; }
         
     }
 }
