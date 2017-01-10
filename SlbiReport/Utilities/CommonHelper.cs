@@ -513,12 +513,22 @@ namespace SlbiReport.Utilities
         {
             List<SelectColumn> selectlist = new List<Models.SelectColumn>();
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-
+            //string strMrz = dr[sId + "_ID"] + "= ''";
             string[] selects = sResources.Split('*');
             for (int i = 0; i < selects.Count()-1; i++)
             {
                 SelectColumn oSelectColumn = new SelectColumn();
                 StringToEntityValue(oSelectColumn, selects[i]);
+
+                string strMrz = oSelectColumn.ValueField + "= ''";
+
+                string strMrz1 = GetDateDefaultValue(strMrz);
+                if (strMrz1.Length== strMrz.Length)
+                {
+                    strMrz1 = StringReplace(strMrz1, "(,),'");
+                    oSelectColumn.Select = strMrz1.Split('=')[1];
+                }
+
                 selectlist.Add(oSelectColumn);
             }
 
@@ -670,6 +680,7 @@ namespace SlbiReport.Utilities
             //dt = ds.Tables["Property"];
             List<object> lists = new List<object>();
             lists.Add(new { id = "", text = "" });
+            
             if (ds.Tables["properties"] != null)
             {
                 foreach (DataRow dr in ds.Tables["properties"].Rows)
@@ -979,6 +990,7 @@ namespace SlbiReport.Utilities
 
         public static string GetDateDefaultValue(string sStr)
         {
+            
             //(ZBU001_M='',ZPLANT001_M='',ZMATLGROUP001_M='',ZMONTH002_I='2013.11',ZMONTH002_ITo='2014.02')
             //(ZBU001_M = '',ZPLANT001_M = '2011',ZMATLGROUP001_M = '',ZMONTH002_I = '',ZMONTH002_ITo = '')
             //string[] oStr = sStr.Split(',');
@@ -997,7 +1009,6 @@ namespace SlbiReport.Utilities
                     sMonth = "0" + sMonth;
                 }
                 sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime1.Year + "." + sMonth + "'");
-                
             }
             //日历年/月(区间必输,默认上月)默认区间 2016.11 - 2016.12
             if (sStr.Contains("ZMONTH002_I=''"))
@@ -1008,12 +1019,23 @@ namespace SlbiReport.Utilities
                 {
                     sMonth1 = "0" + sMonth1;
                 }
-                string sMonth = oDateTime.Month.ToString();
-                if (sMonth.Length == 1)
-                {
-                    sMonth = "0" + sMonth;
-                }
+                //string sMonth = oDateTime.Month.ToString();
+                //if (sMonth.Length == 1)
+                //{
+                //    sMonth = "0" + sMonth;
+                //}
                 sStr = sStr.Replace("ZMONTH002_I=''", "ZMONTH002_I='" + oDateTime1.Year + "." + sMonth1 + "'");
+                //sStr = sStr.Replace("ZMONTH002_ITo=''", "ZMONTH002_ITo='" + oDateTime1.Year + "." + sMonth1 + "'");
+            }
+            if (sStr.Contains("ZMONTH002_ITo=''"))
+            {
+                oDateTime1 = oDateTime.AddMonths(-1);
+                string sMonth1 = oDateTime1.Month.ToString();
+                if (sMonth1.Length == 1)
+                {
+                    sMonth1 = "0" + sMonth1;
+                }
+                //sStr = sStr.Replace("ZMONTH002_I=''", "ZMONTH002_I='" + oDateTime1.Year + "." + sMonth1 + "'");
                 sStr = sStr.Replace("ZMONTH002_ITo=''", "ZMONTH002_ITo='" + oDateTime1.Year + "." + sMonth1 + "'");
             }
             //日历年月(区间必输,默认本年)默认区间 2017.01 - 2017.01
@@ -1025,6 +1047,16 @@ namespace SlbiReport.Utilities
                     sMonth = "0" + sMonth;
                 }
                 sStr = sStr.Replace("ZMONTH004_I=''", "ZMONTH004_I='" + oDateTime.Year + "." + "01" + "'");
+                sStr = sStr.Replace("ZMONTH004_ITo=''", "ZMONTH004_ITo='" + oDateTime.Year + "." + sMonth + "'");
+            }
+            if (sStr.Contains("ZMONTH004_ITo=''"))
+            {
+                string sMonth = oDateTime.Month.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                //sStr = sStr.Replace("ZMONTH004_I=''", "ZMONTH004_I='" + oDateTime.Year + "." + "01" + "'");
                 sStr = sStr.Replace("ZMONTH004_ITo=''", "ZMONTH004_ITo='" + oDateTime.Year + "." + sMonth + "'");
             }
             // 日历日(单值必输, 默认当前一天)默认单值 2017.01.08
@@ -1054,7 +1086,7 @@ namespace SlbiReport.Utilities
                 return sStr;
             }
 
-            string sStr1 = StringReplace(sStr, "(,),/");
+            string sStr1 = StringReplace(sStr, "(,),/,'");
             string[] oStrs = sStr1.Split(',');
             List<string> oNameList = new List<string>();
             List<string> oValueList = new List<string>();
