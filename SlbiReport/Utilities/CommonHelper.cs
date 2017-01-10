@@ -26,8 +26,8 @@ namespace SlbiReport.Utilities
                 //默认日期
                 if (!string.IsNullOrEmpty(sUrltt))
                 {
-                    sUrltt = GetDateDefaultValue(sUrltt);
                     sUrltt = AddQuery(sUrltt, oPieMapViewModel.Url, sToken);
+                    sUrltt = GetDateDefaultValue(sUrltt);
                 }
                 oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
             }   
@@ -85,8 +85,8 @@ namespace SlbiReport.Utilities
 
             if (!string.IsNullOrEmpty(sUrltt))
             {
-                sUrltt = GetDateDefaultValue(sUrltt);
                 sUrltt = AddQuery(sUrltt, oBarViewModel.Url, sToken);
+                sUrltt = GetDateDefaultValue(sUrltt);   
             }
             
 
