@@ -431,7 +431,7 @@ namespace WindowsFormsApplication2
             foreach (DataRow dr in dtNew.Rows)
             {
                 string sNV = Convert.ToString(dr["name"]) + ":" +  Convert.ToString(dr["label"]);
-                checkedListBox1.Items.Add(sNV, true);
+                checkedListBox1.Items.Add(sNV, false);
                 dimensionlist.Add(
                     new WindowsFormsApplication2.TabP()
                     {

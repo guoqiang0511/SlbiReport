@@ -21,7 +21,7 @@ namespace SlbiReport.Utilities
             string sResources = LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName).ToString();
             sResources = sResources.Replace("，", ",");
             StringToEntityValue(oPieMapViewModel, sResources);
-
+            sUrltt = AddQuery(sUrltt, oPieMapViewModel.Url, sToken);
             if (oPieMapViewModel.Url != "" && oPieMapViewModel.Url != null)
             {
                 //默认日期
@@ -644,6 +644,9 @@ namespace SlbiReport.Utilities
             {
                 sUrl = oPostParams.GetString("Url");
             }
+
+
+
             string fileName = sUrl + sId + "?" + sToken;
 
             XmlDocument doc = new XmlDocument();
@@ -1037,5 +1040,84 @@ namespace SlbiReport.Utilities
             }
             return sStr;
         }
+
+        public static string AddQuery(string sStr,string sUrl,string sToken)
+        {
+            //(ZBU001_M='',ZPLANT001_M='',ZMATLGROUP001_M='',ZMONTH002_I='2013.11',ZMONTH002_ITo='2014.02')
+
+            if (string.IsNullOrEmpty(sStr))
+            {
+                return sStr;
+            }
+
+            string sStr1 = StringReplace(sStr, "(,),/");
+            string[] oStrs = sStr1.Split(',');
+            List<string> oNameList = new List<string>();
+            List<string> oValueList = new List<string>();
+
+            foreach (var item in oStrs)
+            {
+                if (!string.IsNullOrEmpty(item))
+                {
+                    string[] oitem = item.Split('=');
+                    oNameList.Add(oitem[0]);
+                    oValueList.Add(oitem[1]);
+                }
+            }
+
+            sUrl = sUrl.Remove(sUrl.LastIndexOf('/'));
+            sUrl =  sUrl + "/$metadata?"+ sToken;
+
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(sUrl);
+            }
+            catch
+            {
+            }
+            ds = ConvertXMLFileToDataSet(doc);
+
+            dt = ds.Tables["Property"];
+
+            DataRow[] drArr = dt.Select("EntityType_Id=1 and  text <> '' ");//查询
+
+            DataTable dtNew = dt.Clone();
+
+
+            for (int i = 0; i < drArr.Length; i++)
+            {
+                dtNew.ImportRow(drArr[i]);
+
+            }
+
+            //return result;
+
+            foreach ( DataRow dr in dtNew.Rows)
+            {
+                if (!oNameList.Contains(Convert.ToString(dr["name"])))
+                {
+                    sStr = sStr.Replace(")", "," + Convert.ToString(dr["name"]) + "='')");
+                }
+                //string sNV = Convert.ToString(dr["name"]) + ":" + Convert.ToString(dr["label"]);
+                //checkedListBox1.Items.Add(sNV, true);
+                //dimensionlist.Add(
+                //    new WindowsFormsApplication2.TabP()
+                //    {
+                //        sName = Convert.ToString(dr["name"]),
+
+                //        sValue = Convert.ToString(dr["label"]),
+                //        sNameValue = sNV,
+                //    }
+                //    );
+                //var obj = new SelectColumn() { ValueField = Convert.ToString(dr["name"]), Width = "200", Multiple = false, Label = Convert.ToString(dr["label"]), TextField = Convert.ToString(dr["text"]) };
+                //selectlist.Add(obj);
+            }
+
+            return sStr;
+        }
+
     }
 }
