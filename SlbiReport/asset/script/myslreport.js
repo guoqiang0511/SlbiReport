@@ -413,7 +413,7 @@ function drawselect(container, id) {
                     labelPosition: 'left',
                     valueField: 'id',
                     width: result.Width,
-                    multiple: result.Multiple,
+                  //  multiple: result.Multiple,
                     textField: 'text'
                 });
 
