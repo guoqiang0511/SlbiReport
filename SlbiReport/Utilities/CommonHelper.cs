@@ -669,16 +669,15 @@ namespace SlbiReport.Utilities
 
             //dt = ds.Tables["Property"];
             List<object> lists = new List<object>();
-            if (ds.Tables["properties"] == null)
+            lists.Add(new { id = "", text = "" });
+            if (ds.Tables["properties"] != null)
             {
-                return null;
+                foreach (DataRow dr in ds.Tables["properties"].Rows)
+                {
+                    var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_TEXT"] };
+                    lists.Add(obj);
+                }
             }
-            foreach (DataRow dr in ds.Tables["properties"].Rows)
-            {
-                var obj = new { id = dr[sId + "_ID"], text = dr[sId + "_TEXT"] };
-                lists.Add(obj);
-            }
-
 
             JavaScriptSerializer jsS = new JavaScriptSerializer();
             String result = jsS.Serialize(lists);
@@ -1015,7 +1014,7 @@ namespace SlbiReport.Utilities
                     sMonth = "0" + sMonth;
                 }
                 sStr = sStr.Replace("ZMONTH002_I=''", "ZMONTH002_I='" + oDateTime1.Year + "." + sMonth1 + "'");
-                sStr = sStr.Replace("ZMONTH002_ITo=''", "ZMONTH002_ITo='" + oDateTime.Year + "." + sMonth + "'");
+                sStr = sStr.Replace("ZMONTH002_ITo=''", "ZMONTH002_ITo='" + oDateTime1.Year + "." + sMonth1 + "'");
             }
             //日历年月(区间必输,默认本年)默认区间 2017.01 - 2017.01
             if (sStr.Contains("ZMONTH004_I=''"))
@@ -1031,9 +1030,10 @@ namespace SlbiReport.Utilities
             // 日历日(单值必输, 默认当前一天)默认单值 2017.01.08
             if (sStr.Contains("ZDAY001_P=''"))
             {
-                
-                string sMonth = oDateTime.Month.ToString();
-                string sDay = oDateTime.Day.ToString();
+                oDateTime1 = oDateTime.AddDays(-1);
+                string sYear = oDateTime1.Year.ToString();
+                string sMonth = oDateTime1.Month.ToString();
+                string sDay = oDateTime1.Day.ToString();
                 if (sMonth.Length == 1)
                 {
                     sMonth = "0" + sMonth;
@@ -1042,15 +1042,13 @@ namespace SlbiReport.Utilities
                 {
                     sDay = "0" + sDay;
                 }
-                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime.Year + "." + sMonth + "."+ sDay + "'");
+                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + sYear + "." + sMonth + "."+ sDay + "'");
             }
             return sStr;
         }
 
         public static string AddQuery(string sStr,string sUrl,string sToken)
         {
-            //(ZBU001_M='',ZPLANT001_M='',ZMATLGROUP001_M='',ZMONTH002_I='2013.11',ZMONTH002_ITo='2014.02')
-
             if (string.IsNullOrEmpty(sStr))
             {
                 return sStr;
@@ -1100,29 +1098,29 @@ namespace SlbiReport.Utilities
             }
 
             //return result;
-
+            List<string> oDataRow = new List<string>();
             foreach ( DataRow dr in dtNew.Rows)
             {
                 if (!oNameList.Contains(Convert.ToString(dr["name"])))
                 {
-                    sStr = sStr.Replace(")", "," + Convert.ToString(dr["name"]) + "='')");
+                    oNameList.Add(Convert.ToString(dr["name"]));
+                    oValueList.Add("''");
+                    //sStr = sStr.Replace(")", "," + Convert.ToString(dr["name"]) + "='')");
                 }
-                //string sNV = Convert.ToString(dr["name"]) + ":" + Convert.ToString(dr["label"]);
-                //checkedListBox1.Items.Add(sNV, true);
-                //dimensionlist.Add(
-                //    new WindowsFormsApplication2.TabP()
-                //    {
-                //        sName = Convert.ToString(dr["name"]),
-
-                //        sValue = Convert.ToString(dr["label"]),
-                //        sNameValue = sNV,
-                //    }
-                //    );
-                //var obj = new SelectColumn() { ValueField = Convert.ToString(dr["name"]), Width = "200", Multiple = false, Label = Convert.ToString(dr["label"]), TextField = Convert.ToString(dr["text"]) };
-                //selectlist.Add(obj);
+                oDataRow.Add(Convert.ToString(dr["name"]));
             }
+            string sRestr = "(";
+            for (int i = 0; i <oNameList.Count-1; i++)
+            {
+                if (oDataRow.Contains(oNameList[i]))
+                {
+                    sRestr += oNameList[i] + "=" + oValueList[i] + ",";
+                }
+            }
+            sRestr += ")/";
 
-            return sStr;
+            
+            return sRestr;
         }
 
     }
