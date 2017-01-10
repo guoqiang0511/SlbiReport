@@ -1076,7 +1076,19 @@ namespace SlbiReport.Utilities
                 {
                     sDay = "0" + sDay;
                 }
-                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + sYear + "." + sMonth + "."+ sDay + "'");
+                sStr = sStr.Replace("ZDAY001_P=''", "ZDAY001_P='" + sYear + "." + sMonth + "."+ sDay + "'");
+            }
+            //总账科目(区间,应付账款From)
+            if (sStr.Contains("ZGL_ACCOUNT001_M=''"))
+            {
+                string strZGL_ACCOUNT001_M = "2202010000";
+                sStr = sStr.Replace("ZGL_ACCOUNT001_M=''", "ZGL_ACCOUNT001_M='" + strZGL_ACCOUNT001_M + "'");
+            }
+            //总账科目(区间,应付账款To)
+            if (sStr.Contains("ZGL_ACCOUNT001_MTo=''"))
+            {
+                string strZGL_ACCOUNT001_MTo = "2202999999";
+                sStr = sStr.Replace("ZGL_ACCOUNT001_MTo=''", "ZGL_ACCOUNT001_MTo='" + strZGL_ACCOUNT001_MTo + "'");
             }
             return sStr;
         }
