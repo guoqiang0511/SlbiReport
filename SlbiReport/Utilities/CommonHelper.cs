@@ -461,6 +461,7 @@ namespace SlbiReport.Utilities
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             TableViewModel oTableViewModel = new TableViewModel();
+
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
 
             sResources = sResources.Replace("，", ",");
