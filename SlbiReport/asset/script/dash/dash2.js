@@ -1,5 +1,4 @@
 ﻿$(window).load(function () {
-  
     drawbar2(null, "line1_1", "ZPU_M001_Q0007");
     drawpie2(null, "line1_2", "ZPU_M001_Q0007");
     drawdash2(null, "line1_3", "ZPU_M001_Q0007");
