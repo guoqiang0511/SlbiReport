@@ -475,7 +475,7 @@ function drawtable(pagequeryParams, container, id) {
 
 function getTableOption() {
     return {
-        maxHeight: 830,
+        Height: 600,
         method: 'POST',
         queryParams: {},
         striped: true,
