@@ -28,8 +28,8 @@ namespace SlbiReport.Models
         public string Url { get; set; }
 
         public string LegendDataStr { get; set; }
-        
-  
+
+        public string BarTotal { get; set; }
 
     }
 }
