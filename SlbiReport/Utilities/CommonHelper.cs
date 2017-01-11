@@ -1016,6 +1016,17 @@ namespace SlbiReport.Utilities
                 }
                 sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime1.Year + "." + sMonth + "'");
             }
+            //日历年月(单值必输,默认本月)默认单值 2017.01
+            if (sStr.Contains("ZMONHT003_P=''"))
+            {
+                string sMonth = oDateTime.Month.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                sStr = sStr.Replace("ZMONHT003_P=''", "ZMONHT003_P='" + oDateTime.Year + "." + sMonth + "'");
+            }
+
             //日历年/月(区间必输,默认上月)默认区间 2016.11 - 2016.12
             if (sStr.Contains("ZMONTH002_I=''"))
             {
@@ -1080,7 +1091,19 @@ namespace SlbiReport.Utilities
                 {
                     sDay = "0" + sDay;
                 }
-                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + sYear + "." + sMonth + "."+ sDay + "'");
+                sStr = sStr.Replace("ZDAY001_P=''", "ZDAY001_P='" + sYear + "." + sMonth + "."+ sDay + "'");
+            }
+            //总账科目(区间,应付账款From)
+            if (sStr.Contains("ZGL_ACCOUNT001_M=''"))
+            {
+                string strZGL_ACCOUNT001_M = "2202010000";
+                sStr = sStr.Replace("ZGL_ACCOUNT001_M=''", "ZGL_ACCOUNT001_M='" + strZGL_ACCOUNT001_M + "'");
+            }
+            //总账科目(区间,应付账款To)
+            if (sStr.Contains("ZGL_ACCOUNT001_MTo=''"))
+            {
+                string strZGL_ACCOUNT001_MTo = "2202999999";
+                sStr = sStr.Replace("ZGL_ACCOUNT001_MTo=''", "ZGL_ACCOUNT001_MTo='" + strZGL_ACCOUNT001_MTo + "'");
             }
             return sStr;
         }
