@@ -529,6 +529,10 @@ namespace SlbiReport.Controllers
             return View();
         }
 
+        public ActionResult ZSD_M001_Q0004AndQ0005()
+        {
+            return View();
+        }
         public ActionResult Report2()
         {
             return View();

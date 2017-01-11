@@ -23,5 +23,6 @@ namespace SlbiReport.Models
 
         public string Select { get; set; }
         
+        public string Url { get; set; }
     }
 }

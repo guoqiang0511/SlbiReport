@@ -221,6 +221,7 @@
     <Compile Include="Models\BarSeriesModel.cs" />
     <Compile Include="Models\TempObjectModel.cs" />
     <Compile Include="Utilities\CommonHelper.cs" />
+    <Compile Include="Utilities\Odata.cs" />
     <Compile Include="Utilities\PostParams.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -724,6 +725,7 @@
     <Content Include="Views\ZhzReport\ZFI_M001_Q0013Report.cshtml" />
     <Content Include="Views\CwReport\List.cshtml" />
     <Content Include="Views\Cx\ZMM_M002_Q0003.cshtml" />
+    <Content Include="Views\CwReport\ZSD_M001_Q0004AndQ0005.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

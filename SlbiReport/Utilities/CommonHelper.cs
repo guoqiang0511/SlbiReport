@@ -26,8 +26,8 @@ namespace SlbiReport.Utilities
                 //默认日期
                 if (!string.IsNullOrEmpty(sUrltt))
                 {
-                    sUrltt = GetDateDefaultValue(sUrltt);
                     sUrltt = AddQuery(sUrltt, oPieMapViewModel.Url, sToken);
+                    sUrltt = GetDateDefaultValue(sUrltt);
                 }
                 oPieMapViewModel.Url = oPieMapViewModel.Url.Replace("{0}", sUrltt);
             }   
@@ -86,8 +86,8 @@ namespace SlbiReport.Utilities
             List<string> LegendDataStrs = new List<string>();
             if (!string.IsNullOrEmpty(sUrltt))
             {
-                sUrltt = GetDateDefaultValue(sUrltt);
                 sUrltt = AddQuery(sUrltt, oBarViewModel.Url, sToken);
+                sUrltt = GetDateDefaultValue(sUrltt);   
             }
             
 
@@ -545,17 +545,17 @@ namespace SlbiReport.Utilities
                 sUrltt = AddQuery(sUrltt, oTableViewModel.Url, sToken);
                 sUrltt = GetDateDefaultValue(sUrltt);
             }
-            //TableData的Url特殊标记（★）
-            string sURL = sResources.Replace("Url(0_0)", "★"); 
-            //TableData的开始位置
-            int iStartIndex = sURL.LastIndexOf("★", sURL.Length - 1) + 1;
-            //TableData的结束位置
-            int iEndIndex = sURL.IndexOf("|Title", 1);
-            //TableData的Url取得
-            sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
-            oTableViewModel.Url=sURL;
+            ////TableData的Url特殊标记（★）
+            //string sURL = sResources.Replace("Url(0_0)", "★");
+            ////TableData的开始位置
+            //int iStartIndex = sURL.LastIndexOf("★", sURL.Length - 1) + 1;
+            ////TableData的结束位置
+            //int iEndIndex = sURL.IndexOf("|Title", 1);
+            ////TableData的Url取得
+            //sURL = sURL.Substring(iStartIndex, (iEndIndex - iStartIndex));
+            //oTableViewModel.Url = sURL;
 
-           
+
             oTableViewModel.Url = oTableViewModel.Url.Replace("{0}", sUrltt);
             oTableViewModel.Url += "$inlinecount=allpages&$select=" + field + "&$skip=" + sSkip + "&$top=" + sRows + "&" + sToken;
 
@@ -669,7 +669,7 @@ namespace SlbiReport.Utilities
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             //string fileName = oTableViewModel.Url + sToken;
-            string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+            string fileName = oTableViewModel.Url.Remove(oTableViewModel.Url.LastIndexOf('/')) + "/$metadata?" + sToken;
             //fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZPU_M001_Q0001_SRV/$metadata?sap-user=guoq&sap-password=ghg2587758";
             XmlDocument doc = new XmlDocument();
             try
@@ -725,19 +725,23 @@ namespace SlbiReport.Utilities
         {
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
-            // string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003Results?$select=" + id + "," + text + "&" + token;
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-
-            PostParams oPostParams = new PostParams(sResources);
-
-            //string sUrl = oPostParams.GetString("Url");
-            string sUrl = oPostParams.GetString("*Url");
-            if (string.IsNullOrEmpty(sUrl))
+            string[] sSels = sResources.Split('*');
+            SelectColumn oSelectColumn = new SelectColumn();
+            string sUrl = "";
+            foreach (string sItem in sSels)
             {
-                sUrl = oPostParams.GetString("Url");
+                StringToEntityValue(oSelectColumn, sItem);
+                if (oSelectColumn.ValueField == sId)
+                {
+                    sUrl = oSelectColumn.Url;
+                }
+                else
+                {
+                    //配置中不存在当前选择框
+                }
+                
             }
-
-
 
             string fileName = sUrl + sId + "?" + sToken;
 
@@ -1086,6 +1090,17 @@ namespace SlbiReport.Utilities
                 }
                 sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + oDateTime1.Year + "." + sMonth + "'");
             }
+            //日历年月(单值必输,默认本月)默认单值 2017.01
+            if (sStr.Contains("ZMONHT003_P=''"))
+            {
+                string sMonth = oDateTime.Month.ToString();
+                if (sMonth.Length == 1)
+                {
+                    sMonth = "0" + sMonth;
+                }
+                sStr = sStr.Replace("ZMONHT003_P=''", "ZMONHT003_P='" + oDateTime.Year + "." + sMonth + "'");
+            }
+
             //日历年/月(区间必输,默认上月)默认区间 2016.11 - 2016.12
             if (sStr.Contains("ZMONTH002_I=''"))
             {
@@ -1150,7 +1165,19 @@ namespace SlbiReport.Utilities
                 {
                     sDay = "0" + sDay;
                 }
-                sStr = sStr.Replace("ZMONTH001_P=''", "ZMONTH001_P='" + sYear + "." + sMonth + "."+ sDay + "'");
+                sStr = sStr.Replace("ZDAY001_P=''", "ZDAY001_P='" + sYear + "." + sMonth + "."+ sDay + "'");
+            }
+            //总账科目(区间,应付账款From)
+            if (sStr.Contains("ZGL_ACCOUNT001_M=''"))
+            {
+                string strZGL_ACCOUNT001_M = "2202010000";
+                sStr = sStr.Replace("ZGL_ACCOUNT001_M=''", "ZGL_ACCOUNT001_M='" + strZGL_ACCOUNT001_M + "'");
+            }
+            //总账科目(区间,应付账款To)
+            if (sStr.Contains("ZGL_ACCOUNT001_MTo=''"))
+            {
+                string strZGL_ACCOUNT001_MTo = "2202999999";
+                sStr = sStr.Replace("ZGL_ACCOUNT001_MTo=''", "ZGL_ACCOUNT001_MTo='" + strZGL_ACCOUNT001_MTo + "'");
             }
             return sStr;
         }
@@ -1231,5 +1258,103 @@ namespace SlbiReport.Utilities
             return sRestr;
         }
 
+        //public static BarViewModel GetBarViewModel1(string sName, string sUrltt, string sToken)
+        //{
+        //    BarViewModel oBarViewModel = new BarViewModel();
+
+        //    string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+        //    sResources = sResources.Replace("，", ",").Replace("\r\n", "");
+        //    StringToEntityValue(oBarViewModel, sResources);
+
+        //    if (!string.IsNullOrEmpty(sUrltt))
+        //    {
+        //        sUrltt = AddQuery(sUrltt, oBarViewModel.Url, sToken);
+        //        sUrltt = GetDateDefaultValue(sUrltt);
+        //    }
+
+
+        //    string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+
+        //    oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
+        //    if (!string.IsNullOrEmpty(oBarViewModel.AxisDataStr) && !string.IsNullOrEmpty(oBarViewModel.SeriesStr))
+        //        oBarViewModel.Url += "$select=" + oBarViewModel.AxisDataStr + "," + oBarViewModel.SeriesStr + "&";
+        //    oBarViewModel.Url += sToken;
+
+        //    Odata oOdata = new Odata(oBarViewModel.Url);
+
+        //    string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
+        //    string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
+        //    List<string> xaxisdata = new List<string>();
+        //    PostParams oPostParams = new PostParams();
+
+        //    foreach (DataRow dr in oOdata.oProperties)
+        //    {
+        //        for (int i = 0; i < AxisDataStrs.Count(); i++)
+        //        {
+        //            xaxisdata.Add(Convert.ToString(dr[AxisDataStrs[i]]));
+        //        }
+        //        for (int i = 0; i < SeriesStrs.Count(); i++)
+        //        {
+
+        //            List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+        //            if (valuelist == null)
+        //            {
+        //                valuelist = new List<string>();
+        //                oPostParams.Add(SeriesStrs[i], valuelist);
+        //            }
+        //            double odouble = Convert.ToDouble(dr[SeriesStrs[i]]);
+        //            valuelist.Add(Convert.ToString(odouble.ToString()));
+
+        //        }
+        //    }
+
+        //    try
+        //    {
+        //        doc.Load(sMetadataUrl);
+        //    }
+        //    catch
+        //    {
+
+        //        return null;
+        //    }
+        //    ds = ConvertXMLFileToDataSet(doc);
+        //    if (ds.Tables["Schema"] == null)
+        //    {
+        //        return null;
+        //    }
+        //    List<string> legend = new List<string>();
+        //    legend = oBarViewModel.LegendDataStr.Split(',').ToList();
+        //    List<string> LegendDataStrs = new List<string>();
+        //    //Dictionary<string, string> sDictionary = new Dictionary<string, string>();
+        //    oBarViewModel.Series = new List<BarSeriesModel>();
+
+        //    for (int i = 0; i < SeriesStrs.Count(); i++)
+        //    {
+        //        List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+        //        foreach (DataRow item in ds.Tables["Property"].Rows)
+        //        {
+        //            if (item["Name"].ToString() == SeriesStrs[i])
+        //            {
+        //                LegendDataStrs.Add(Convert.ToString(item["label"]));
+        //                oBarViewModel.Series.Add(new BarSeriesModel()
+        //                {
+        //                    name = Convert.ToString(item["label"]),
+        //                    data = valuelist
+        //                });
+        //            }
+        //        }
+        //    }
+
+        //    var bar = new BarViewModel()
+        //    {
+        //        Title = oBarViewModel.Title,
+        //        SubTitle = oBarViewModel.SubTitle,
+        //        AxisData = xaxisdata,
+        //        LegendData = LegendDataStrs,
+        //        Series = oBarViewModel.Series
+        //    };
+
+        //    return bar;
+        //}
     }
 }
