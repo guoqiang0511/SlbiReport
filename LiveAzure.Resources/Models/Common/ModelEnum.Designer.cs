@@ -133,7 +133,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0002_SRV/ZSD_M001_Q0002{0}Results?|Title(0_0)年度销售状况分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z93JUUJWHD4L2,A00O2TFHXIFF1Z93JUUJWHDAWM,A00O2TFHXIFF1Z93JUUJWHDTVA|AxisDataStr(0_0)A0CALMONTH_T|LegendDataStr(0_0)本月销售,本月目标,上年同期 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0002_SRV/ZSD_M001_Q0002{0}Results?|Title(0_0)年度销售状况分析|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z93JUUJWHD4L2,A00O2TFHXIFF1Z93JUUJWHDAWM,A00O2TFHXIFF1Z93JUUJWHDTVA|AxisDataStr(0_0)A0CALMONTH2|LegendDataStr(0_0)本月销售,本月目标,上年同期 的本地化字符串。
         /// </summary>
         public static string BarZSD_M001_Q0002 {
             get {
