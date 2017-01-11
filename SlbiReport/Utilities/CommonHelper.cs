@@ -1184,5 +1184,103 @@ namespace SlbiReport.Utilities
             return sRestr;
         }
 
+        //public static BarViewModel GetBarViewModel1(string sName, string sUrltt, string sToken)
+        //{
+        //    BarViewModel oBarViewModel = new BarViewModel();
+
+        //    string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
+        //    sResources = sResources.Replace("，", ",").Replace("\r\n", "");
+        //    StringToEntityValue(oBarViewModel, sResources);
+
+        //    if (!string.IsNullOrEmpty(sUrltt))
+        //    {
+        //        sUrltt = AddQuery(sUrltt, oBarViewModel.Url, sToken);
+        //        sUrltt = GetDateDefaultValue(sUrltt);
+        //    }
+
+
+        //    string sMetadataUrl = oBarViewModel.Url.Remove(oBarViewModel.Url.LastIndexOf('/') + 1) + "$metadata?" + sToken;
+
+        //    oBarViewModel.Url = oBarViewModel.Url.Replace("{0}", sUrltt);
+        //    if (!string.IsNullOrEmpty(oBarViewModel.AxisDataStr) && !string.IsNullOrEmpty(oBarViewModel.SeriesStr))
+        //        oBarViewModel.Url += "$select=" + oBarViewModel.AxisDataStr + "," + oBarViewModel.SeriesStr + "&";
+        //    oBarViewModel.Url += sToken;
+
+        //    Odata oOdata = new Odata(oBarViewModel.Url);
+
+        //    string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
+        //    string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
+        //    List<string> xaxisdata = new List<string>();
+        //    PostParams oPostParams = new PostParams();
+
+        //    foreach (DataRow dr in oOdata.oProperties)
+        //    {
+        //        for (int i = 0; i < AxisDataStrs.Count(); i++)
+        //        {
+        //            xaxisdata.Add(Convert.ToString(dr[AxisDataStrs[i]]));
+        //        }
+        //        for (int i = 0; i < SeriesStrs.Count(); i++)
+        //        {
+
+        //            List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+        //            if (valuelist == null)
+        //            {
+        //                valuelist = new List<string>();
+        //                oPostParams.Add(SeriesStrs[i], valuelist);
+        //            }
+        //            double odouble = Convert.ToDouble(dr[SeriesStrs[i]]);
+        //            valuelist.Add(Convert.ToString(odouble.ToString()));
+
+        //        }
+        //    }
+
+        //    try
+        //    {
+        //        doc.Load(sMetadataUrl);
+        //    }
+        //    catch
+        //    {
+
+        //        return null;
+        //    }
+        //    ds = ConvertXMLFileToDataSet(doc);
+        //    if (ds.Tables["Schema"] == null)
+        //    {
+        //        return null;
+        //    }
+        //    List<string> legend = new List<string>();
+        //    legend = oBarViewModel.LegendDataStr.Split(',').ToList();
+        //    List<string> LegendDataStrs = new List<string>();
+        //    //Dictionary<string, string> sDictionary = new Dictionary<string, string>();
+        //    oBarViewModel.Series = new List<BarSeriesModel>();
+
+        //    for (int i = 0; i < SeriesStrs.Count(); i++)
+        //    {
+        //        List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
+        //        foreach (DataRow item in ds.Tables["Property"].Rows)
+        //        {
+        //            if (item["Name"].ToString() == SeriesStrs[i])
+        //            {
+        //                LegendDataStrs.Add(Convert.ToString(item["label"]));
+        //                oBarViewModel.Series.Add(new BarSeriesModel()
+        //                {
+        //                    name = Convert.ToString(item["label"]),
+        //                    data = valuelist
+        //                });
+        //            }
+        //        }
+        //    }
+
+        //    var bar = new BarViewModel()
+        //    {
+        //        Title = oBarViewModel.Title,
+        //        SubTitle = oBarViewModel.SubTitle,
+        //        AxisData = xaxisdata,
+        //        LegendData = LegendDataStrs,
+        //        Series = oBarViewModel.Series
+        //    };
+
+        //    return bar;
+        //}
     }
 }

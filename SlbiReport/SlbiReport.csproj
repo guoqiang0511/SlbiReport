@@ -221,6 +221,7 @@
     <Compile Include="Models\BarSeriesModel.cs" />
     <Compile Include="Models\TempObjectModel.cs" />
     <Compile Include="Utilities\CommonHelper.cs" />
+    <Compile Include="Utilities\Odata.cs" />
     <Compile Include="Utilities\PostParams.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
