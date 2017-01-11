@@ -152,7 +152,7 @@ namespace LiveAzure.Resources.Models.Common {
         
         /// <summary>
         ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0005_SRV/ZSD_M001_Q0005{0}Results?|Title(0_0)新品销售贡献率月度趋势分析
-        ///|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z93S1EY88V0JD,A00O2TFHXIFF1Z93S1EY88V6UX,A00O2TFHXIFF1Z93S1EY88V0JD,A00O2TFHXIFF1Z93S1EY88V6UX|AxisDataStr(0_0)A0CALMONTH|LegendDataStr(0_0)累计目标,累计实际,目标，实际 的本地化字符串。
+        ///|SubTitle(0_0)|SeriesStr(0_0)A00O2TFHXIFF1Z93S1EY88V0JD，A00O2TFHXIFF3PMX1Q1LTO8C7P，A00O2TFHXIFF1Z93S1EY88V6UX，A00O2TFHXIFF3PMX1Q1LTO8IJ9,A00O2TFHXIFF3PMX1Q1LTO85W5,A00O2TFHXIFF3PMX13IOQWBYIQ|AxisDataStr(0_0)A0CALMONTH|LegendDataStr(0_0)累计目标,累计实际,目标，实际|BarTotal(0_0)Total1,Total2 的本地化字符串。
         /// </summary>
         public static string BarZSD_M001_Q0005 {
             get {
@@ -440,7 +440,7 @@ namespace LiveAzure.Resources.Models.Common {
         }
         
         /// <summary>
-        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0004_SRV/|Label(0_0)日历年/月(单值必输,默认上月)|TextField(0_0)ZMONTH001_PMText|ValueField(0_0)ZMONTH001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0004_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0004_SRV/|Label(0_0)工厂(多值,可选)|TextField(0_0)ZPLANT001_MMText|Value [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///   查找类似 Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0004_SRV/|Label(0_0)日历年/月(单值必输,默认上月)|TextField(0_0)ZMONTH001_PMText|ValueField(0_0)ZMONTH001_P|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0004_SRV/|Label(0_0)事业部(多值,可选)|TextField(0_0)ZBU001_MMText|ValueField(0_0)ZBU001_M|Width(0_0)200|Multiple(0_0)true*Url(0_0)http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZSD_M001_Q0004_SRV/|Label(0_0)产品分类(多值,可选)|TextField(0_0)ZMATLGRP001_MMText|V [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         public static string SelZSD_M001_Q0004 {
             get {

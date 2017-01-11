@@ -82,7 +82,8 @@ namespace SlbiReport.Utilities
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
             sResources = sResources.Replace("，", ",").Replace("\r\n", "");
             StringToEntityValue(oBarViewModel, sResources);
-
+            oBarViewModel.Series = new List<BarSeriesModel>();
+            List<string> LegendDataStrs = new List<string>();
             if (!string.IsNullOrEmpty(sUrltt))
             {
                 sUrltt = GetDateDefaultValue(sUrltt);
@@ -114,22 +115,45 @@ namespace SlbiReport.Utilities
             {
                 return null;
             }
-
             string[] SeriesStrs = oBarViewModel.SeriesStr.Split(',');
             string[] AxisDataStrs = oBarViewModel.AxisDataStr.Split(',');
             List<string> xaxisdata = new List<string>();
-
+          
             PostParams oPostParams = new PostParams();
-            foreach (DataRow dr in ds.Tables["properties"].Rows)
+            String sFrist = string.Empty;
+            String sSecond = string.Empty;
+            DataTable dtProperties = ds.Tables["properties"];
+            List<string> valuelistTotal1 = new List<string>();
+            List<string> valuelistTotal2 = new List<string>();
+            foreach (DataRow dr in dtProperties.Rows)
             {
 
                 for (int i = 0; i < AxisDataStrs.Count(); i++)
                 {
                     xaxisdata.Add(Convert.ToString(dr[AxisDataStrs[i]]));
                 }
-
+                double dSumOne = 0;
+                double dSumTwo = 0;
+                double dSumThree = 0;
+                double dSumFour = 0;
+                string sGetOne = "";
+                string sGetTwo = "";
+               
                 for (int i = 0; i < SeriesStrs.Count(); i++)
                 {
+                    if (!string.IsNullOrEmpty(oBarViewModel.BarTotal))
+                    {
+                        sGetOne = dtProperties.Rows[i][0].ToString().Replace(",", "");
+                        sGetTwo = dtProperties.Rows[i][1].ToString().Replace(",", "");
+                        sFrist = SetSum(sGetOne, sGetTwo, ref dSumOne, ref dSumTwo);
+                        valuelistTotal1.Add(sFrist);
+
+                        sGetOne = dtProperties.Rows[i][0].ToString().Replace(",", "");
+                        sGetTwo = dtProperties.Rows[i][1].ToString().Replace(",", "");
+                        sSecond = SetSum(sGetOne, sGetTwo, ref dSumThree, ref dSumFour);
+                        valuelistTotal2.Add(sSecond);
+                    }
+
 
                     List<string> valuelist = (List<string>)oPostParams.GetObject(SeriesStrs[i]);
                     if (valuelist == null)
@@ -141,8 +165,25 @@ namespace SlbiReport.Utilities
                     valuelist.Add(Convert.ToString(odouble.ToString()));
 
                 }
-            }
+               
+        }
+            if (!string.IsNullOrEmpty(oBarViewModel.BarTotal))
+            {
+                LegendDataStrs.Add(Convert.ToString("累计目标"));
+                oBarViewModel.Series.Add(new BarSeriesModel()
+                {
+                    name = Convert.ToString("累计目标"),
+                    data = valuelistTotal1
 
+                });
+                LegendDataStrs.Add(Convert.ToString("累计实际"));
+                oBarViewModel.Series.Add(new BarSeriesModel()
+                {
+                    name = Convert.ToString("累计实际"),
+                    data = valuelistTotal2
+
+                });
+            }
             try
             {
                 doc.Load(sMetadataUrl);
@@ -159,9 +200,9 @@ namespace SlbiReport.Utilities
             }
             List<string> legend = new List<string>();
             legend = oBarViewModel.LegendDataStr.Split(',').ToList();
-            List<string> LegendDataStrs = new List<string>();
+           
             //Dictionary<string, string> sDictionary = new Dictionary<string, string>();
-            oBarViewModel.Series = new List<BarSeriesModel>();
+            
 
             for (int i = 0; i < SeriesStrs.Count(); i++)
             {
@@ -204,7 +245,7 @@ namespace SlbiReport.Utilities
             //    }
             //}
 
-            
+
             //for (int i = 0; i < SeriesStrs.Count(); i++)
             //{
 
@@ -219,9 +260,16 @@ namespace SlbiReport.Utilities
             //    });
             //}
 
-           
+            if (!string.IsNullOrEmpty(oBarViewModel.BarTotal))
+            {
+                oBarViewModel.Series.Remove(oBarViewModel.Series[5]);
+                oBarViewModel.Series.Remove(oBarViewModel.Series[4]);
+                oBarViewModel.Series.Remove(oBarViewModel.Series[3]);
+                oBarViewModel.Series.Remove(oBarViewModel.Series[2]);
 
-            var bar = new BarViewModel()
+            }
+
+                var bar = new BarViewModel()
             {
                 Title = oBarViewModel.Title,
                 SubTitle = oBarViewModel.SubTitle,
@@ -231,6 +279,32 @@ namespace SlbiReport.Utilities
             };
 
             return bar;
+        }
+
+        public static string SetSum(string sGetOne, string sGetTwo, ref double dSumOne, ref double dSumTwo)
+        {
+            double dFrist = 0;
+            if (string.IsNullOrEmpty(sGetOne))
+            {
+                sGetOne = "0";
+            }
+            if (string.IsNullOrEmpty(sGetTwo))
+            {
+                sGetTwo = "0";
+            }
+            dSumOne += Convert.ToDouble(sGetOne);
+            dSumTwo += Convert.ToDouble(sGetTwo);
+            if (dSumOne==0 || dSumTwo == 0)
+            {
+                dFrist = 0;
+            }
+            else
+            {
+                dFrist = (dSumOne / dSumTwo);
+            }
+            
+ 
+            return dFrist.ToString(); 
         }
 
         public static TableViewModel GetTableMetadata(string sName)
