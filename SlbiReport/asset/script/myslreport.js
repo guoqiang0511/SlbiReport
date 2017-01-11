@@ -77,7 +77,7 @@ function drawbar1(pagequeryParams, container, id) {
                 data: response.result.AxisData
             },
 
-                series: response.result.Series
+            series: response.result.Series
         });
 
     });
@@ -285,43 +285,15 @@ function drawbar8(pagequeryParams, container, id) {
 }
 
 //一柱两线
-function drawbar8(pagequeryParams, container, id) {
+function drawbar9(pagequeryParams, container, id) {
     var barChart = echarts.init(document.getElementById(container));
-    var bar_option = getBarOption8();
+    var bar_option = getBarOption9();
     barChart.setOption(bar_option);
     barChart.showLoading();
 
-    $.post('BarMap', { id : id, pagequeryParams: pagequeryParams
+    $.post('BarMap', {
+        id: id, pagequeryParams: pagequeryParams
     }, function (response, status) {
-        var ss = JSON.stringify(response.result.Series);
-        barChart.hideLoading();
-        barChart.setOption({
-                title: {
-                    text: response.result.Title,
-                        subtext : response.result.SubTitle,
-                        x: 'left'
-                        },
-                                legend : {
-                                data : response.result.LegendData
-                                },
-                                    xAxis : {
-                                    data: response.result.AxisData
-                                },
-
-                                    series: response.result.Series
-                        });
-
-                        });
-}
-
-//一个柱子
-function drawbar10(pagequeryParams, container, id) {
-    var barChart = echarts.init(document.getElementById(container));
-    var bar_option = getBarOption10();
-    barChart.setOption(bar_option);
-    barChart.showLoading();
-
-    $.post('BarMap', { id: id, pagequeryParams: pagequeryParams }, function (response, status) {
         var ss = JSON.stringify(response.result.Series);
         barChart.hideLoading();
         barChart.setOption({
@@ -397,7 +369,7 @@ function drawtable(pagequeryParams, container, id) {
         var s = "";
         var field = "";
         var ColList = "";
-        if (response){
+        if (response) {
             fs = response.result.FrozenColumns;
             s = response.result.Columns;
             ColList = response.result.ColList;
@@ -407,15 +379,15 @@ function drawtable(pagequeryParams, container, id) {
             // var s = "[[{field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',title: '本月到期款-原币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAN433USWUC_F',title: '本月到期款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',title: '回款金额-现汇',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F',title: '回款金额-承兑',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F',title: '回款金额-小计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F',title: '回款率',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F',title: '差异',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJNMJX09XV3R_F',title: '下月到期应收款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJL761AEC6TP_F',title: '其中:现汇-下月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJL761AECJGT_F',title: '其中:承兑-下月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF3PJJNTW3NR5IOF_F',title: '下两月到期应收款-本币',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KSKTPID9VX9_F',title: '其中:现汇-下两月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KSKTPIDA8KD_F',title: '其中:承兑-下两月到期',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KUZP2W1YUI3_F',title: 'YTD累计到期应收',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KYVTHOIXSQ6_F',title: '其中:现汇-YTD累计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9KYXREMNVSNA_F',title: '其中:承兑-YTD累计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L0X3KSO96S7_F',title: 'YTD累计回款-现金',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L0X3KSO9D3R_F',title: 'YTD累计回款-承兑',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L16PKA5JCF2_F',title: 'YTD累计回款-小计',sortable:true, fixed:true,align:'right'},{field: 'A00O2TFHXIFF1Z9L1965NXFU03_F',title: 'YTD回款率',sortable:true, fixed:true,align:'right'}]]";
             //  var s = "  [[{ title: 'Item Details', colspan: 7 }], [{ field: 'A00O2TFHXIFF3PJIBEFO12Z9IL_F',  title: '本月到期款-原币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAN433USWUC_F',   title: '本月到期款-本币', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5OBO_F',   title: '回款金额-现汇', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJAY65NP5UN8_F', title: '回款金额-承兑', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJB7XWANDFNH_F', title: '回款金额-小计', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBCMEH9SZGV_F', title: '回款率', sortable: true, fixed: true, align: 'right' },{ field: 'A00O2TFHXIFF3PJJBDKS5JMP3K_F', title: '差异', sortable: true, fixed: true, align: 'right' }]]"
 
-        option.frozenColumns = eval(fs);
-        option.columns = eval(s);
-        option.title = response.result.Title;
-        option.url = 'TableMap';
-        option.onLoadSuccess = function (data) {
-            mergeCellsByField(container, ColList);
-        };
-        option.queryParams = { id: id, "pagequeryParams": pagequeryParams };
-        $('#' + container + '').datagrid(option);
+            option.frozenColumns = eval(fs);
+            option.columns = eval(s);
+            option.title = response.result.Title;
+            option.url = 'TableMap';
+            option.onLoadSuccess = function (data) {
+                mergeCellsByField(container, ColList);
+            };
+            option.queryParams = { id: id, "pagequeryParams": pagequeryParams };
+            $('#' + container + '').datagrid(option);
         }
     });
 
@@ -436,7 +408,7 @@ function drawselect(container, id) {
                     label: result.Label,
                     url: 'Select_Dim',
                     queryParams: {
-                        id:id,
+                        id: id,
                         "field": result.ValueField,
                     },
                     labelPosition: 'left',
@@ -444,10 +416,10 @@ function drawselect(container, id) {
                     width: result.Width,
                     onLoadSuccess: function (data) {
                         if (data) {
-                            $('#' + result.ValueField + '').combobox('setValue',result.Select);
+                            $('#' + result.ValueField + '').combobox('setValue', result.Select);
                         }
                     },
-                  //  multiple: result.Multiple,
+                    //  multiple: result.Multiple,
                     textField: 'text'
                 });
 
@@ -467,7 +439,7 @@ function drawselect(container, id) {
                 //drawpie1(pagequeryParams, "main", "PieMap1");
                 //drawbar1(pagequeryParams, "bar", "BarMap");
                 //$('#tt').datagrid('load', { pagequeryParams });
-                 buttononclick(pagequeryParams);
+                buttononclick(pagequeryParams);
                 //drawpie1(pagequeryParams, "main", "Pie2");
             });
 
@@ -489,7 +461,7 @@ function drawselect_Auto(container, id) {
                     url: 'Select_Dim',
                     queryParams: {
                         "field": result.ValueField,
-                        "id":id,
+                        "id": id,
                     },
                     labelPosition: 'left',
                     valueField: 'id',
@@ -958,10 +930,10 @@ function getBarOption7() {
             }
         ],
         yAxis: [
-            {
-                type: 'value',
-                name: '',
-                axisLabel: {
+               {
+                    type: 'value',
+                    name: '',
+                    axisLabel: {
                     formatter: '{value} '
                 }
             }
@@ -991,97 +963,55 @@ function getBarOption8() {
 
     return {
 
-tooltip: {
-trigger: 'axis'
-},
-toolbox: {
-    feature: {
-    dataView: { show : true, readOnly: false
-},
-        magicType: {
-    show: true, type : ['line', 'bar']},
-        restore: {
-    show: true
-},
-    saveAsImage: {
-    show: true
-    }
-}
-        },
-    legend: {
-        data: []
-    },
-        xAxis: [
-    {
-        type: 'category',
-            data: []
-            }
-            ],
-                    yAxis: [
-                    {
-                        type: 'value',
-                        name: '',
-                        axisLabel: {
-                            formatter: '{value} '
-            }
-            }
-            ],
-                series: [
-            {
-                    name: '',
-                    type: 'line',
-                        data: []
-                }
-            ,
-                {
-                    name: '',
-                    type: 'line',
-                    data: []
-                    }
-        ]
-    }
-}
-
-function getBarOption10() {
-
-    return {
-
         tooltip: {
             trigger: 'axis'
         },
         toolbox: {
             feature: {
-                dataView: { show: true, readOnly: false },
-                magicType: { show: true, type: ['line', 'bar'] },
-                restore: { show: true },
-                saveAsImage: { show: true }
+                dataView: {
+                    show: true, readOnly: false
+                },
+                magicType: {
+                    show: true, type: ['line', 'bar']
+                },
+                restore: {
+                    show: true
+                },
+                saveAsImage: {
+                    show: true
+                }
             }
         },
         legend: {
             data: []
         },
         xAxis: [
-            {
-                type: 'category',
-                data: []
-            }
+    {
+        type: 'category',
+        data: []
+    }
         ],
         yAxis: [
-            {
-                type: 'value',
-                name: '',
-                axisLabel: {
-                    formatter: '{value} '
-                }
+        {
+            type: 'value',
+            name: '',
+            axisLabel: {
+                formatter: '{value} '
             }
+        }
         ],
         series: [
-            {
-                name: '',
-                type: 'bar',
-                data: []
-
-            }
+    {
+        name: '',
+        type: 'line',
+        data: []
+    }
+    ,
+        {
+            name: '',
+            type: 'line',
+            data: []
+        }
         ]
     }
 }
@@ -1167,4 +1097,3 @@ function getTableOption() {
         }
     }
 }
-
