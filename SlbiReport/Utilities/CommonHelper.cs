@@ -651,19 +651,23 @@ namespace SlbiReport.Utilities
         {
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
-            // string fileName = "http://bwdev.shuanglin.com:8000/sap/opu/odata/sap/ZFI_M001_Q0003_SRV/ZFI_M001_Q0003Results?$select=" + id + "," + text + "&" + token;
             string sResources = Convert.ToString(LiveAzure.Resources.Models.Common.ModelEnum.ResourceManager.GetObject(sName));
-
-            PostParams oPostParams = new PostParams(sResources);
-
-            //string sUrl = oPostParams.GetString("Url");
-            string sUrl = oPostParams.GetString("*Url");
-            if (string.IsNullOrEmpty(sUrl))
+            string[] sSels = sResources.Split('*');
+            SelectColumn oSelectColumn = new SelectColumn();
+            string sUrl = "";
+            foreach (string sItem in sSels)
             {
-                sUrl = oPostParams.GetString("Url");
+                StringToEntityValue(oSelectColumn, sItem);
+                if (oSelectColumn.ValueField == sId)
+                {
+                    sUrl = oSelectColumn.Url;
+                }
+                else
+                {
+                    //配置中不存在当前选择框
+                }
+                
             }
-
-
 
             string fileName = sUrl + sId + "?" + sToken;
 
